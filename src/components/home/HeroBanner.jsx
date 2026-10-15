@@ -26,11 +26,8 @@ export default function HeroBanner() {
           Universitas Islam Al-Azhar Mataram
         </span>
         <h1 style={{ margin: 0, fontSize: "46px", lineHeight: 1.08, letterSpacing: "-.01em", fontWeight: 800 }}>
-          Kampus Islami yang unggul dan berdampak
+          Selamat Datang di Kampus Rahmatan lil 'Alamin
         </h1>
-        <p style={{ margin: 0, fontSize: "17px", lineHeight: 1.6, color: "#D3EBDF", maxWidth: "560px" }}>
-          Pendidikan, penelitian, dan pengabdian berlandaskan nilai Islam untuk Nusa Tenggara Barat dan dunia.
-        </p>
         <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "6px" }}>
           <button
             type="button"
