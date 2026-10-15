@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import Profil from "./pages/Profil"; // <-- Halaman Profil baru
@@ -20,7 +21,16 @@ import PetaBanpt from "./pages/PetaBanpt";
 function App() {
   return (
     <Router>
-      <div style={{ width: "100%", minHeight: "100vh", backgroundColor: "#F4F8F6", display: "flex", flexDirection: "column" }}>
+      <div
+        style={{
+          width: "100%",
+          minHeight: "100vh",
+          backgroundColor: "#F4F8F6",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <ScrollToTop />
         <Header />
         <main style={{ width: "100%", flex: "1" }}>
           <Routes>
