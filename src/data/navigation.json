@@ -1,0 +1,116 @@
+{
+  "left": [
+    {
+      "id": "profil",
+      "label": "Profil",
+      "path": "/",
+      "desc": "Identitas, arah strategis, dan dokumen legal-formal institusi.",
+      "items": [
+        { "label": "Sejarah & Identitas", "access": "public", "path": "/#sejarah" },
+        { "label": "Visi, Misi & Diferensiasi Misi", "access": "public", "path": "/#visi-misi" },
+        { "label": "RIP, Renstra & Roadmap", "access": "summary", "path": "/pusat-dokumen" },
+        { "label": "Evaluasi Capaian Tridharma", "access": "summary", "path": "/pusat-dokumen" },
+        { "label": "Statuta", "access": "public", "path": "/pusat-dokumen" },
+        { "label": "Struktur Organisasi & Tata Kerja", "access": "public", "path": "/orang" },
+        { "label": "Pimpinan & Yayasan", "access": "public", "path": "/orang" },
+        { "label": "Capaian & Penghargaan", "access": "public", "path": "/#capaian" }
+      ]
+    },
+    {
+      "id": "fakultas",
+      "label": "Fakultas",
+      "path": "/fakultas",
+      "desc": "Fakultas dan program studi unggulan penyelenggara tridharma.",
+      "items": [
+        { "label": "Fakultas Kedokteran", "access": "public", "path": "/prodi" },
+        { "label": "Fakultas Teknik", "access": "public", "path": "/fakultas" },
+        { "label": "Fakultas Hukum", "access": "public", "path": "/fakultas" },
+        { "label": "Fakultas Ekonomi & Bisnis", "access": "public", "path": "/fakultas" },
+        { "label": "Fakultas Pertanian", "access": "public", "path": "/fakultas" },
+        { "label": "Fakultas MIPA", "access": "public", "path": "/fakultas" }
+      ]
+    },
+    {
+      "id": "direktori",
+      "label": "Direktori",
+      "path": "/pusat-dokumen",
+      "desc": "Pusat repositori dokumen kebijakan, SOP, dan regulasi institusi.",
+      "items": [
+        { "label": "Pusat Dokumen & Kebijakan", "access": "public", "path": "/pusat-dokumen" },
+        { "label": "Orang & SDM Kampus", "access": "public", "path": "/orang" },
+        { "label": "Transparansi & PPID", "access": "public", "path": "/ppid" },
+        { "label": "Peta Bukti BAN-PT", "access": "restricted", "path": "/peta-bukti-banpt" }
+      ]
+    },
+    {
+      "id": "gug",
+      "label": "GUG",
+      "path": "/gug",
+      "desc": "Good University Governance, tata kelola, dan akuntabilitas.",
+      "items": [
+        { "label": "Prinsip Utama GUG", "access": "public", "path": "/gug" },
+        { "label": "Tata Kelola Keuangan & Penganggaran", "access": "summary", "path": "/gug" },
+        { "label": "Keamanan, Keselamatan & Kesehatan Kampus (K3)", "access": "public", "path": "/gug" },
+        { "label": "Satuan Pengawasan Internal (SPI)", "access": "restricted", "path": "/gug" },
+        { "label": "Kode Etik & PPKS", "access": "public", "path": "/gug" },
+        { "label": "Laporan Tahunan Keuangan Teraudit", "access": "restricted", "path": "/gug" }
+      ]
+    }
+  ],
+  "right": [
+    {
+      "id": "pendidikan",
+      "label": "Pendidikan",
+      "path": "/pendidikan",
+      "desc": "Layanan akademik, kurikulum OBE, PMB, dan suasana belajar.",
+      "items": [
+        { "label": "PMB & Jalur Masuk 2027", "access": "public", "path": "/pendidikan" },
+        { "label": "Skema Beasiswa & Keringanan", "access": "public", "path": "/pendidikan" },
+        { "label": "Kurikulum Outcome Based Education (OBE)", "access": "public", "path": "/pendidikan" },
+        { "label": "Merdeka Belajar Kampus Merdeka (MBKM)", "access": "public", "path": "/pendidikan" },
+        { "label": "Suasana Akademik & Layanan Disabilitas", "access": "public", "path": "/pendidikan" },
+        { "label": "Kalender Akademik & SPADA UNIZAR", "access": "public", "path": "/pendidikan" }
+      ]
+    },
+    {
+      "id": "penelitian",
+      "label": "Penelitian",
+      "path": "/penelitian",
+      "desc": "Lembaga Penelitian dan Pengabdian kepada Masyarakat (LPPM).",
+      "items": [
+        { "label": "Peta Jalan Riset Unggulan", "access": "public", "path": "/penelitian" },
+        { "label": "Hibah Penelitian Internal 2027", "access": "summary", "path": "/penelitian" },
+        { "label": "Tata Kelola & Etik Riset", "access": "public", "path": "/penelitian" },
+        { "label": "Publikasi Jurnal Bereputasi & Repositori", "access": "public", "path": "/penelitian" },
+        { "label": "HKI, Paten & Hak Cipta", "access": "public", "path": "/penelitian" },
+        { "label": "Portal SIM-LPPM UNIZAR", "access": "restricted", "path": "/penelitian" }
+      ]
+    },
+    {
+      "id": "pengabdian",
+      "label": "Pengabdian",
+      "path": "/pengabdian",
+      "desc": "Pengabdian masyarakat, kepakaran dosen, dan kemitraan NTB.",
+      "items": [
+        { "label": "Sebaran Lokasi PkM di NTB", "access": "public", "path": "/pengabdian" },
+        { "label": "Program Desa Binaan & KKN", "access": "public", "path": "/pengabdian" },
+        { "label": "Direktori Pakar & Konsultan", "access": "public", "path": "/pengabdian" },
+        { "label": "Formulir Kolaborasi Mitra", "access": "public", "path": "/pengabdian" },
+        { "label": "Layanan Penguatan UMKM & Kesehatan", "access": "public", "path": "/pengabdian" }
+      ]
+    },
+    {
+      "id": "bpm",
+      "label": "BPM",
+      "path": "/bpm",
+      "desc": "Badan Penjaminan Mutu Internal dan Audit Mutu Akademik.",
+      "items": [
+        { "label": "Kebijakan & Standar SPMI", "access": "public", "path": "/bpm" },
+        { "label": "Implementasi Siklus PPEPP", "access": "public", "path": "/bpm" },
+        { "label": "Laporan Audit Mutu Internal (AMI)", "access": "restricted", "path": "/bpm" },
+        { "label": "Hasil Survei Kepuasan Sivitas", "access": "summary", "path": "/bpm" },
+        { "label": "Instrumen & Manual Mutu", "access": "public", "path": "/bpm" }
+      ]
+    }
+  ]
+}

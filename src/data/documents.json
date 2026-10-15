@@ -1,0 +1,57 @@
+[
+  {
+    "id": "doc-01",
+    "title": "Statuta Universitas Islam Al-Azhar",
+    "unit": "Yayasan",
+    "category": "Peraturan",
+    "skNumber": "No. 001/YYS/2024",
+    "effectiveDate": "12 Mar 2024",
+    "version": "v3.0",
+    "accessLevel": "public",
+    "note": "Memuat identitas, penyelenggaraan tridharma, sistem pengelolaan, SPMI, pendanaan, dan ketentuan penutup."
+  },
+  {
+    "id": "doc-02",
+    "title": "Renstra SDM 2025–2029",
+    "unit": "Rektorat",
+    "category": "Renstra",
+    "skNumber": "No. 012/SK/2025",
+    "effectiveDate": "02 Jan 2025",
+    "version": "v1.2",
+    "accessLevel": "public",
+    "note": "Rencana strategis jangka menengah pengembangan sumber daya manusia beserta target terukur per tahun."
+  },
+  {
+    "id": "doc-03",
+    "title": "Analisis Kebutuhan & Kecukupan Dosen",
+    "unit": "BPM",
+    "category": "Laporan",
+    "skNumber": "No. 018/SK/2025",
+    "effectiveDate": "15 Feb 2025",
+    "version": "v1.0",
+    "accessLevel": "summary",
+    "note": "Ikhtisar analisis rasio, pemenuhan kualifikasi, dan proyeksi kebutuhan dosen tetap."
+  },
+  {
+    "id": "doc-04",
+    "title": "Kebijakan SPMI UNIZAR",
+    "unit": "BPM",
+    "category": "SPMI",
+    "skNumber": "No. 004/SK/2026",
+    "effectiveDate": "06 Jan 2026",
+    "version": "v4.0",
+    "accessLevel": "restricted",
+    "note": "Dokumen sistem penjaminan mutu internal terintegrasi."
+  },
+  {
+    "id": "doc-05",
+    "title": "Pedoman Kurikulum Outcome Based Education (OBE)",
+    "unit": "Wakil Rektor I",
+    "category": "Pedoman",
+    "skNumber": "No. 022/SK/2025",
+    "effectiveDate": "05 Jul 2025",
+    "version": "v2.1",
+    "accessLevel": "public",
+    "note": "Penyusunan, pelaksanaan, dan evaluasi kurikulum berbasis luaran seluruh program studi."
+  }
+]

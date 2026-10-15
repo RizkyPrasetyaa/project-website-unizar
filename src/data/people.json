@@ -1,0 +1,34 @@
+{
+  "leaders": [
+    { "role": "REKTOR", "name": "Dr. Ir. H. Ahmad, M.T.", "unit": "Universitas Islam Al-Azhar" },
+    { "role": "WAKIL REKTOR I", "name": "Dr. Siti Fatimah, M.Pd.", "unit": "Bidang Akademik & Kerjasama" },
+    { "role": "WAKIL REKTOR II", "name": "H. Muhammad Zaini, S.E., M.M.", "unit": "Bidang Keuangan & SDM" },
+    { "role": "WAKIL REKTOR III", "name": "Dr. H. Usman, S.H., M.H.", "unit": "Bidang Kemahasiswaan" }
+  ],
+  "lecturers": [
+    {
+      "id": "lec-01",
+      "name": "dr. H. Hendra Kurniawan, Sp.PD",
+      "faculty": "Fakultas Kedokteran",
+      "field": "Kedokteran Klinis",
+      "academicRank": "Lektor Kepala",
+      "degree": "Spesialis"
+    },
+    {
+      "id": "lec-02",
+      "name": "Dr. Maya Syafitri, S.T., M.T.",
+      "faculty": "Fakultas Teknik",
+      "field": "Teknik Sipil & Struktur",
+      "academicRank": "Lektor",
+      "degree": "Doktor"
+    },
+    {
+      "id": "lec-03",
+      "name": "Ahmad Rizky, S.H., M.H.",
+      "faculty": "Fakultas Hukum",
+      "field": "Hukum Pidana & Agraria",
+      "academicRank": "Asisten Ahli",
+      "degree": "Magister"
+    }
+  ]
+}
