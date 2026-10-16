@@ -261,7 +261,7 @@ export default function Direktori() {
           gap: "24px",
         }}
       >
-        {/* 1. SUB-MENU: UNIT KERJA & KONTAK (DEFAULT) */}
+        {/* 1. SUB-MENU: UNIT KERJA & KONTAK */}
         {tab === "unit" && (
           <section
             style={{
@@ -565,10 +565,9 @@ export default function Direktori() {
           </section>
         )}
 
-        {/* 4. SUB-MENU: PUSAT DOKUMEN (DENGAN BADGE STATS) */}
+        {/* 4. SUB-MENU: PUSAT DOKUMEN */}
         {tab === "dokumen" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            {/* Header Judul & Badge Statistik */}
             <div
               style={{
                 display: "flex",
@@ -587,7 +586,6 @@ export default function Direktori() {
                 </p>
               </div>
 
-              {/* BADGE STATISTIK (DOKUMEN & DIPERBARUI) */}
               <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                 <span
                   style={{
@@ -618,7 +616,6 @@ export default function Direktori() {
               </div>
             </div>
 
-            {/* Form Filter Pencarian Lengkap */}
             <div
               style={{
                 background: "#FFFFFF",
@@ -709,7 +706,6 @@ export default function Direktori() {
               </button>
             </div>
 
-            {/* Filter Chips Akses */}
             <div
               role="group"
               aria-label="Filter akses"
@@ -747,9 +743,7 @@ export default function Direktori() {
               })}
             </div>
 
-            {/* Tabel Utama & Panel Detail Kanan */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", alignItems: "flex-start" }}>
-              {/* Tabel Dokumen */}
               <div
                 style={{
                   flex: "999 1 720px",
@@ -871,7 +865,6 @@ export default function Direktori() {
                 </div>
               </div>
 
-              {/* Panel Detail Dokumen Kanan */}
               <aside
                 aria-label="Detail dokumen"
                 style={{
@@ -1081,7 +1074,7 @@ export default function Direktori() {
           </section>
         )}
 
-        {/* 6. SUB-MENU: PETA KAMPUS */}
+        {/* 6. SUB-MENU: PETA KAMPUS (PETA INTERAKTIF + LINK BUKA MAPS) */}
         {tab === "peta" && (
           <section
             style={{
@@ -1091,40 +1084,83 @@ export default function Direktori() {
               padding: "28px",
             }}
           >
-            <span
-              style={{
-                fontSize: "12px",
-                fontWeight: 800,
-                color: "#8A6500",
-                textTransform: "uppercase",
-              }}
-            >
-              LOKASI & FASILITAS
-            </span>
-            <h2
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#064E3B",
-                margin: "8px 0 16px",
-              }}
-            >
-              Peta Kampus & Denah Lokasi
-            </h2>
             <div
               style={{
-                background: "#E3F1EA",
-                height: "280px",
-                borderRadius: "14px",
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#064E3B",
-                fontWeight: 800,
-                fontSize: "16px",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                flexWrap: "wrap",
+                gap: "12px",
+                marginBottom: "16px",
               }}
             >
-              [ Visual Peta Interaktif Kampus UNIZAR ]
+              <div>
+                <span
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 800,
+                    color: "#8A6500",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  LOKASI & FASILITAS
+                </span>
+                <h2
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: 800,
+                    color: "#064E3B",
+                    margin: "4px 0 0",
+                  }}
+                >
+                  Peta Kampus & Denah Lokasi
+                </h2>
+              </div>
+
+              {/* Tombol Langsung Buka Google Maps */}
+              <a
+                href="https://maps.google.com/?q=-8.606907,116.144187"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  background: "#064E3B",
+                  color: "#FFFFFF",
+                  padding: "10px 18px",
+                  borderRadius: "10px",
+                  fontWeight: 700,
+                  fontSize: "14px",
+                  textDecoration: "none",
+                }}
+              >
+                <span>Buka di Google Maps ↗</span>
+              </a>
+            </div>
+
+            {/* Container Embed Google Maps */}
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "480px",
+                borderRadius: "14px",
+                overflow: "hidden",
+                border: "1px solid #DCE6E0",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+              }}
+            >
+              <iframe
+                title="Peta Lokasi Universitas Islam Al-Azhar Mataram"
+                src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d3944.8863724551634!2d116.14418699999999!3d-8.606907!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMzYnMjQuOSJTIDExNsKwMDgnMzkuMSJF!5e0!3m2!1sen!2sus!4v1792151555014!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              ></iframe>
             </div>
           </section>
         )}
