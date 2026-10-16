@@ -91,7 +91,7 @@ export default function Header() {
       id: "Pendidikan",
       desc: "Kurikulum, pembelajaran, MBKM, dan penerimaan mahasiswa baru.",
       href: "/pendidikan",
-      defaultTab: "kurikulum",
+      defaultTab: "pmb",
       items: [
         { label: "Kebijakan Kurikulum OBE", access: "Publik", tab: "kurikulum" },
         { label: "Kalender & Panduan Akademik", access: "Publik", tab: "kalender" },
@@ -99,7 +99,7 @@ export default function Header() {
         { label: "MBKM (≥ 10 sks luar prodi)", access: "Publik", tab: "mbkm" },
         { label: "Suasana Akademik & Kebebasan Mimbar", access: "Publik", tab: "suasana" },
         { label: "Capaian Kompetensi Lulusan", access: "Ringkasan", tab: "capaian" },
-        { label: "PMB Afirmatif & Inklusif", access: "Publik", tab: "pmb" },
+        { label: "PMB Afirmatif & Inklusif", access: "Publik", tab: "pmb-inklusif" },
         { label: "Beasiswa & Bantuan Biaya", access: "Publik", tab: "beasiswa" },
         { label: "RPL · PJJ · PKKMB", access: "Publik", tab: "rpl" },
       ],
