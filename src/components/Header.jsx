@@ -30,6 +30,7 @@ export default function Header() {
       id: "Profil",
       desc: "Identitas, arah strategis, dan dokumen legal-formal institusi.",
       href: "/profil",
+      defaultTab: "identitas",
       items: [
         { label: "Sejarah & Identitas", access: "Publik", tab: "identitas" },
         { label: "Visi, Misi & Diferensiasi Misi", access: "Publik", tab: "visimisi" },
@@ -72,6 +73,7 @@ export default function Header() {
       id: "GUG",
       desc: "Good University Governance: akuntabilitas, integritas, mitigasi risiko, dan keuangan.",
       href: "/gug",
+      defaultTab: "ikhtisar",
       items: [
         { label: "Kebijakan & Praktik Baik GUG", access: "Publik", tab: "kebijakan" },
         { label: "Laporan Tahunan", access: "Ringkasan", tab: "laporan-tahunan" },
@@ -89,16 +91,17 @@ export default function Header() {
       id: "Pendidikan",
       desc: "Kurikulum, pembelajaran, MBKM, dan penerimaan mahasiswa baru.",
       href: "/pendidikan",
+      defaultTab: "kurikulum",
       items: [
-        { label: "Kebijakan Kurikulum OBE", access: "Publik" },
-        { label: "Kalender & Panduan Akademik", access: "Publik" },
-        { label: "Proses & Evaluasi Pembelajaran", access: "Publik" },
-        { label: "MBKM (≥ 10 sks luar prodi)", access: "Publik" },
-        { label: "Suasana Akademik & Kebebasan Mimbar", access: "Publik" },
-        { label: "Capaian Kompetensi Lulusan", access: "Ringkasan" },
-        { label: "PMB Afirmatif & Inklusif", access: "Publik" },
-        { label: "Beasiswa & Bantuan Biaya", access: "Publik" },
-        { label: "RPL · PJJ · PKKMB", access: "Publik" },
+        { label: "Kebijakan Kurikulum OBE", access: "Publik", tab: "kurikulum" },
+        { label: "Kalender & Panduan Akademik", access: "Publik", tab: "kalender" },
+        { label: "Proses & Evaluasi Pembelajaran", access: "Publik", tab: "proses" },
+        { label: "MBKM (≥ 10 sks luar prodi)", access: "Publik", tab: "mbkm" },
+        { label: "Suasana Akademik & Kebebasan Mimbar", access: "Publik", tab: "suasana" },
+        { label: "Capaian Kompetensi Lulusan", access: "Ringkasan", tab: "capaian" },
+        { label: "PMB Afirmatif & Inklusif", access: "Publik", tab: "pmb" },
+        { label: "Beasiswa & Bantuan Biaya", access: "Publik", tab: "beasiswa" },
+        { label: "RPL · PJJ · PKKMB", access: "Publik", tab: "rpl" },
       ],
     },
     penelitian: {
@@ -400,7 +403,7 @@ export default function Header() {
               </p>
               <Link
                 to={activeMega.href}
-                state={{ tab: "ikhtisar" }}
+                state={{ tab: activeMega.defaultTab || (activeMega.items[0] && activeMega.items[0].tab) }}
                 onClick={() => setOpen(null)}
                 style={{
                   display: "inline-flex",
