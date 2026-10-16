@@ -4,15 +4,16 @@ import { Link, useLocation } from "react-router-dom";
 export default function Pendidikan() {
   const location = useLocation();
 
-  // 9 SUB-MENU SESUAI MEGA MENU HEADER PENDIDIKAN
+  // 10 TAB SUB-MENU PENDIDIKAN
   const MENU_ITEMS = [
+    { key: "pmb", label: "PMB & Beasiswa" },
     { key: "kurikulum", label: "Kebijakan Kurikulum OBE" },
     { key: "kalender", label: "Kalender & Panduan Akademik" },
     { key: "proses", label: "Proses & Evaluasi Pembelajaran" },
     { key: "mbkm", label: "MBKM (≥ 10 sks luar prodi)" },
     { key: "suasana", label: "Suasana Akademik & Kebebasan Mimbar" },
     { key: "capaian", label: "Capaian Kompetensi Lulusan" },
-    { key: "pmb", label: "PMB Afirmatif & Inklusif" },
+    { key: "pmb-inklusif", label: "PMB Afirmatif & Inklusif" },
     { key: "beasiswa", label: "Beasiswa & Bantuan Biaya" },
     { key: "rpl", label: "RPL · PJJ · PKKMB" },
   ];
@@ -20,22 +21,21 @@ export default function Pendidikan() {
   const VALID_TABS = MENU_ITEMS.map((m) => m.key);
 
   const [tab, setTab] = useState(() => {
-    return location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "kurikulum";
+    return location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "pmb";
   });
 
   const [faqOpen, setFaqOpen] = useState(null);
   const tabRefs = useRef({});
 
-  // EFFECT UNTUK NAVIGASI REALTIME DARI HEADER & AUTO-SCROLL
   useEffect(() => {
-    const targetTab = location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "kurikulum";
+    const targetTab = location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "pmb";
 
     setTab(targetTab);
 
-    // 1. Jump ke paling atas secara instan
+    // Jump ke paling atas
     window.scrollTo(0, 0);
 
-    // 2. Scroll horizontal tab aktif ke tengah layar
+    // Auto-scroll tab horizontal ke tengah
     const timer = setTimeout(() => {
       if (tabRefs.current[targetTab]) {
         tabRefs.current[targetTab].scrollIntoView({
@@ -49,7 +49,6 @@ export default function Pendidikan() {
     return () => clearTimeout(timer);
   }, [location.state, location.key]);
 
-  // FUNGSI KLIK TAB MANUAL
   const handleTabClick = (key) => {
     setTab(key);
     window.scrollTo(0, 0);
@@ -64,12 +63,10 @@ export default function Pendidikan() {
 
   const activeMenu = MENU_ITEMS.find((m) => m.key === tab) || MENU_ITEMS[0];
 
-  // HELPER BADGE & DOKUMEN
   const STY = {
     pub: { badge: "Publik", bg: "#E3F1EA", fg: "#064E3B", action: "Unduh PDF" },
     sum: { badge: "Ringkasan", bg: "#FFF1C2", fg: "#6B4E00", action: "Lihat ringkasan" },
     ext: { badge: "Tautan sistem", bg: "#E6EEF8", fg: "#1D3F6E", action: "Buka sistem" },
-    lock: { badge: "Terbatas", bg: "#FBE3E4", fg: "#8E1B20", action: "Akses terbatas" },
   };
 
   const D = (name, acc, meta) => {
@@ -80,7 +77,6 @@ export default function Pendidikan() {
   const S = (label, v) => ({ label, v });
   const SK = "SK Rektor No. [—] · [tgl]";
 
-  // DATA PEMETAAN LENGKAP TIAP SUB-MENU
   const KONTEN_SUBMENU = {
     kurikulum: {
       stats: [S("Prodi Kurikulum OBE", "100%"), S("Kepuasan Pembelajaran", "84%"), S("RPS Daring LMS", "96%")],
@@ -94,11 +90,11 @@ export default function Pendidikan() {
           ],
         },
         {
-          title: "Rancangan & Sistem Pembelajaran",
+          title: "Proses Pembelajaran",
           docs: [
             D("Kebijakan Pembelajaran Inklusif & Kolaboratif", "pub", SK),
-            D("Hasil Evaluasi Proses Pembelajaran (EDOM)", "sum", "Tahun 2025"),
-            D("Portal LMS / E-Learning UNIZAR", "ext", "Sistem Pembelajaran Daring"),
+            D("Hasil Evaluasi Proses Pembelajaran", "sum", "EDOM 2025"),
+            D("LMS / E-Learning UNIZAR", "ext", "Login civitas"),
           ],
         },
       ],
@@ -145,18 +141,18 @@ export default function Pendidikan() {
       ],
       sections: [
         {
-          title: "Kebijakan & Panduan MBKM",
+          title: "Kebijakan & Panduan",
           docs: [
             D("Pedoman MBKM UNIZAR", "pub", SK),
             D("Panduan Konversi & Pengakuan SKS", "pub", "v2.0"),
-            D("Daftar Mitra Kebijakan MBKM", "pub", "Diperbarui per semester"),
+            D("Daftar Mitra MBKM", "pub", "Diperbarui per semester"),
           ],
         },
         {
-          title: "Capaian & Pelaporan",
+          title: "Capaian",
           docs: [
             D("Rekap Partisipasi MBKM 3 Tahun", "sum", "2023–2025"),
-            D("Testimoni & Luaran Program MBKM", "pub", "Dokumentasi Kegiatan"),
+            D("Testimoni & Luaran MBKM", "pub", "Dokumentasi Kegiatan"),
             D("Portal MBKM Nasional Kemdiktisaintek", "ext", "Sistem Eksternal"),
           ],
         },
@@ -203,7 +199,7 @@ export default function Pendidikan() {
         },
       ],
     },
-    pmb: {
+    "pmb-inklusif": {
       stats: [
         S("Kapasitas Penerimaan", "1.500 Kuota"),
         S("Jalur Seleksi Aktif", "5 Jalur"),
@@ -258,17 +254,16 @@ export default function Pendidikan() {
 
   const curData = KONTEN_SUBMENU[tab];
 
-  // DATA KHUSUS KHUSUS TAB PMB (JALUR, BEASISWA & FAQ)
   const paths = [
     { t: "Reguler", d: "Seleksi berbasis tes potensi akademik daring.", l: "Semua prodi", c: "#0A6B4F" },
     { t: "Prestasi", d: "Rapor dan prestasi akademik/non-akademik.", l: "Bebas tes", c: "#3A9B76" },
     {
-      t: "Afirmasi & KIP-K",
+      t: "Afirmasi & KIP-Kuliah",
       d: "Untuk calon mahasiswa kurang mampu dan daerah 3T.",
-      l: "Sangat Inklusif",
+      l: "Ind. 31A, 27B",
       c: "#F2C230",
     },
-    { t: "RPL", d: "Rekognisi pengalaman kerja menjadi SKS.", l: "Terhubung SIERRA", c: "#E8A33A" },
+    { t: "RPL", d: "Rekognisi pengalaman kerja menjadi sks.", l: "Terhubung SIERRA", c: "#E8A33A" },
     { t: "Pindahan / PJJ", d: "Transfer kredit dan pembelajaran jarak jauh.", l: "Terhubung SPADA", c: "#C1272D" },
   ];
 
@@ -291,7 +286,7 @@ export default function Pendidikan() {
     ],
     [
       "Bagaimana jika saya sudah bekerja?",
-      "Jalur RPL memungkinkan pengalaman kerja diakui sebagai SKS sehingga masa studi bisa lebih singkat.",
+      "Jalur RPL memungkinkan pengalaman kerja diakui sebagai sks sehingga masa studi bisa lebih singkat.",
     ],
     [
       "Kapan pengumuman hasil seleksi?",
@@ -362,280 +357,385 @@ export default function Pendidikan() {
 
       {/* Konten Utama */}
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "28px 32px 64px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-          <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>{activeMenu.label}</h2>
+        {/* 1. TAB PALING AWAL: PMB & BEASISWA */}
+        {tab === "pmb" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "26px" }}>
+            {/* Banner Utama PMB */}
+            <section
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "20px",
+                padding: "30px",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "24px",
+                alignItems: "center",
+              }}
+            >
+              <div style={{ flex: "2 1 480px", display: "flex", flexDirection: "column", gap: "10px" }}>
+                <span
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    letterSpacing: ".12em",
+                    color: "#8A6500",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  PENERIMAAN MAHASISWA BARU 2027
+                </span>
+                <h2 style={{ margin: 0, fontSize: "30px", lineHeight: 1.15, color: "#064E3B", fontWeight: 800 }}>
+                  Gelombang 1 dibuka sampai [tgl]
+                </h2>
+                <p style={{ margin: 0, fontSize: "15px", lineHeight: 1.6, color: "#44574E" }}>
+                  Pendaftaran sepenuhnya daring. Tidak membedakan suku, ras, agama, golongan, asal daerah, maupun
+                  disabilitas.
+                </p>
+              </div>
+              <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: "10px" }}>
+                <a
+                  href="#"
+                  style={{
+                    background: "#F2C230",
+                    color: "#053B2C",
+                    padding: "15px",
+                    borderRadius: "12px",
+                    fontWeight: 800,
+                    fontSize: "16px",
+                    textAlign: "center",
+                    textDecoration: "none",
+                  }}
+                >
+                  Daftar sekarang
+                </a>
+                <a
+                  href="#"
+                  style={{
+                    border: "1.5px solid #064E3B",
+                    color: "#064E3B",
+                    padding: "13px",
+                    borderRadius: "12px",
+                    fontWeight: 700,
+                    textAlign: "center",
+                    textDecoration: "none",
+                  }}
+                >
+                  Simulasi biaya kuliah
+                </a>
+              </div>
+            </section>
 
-          {/* DOKUMEN & KONTEN PER SUB-MENU */}
-          {curData && (
-            <>
-              {/* Statistik Sub-Menu */}
+            {/* Jalur Masuk */}
+            <section aria-labelledby="h-jal">
               <div
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-                  gap: "12px",
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  letterSpacing: ".12em",
+                  color: "#8A6500",
+                  textTransform: "uppercase",
                 }}
               >
-                {curData.stats.map((st, i) => (
-                  <div
+                IND. 31B · PERLUASAN AKSES
+              </div>
+              <h2 id="h-jal" style={{ margin: "6px 0 14px", fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
+                Jalur masuk
+              </h2>
+              <div
+                style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px" }}
+              >
+                {paths.map((p, i) => (
+                  <a
                     key={i}
+                    href="#"
                     style={{
                       background: "#FFFFFF",
                       border: "1px solid #DCE6E0",
-                      borderRadius: "14px",
-                      padding: "18px",
+                      borderRadius: "16px",
+                      padding: "20px",
                       display: "flex",
                       flexDirection: "column",
-                      gap: "6px",
+                      gap: "8px",
+                      textDecoration: "none",
+                      color: "#13231C",
+                      borderTop: `5px solid ${p.c}`,
                     }}
                   >
-                    <span style={{ fontSize: "13px", fontWeight: 600, color: "#44574E" }}>{st.label}</span>
+                    <span style={{ fontSize: "17px", fontWeight: 800 }}>{p.t}</span>
+                    <span style={{ fontSize: "13px", color: "#44574E", lineHeight: 1.5 }}>{p.d}</span>
+                    <span style={{ marginTop: "auto", fontSize: "12px", fontWeight: 700, color: "#0A6B4F" }}>
+                      {p.l}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </section>
+
+            {/* Beasiswa & Widget Inklusif */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+              <section
+                aria-labelledby="h-bea"
+                style={{
+                  flex: "3 1 540px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "18px",
+                  padding: "26px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    letterSpacing: ".12em",
+                    color: "#8A6500",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  IND. 27B, 31B · BANTUAN BIAYA
+                </div>
+                <h2 id="h-bea" style={{ margin: 0, fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
+                  Beasiswa & keringanan
+                </h2>
+                {schol.map((s, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      gap: "14px",
+                      alignItems: "center",
+                      padding: "12px 0",
+                      borderBottom: "1px solid #EEF3F0",
+                    }}
+                  >
+                    <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                      <span style={{ fontWeight: 800, fontSize: "15px" }}>{s.t}</span>
+                      <span style={{ fontSize: "13px", color: "#44574E" }}>{s.d}</span>
+                    </span>
                     <span
                       style={{
-                        fontSize: "28px",
+                        flex: "none",
+                        fontSize: "12px",
                         fontWeight: 800,
+                        padding: "4px 10px",
+                        borderRadius: "999px",
+                        background: "#E3F1EA",
                         color: "#064E3B",
-                        lineHeight: 1.1,
                       }}
                     >
-                      {st.v}
+                      {s.q}
                     </span>
                   </div>
                 ))}
-              </div>
+              </section>
 
-              {/* Seksi Dokumen */}
-              {curData.sections.map((sec, i) => (
-                <section key={i} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                  <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>{sec.title}</h3>
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-                      gap: "14px",
-                    }}
-                  >
-                    {sec.docs.map((d, j) => (
-                      <div
-                        key={j}
-                        style={{
-                          background: "#FFFFFF",
-                          border: "1px solid #DCE6E0",
-                          borderRadius: "14px",
-                          padding: "20px",
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "12px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            gap: "10px",
-                            alignItems: "flex-start",
-                          }}
-                        >
-                          <span
-                            style={{
-                              fontSize: "16px",
-                              fontWeight: 700,
-                              lineHeight: 1.35,
-                              color: "#13231C",
-                            }}
-                          >
-                            {d.name}
-                          </span>
-                          <span
-                            style={{
-                              flex: "none",
-                              fontSize: "11px",
-                              fontWeight: 700,
-                              padding: "3px 9px",
-                              borderRadius: "999px",
-                              background: d.bg,
-                              color: d.fg,
-                            }}
-                          >
-                            {d.badge}
-                          </span>
-                        </div>
-                        <span style={{ fontSize: "12px", color: "#44574E" }}>{d.meta}</span>
-
-                        {/* Tombol Aksi Konsisten */}
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "flex-end",
-                            alignItems: "center",
-                            gap: 8,
-                            marginTop: "auto",
-                          }}
-                        >
-                          <a
-                            href="#"
-                            style={{
-                              display: "inline-flex",
-                              alignItems: "center",
-                              gap: "8px",
-                              background: "#0A6B4F",
-                              color: "#FFFFFF",
-                              padding: "11px 18px",
-                              borderRadius: "10px",
-                              fontWeight: 700,
-                              fontSize: "14px",
-                              textDecoration: "none",
-                              cursor: "pointer",
-                            }}
-                          >
-                            {d.action} →
-                          </a>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              ))}
-            </>
-          )}
-
-          {/* WIDGET TAMBAHAN PADA SUB-MENU PMB */}
-          {tab === "pmb" && (
-            <div style={{ display: "flex", flexDirection: "column", gap: "28px", marginTop: "12px" }}>
-              {/* Jalur Masuk */}
-              <section aria-labelledby="h-jal">
-                <h3 id="h-jal" style={{ margin: "0 0 14px", fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>
-                  Jalur Masuk Pendaftaran
-                </h3>
+              <section style={{ flex: "2 1 360px", display: "flex", flexDirection: "column", gap: "14px" }}>
                 <div
-                  style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "12px" }}
+                  style={{
+                    background: "#064E3B",
+                    color: "#FFFFFF",
+                    borderRadius: "18px",
+                    padding: "24px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                  }}
                 >
-                  {paths.map((p, i) => (
-                    <a
-                      key={i}
-                      href="#"
+                  <div style={{ fontSize: "12px", fontWeight: 700, letterSpacing: ".12em", color: "#F2C230" }}>
+                    IND. 31A · KEBIJAKAN INKLUSIF
+                  </div>
+                  <h2 style={{ margin: 0, fontSize: "20px", fontWeight: 800 }}>Kampus untuk semua</h2>
+                  <p style={{ margin: 0, fontSize: "14px", lineHeight: 1.6, color: "#D3EBDF" }}>
+                    Unit Layanan Disabilitas mendampingi sejak pendaftaran: akomodasi ujian, akses gedung, dan materi
+                    aksesibel.
+                  </p>
+                  <a href="#" style={{ color: "#F2C230", fontWeight: 700, fontSize: "14px", textDecoration: "none" }}>
+                    Kebijakan PMB afirmatif & inklusif (PDF) →
+                  </a>
+                </div>
+
+                <div
+                  style={{
+                    background: "#FFFFFF",
+                    border: "1px solid #DCE6E0",
+                    borderRadius: "18px",
+                    padding: "22px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "8px",
+                  }}
+                >
+                  <div style={{ fontSize: "12px", fontWeight: 700, letterSpacing: ".12em", color: "#8A6500" }}>
+                    IND. 32A · PKKMB
+                  </div>
+                  <div style={{ fontSize: "17px", fontWeight: 800 }}>Pengenalan Kehidupan Kampus</div>
+                  <div style={{ fontSize: "14px", color: "#44574E", lineHeight: 1.55 }}>
+                    Integritas akademik, kampus bebas kekerasan, dan adaptasi kehidupan kampus.
+                  </div>
+                  <a href="#" style={{ fontSize: "14px", fontWeight: 700, color: "#0A6B4F", textDecoration: "none" }}>
+                    Panduan PKKMB 2027 →
+                  </a>
+                </div>
+              </section>
+            </div>
+
+            {/* FAQ */}
+            <section
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "26px",
+              }}
+            >
+              <h2 style={{ margin: "0 0 12px", fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
+                Pertanyaan umum
+              </h2>
+              {FAQ.map((f, i) => {
+                const isOpen = faqOpen === i;
+                return (
+                  <div key={i} style={{ borderBottom: "1px solid #EEF3F0" }}>
+                    <button
+                      onClick={() => setFaqOpen(isOpen ? null : i)}
+                      style={{
+                        width: "100%",
+                        border: 0,
+                        background: "transparent",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "16px 0",
+                        fontSize: "16px",
+                        fontWeight: 700,
+                        color: "#13231C",
+                        textAlign: "left",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {f[0]}
+                      <span style={{ color: "#0A6B4F", fontSize: "20px" }}>{isOpen ? "−" : "+"}</span>
+                    </button>
+                    {isOpen && (
+                      <p style={{ margin: "0 0 16px", fontSize: "15px", lineHeight: 1.6, color: "#44574E" }}>{f[1]}</p>
+                    )}
+                  </div>
+                );
+              })}
+            </section>
+          </div>
+        )}
+
+        {/* 2. TAB KONTEN SUB-MENU LAINNYA */}
+        {tab !== "pmb" && curData && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>{activeMenu.label}</h2>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "12px" }}>
+              {curData.stats.map((st, i) => (
+                <div
+                  key={i}
+                  style={{
+                    background: "#FFFFFF",
+                    border: "1px solid #DCE6E0",
+                    borderRadius: "14px",
+                    padding: "18px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "6px",
+                  }}
+                >
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#44574E" }}>{st.label}</span>
+                  <span style={{ fontSize: "28px", fontWeight: 800, color: "#064E3B", lineHeight: 1.1 }}>{st.v}</span>
+                </div>
+              ))}
+            </div>
+
+            {curData.sections.map((sec, i) => (
+              <section key={i} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>{sec.title}</h3>
+                <div
+                  style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "14px" }}
+                >
+                  {sec.docs.map((d, j) => (
+                    <div
+                      key={j}
                       style={{
                         background: "#FFFFFF",
                         border: "1px solid #DCE6E0",
-                        borderRadius: "16px",
+                        borderRadius: "14px",
                         padding: "20px",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "8px",
-                        textDecoration: "none",
-                        color: "#13231C",
-                        borderTop: `5px solid ${p.c}`,
+                        gap: "12px",
                       }}
                     >
-                      <span style={{ fontSize: "17px", fontWeight: 800 }}>{p.t}</span>
-                      <span style={{ fontSize: "13px", color: "#44574E", lineHeight: 1.5 }}>{p.d}</span>
-                      <span style={{ marginTop: "auto", fontSize: "12px", fontWeight: 700, color: "#0A6B4F" }}>
-                        {p.l} →
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </section>
-
-              {/* Beasiswa & Pertanyaan Umum */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-                <section
-                  style={{
-                    flex: "3 1 540px",
-                    background: "#FFFFFF",
-                    border: "1px solid #DCE6E0",
-                    borderRadius: "18px",
-                    padding: "26px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "12px",
-                  }}
-                >
-                  <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>
-                    Ringkasan Kuota Beasiswa
-                  </h3>
-                  {schol.map((s, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        gap: "14px",
-                        alignItems: "center",
-                        padding: "12px 0",
-                        borderBottom: "1px solid #EEF3F0",
-                      }}
-                    >
-                      <span style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                        <span style={{ fontWeight: 800, fontSize: "15px" }}>{s.t}</span>
-                        <span style={{ fontSize: "13px", color: "#44574E" }}>{s.d}</span>
-                      </span>
-                      <span
+                      <div
                         style={{
-                          flex: "none",
-                          fontSize: "12px",
-                          fontWeight: 800,
-                          padding: "4px 10px",
-                          borderRadius: "999px",
-                          background: "#E3F1EA",
-                          color: "#064E3B",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          gap: "10px",
+                          alignItems: "flex-start",
                         }}
                       >
-                        {s.q}
-                      </span>
-                    </div>
-                  ))}
-                </section>
-
-                <section
-                  style={{
-                    flex: "2 1 360px",
-                    background: "#FFFFFF",
-                    border: "1px solid #DCE6E0",
-                    borderRadius: "18px",
-                    padding: "26px",
-                  }}
-                >
-                  <h3 style={{ margin: "0 0 12px", fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>
-                    Pertanyaan Umum PMB
-                  </h3>
-                  {FAQ.map((f, i) => {
-                    const isOpen = faqOpen === i;
-                    return (
-                      <div key={i} style={{ borderBottom: "1px solid #EEF3F0" }}>
-                        <button
-                          onClick={() => setFaqOpen(isOpen ? null : i)}
+                        <span style={{ fontSize: "16px", fontWeight: 700, lineHeight: 1.35, color: "#13231C" }}>
+                          {d.name}
+                        </span>
+                        <span
                           style={{
-                            width: "100%",
-                            border: 0,
-                            background: "transparent",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            padding: "14px 0",
-                            fontSize: "15px",
+                            flex: "none",
+                            fontSize: "11px",
                             fontWeight: 700,
-                            color: "#13231C",
-                            textAlign: "left",
+                            padding: "3px 9px",
+                            borderRadius: "999px",
+                            background: d.bg,
+                            color: d.fg,
+                          }}
+                        >
+                          {d.badge}
+                        </span>
+                      </div>
+                      <span style={{ fontSize: "12px", color: "#44574E" }}>{d.meta}</span>
+
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "flex-end",
+                          alignItems: "center",
+                          gap: 8,
+                          marginTop: "auto",
+                        }}
+                      >
+                        <a
+                          href="#"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            background: "#0A6B4F",
+                            color: "#FFFFFF",
+                            padding: "11px 18px",
+                            borderRadius: "10px",
+                            fontWeight: 700,
+                            fontSize: "14px",
+                            textDecoration: "none",
                             cursor: "pointer",
                           }}
                         >
-                          {f[0]}
-                          <span style={{ color: "#0A6B4F", fontSize: "20px" }}>{isOpen ? "−" : "+"}</span>
-                        </button>
-                        {isOpen && (
-                          <p style={{ margin: "0 0 14px", fontSize: "14px", lineHeight: 1.6, color: "#44574E" }}>
-                            {f[1]}
-                          </p>
-                        )}
+                          {d.action} →
+                        </a>
                       </div>
-                    );
-                  })}
-                </section>
-              </div>
-            </div>
-          )}
-        </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
