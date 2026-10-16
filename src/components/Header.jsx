@@ -73,16 +73,16 @@ export default function Header() {
       desc: "Good University Governance: akuntabilitas, integritas, mitigasi risiko, dan keuangan.",
       href: "/gug",
       items: [
-        { label: "Kebijakan & Praktik Baik GUG", access: "Publik" },
-        { label: "Laporan Tahunan", access: "Ringkasan" },
-        { label: "Kode Etik & Lembaga Etik", access: "Publik" },
-        { label: "Kampus Aman & Satgas PPKS", access: "Publik" },
-        { label: "Pengawasan & WBK/WBBM", access: "Ringkasan" },
-        { label: "Whistleblowing System", access: "Publik" },
-        { label: "Pengelolaan & 11 Pedoman", access: "Publik" },
-        { label: "Survei Kepuasan Tata Pamong", access: "Ringkasan" },
-        { label: "Renstra & Pola Keuangan", access: "Publik" },
-        { label: "Laporan Keuangan & Audit Eksternal", access: "Ringkasan" },
+        { label: "Kebijakan & Praktik Baik GUG", access: "Publik", tab: "kebijakan" },
+        { label: "Laporan Tahunan", access: "Ringkasan", tab: "laporan-tahunan" },
+        { label: "Kode Etik & Lembaga Etik", access: "Publik", tab: "kode-etik" },
+        { label: "Kampus Aman & Satgas PPKPT", access: "Publik", tab: "ppkpt" },
+        { label: "Pengawasan & WBK/WBBM", access: "Ringkasan", tab: "pengawasan" },
+        { label: "Whistleblowing System", access: "Publik", tab: "wbs" },
+        { label: "Pengelolaan & 11 Pedoman", access: "Publik", tab: "pengelolaan" },
+        { label: "Survei Kepuasan Tata Pamong", access: "Ringkasan", tab: "survei" },
+        { label: "Renstra & Pola Keuangan", access: "Publik", tab: "renstra" },
+        { label: "Laporan Keuangan & Audit Eksternal", access: "Ringkasan", tab: "laporan-keuangan" },
       ],
     },
     pendidikan: {
@@ -400,6 +400,7 @@ export default function Header() {
               </p>
               <Link
                 to={activeMega.href}
+                state={{ tab: "ikhtisar" }}
                 onClick={() => setOpen(null)}
                 style={{
                   display: "inline-flex",
