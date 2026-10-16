@@ -5,7 +5,19 @@ export default function Profil() {
   const location = useLocation();
   const [tab, setTab] = useState("identitas");
 
-  // Efek ini bakal kemicu setiap kali diklik dari Mega Menu
+  // Mapping nama key tab ke label untuk Breadcrumb Dinamis
+  const TAB_LABELS = {
+    identitas: "Sejarah & Identitas",
+    visimisi: "Visi, Misi & Diferensiasi",
+    renstra: "RIP, Renstra & Roadmap",
+    evaluasi: "Evaluasi Tridharma",
+    statuta: "Statuta",
+    sotk: "Struktur Organisasi",
+    pimpinan: "Pimpinan & Yayasan",
+    capaian: "Capaian & Penghargaan",
+  };
+
+  // Efek ini bakal kemicu setiap kali diklik dari Mega Menu Header
   useEffect(() => {
     if (location.state && location.state.tab) {
       setTab(location.state.tab);
@@ -24,11 +36,14 @@ export default function Profil() {
       {/* Header Banner Profil */}
       <section style={{ background: "#064E3B", color: "#FFFFFF" }}>
         <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "22px 32px 0" }}>
+          
+          {/* Breadcrumb Dinamis */}
           <nav aria-label="Breadcrumb" style={{ fontSize: "13px", color: "#B7DCC9", marginBottom: "12px" }}>
             <Link to="/" style={{ color: "#B7DCC9", textDecoration: "none" }}>
               Beranda
             </Link>{" "}
-            / <span style={{ color: "#FFFFFF" }}>Profil</span>
+            / <span style={{ color: "#B7DCC9" }}>Profil</span> /{" "}
+            <span style={{ color: "#FFFFFF", fontWeight: 600 }}>{TAB_LABELS[tab] || "Sejarah & Identitas"}</span>
           </nav>
 
           <div style={{ paddingBottom: "20px" }}>
