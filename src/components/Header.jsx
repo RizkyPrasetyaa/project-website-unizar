@@ -30,6 +30,7 @@ export default function Header() {
       id: "Profil",
       desc: "Identitas, arah strategis, dan dokumen legal-formal institusi.",
       href: "/profil",
+      defaultTab: "identitas",
       items: [
         { label: "Sejarah & Identitas", access: "Publik", tab: "identitas" },
         { label: "Visi, Misi & Diferensiasi Misi", access: "Publik", tab: "visimisi" },
@@ -72,6 +73,7 @@ export default function Header() {
       id: "GUG",
       desc: "Good University Governance: akuntabilitas, integritas, mitigasi risiko, dan keuangan.",
       href: "/gug",
+      defaultTab: "ikhtisar",
       items: [
         { label: "Kebijakan & Praktik Baik GUG", access: "Publik", tab: "kebijakan" },
         { label: "Laporan Tahunan", access: "Ringkasan", tab: "laporan-tahunan" },
@@ -401,11 +403,7 @@ export default function Header() {
               </p>
               <Link
                 to={activeMega.href}
-<<<<<<< HEAD
-                state={{ tab: activeMega.defaultTab || "kurikulum" }}
-=======
-                state={{ tab: "ikhtisar" }}
->>>>>>> main
+                state={{ tab: activeMega.defaultTab || (activeMega.items[0] && activeMega.items[0].tab) }}
                 onClick={() => setOpen(null)}
                 style={{
                   display: "inline-flex",

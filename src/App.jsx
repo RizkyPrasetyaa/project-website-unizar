@@ -31,13 +31,10 @@ export default function App() {
         {/* Alias Rute: Agar URL /pusat-dokumen tetap mengarah mulus ke Halaman Direktori */}
         <Route path="/pusat-dokumen" element={<Direktori />} />
 
-<<<<<<< HEAD
-        <Route path="/pendidikan" element={<Pendidikan />} />
-=======
         {/* Rute Halaman Good University Governance (GUG) */}
         <Route path="/gug" element={<Gug />} />
->>>>>>> main
 
+        <Route path="/pendidikan" element={<Pendidikan />} />
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
