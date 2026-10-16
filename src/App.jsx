@@ -1,16 +1,12 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Profil from "./pages/Profil";
 import Direktori from "./pages/Direktori";
 import ScrollToTop from "./components/ScrollToTop";
 import Fakultas from "./pages/Fakultas";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -36,6 +32,7 @@ export default function App() {
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
