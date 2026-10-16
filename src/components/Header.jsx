@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(null);
   const headerRef = useRef(null);
+  const location = useLocation();
+
+  // Otomatis menutup mega menu jika rute/halaman berpindah
+  useEffect(() => {
+    setOpen(null);
+  }, [location.pathname]);
 
   // Fitur Click Outside: Otomatis menutup mega menu jika klik di luar header
   useEffect(() => {
@@ -295,6 +301,7 @@ export default function Header() {
 
         <Link
           to="/"
+          onClick={() => setOpen(null)}
           aria-label="Beranda UNIZAR"
           style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}
         >
