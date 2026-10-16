@@ -5,7 +5,19 @@ export default function Profil() {
   const location = useLocation();
   const [tab, setTab] = useState("identitas");
 
-  // Efek ini bakal kemicu setiap kali diklik dari Mega Menu
+  // Mapping nama key tab ke label untuk Breadcrumb Dinamis
+  const TAB_LABELS = {
+    identitas: "Sejarah & Identitas",
+    visimisi: "Visi, Misi & Diferensiasi",
+    renstra: "RIP, Renstra & Roadmap",
+    evaluasi: "Evaluasi Tridharma",
+    statuta: "Statuta",
+    sotk: "Struktur Organisasi",
+    pimpinan: "Pimpinan & Yayasan",
+    capaian: "Capaian & Penghargaan",
+  };
+
+  // Efek ini bakal kemicu setiap kali diklik dari Mega Menu Header
   useEffect(() => {
     if (location.state && location.state.tab) {
       setTab(location.state.tab);
@@ -24,11 +36,14 @@ export default function Profil() {
       {/* Header Banner Profil */}
       <section style={{ background: "#064E3B", color: "#FFFFFF" }}>
         <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "22px 32px 0" }}>
+          
+          {/* Breadcrumb Dinamis */}
           <nav aria-label="Breadcrumb" style={{ fontSize: "13px", color: "#B7DCC9", marginBottom: "12px" }}>
             <Link to="/" style={{ color: "#B7DCC9", textDecoration: "none" }}>
               Beranda
             </Link>{" "}
-            / <span style={{ color: "#FFFFFF" }}>Profil</span>
+            / <span style={{ color: "#B7DCC9" }}>Profil</span> /{" "}
+            <span style={{ color: "#FFFFFF", fontWeight: 600 }}>{TAB_LABELS[tab] || "Sejarah & Identitas"}</span>
           </nav>
 
           <div style={{ paddingBottom: "20px" }}>
@@ -104,9 +119,29 @@ export default function Profil() {
               Sejarah Universitas Islam Al-Azhar
             </h2>
             <p style={{ fontSize: "15px", color: "#44574E", lineHeight: 1.6, margin: "0 0 16px" }}>
-              Universitas Islam Al-Azhar (UNIZAR) didirikan di Mataram, Nusa Tenggara Barat, sebagai wujud komitmen
-              Yayasan Pesantren Luhur Al-Azhar dalam menghadirkan pendidikan tinggi yang berkualitas dan berlandaskan
-              nilai-nilai Rahmatan lil 'Alamin.
+              Yayasan Pesantren Luhur Al-Azhar berdiri tahun 1979, mengambil peran di bidang pendidikan. Yayasan menganggap bidang pendidikan merupakan persoalan yang sangat urgen untuk dipecahkan. Pada saat yang bersamaan, jumlah perguruan tinggi di NTB masih sangat sedikit, tidak sebanding dengan jumlah calon mahasiswa yang terus mengalami peningkatan dari tahun ke tahun. Untuk alasan itulah, kemudian pada tanggal 10 Mei 1981 Yayasan Pesantren Luhur Al-Azhar mengeluarkan Surat Keputusan Nomor 01/YPLA/1981 tentang Pembentukan Universitas Islam Al-Azhar di Provinsi Nusa Tenggara Barat.
+
+              Pada mulanya UNIZAR memiliki 4 (empat) Fakultas, yakni:
+
+              (1) Fakultas Hukum: Jurusan Hukum Keperdataan dan Jurusan Hukum Pidana, yang belakangan pada tahun 1993, program nasional pendidikan tinggi ilmu hukum mengalami reorientasi pendidikan yang dilaksanakan dengan melebur seluruh jurusan menjadi program studi tunggal, yakni program studi ilmu hukum,
+
+              (2) Fakultas Pertanian: Program Studi Sosial Ekonomi,
+
+              (3) Fakultas Teknik: Program Studi Teknik Sipil,
+
+              (4) Fakultas Ekonomi: Program Studi Ekonomi Pembangunan.
+
+              Kesemuanya mendapat status terdaftar dari Menteri Pendidikan dan Kebudayaan, yang kala itu dijabat oleh Prof. Dr. Nugroho Notusanto, pada tanggal 18 Agustus 1984, dengan SK Nomor 0378/0/1984 tentang Pemberian Status Terdaftar kepada Fakultas dan Jurusan dalam Lingkungan Universitas Islam Al-Azhar di Mataram.
+
+              Setelah itu, Rektor sekaligus pendiri Unizar, orang menyebutnya tokoh tiga zaman, H. Abdurrahim, S.H, menggagas pendirian Fakultas Kedokteran. Namun, karena berbagai persyaratan masih belum dipenuhi saat itu, maka atas saran Prof. Dr. dr. Soewignjo Soemohardjo, Sp.PD, KGEH, tahun 1990 berdirilah Fakultas Biologi. Dalam proses pengurusan ijin, atas saran dari Kopertis Wilayah VIII, namanya kemudian berubah menjadi Fakultas Matematika dan Ilmu Pengetahuan Alam (MIPA), sedangkan biologi dijadikan nama jurusan dan program studi.
+
+              Kurang lebih dua tahun berikutnya, tepatnya tanggal 28 April 1992, Fakultas MIPA mendapat status terdaftar dari Direktur Jenderal Pendidikan Tinggi (Dirjen Dikti) dengan Keputusan Nomor 154/DIKTI/Kep/1992 tentang Pemberian Status Terdaftar kepada Jurusan Biologi Program Studi Biologi untuk Jenjang Program S1 pada Fakultas MIPA di Lingkungan Unizar di Mataram. Fakultas baru ini dianggap sebagai embrio dari Fakultas Kedokteran.
+
+              Beberapa tahun setelahnya, tepatnya tahun 2000, gagasan untuk mendirikan Fakultas Kedokteran dimunculkan kembali, dan baru setelah 4 (empat) tahun kemudian, tepatnya pada tanggal 17 Juni 2004, Dirjen Dikti mengeluarkan Surat Ijin Penyelenggaraan, yakni dengan Surat nomor 2100/D/T/2004, perihal Ijin Penyelenggaraan Program Studi Pendidikan Dokter pada Universitas Islam Al-Azhar (Unizar) Mataram.
+
+              Setelah itu, berdirilah Program Studi Akuntansi dengan SK Izin Operasional Nomor 500/KPT/I/2016 tanggal 7 Desember 2016. Selanjutnya, Program Studi Agroekoteknologi berdiri melalui Keputusan Menteri Pendidikan Dan Kebudayaan Republik Indonesia Nomor 1193/M/2020 tentang Izin Pembukaan Program Studi Agroekoteknologi Program Sarjana Pada Universitas Islam Al-Azhar di Kota Mataram yang diselenggarakan oleh Yayasan Pesantren Luhur Al-Azhar tanggal 30 Desember 2020.
+
+              Untuk memenuhi kebutuhan dan tantangan di zaman yang semakin berkembang saat ini. Pada tahun 2022 didirikan Program Studi Ilmu Komputer pada Fakultas Teknik yang saat ini terakreditasi dengan nomor 007/SK/LAM-INFOKOM/Ak.Min/S/I/2024. Setahun berikutnya, yaitu pada 2023, selain penambahan program studi, Universitas Islam Al-Azhar juga mendirikan Fakultas Agama Islam yang memiliki Program Studi Ekonomi Syariah yang terakreditasi dengan nomor: 050/DE/A.5/AR.11/X/2023, dan Program Studi Manajemen Bisnis Syariah dengan nomor akreditasi: 081/DE/A.5/AR.11/XII/2023.
             </p>
             <div
               style={{
@@ -161,17 +196,18 @@ export default function Profil() {
             <div style={{ background: "#FFFFFF", border: "1px solid #DCE6E0", borderRadius: "18px", padding: "28px" }}>
               <h2 style={{ fontSize: "24px", fontWeight: 800, color: "#064E3B", margin: "0 0 12px" }}>Visi</h2>
               <p style={{ fontSize: "15px", color: "#44574E", lineHeight: 1.6, margin: 0 }}>
-                Menjadi Perguruan Tinggi Islami yang Unggul, Berkarakter, dan Berdaya Saing di Kawasan Nasional maupun
-                Internasional.
+                Menjadi Universitas terkemuka dalam pengembangan ilmu pengetahuan dan teknologi (IPTEK) berwawasan kepariwisataan yang professional dan berintegritas berdasarkan nilai Islam Rahmatan Lil Alamin.
               </p>
             </div>
 
             <div style={{ background: "#FFFFFF", border: "1px solid #DCE6E0", borderRadius: "18px", padding: "28px" }}>
               <h2 style={{ fontSize: "24px", fontWeight: 800, color: "#064E3B", margin: "0 0 12px" }}>Misi</h2>
               <ul style={{ fontSize: "14px", color: "#44574E", lineHeight: 1.6, margin: 0, paddingLeft: "18px" }}>
-                <li>Menyelenggarakan pendidikan tinggi berbasis nilai-nilai keislaman dan standar mutu.</li>
-                <li>Mengembangkan riset terapan yang inovatif dan relevan dengan kebutuhan masyarakat.</li>
-                <li>Melaksanakan pengabdian masyarakat berbasis potensi dan keunggulan daerah.</li>
+                <li>Menyelenggarakan Pendidikan dan pembelajaran secara professional yang berwawasan kepariwisataan dalam perkembangan IPTEK.</li>
+                <li>Menyelenggarakan penelitian berwawasan kepariwisataan yang berkontribusi pada perkembangan IPTEK.</li>
+                <li>Menyelenggarakan pengabdian kepada masyarakat berwawasan kepariwisataan untuk meningkatkan kesejahteraan masyarakat.</li>
+                <li>Menyelenggarakan tata Kelola kelembagaan universitas secara professional berdasarkan nilai-nilai Islam.</li>
+                <li>Mengembangkan Sumber Daya Manusia dan Kerjasama dengan pihak lain secara professional berdasarkan nilai-nilai Islam Rahmatan Lil Alamin.</li>
               </ul>
             </div>
 

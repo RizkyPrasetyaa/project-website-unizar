@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(null);
   const headerRef = useRef(null);
+  const location = useLocation();
+
+  // Otomatis menutup mega menu jika rute/halaman berpindah
+  useEffect(() => {
+    setOpen(null);
+  }, [location.pathname]);
 
   // Fitur Click Outside: Otomatis menutup mega menu jika klik di luar header
   useEffect(() => {
@@ -52,13 +58,14 @@ export default function Header() {
       id: "Direktori",
       desc: "Satu pintu menemukan unit, orang, dan dokumen.",
       href: "/pusat-dokumen",
+      defaultTab: "unit",
       items: [
-        { label: "Unit Kerja & Kontak", access: "Publik" },
-        { label: "Direktori Dosen & Pakar", access: "Publik" },
-        { label: "Direktori Program Studi", access: "Publik" },
-        { label: "Pusat Dokumen", access: "Publik" },
-        { label: "Direktori MoU/MoA", access: "Publik" },
-        { label: "Peta Kampus", access: "Publik" },
+        { label: "Unit Kerja & Kontak", access: "Publik", tab: "unit" },
+        { label: "Direktori Dosen & Pakar", access: "Publik", tab: "dosen" },
+        { label: "Direktori Program Studi", access: "Publik", tab: "prodi" },
+        { label: "Pusat Dokumen", access: "Publik", tab: "dokumen" },
+        { label: "Direktori MoU/MoA", access: "Publik", tab: "kerjasama" },
+        { label: "Peta Kampus", access: "Publik", tab: "peta" },
       ],
     },
     gug: {
@@ -295,6 +302,7 @@ export default function Header() {
 
         <Link
           to="/"
+          onClick={() => setOpen(null)}
           aria-label="Beranda UNIZAR"
           style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}
         >
