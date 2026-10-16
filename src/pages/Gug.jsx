@@ -1,224 +1,83 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Gug() {
   const location = useLocation();
 
-  const TAB_LABELS = {
-    ikhtisar: "Ikhtisar",
-    etik: "Integritas & Etik",
-    ppks: "Kampus Aman",
-    pengawasan: "Pengawasan & Risiko",
-    pengelolaan: "Pengelolaan",
-    keuangan: "Keuangan",
-  };
+  // 11 SUB-MENU TAB BERSIH
+  const MENU_ITEMS = [
+    { key: "ikhtisar", label: "Ikhtisar" },
+    { key: "kebijakan", label: "Kebijakan & Praktik Baik GUG" },
+    { key: "laporan-tahunan", label: "Laporan Tahunan" },
+    { key: "kode-etik", label: "Kode Etik & Lembaga Etik" },
+    { key: "ppkpt", label: "Kampus Aman & Satgas PPKPT" },
+    { key: "pengawasan", label: "Pengawasan & WBK/WBBM" },
+    { key: "wbs", label: "Whistleblowing System" },
+    { key: "pengelolaan", label: "Pengelolaan & 11 Pedoman" },
+    { key: "survei", label: "Survei Kepuasan Tata Pamong" },
+    { key: "renstra", label: "Renstra & Pola Keuangan" },
+    { key: "laporan-keuangan", label: "Laporan Keuangan & Audit Eksternal" },
+  ];
 
   const [tab, setTab] = useState(location.state?.tab || "ikhtisar");
 
+  // Ref untuk menampung elemen tombol tab
+  const tabRefs = useRef({});
+
+  // EFFECT UNTUK NAVIGASI DARI HEADER / PERUBAHAN LOCATION STATE
   useEffect(() => {
-    if (location.state?.tab) {
-      setTab(location.state.tab);
-    } else {
-      setTab("ikhtisar");
-    }
+    const targetTab = location.state?.tab || "ikhtisar";
+    setTab(targetTab);
+
+    // 1. LOMPAT BROWSER LANGSUNG KE PALING ATAS
+    window.scrollTo(0, 0);
+
+    // 2. SCROLL TOMBOL TAB KE TENGAH CONTAINER SETELAH RENDER
+    const timer = setTimeout(() => {
+      if (tabRefs.current[targetTab]) {
+        tabRefs.current[targetTab].scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, [location.state, location.key]);
 
-  // Styling Badge Akses
+  // FUNGSI SAAT TOMBOL TAB DIKLIK MANUAL DI DALAM HALAMAN
+  const handleTabClick = (key) => {
+    setTab(key);
+    window.scrollTo(0, 0);
+    if (tabRefs.current[key]) {
+      tabRefs.current[key].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
+  const activeMenu = MENU_ITEMS.find((m) => m.key === tab) || MENU_ITEMS[0];
+
+  // STYLING BADGE AKSES DOKUMEN
   const STY = {
-    pub: {
-      badge: "Publik",
-      bg: "#E3F1EA",
-      fg: "#064E3B",
-      action: "Unduh PDF",
-      btnBg: "#0A6B4F",
-      btnFg: "#FFFFFF",
-      href: "#",
-    },
-    sum: {
-      badge: "Ringkasan",
-      bg: "#FFF1C2",
-      fg: "#6B4E00",
-      action: "Lihat ringkasan",
-      btnBg: "#FFF1C2",
-      btnFg: "#3D2E00",
-      href: "#",
-    },
-    lock: {
-      badge: "Terbatas",
-      bg: "#FBE3E4",
-      fg: "#8E1B20",
-      action: "Masuk untuk membuka",
-      btnBg: "#FFFFFF",
-      btnFg: "#8E1B20",
-      href: "#",
-    },
-    svc: {
-      badge: "Layanan",
-      bg: "#E3F1EA",
-      fg: "#064E3B",
-      action: "Buka layanan",
-      btnBg: "#0A6B4F",
-      btnFg: "#FFFFFF",
-      href: "#",
-    },
+    pub: { badge: "Publik", bg: "#E3F1EA", fg: "#064E3B", action: "Unduh PDF" },
+    sum: { badge: "Ringkasan", bg: "#FFF1C2", fg: "#6B4E00", action: "Lihat ringkasan" },
+    lock: { badge: "Terbatas", bg: "#FBE3E4", fg: "#8E1B20", action: "Masuk untuk membuka" },
+    svc: { badge: "Layanan", bg: "#E3F1EA", fg: "#064E3B", action: "Buka layanan" },
   };
 
   const D = (name, acc, meta) => {
-    const s = STY[acc];
-    return {
-      name,
-      meta,
-      badge: s.badge,
-      bg: s.bg,
-      fg: s.fg,
-      action: s.action,
-      btnBg: s.btnBg,
-      btnFg: s.btnFg,
-      href: s.href,
-    };
+    const s = STY[acc] || STY.pub;
+    return { name, meta, badge: s.badge, bg: s.bg, fg: s.fg, action: s.action };
   };
 
   const S = (label, v) => ({ label, v });
   const SK = "SK Rektor No. [—] · [tgl]";
 
-  const TABS_DATA = {
-    etik: {
-      intro:
-        "Kode etik seluruh sivitas akademika dan lembaga yang menegakkannya, untuk menjamin tata nilai dan integritas.",
-      stats: [
-        S("Kasus etik ditangani (2025)", "7"),
-        S("Rata-rata waktu penyelesaian", "21 hari"),
-        S("Sosialisasi kode etik", "100% unit"),
-      ],
-      sections: [
-        {
-          title: "Kode Etik",
-          docs: [
-            D("Kode Etik Dosen", "pub", SK),
-            D("Kode Etik Tenaga Kependidikan", "pub", SK),
-            D("Kode Etik Mahasiswa", "pub", SK),
-          ],
-        },
-        {
-          title: "Lembaga Penegak Etik",
-          docs: [
-            D("Profil Dewan Kehormatan / Komite Etik", "pub", "Susunan & tugas"),
-            D("Prosedur Pemeriksaan Etik", "pub", "SOP · v1.0"),
-            D("Rekap Putusan Etik", "sum", "Tanpa identitas pihak"),
-          ],
-        },
-      ],
-    },
-    ppks: {
-      intro:
-        "Pencegahan dan penanganan kekerasan seksual, perundungan, dan intoleransi untuk kampus yang aman dan nyaman.",
-      stats: [
-        S("Laporan diterima (2025)", "5"),
-        S("Laporan selesai ditangani", "100%"),
-        S("Sivitas terpapar sosialisasi", "3.800+"),
-      ],
-      sections: [
-        {
-          title: "Kebijakan",
-          docs: [
-            D("Pedoman PPKS", "pub", SK),
-            D("Kebijakan Anti-Perundungan & Intoleransi", "pub", SK),
-            D("SK Satgas PPKS", "pub", "Periode 2025–2027"),
-          ],
-        },
-        {
-          title: "Layanan",
-          docs: [
-            D("Kanal Pelaporan Satgas PPKS", "svc", "Rahasia · 24 jam"),
-            D("Layanan Konseling & Pendampingan", "svc", "Psikolog kampus"),
-            D("Laporan Tahunan Satgas", "sum", "Statistik tanpa identitas"),
-          ],
-        },
-      ],
-    },
-    pengawasan: {
-      intro:
-        "Pemantauan, evaluasi, dan mitigasi risiko — termasuk risiko korupsi dan penurunan mutu — serta pembangunan Zona Integritas.",
-      stats: [
-        S("Temuan audit ditindaklanjuti", "92%"),
-        S("Risiko utama terpetakan", "38"),
-        S("Laporan WBS diproses", "100%"),
-      ],
-      sections: [
-        {
-          title: "Sistem Pengawasan",
-          docs: [
-            D("Kebijakan Manajemen Risiko", "pub", SK),
-            D("Register Risiko Institusi", "lock", "Pembaruan tahunan"),
-            D("Program WBK/WBBM", "pub", "Rencana & capaian"),
-          ],
-        },
-        {
-          title: "Hasil Pengawasan",
-          docs: [
-            D("Ikhtisar Hasil Audit Internal SPI", "sum", "Tahun 2025"),
-            D("Laporan Audit Lengkap", "lock", "Untuk pimpinan & asesor"),
-            D("Whistleblowing System", "svc", "Identitas dirahasiakan"),
-          ],
-        },
-      ],
-    },
-    pengelolaan: {
-      intro:
-        "Keberfungsian sistem pengelolaan: perencanaan, pengorganisasian, penempatan personil, pengarahan, dan pengawasan — beserta 11 pedoman bidang.",
-      stats: [
-        S("Pedoman bidang tersedia", "11 / 11"),
-        S("Unit dengan SOP mutakhir", "87%"),
-        S("Rapat kerja terdokumentasi", "4 / tahun"),
-      ],
-      sections: [
-        {
-          title: "Fungsi Manajemen (POSLC)",
-          docs: [
-            D("Bukti Perencanaan & Raker", "pub", "Notulen ringkas"),
-            D("Pengorganisasian & Staffing", "pub", "OTK & analisis jabatan"),
-            D("Pengarahan & Pengawasan", "sum", "Laporan kinerja unit"),
-          ],
-        },
-        {
-          title: "11 Pedoman Pengelolaan",
-          docs: [
-            D("Pedoman Pendidikan & Suasana Akademik", "pub", SK),
-            D("Pedoman Penelitian, PkM & Kerjasama", "pub", SK),
-            D("Pedoman SDM, Keuangan, Sarpras, SI & SPMI", "pub", SK),
-          ],
-        },
-      ],
-    },
-    keuangan: {
-      intro:
-        "Rencana strategis keuangan lima tahunan, sumber dana di luar mahasiswa, pola pengelolaan sesuai status PTS, dan audit eksternal.",
-      stats: [
-        S("Opini akuntan publik 2025", "WTP"),
-        S("Dana di luar UKT/SPP", "18%"),
-        S("Mahasiswa penerima bantuan biaya", "1.120"),
-      ],
-      sections: [
-        {
-          title: "Perencanaan & Pola Pengelolaan",
-          docs: [
-            D("Renstra Keuangan 2025–2029", "pub", SK),
-            D("Pola Pengelolaan Keuangan PTS", "pub", "Peraturan Yayasan"),
-            D("RKAT Tahunan", "lock", "Rinci per unit"),
-          ],
-        },
-        {
-          title: "Pelaporan & Audit",
-          docs: [
-            D("Ikhtisar Laporan Keuangan Teraudit", "sum", "KAP [Nama] · 2023–2025"),
-            D("Kebijakan Bantuan Biaya Pendidikan", "pub", SK),
-            D("Laporan Keuangan Rinci", "lock", "Untuk pimpinan & asesor"),
-          ],
-        },
-      ],
-    },
-  };
-
+  // DATA TAB IKHTISAR
   const pillars = [
     {
       no: "1",
@@ -267,7 +126,214 @@ export default function Gug() {
     { label: "Mitra & pengguna lulusan", v: "88%", w: "88%" },
   ];
 
-  const cur = TABS_DATA[tab] || { intro: "", stats: [], sections: [] };
+  // DATA KONTEN SUB-MENU (HANYA DOKUMEN & STATS)
+  const KONTEN_SUBMENU = {
+    kebijakan: {
+      stats: [S("Pilar Tata Kelola", "6 Pilar"), S("Tingkat Kepatuhan", "98%"), S("Unit Terimplementasi", "100%")],
+      sections: [
+        {
+          title: "Enam Pilar Utama GUG",
+          docs: [
+            D("Kredibilitas & Kepemimpinan", "pub", "Pilar 1 · " + SK),
+            D("Transparansi & Keterbukaan Informasi", "pub", "Pilar 2 · " + SK),
+            D("Akuntabilitas Publik & Audit", "pub", "Pilar 3 · " + SK),
+            D("Tanggung Jawab Sosial & Akademik", "pub", "Pilar 4 · " + SK),
+            D("Keadilan & Inklusivitas Sivitas", "pub", "Pilar 5 · " + SK),
+            D("Manajemen Risiko Institusi", "pub", "Pilar 6 · " + SK),
+          ],
+        },
+        {
+          title: "Dokumen Kebijakan Dasar & Regulasi",
+          docs: [
+            D("Statuta UNIZAR Tentang GUG", "pub", "Peraturan Yayasan"),
+            D("Pedoman Tata Pamong & Tata Kelola", "pub", SK),
+            D("SOP Pelayanan Informasi Publik (PPID)", "pub", "v2.0"),
+          ],
+        },
+      ],
+    },
+    "laporan-tahunan": {
+      stats: [S("Arsip Terdokumentasi", "≥ 3 Tahun"), S("Capaian IKU 2025", "94%"), S("Opini Audit", "WTP")],
+      sections: [
+        {
+          title: "Laporan Tahunan & Keuangan Teraudit",
+          docs: [
+            D("Laporan Tahunan UNIZAR 2025", "sum", "Ringkasan Eksekutif"),
+            D("Ikhtisar Laporan Keuangan 2025", "sum", "Audited KAP"),
+            D("Laporan Tahunan UNIZAR 2024", "sum", "Ringkasan Eksekutif"),
+            D("Ikhtisar Laporan Keuangan 2024", "sum", "Audited KAP"),
+            D("Laporan Tahunan UNIZAR 2023", "sum", "Ringkasan Eksekutif"),
+            D("Laporan Keuangan Rinci", "lock", "Akses Terbatas / Asesor"),
+          ],
+        },
+      ],
+    },
+    "kode-etik": {
+      stats: [
+        S("Kasus Etik Ditangani (2025)", "7"),
+        S("Rata-rata Penyelesaian", "21 hari"),
+        S("Sosialisasi Kode Etik", "100% unit"),
+      ],
+      sections: [
+        {
+          title: "Kode Etik Sivitas Akademika",
+          docs: [
+            D("Kode Etik Dosen", "pub", SK),
+            D("Kode Etik Tenaga Kependidikan", "pub", SK),
+            D("Kode Etik Mahasiswa", "pub", SK),
+          ],
+        },
+        {
+          title: "Lembaga Penegak Etik",
+          docs: [
+            D("Profil Dewan Kehormatan / Komite Etik", "pub", "Susunan & Tugas"),
+            D("Prosedur Pemeriksaan Etik", "pub", "SOP · v1.0"),
+            D("Rekap Putusan Etik", "sum", "Tanpa Identitas Pihak"),
+          ],
+        },
+      ],
+    },
+    ppkpt: {
+      stats: [
+        S("Laporan Diterima (2025)", "5"),
+        S("Laporan Selesai Ditangani", "100%"),
+        S("Sivitas Terpapar Sosialisasi", "3.800+"),
+      ],
+      sections: [
+        {
+          title: "Kebijakan & Pedoman PPKPT",
+          docs: [
+            D("Pedoman PPKPT", "pub", SK),
+            D("Kebijakan Anti-Perundungan & Intoleransi", "pub", SK),
+            D("SK Satgas PPKPT", "pub", "Periode 2025–2027"),
+          ],
+        },
+        {
+          title: "Layanan Aduan & Pendampingan",
+          docs: [
+            D("Kanal Pelaporan Satgas PPKPT", "svc", "Rahasia · 24 Jam"),
+            D("Layanan Konseling & Pendampingan", "svc", "Psikolog Kampus"),
+            D("Laporan Tahunan Satgas", "sum", "Statistik Tanpa Identitas"),
+          ],
+        },
+      ],
+    },
+    pengawasan: {
+      stats: [
+        S("Temuan Audit Ditindaklanjuti", "92%"),
+        S("Risiko Utama Terpetakan", "38"),
+        S("Laporan WBS Diproses", "100%"),
+      ],
+      sections: [
+        {
+          title: "Sistem Pengawasan Internal",
+          docs: [
+            D("Kebijakan Manajemen Risiko", "pub", SK),
+            D("Register Risiko Institusi", "lock", "Pembaruan Tahunan"),
+            D("Program WBK/WBBM", "pub", "Rencana & Capaian"),
+          ],
+        },
+        {
+          title: "Hasil Pengawasan Internal",
+          docs: [
+            D("Ikhtisar Hasil Audit Internal SPI", "sum", "Tahun 2025"),
+            D("Laporan Audit Lengkap", "lock", "Untuk Pimpinan & Asesor"),
+          ],
+        },
+      ],
+    },
+    wbs: {
+      stats: [
+        S("Kanal Pengaduan", "24 Jam"),
+        S("Kerahasiaan Identitas", "100% Protected"),
+        S("Proses Verifikasi", "Maks 3 Hari"),
+      ],
+      sections: [
+        {
+          title: "Kanal & Pedoman Whistleblowing System",
+          docs: [
+            D("Whistleblowing System (WBS)", "svc", "Identitas Dirahasiakan"),
+            D("Pedoman & SOP Pengaduan WBS", "pub", SK),
+            D("Lacak Tiket Laporan WBS", "svc", "Monitoring Penanganan"),
+          ],
+        },
+      ],
+    },
+    pengelolaan: {
+      stats: [
+        S("Pedoman Bidang Tersedia", "11 / 11"),
+        S("Unit SOP Mutakhir", "87%"),
+        S("Rapat Kerja Terdokumentasi", "4 / tahun"),
+      ],
+      sections: [
+        {
+          title: "Fungsi Manajemen (POSLC)",
+          docs: [
+            D("Bukti Perencanaan & Raker", "pub", "Notulen Ringkas"),
+            D("Pengorganisasian & Staffing", "pub", "OTK & Analisis Jabatan"),
+            D("Pengarahan & Pengawasan", "sum", "Laporan Kinerja Unit"),
+          ],
+        },
+        {
+          title: "11 Pedoman Pengelolaan Bidang",
+          docs: [
+            D("Pedoman Pendidikan & Suasana Akademik", "pub", SK),
+            D("Pedoman Penelitian, PkM & Kerjasama", "pub", SK),
+            D("Pedoman SDM, Keuangan, Sarpras, SI & SPMI", "pub", SK),
+          ],
+        },
+      ],
+    },
+    survei: {
+      stats: [
+        S("Total Responden (2025)", "1.240"),
+        S("Skala Kepuasan", "Sangat Puas"),
+        S("Tindak Lanjut Result", "100% Implemented"),
+      ],
+      sections: [
+        {
+          title: "Hasil Survei & Action Plan",
+          docs: [
+            D("Survei Kepuasan Tata Pamong 2025", "sum", "Data n = 1.240"),
+            D("Laporan Hasil Survei Lengkap", "sum", "Ikhtisar Publik"),
+            D("Dokumen Action Plan & Rencana Perbaikan", "pub", "Rencana Tindak Lanjut"),
+          ],
+        },
+      ],
+    },
+    renstra: {
+      stats: [
+        S("Dana di luar UKT/SPP", "18%"),
+        S("Penerima Bantuan Biaya", "1.120 mhs"),
+        S("Periode Renstra", "2025–2029"),
+      ],
+      sections: [
+        {
+          title: "Perencanaan & Pola Pengelolaan Keuangan",
+          docs: [
+            D("Renstra Keuangan 2025–2029", "pub", SK),
+            D("Pola Pengelolaan Keuangan PTS", "pub", "Peraturan Yayasan"),
+            D("RKAT Tahunan", "lock", "Rinci per Unit"),
+            D("Kebijakan Bantuan Biaya Pendidikan", "pub", SK),
+          ],
+        },
+      ],
+    },
+    "laporan-keuangan": {
+      stats: [S("Opini Akuntan Publik (2025)", "WTP"), S("Siklus Audit", "Tahunan"), S("Kategori PTS", "Akuntabel")],
+      sections: [
+        {
+          title: "Pelaporan & Hasil Audit Eksternal",
+          docs: [
+            D("Ikhtisar Laporan Keuangan Teraudit", "sum", "KAP Independen · 2023–2025"),
+            D("Laporan Audit Eksternal Rinci", "lock", "Untuk Pimpinan & Asesor"),
+          ],
+        },
+      ],
+    },
+  };
+
+  const curData = KONTEN_SUBMENU[tab];
 
   return (
     <div
@@ -286,60 +352,45 @@ export default function Gug() {
             <Link to="/" style={{ color: "#B7DCC9", textDecoration: "none" }}>
               Beranda
             </Link>{" "}
-            / <span style={{ color: "#FFFFFF", fontWeight: 600 }}>Good University Governance</span>
+            / <span style={{ color: "#B7DCC9" }}>Good University Governance</span> /{" "}
+            <span style={{ color: "#FFFFFF", fontWeight: 600 }}>{activeMenu.label}</span>
           </nav>
 
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "24px",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-              padding: "18px 0 26px",
-            }}
-          >
-            <div style={{ flex: "1 1 560px" }}>
-              <h1 style={{ margin: "0 0 10px", fontSize: "40px", lineHeight: 1.1, fontWeight: 800 }}>
-                Good University Governance
-              </h1>
-              <p style={{ margin: 0, fontSize: "16px", lineHeight: 1.6, color: "#D3EBDF", maxWidth: "720px" }}>
-                Akuntabilitas, integritas, keamanan sivitas, dan tata kelola keuangan UNIZAR — dibuka seluas mungkin
-                kepada publik, dengan ringkasan untuk dokumen yang bersifat rahasia.
-              </p>
-            </div>
+          <div style={{ padding: "18px 0 26px" }}>
+            <h1 style={{ margin: 0, fontSize: "40px", lineHeight: 1.1, fontWeight: 800 }}>
+              Good University Governance
+            </h1>
           </div>
 
-          {/* Navigasi Tab Sub-Menu */}
-          <div role="tablist" aria-label="Sub-menu GUG" style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
-            {[
-              ["ikhtisar", "Ikhtisar"],
-              ["etik", "Integritas & Etik"],
-              ["ppks", "Kampus Aman"],
-              ["pengawasan", "Pengawasan & Risiko"],
-              ["pengelolaan", "Pengelolaan"],
-              ["keuangan", "Keuangan"],
-            ].map(([k, label]) => {
-              const isSel = tab === k;
+          {/* TAB SUB-MENU NAVIGASI WITH AUTO-SCROLL */}
+          <div
+            role="tablist"
+            aria-label="Sub-menu GUG"
+            style={{ display: "flex", gap: "4px", overflowX: "auto", paddingBottom: "0" }}
+          >
+            {MENU_ITEMS.map((item) => {
+              const isSel = tab === item.key;
               return (
                 <button
-                  key={k}
+                  key={item.key}
+                  ref={(el) => (tabRefs.current[item.key] = el)}
                   role="tab"
                   aria-selected={isSel}
-                  onClick={() => setTab(k)}
+                  onClick={() => handleTabClick(item.key)}
                   style={{
                     border: 0,
                     cursor: "pointer",
-                    padding: "13px 18px",
-                    fontSize: "15px",
+                    padding: "12px 18px",
+                    fontSize: "14px",
                     fontWeight: 700,
+                    whiteSpace: "nowrap",
                     borderRadius: "12px 12px 0 0",
                     background: isSel ? "#F4F8F6" : "transparent",
                     color: isSel ? "#064E3B" : "#D3EBDF",
-                    minHeight: "48px",
+                    minHeight: "44px",
                   }}
                 >
-                  {label}
+                  {item.label}
                 </button>
               );
             })}
@@ -349,22 +400,12 @@ export default function Gug() {
 
       {/* Konten Utama */}
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "28px 32px 64px" }}>
-        {/* 1. TAB IKHTISAR */}
+        {/* 1. TAB IKHTISAR (DEFAULT) */}
         {tab === "ikhtisar" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+            {/* Section 6 Pilar */}
             <section aria-labelledby="h-pil">
-              <div
-                style={{
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: ".12em",
-                  color: "#8A6500",
-                  textTransform: "uppercase",
-                }}
-              >
-                Praktik baik GUG
-              </div>
-              <h2 id="h-pil" style={{ margin: "6px 0 16px", fontSize: "26px", color: "#064E3B", fontWeight: 800 }}>
+              <h2 id="h-pil" style={{ margin: "0 0 16px", fontSize: "26px", color: "#064E3B", fontWeight: 800 }}>
                 Enam pilar tata kelola
               </h2>
               <div
@@ -395,7 +436,7 @@ export default function Gug() {
                           fontWeight: 800,
                           display: "flex",
                           alignItems: "center",
-                          justifyCenter: "center",
+                          justifyContent: "center",
                         }}
                       >
                         {p.no}
@@ -409,6 +450,7 @@ export default function Gug() {
               </div>
             </section>
 
+            {/* Section Laporan Tahunan & Lapor Pelanggaran */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
               <section
                 aria-labelledby="h-lt"
@@ -517,15 +559,15 @@ export default function Gug() {
                   style={{
                     background: "#8E1B20",
                     color: "#FFFFFF",
-                    padding: "13px 16px",
+                    padding: "11px 18px",
                     borderRadius: "10px",
                     fontWeight: 700,
-                    fontSize: "15px",
+                    fontSize: "14px",
                     textAlign: "center",
                     textDecoration: "none",
                   }}
                 >
-                  Lapor ke Satgas PPKS
+                  Lapor ke Satgas PPKPT →
                 </a>
                 <a
                   href="#"
@@ -533,15 +575,15 @@ export default function Gug() {
                     background: "#FFFFFF",
                     color: "#8E1B20",
                     border: "1.5px solid #8E1B20",
-                    padding: "12px 16px",
+                    padding: "11px 18px",
                     borderRadius: "10px",
                     fontWeight: 700,
-                    fontSize: "15px",
+                    fontSize: "14px",
                     textAlign: "center",
                     textDecoration: "none",
                   }}
                 >
-                  Whistleblowing System (WBS)
+                  Whistleblowing System (WBS) →
                 </a>
                 <a href="#" style={{ fontSize: "14px", fontWeight: 700, color: "#5C1013" }}>
                   Lacak tiket laporan →
@@ -549,6 +591,7 @@ export default function Gug() {
               </section>
             </div>
 
+            {/* Section Survei Kepuasan */}
             <section
               aria-labelledby="h-sv"
               style={{ background: "#FFFFFF", border: "1px solid #DCE6E0", borderRadius: "18px", padding: "26px" }}
@@ -652,14 +695,13 @@ export default function Gug() {
           </div>
         )}
 
-        {/* 2. TAB GENERIK */}
-        {tab !== "ikhtisar" && (
+        {/* 2. TAB KONTEN SUB-MENU */}
+        {tab !== "ikhtisar" && curData && (
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <p style={{ margin: 0, fontSize: "17px", lineHeight: 1.6, color: "#2B3D35", maxWidth: "860px" }}>
-              {cur.intro}
-            </p>
+            <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>{activeMenu.label}</h2>
+
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "12px" }}>
-              {cur.stats.map((st, i) => (
+              {curData.stats.map((st, i) => (
                 <div
                   key={i}
                   style={{
@@ -673,16 +715,16 @@ export default function Gug() {
                   }}
                 >
                   <span style={{ fontSize: "13px", fontWeight: 600, color: "#44574E" }}>{st.label}</span>
-                  <span style={{ fontSize: "30px", fontWeight: 800, color: "#064E3B", lineHeight: 1.1 }}>{st.v}</span>
+                  <span style={{ fontSize: "28px", fontWeight: 800, color: "#064E3B", lineHeight: 1.1 }}>{st.v}</span>
                 </div>
               ))}
             </div>
 
-            {cur.sections.map((sec, i) => (
+            {curData.sections.map((sec, i) => (
               <section key={i} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                <h2 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>{sec.title}</h2>
+                <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>{sec.title}</h3>
                 <div
-                  style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "12px" }}
+                  style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "14px" }}
                 >
                   {sec.docs.map((d, j) => (
                     <div
@@ -691,10 +733,10 @@ export default function Gug() {
                         background: "#FFFFFF",
                         border: "1px solid #DCE6E0",
                         borderRadius: "14px",
-                        padding: "18px",
+                        padding: "20px",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "10px",
+                        gap: "12px",
                       }}
                     >
                       <div
@@ -705,7 +747,9 @@ export default function Gug() {
                           alignItems: "flex-start",
                         }}
                       >
-                        <span style={{ fontSize: "16px", fontWeight: 700, lineHeight: 1.35 }}>{d.name}</span>
+                        <span style={{ fontSize: "16px", fontWeight: 700, lineHeight: 1.35, color: "#13231C" }}>
+                          {d.name}
+                        </span>
                         <span
                           style={{
                             flex: "none",
@@ -721,6 +765,8 @@ export default function Gug() {
                         </span>
                       </div>
                       <span style={{ fontSize: "12px", color: "#44574E" }}>{d.meta}</span>
+
+                      {/* TOMBOL AKSI */}
                       <div
                         style={{
                           display: "flex",
@@ -731,18 +777,22 @@ export default function Gug() {
                         }}
                       >
                         <a
-                          href={d.href}
+                          href="#"
                           style={{
-                            fontSize: "14px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            background: "#0A6B4F",
+                            color: "#FFFFFF",
+                            padding: "11px 18px",
+                            borderRadius: "10px",
                             fontWeight: 700,
-                            padding: "9px 14px",
-                            borderRadius: "999px",
-                            background: d.btnBg,
-                            color: d.btnFg,
+                            fontSize: "14px",
                             textDecoration: "none",
+                            cursor: "pointer",
                           }}
                         >
-                          {d.action}
+                          {d.action} →
                         </a>
                       </div>
                     </div>

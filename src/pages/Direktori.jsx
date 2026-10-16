@@ -14,14 +14,23 @@ export default function Direktori() {
     peta: "Peta Kampus",
   };
 
-  // Fallback default dipastikan selalu ke 'unit' (sub-menu pertama)
-  const [tab, setTab] = useState(location.state?.tab || "unit");
+  // 1. Daftar key tab valid yang ada di Direktori
+  const VALID_TABS = ["unit", "dosen", "prodi", "dokumen", "kerjasama", "peta"];
 
+  // 2. Fungsi pembantu untuk dapatkan tab aktif dari location.state
+  const getActiveTab = () => {
+    if (location.state?.tab && VALID_TABS.includes(location.state.tab)) {
+      return location.state.tab;
+    }
+    return "unit"; // Default jika tidak ada state yang dikirim
+  };
+
+  const [tab, setTab] = useState(getActiveTab());
+
+  // 3. Efek re-render otomatis saat location.state ATAU location.key berubah
   useEffect(() => {
-    if (location.state?.tab) {
+    if (location.state?.tab && VALID_TABS.includes(location.state.tab)) {
       setTab(location.state.tab);
-    } else {
-      setTab("unit");
     }
   }, [location.state, location.key]);
 
