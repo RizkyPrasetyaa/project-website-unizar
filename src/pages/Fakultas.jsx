@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 export default function Fakultas() {
   const facs = [
-    { n: 'Fakultas Kedokteran', d: 'Pendidikan dokter profesional beretika Islami.', href: '/prodi' },
-    { n: 'Fakultas Teknik', d: 'Pengembangan infrastruktur & rekayasa berwawasan lingkungan.', href: '#' },
-    { n: 'Fakultas Hukum', d: 'Pendidikan hukum berkeadilan dan berintegritas.', href: '#' },
-    { n: 'Fakultas Ekonomi & Bisnis', d: 'Manajemen, akuntansi & kewirausahaan syariah.', href: '#' },
-    { n: 'Fakultas Pertanian', d: 'Agribisnis dan teknologi pertanian berkelanjutan.', href: '#' },
-    { n: 'Fakultas MIPA', d: 'Riset biologi, farmasi, dan sains terapan.', href: '#' },
+    { n: 'Fakultas Kedokteran', d: 'Pendidikan dokter & Profesi Dokter.', href: '/prodi' },
+    { n: 'Fakultas Teknik', d: 'S1 Teknik Sipil & S1 Ilmu Komputer.', href: '#' },
+    { n: 'Fakultas Hukum', d: 'S1 Hukum.', href: '#' },
+    { n: 'Fakultas Ekonomi & Bisnis', d: 'S1 Akuntansi & S1 Ekonomi Pembangunan.', href: '#' },
+    { n: 'Fakultas Pertanian', d: 'S1 Agribisnis & S1 Agroekotenologi.', href: '#' },
+    { n: 'Fakultas MIPA', d: 'S1 Biologi.', href: '#' },
      { n: 'Fakultas Agama Islam', d: 'Bisnis Ekonomi Syariah & Menejemen Syariah.', href: '#' }
   ];
 
