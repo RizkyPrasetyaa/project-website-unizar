@@ -7,6 +7,7 @@ import Direktori from "./pages/Direktori";
 import ScrollToTop from "./components/ScrollToTop";
 import Fakultas from "./pages/Fakultas";
 import Footer from "./components/Footer";
+import Gug from "./pages/Gug";
 
 export default function App() {
   return (
@@ -28,6 +29,9 @@ export default function App() {
 
         {/* Alias Rute: Agar URL /pusat-dokumen tetap mengarah mulus ke Halaman Direktori */}
         <Route path="/pusat-dokumen" element={<Direktori />} />
+
+        {/* Rute Halaman Good University Governance (GUG) */}
+        <Route path="/gug" element={<Gug />} />
 
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />
