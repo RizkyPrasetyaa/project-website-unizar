@@ -8,7 +8,8 @@ export default function Fakultas() {
     { n: 'Fakultas Hukum', d: 'Pendidikan hukum berkeadilan dan berintegritas.', href: '#' },
     { n: 'Fakultas Ekonomi & Bisnis', d: 'Manajemen, akuntansi & kewirausahaan syariah.', href: '#' },
     { n: 'Fakultas Pertanian', d: 'Agribisnis dan teknologi pertanian berkelanjutan.', href: '#' },
-    { n: 'Fakultas MIPA', d: 'Riset biologi, farmasi, dan sains terapan.', href: '#' }
+    { n: 'Fakultas MIPA', d: 'Riset biologi, farmasi, dan sains terapan.', href: '#' },
+     { n: 'Fakultas Agama Islam', d: 'Bisnis Ekonomi Syariah & Menejemen Syariah.', href: '#' }
   ];
 
   return (
