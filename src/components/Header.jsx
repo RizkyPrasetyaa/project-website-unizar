@@ -401,7 +401,11 @@ export default function Header() {
               </p>
               <Link
                 to={activeMega.href}
+<<<<<<< HEAD
                 state={{ tab: activeMega.defaultTab || "kurikulum" }}
+=======
+                state={{ tab: "ikhtisar" }}
+>>>>>>> main
                 onClick={() => setOpen(null)}
                 style={{
                   display: "inline-flex",

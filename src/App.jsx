@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Fakultas from "./pages/Fakultas";
 import Pendidikan from "./pages/Pendidikan";
 import Footer from "./components/Footer";
+import Gug from "./pages/Gug";
 
 export default function App() {
   return (
@@ -30,7 +31,12 @@ export default function App() {
         {/* Alias Rute: Agar URL /pusat-dokumen tetap mengarah mulus ke Halaman Direktori */}
         <Route path="/pusat-dokumen" element={<Direktori />} />
 
+<<<<<<< HEAD
         <Route path="/pendidikan" element={<Pendidikan />} />
+=======
+        {/* Rute Halaman Good University Governance (GUG) */}
+        <Route path="/gug" element={<Gug />} />
+>>>>>>> main
 
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />

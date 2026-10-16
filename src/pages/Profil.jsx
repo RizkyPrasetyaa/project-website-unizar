@@ -17,10 +17,17 @@ export default function Profil() {
     capaian: "Capaian & Penghargaan",
   };
 
-  // Efek ini bakal kemicu setiap kali diklik dari Mega Menu Header
+  // Daftar key tab yang valid di halaman Profil
+  const VALID_TABS = ["identitas", "visimisi", "renstra", "evaluasi", "statuta", "sotk", "pimpinan", "capaian"];
+
+  // Ambil state dari navigasi, kalau gak ada atau gak valid otomatis fallback ke 'identitas'
+  const initialTab = location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "identitas";
+
   useEffect(() => {
-    if (location.state && location.state.tab) {
+    if (location.state?.tab && VALID_TABS.includes(location.state.tab)) {
       setTab(location.state.tab);
+    } else if (!location.state?.tab) {
+      setTab("identitas"); // Default jika klik langsung menu utama Profil
     }
   }, [location.state, location.key]);
 
