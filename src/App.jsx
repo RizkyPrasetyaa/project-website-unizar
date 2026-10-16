@@ -6,6 +6,7 @@ import Profil from "./pages/Profil";
 import Direktori from "./pages/Direktori";
 import ScrollToTop from "./components/ScrollToTop";
 import Fakultas from "./pages/Fakultas";
+import Pendidikan from "./pages/Pendidikan";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -28,6 +29,8 @@ export default function App() {
 
         {/* Alias Rute: Agar URL /pusat-dokumen tetap mengarah mulus ke Halaman Direktori */}
         <Route path="/pusat-dokumen" element={<Direktori />} />
+
+        <Route path="/pendidikan" element={<Pendidikan />} />
 
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />

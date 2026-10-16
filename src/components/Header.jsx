@@ -73,32 +73,33 @@ export default function Header() {
       desc: "Good University Governance: akuntabilitas, integritas, mitigasi risiko, dan keuangan.",
       href: "/gug",
       items: [
-        { label: "Kebijakan & Praktik Baik GUG", access: "Publik" },
-        { label: "Laporan Tahunan", access: "Ringkasan" },
-        { label: "Kode Etik & Lembaga Etik", access: "Publik" },
-        { label: "Kampus Aman & Satgas PPKS", access: "Publik" },
-        { label: "Pengawasan & WBK/WBBM", access: "Ringkasan" },
-        { label: "Whistleblowing System", access: "Publik" },
-        { label: "Pengelolaan & 11 Pedoman", access: "Publik" },
-        { label: "Survei Kepuasan Tata Pamong", access: "Ringkasan" },
-        { label: "Renstra & Pola Keuangan", access: "Publik" },
-        { label: "Laporan Keuangan & Audit Eksternal", access: "Ringkasan" },
+        { label: "Kebijakan & Praktik Baik GUG", access: "Publik", tab: "kebijakan" },
+        { label: "Laporan Tahunan", access: "Ringkasan", tab: "laporan-tahunan" },
+        { label: "Kode Etik & Lembaga Etik", access: "Publik", tab: "kode-etik" },
+        { label: "Kampus Aman & Satgas PPKPT", access: "Publik", tab: "ppkpt" },
+        { label: "Pengawasan & WBK/WBBM", access: "Ringkasan", tab: "pengawasan" },
+        { label: "Whistleblowing System", access: "Publik", tab: "wbs" },
+        { label: "Pengelolaan & 11 Pedoman", access: "Publik", tab: "pengelolaan" },
+        { label: "Survei Kepuasan Tata Pamong", access: "Ringkasan", tab: "survei" },
+        { label: "Renstra & Pola Keuangan", access: "Publik", tab: "renstra" },
+        { label: "Laporan Keuangan & Audit Eksternal", access: "Ringkasan", tab: "laporan-keuangan" },
       ],
     },
     pendidikan: {
       id: "Pendidikan",
       desc: "Kurikulum, pembelajaran, MBKM, dan penerimaan mahasiswa baru.",
       href: "/pendidikan",
+      defaultTab: "kurikulum",
       items: [
-        { label: "Kebijakan Kurikulum OBE", access: "Publik" },
-        { label: "Kalender & Panduan Akademik", access: "Publik" },
-        { label: "Proses & Evaluasi Pembelajaran", access: "Publik" },
-        { label: "MBKM (≥ 10 sks luar prodi)", access: "Publik" },
-        { label: "Suasana Akademik & Kebebasan Mimbar", access: "Publik" },
-        { label: "Capaian Kompetensi Lulusan", access: "Ringkasan" },
-        { label: "PMB Afirmatif & Inklusif", access: "Publik" },
-        { label: "Beasiswa & Bantuan Biaya", access: "Publik" },
-        { label: "RPL · PJJ · PKKMB", access: "Publik" },
+        { label: "Kebijakan Kurikulum OBE", access: "Publik", tab: "kurikulum" },
+        { label: "Kalender & Panduan Akademik", access: "Publik", tab: "kalender" },
+        { label: "Proses & Evaluasi Pembelajaran", access: "Publik", tab: "proses" },
+        { label: "MBKM (≥ 10 sks luar prodi)", access: "Publik", tab: "mbkm" },
+        { label: "Suasana Akademik & Kebebasan Mimbar", access: "Publik", tab: "suasana" },
+        { label: "Capaian Kompetensi Lulusan", access: "Ringkasan", tab: "capaian" },
+        { label: "PMB Afirmatif & Inklusif", access: "Publik", tab: "pmb" },
+        { label: "Beasiswa & Bantuan Biaya", access: "Publik", tab: "beasiswa" },
+        { label: "RPL · PJJ · PKKMB", access: "Publik", tab: "rpl" },
       ],
     },
     penelitian: {
@@ -400,6 +401,7 @@ export default function Header() {
               </p>
               <Link
                 to={activeMega.href}
+                state={{ tab: activeMega.defaultTab || "kurikulum" }}
                 onClick={() => setOpen(null)}
                 style={{
                   display: "inline-flex",
