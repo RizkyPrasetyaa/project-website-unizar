@@ -410,7 +410,7 @@ export default function Bpm() {
                 }}
               >
                 <span style={{ color: "#6B4E00", background: "#FFF8E1", padding: "4px 10px", borderRadius: "6px" }}>
-                  Data simulasi · sinkron otomatis dari PD Dikti / LAM
+                  Data simulasi · sinkron otomatis dari PDDikti / LAM
                 </span>
                 <span>Diperbarui 10 Okt 2026</span>
               </div>
