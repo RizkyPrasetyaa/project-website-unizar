@@ -75,6 +75,7 @@ export default function Header() {
       href: "/gug",
       defaultTab: "ikhtisar",
       items: [
+        { label: "ikhtisar GUG", access: "Publik", tab: "ikhtisar" },
         { label: "Kebijakan & Praktik Baik GUG", access: "Publik", tab: "kebijakan" },
         { label: "Laporan Tahunan", access: "Ringkasan", tab: "laporan-tahunan" },
         { label: "Kode Etik & Lembaga Etik", access: "Publik", tab: "kode-etik" },
