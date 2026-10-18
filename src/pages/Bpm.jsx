@@ -724,8 +724,9 @@ export default function Bpm() {
                 </span>
                 <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>Visi BPM</h3>
                 <p style={{ margin: 0, fontSize: "15px", lineHeight: 1.6, color: "#2B3D35", fontWeight: 600 }}>
-                  "Menjadi pusat penjaminan mutu yang profesional, akuntabel, dan terintegrasi untuk mewujudkan UNIZAR
-                  yang unggul berlandaskan nilai-nilai keislaman."
+                  "Menjadi lembaga penjaminan mutu yang profesional, terpercaya, dan independen dalam mewujudkan budaya
+                  mutu sehingga mampu mengantarkan UNIZAR menjadi Universitas yang terkemuka di tingkat regional pada
+                  tahun 2029."
                 </p>
               </div>
 
@@ -765,9 +766,15 @@ export default function Bpm() {
                     gap: "6px",
                   }}
                 >
-                  <li>Pengembangan dan penetapan standar mutu universitas secara berkala.</li>
-                  <li>Meningkatkan efektivitas Audit Mutu Internal (AMI) pada bidang akademik dan non-akademik.</li>
-                  <li>Memfasilitasi pendampingan akreditasi prodi dan institusi secara proaktif.</li>
+                  <li>Menanamkan budaya standar mutu pada sivitas akademika UNIZAR.</li>
+                  <li>
+                    Menyelenggarakan system penjaminan mutu internal secara berencana dan berkelanjutan pada setiap unit
+                    kerja sesuai dengan standar mutu Pendidikan Tinggi.
+                  </li>
+                  <li>
+                    Menyelenggarakan audit mutu internal secara berencana dan berkelanjutan pada setiap unit kerja di
+                    lingkungan UNIZAR.
+                  </li>
                 </ul>
               </div>
             </section>
