@@ -123,11 +123,11 @@ export default function Header() {
       desc: "Tata kelola, luaran, dan dampak PkM bagi masyarakat.",
       href: "/pengabdian",
       items: [
-        { label: "Renstra & Peta Jalan PkM", access: "Publik" },
-        { label: "Pedoman & Kepakaran", access: "Publik" },
-        { label: "Tata Kelola & Proses PkM", access: "Publik" },
-        { label: "Luaran & Kemitraan", access: "Publik" },
-        { label: "Rekognisi Kepakaran", access: "Publik" },
+        { label: "Renstra & Peta Jalan PkM", access: "Publik", tab: "renstra" },
+        { label: "Pedoman & Kepakaran", access: "Publik", tab: "pedoman" },
+        { label: "Tata Kelola & Proses PkM", access: "Publik", tab: "tatakelola" },
+        { label: "Luaran & Kemitraan", access: "Publik", tab: "luaran" },
+        { label: "Rekognisi Kepakaran", access: "Publik", tab: "rekognisi" },
       ],
     },
     bpm: {

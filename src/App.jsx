@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Fakultas from "./pages/Fakultas";
 import Pendidikan from "./pages/Pendidikan";
 import Penelitian from "./pages/Penelitian";
+import Pengabdian from "./pages/Pengabdian";
 import Footer from "./components/Footer";
 import Gug from "./pages/Gug";
 
@@ -37,6 +38,7 @@ export default function App() {
 
         <Route path="/pendidikan" element={<Pendidikan />} />
         <Route path="/penelitian" element={<Penelitian />} />
+        <Route path="/pengabdian" element={<Pengabdian />} />
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
