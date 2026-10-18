@@ -9,6 +9,7 @@ import Fakultas from "./pages/Fakultas";
 import Pendidikan from "./pages/Pendidikan";
 import Penelitian from "./pages/Penelitian";
 import Pengabdian from "./pages/Pengabdian";
+import Bpm from "./pages/Bpm";
 import Footer from "./components/Footer";
 import Gug from "./pages/Gug";
 
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/pendidikan" element={<Pendidikan />} />
         <Route path="/penelitian" element={<Penelitian />} />
         <Route path="/pengabdian" element={<Pengabdian />} />
+        <Route path="/bpm" element={<Bpm />} />
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
