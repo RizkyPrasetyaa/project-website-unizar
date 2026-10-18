@@ -7,6 +7,7 @@ import Direktori from "./pages/Direktori";
 import ScrollToTop from "./components/ScrollToTop";
 import Fakultas from "./pages/Fakultas";
 import Pendidikan from "./pages/Pendidikan";
+import Penelitian from "./pages/Penelitian";
 import Footer from "./components/Footer";
 import Gug from "./pages/Gug";
 
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/gug" element={<Gug />} />
 
         <Route path="/pendidikan" element={<Pendidikan />} />
+        <Route path="/penelitian" element={<Penelitian />} />
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
