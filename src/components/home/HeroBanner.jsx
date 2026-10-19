@@ -1,148 +1,199 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HeroBanner() {
   return (
     <section
+      aria-label="Selamat datang di UNIZAR"
       style={{
         background: "#064E3B",
-        color: "#FFFFFF",
         borderRadius: "20px",
         overflow: "hidden",
-        display: "flex",
-        flexWrap: "wrap",
+        color: "#FFFFFF",
       }}
     >
-      <div style={{ flex: "3 1 420px", padding: "48px 44px", display: "flex", flexDirection: "column", gap: "18px" }}>
-        <span
-          style={{
-            alignSelf: "flex-start",
-            fontSize: "12px",
-            fontWeight: 700,
-            letterSpacing: ".12em",
-            textTransform: "uppercase",
-            color: "#F2C230",
-          }}
-        >
-          Universitas Islam Al-Azhar Mataram
-        </span>
-        <h1 style={{ margin: 0, fontSize: "46px", lineHeight: 1.08, letterSpacing: "-.01em", fontWeight: 800 }}>
-          Selamat Datang di Kampus Rahmatan lil 'Alamin
-        </h1>
-        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "6px" }}>
-          <button
-            type="button"
-            style={{
-              border: 0,
-              background: "#F2C230",
-              color: "#053B2C",
-              padding: "13px 22px",
-              borderRadius: "10px",
-              fontWeight: 800,
-              fontSize: "15px",
-              cursor: "pointer",
-            }}
-          >
-            PMB 2027
-          </button>
-          <button
-            type="button"
-            style={{
-              border: "1.5px solid #D3EBDF",
-              background: "transparent",
-              color: "#FFFFFF",
-              padding: "12px 22px",
-              borderRadius: "10px",
-              fontWeight: 700,
-              fontSize: "15px",
-              cursor: "pointer",
-            }}
-          >
-            Profil institusi
-          </button>
-        </div>
-      </div>
-
       <div
         style={{
-          flex: "2 1 300px",
-          background: "#0A6B4F",
-          padding: "32px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          gap: "18px",
-          minHeight: "340px",
-          position: "relative",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          alignItems: "center",
         }}
       >
+        {/* Sisi Kiri: Teks Utama & Tombol Aksi */}
         <div
           style={{
-            border: "2px dashed rgba(255,255,255,.35)",
-            borderRadius: "14px",
-            flex: 1,
+            padding: "40px 36px",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            color: "#D3EBDF",
-            fontSize: "13px",
-            padding: "16px",
-            minHeight: "160px",
-          }}
-        >
-          [Foto kampus / video profil 30 detik]
-        </div>
-        <div
-          style={{
-            background: "#FFFFFF",
-            color: "#13231C",
-            borderRadius: "14px",
-            padding: "16px 18px",
-            display: "flex",
-            alignItems: "center",
-            gap: "14px",
+            flexDirection: "column",
+            gap: "20px",
           }}
         >
           <div
             style={{
-              width: "52px",
-              height: "52px",
-              borderRadius: "12px",
-              background: "#FFF1C2",
+              fontSize: "12px",
+              fontWeight: 800,
+              letterSpacing: ".12em",
+              color: "#F2C230",
+              textTransform: "uppercase",
+            }}
+          >
+            UNIVERSITAS ISLAM AL-AZHAR MATARAM
+          </div>
+
+          <h1
+            style={{
+              margin: 0,
+              fontSize: "clamp(28px, 3.5vw, 42px)",
+              fontWeight: 800,
+              lineHeight: 1.15,
+            }}
+          >
+            Selamat Datang di Kampus Rahmatan lil 'Alamin
+          </h1>
+
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              flexWrap: "wrap",
+              marginTop: "8px",
+            }}
+          >
+            {/* Tombol PMB */}
+            <a
+              href="https://pmb.unizar.ac.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: "#F2C230",
+                color: "#053B2C",
+                padding: "12px 24px",
+                borderRadius: "10px",
+                fontWeight: 800,
+                fontSize: "15px",
+                textDecoration: "none",
+                display: "inline-block",
+              }}
+            >
+              PMB 2027
+            </a>
+
+            {/* Tombol Profil Institusi */}
+            <Link
+              to="/profil"
+              style={{
+                border: "1.5px solid #FFFFFF",
+                color: "#FFFFFF",
+                padding: "12px 24px",
+                borderRadius: "10px",
+                fontWeight: 700,
+                fontSize: "15px",
+                textDecoration: "none",
+                display: "inline-block",
+              }}
+            >
+              Profil institusi
+            </Link>
+          </div>
+        </div>
+
+        {/* Sisi Kanan: Foto Kampus & Card Akreditasi */}
+        <div
+          style={{
+            padding: "24px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
+            background: "#085D47",
+            height: "100%",
+            justifyContent: "center",
+          }}
+        >
+          {/* Frame Foto Kampus */}
+          <div
+            style={{
+              borderRadius: "14px",
+              overflow: "hidden",
+              border: "2px dashed rgba(255, 255, 255, 0.3)",
+              maxHeight: "220px",
+              position: "relative",
+            }}
+          >
+            <img
+              src="/assets/img/gedung-unizar.jpg"
+              alt="Gedung Rektorat UNIZAR Mataram"
+              style={{
+                width: "100%",
+                height: "220px",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+
+          {/* Card Status Akreditasi BAN-PT */}
+          <div
+            style={{
+              background: "#FFFFFF",
+              color: "#13231C",
+              borderRadius: "14px",
+              padding: "14px 18px",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              fontWeight: 800,
-              color: "#6B4E00",
-              fontSize: "12px",
-              textAlign: "center",
-              lineHeight: 1.1,
+              justifyContent: "space-between",
+              gap: "14px",
             }}
           >
-            BAN
-            <br />
-            PT
-          </div>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: "12px", color: "#44574E", fontWeight: 600 }}>Akreditasi institusi</div>
-            <div style={{ fontSize: "20px", fontStyle: "normal", fontWeight: 800, color: "#064E3B" }}>
-              [Status Akreditasi]
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
+              <div
+                style={{
+                  background: "#FFF8E1",
+                  color: "#7A5900",
+                  padding: "8px 10px",
+                  borderRadius: "8px",
+                  fontSize: "11px",
+                  fontWeight: 800,
+                  textAlign: "center",
+                  lineHeight: 1.2,
+                }}
+              >
+                BAN
+                <br />
+                PT
+              </div>
+              <div>
+                <div style={{ fontSize: "12px", color: "#44574E" }}>
+                  Akreditasi institusi
+                </div>
+                <div style={{ fontSize: "15px", fontWeight: 800 }}>
+                  [Baik Sekali]
+                </div>
+                <div style={{ fontSize: "11px", color: "#44574E" }}>
+                  SK No. 123/SK/BAN-PT/2024
+                </div>
+              </div>
             </div>
-            <div style={{ fontSize: "12px", color: "#44574E" }}>SK [Nomor] · s.d. [Tanggal]</div>
+
+            {/* Link Verifikasi ke Halaman BPM */}
+            <Link
+              to="/bpm"
+              style={{
+                color: "#0A6B4F",
+                fontSize: "13px",
+                fontWeight: 700,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Verifikasi ↗
+            </Link>
           </div>
-          <button
-            type="button"
-            style={{
-              border: 0,
-              background: "transparent",
-              fontSize: "13px",
-              fontWeight: 700,
-              color: "#0A6B4F",
-              cursor: "pointer",
-            }}
-          >
-            Verifikasi ↗
-          </button>
         </div>
       </div>
     </section>
