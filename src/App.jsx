@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Profil from "./pages/Profil";
@@ -12,6 +17,7 @@ import Pengabdian from "./pages/Pengabdian";
 import Bpm from "./pages/Bpm";
 import Footer from "./components/Footer";
 import Gug from "./pages/Gug";
+import Layanan from "./pages/layanan";
 
 export default function App() {
   return (
@@ -21,7 +27,7 @@ export default function App() {
       <Routes>
         {/* Beranda */}
         <Route path="/" element={<Home />} />
-
+        <Route path="/layanan" element={<Layanan />} />
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 
