@@ -18,6 +18,7 @@ import Bpm from "./pages/Bpm";
 import Footer from "./components/Footer";
 import Gug from "./pages/Gug";
 import Layanan from "./pages/layanan";
+import Orang from "./pages/Orang";
 import Prodi from "./pages/Prodi";
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
         {/* Beranda */}
         <Route path="/" element={<Home />} />
         <Route path="/layanan" element={<Layanan />} />
+        <Route path="/orang" element={<Orang />} />
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Sidebar() {
   const [sideOpen, setSideOpen] = useState({
     layanan: true,
-    orang: false,
+    orang: true, // Default kebuka biar keliatan sub-menunya
     kerjasama: false,
     mhs: false,
   });
@@ -19,13 +19,14 @@ export default function Sidebar() {
       mono: "Ly",
       label: "Layanan",
       route: "/layanan",
+      paramKey: "sub",
       items: [
-        "SIAKAD & Layanan Akademik",
-        "E-Learning / LMS",
-        "Perpustakaan Digital",
-        "Layanan TIK & Helpdesk",
-        "Sarpras & K3",
-        "Layanan Informasi Publik",
+        { label: "SIAKAD & Layanan Akademik", val: "siakad" },
+        { label: "E-Learning / LMS", val: "lms" },
+        { label: "Perpustakaan Digital", val: "perpus" },
+        { label: "Layanan TIK & Helpdesk", val: "tik" },
+        { label: "Sarpras & K3", val: "sarpras" },
+        { label: "Layanan Informasi Publik", val: "ppid" },
       ],
     },
     {
@@ -33,11 +34,12 @@ export default function Sidebar() {
       mono: "Or",
       label: "Orang",
       route: "/orang",
+      paramKey: "tab",
       items: [
-        "Pimpinan Universitas",
-        "Dosen & Kepakaran",
-        "Tenaga Kependidikan",
-        "Renstra SDM",
+        { label: "Pimpinan Universitas", val: "pimpinan" },
+        { label: "Dosen & Kepakaran", val: "dosen" },
+        { label: "Tenaga Kependidikan", val: "tendik" },
+        { label: "Renstra SDM", val: "renstra" },
       ],
     },
     {
@@ -45,10 +47,11 @@ export default function Sidebar() {
       mono: "Ks",
       label: "Kerjasama",
       route: "/kerjasama",
+      paramKey: "tab",
       items: [
-        "Kerjasama Dalam Negeri",
-        "Kerjasama Luar Negeri",
-        "MoU/MoA & Realisasi",
+        { label: "Kerjasama Dalam Negeri", val: "dn" },
+        { label: "Kerjasama Luar Negeri", val: "ln" },
+        { label: "MoU/MoA & Realisasi", val: "mou" },
       ],
     },
     {
@@ -56,11 +59,12 @@ export default function Sidebar() {
       mono: "Mh",
       label: "Kemahasiswaan & Alumni",
       route: "/kemahasiswaan",
+      paramKey: "tab",
       items: [
-        "Layanan Mahasiswa",
-        "Prestasi Mahasiswa",
-        "Tracer Study & Kepuasan Pengguna",
-        "Ikatan Alumni & Karir",
+        { label: "Layanan Mahasiswa", val: "layanan" },
+        { label: "Prestasi Mahasiswa", val: "prestasi" },
+        { label: "Tracer Study & Kepuasan Pengguna", val: "tracer" },
+        { label: "Ikatan Alumni & Karir", val: "alumni" },
       ],
     },
   ];
@@ -114,7 +118,7 @@ export default function Sidebar() {
         Masuk · SSO UNIZAR
       </button>
 
-      {/* Menu Samping Utama Accordion */}
+      {/* Accordion Navigation */}
       <nav
         aria-label="Menu samping utama"
         style={{
@@ -184,10 +188,10 @@ export default function Sidebar() {
                     padding: "4px 0 10px",
                   }}
                 >
-                  {g.items.map((itemLabel, idx) => (
+                  {g.items.map((subItem, idx) => (
                     <li key={idx}>
                       <Link
-                        to={g.route}
+                        to={`${g.route}?${g.paramKey}=${subItem.val}`}
                         style={{
                           width: "100%",
                           textDecoration: "none",
@@ -199,7 +203,7 @@ export default function Sidebar() {
                           boxSizing: "border-box",
                         }}
                       >
-                        {itemLabel}
+                        {subItem.label}
                       </Link>
                     </li>
                   ))}
@@ -225,7 +229,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Pusat Akreditasi Hub Card */}
+      {/* Pusat Akreditasi Card */}
       <nav
         aria-label="Pusat Akreditasi"
         style={{
@@ -299,22 +303,6 @@ export default function Sidebar() {
               }}
             >
               Pusat Dokumen
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/bpm"
-              style={{
-                width: "100%",
-                textDecoration: "none",
-                display: "block",
-                padding: "10px 6px",
-                fontWeight: 600,
-                fontSize: "14px",
-                color: "#13231C",
-              }}
-            >
-              Dashboard Kinerja
             </Link>
           </li>
         </ul>
