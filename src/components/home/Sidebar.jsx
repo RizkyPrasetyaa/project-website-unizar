@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Sidebar() {
   const [sideOpen, setSideOpen] = useState({
     layanan: true,
-    orang: true, // Default kebuka biar keliatan sub-menunya
+    orang: false, // Default kebuka biar keliatan sub-menunya
     kerjasama: false,
     mhs: false,
   });

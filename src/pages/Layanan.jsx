@@ -5,13 +5,11 @@ export default function Layanan() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCat, setSelectedCat] = useState("all");
   const [selectedAud, setSelectedAud] = useState("all");
-  const [activeModalItem, setActiveModalItem] = useState(null); // State buat Pop-up Detail
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Data Master Layanan lengkap dengan Action Link & Instruksi
   const ALL_SERVICES = [
     {
       id: "siakad",
@@ -22,10 +20,8 @@ export default function Layanan() {
       who: "Mahasiswa · Dosen",
       login: true,
       aud: "mhs",
-      actionText: "Buka SIAKAD ↗",
+      actionText: "Buka SIAKAD →",
       url: "#",
-      detailInfo:
-        "Akses penuh menggunakan akun SSO UNIZAR. Digunakan untuk pengisian Kartu Rencana Studi (KRS), melihat hasil studi (KHS), dan jadwal perkuliahan semester berjalan.",
     },
     {
       id: "surat-aktif",
@@ -36,10 +32,8 @@ export default function Layanan() {
       who: "Mahasiswa",
       login: true,
       aud: "mhs",
-      actionText: "Ajukan Surat",
+      actionText: "Ajukan Surat →",
       url: "#",
-      detailInfo:
-        "Persyaratan: Mahasiswa aktif semester berjalan dan tidak sedang dalam status Cuti Akademik. Dokumen terbit dengan format PDF resmi ber-QR Code TTE.",
     },
     {
       id: "legalisir",
@@ -50,10 +44,8 @@ export default function Layanan() {
       who: "Alumni",
       login: false,
       aud: "alumni",
-      actionText: "Ajukan Legalisir",
+      actionText: "Ajukan Legalisir →",
       url: "#",
-      detailInfo:
-        "Khusus alumni UNIZAR. Unggah pemindaian (scan) Ijazah & Transkrip asli. Pembayaran admin dilakukan via Virtual Account.",
     },
     {
       id: "uct-pay",
@@ -64,10 +56,8 @@ export default function Layanan() {
       who: "Mahasiswa",
       login: true,
       aud: "mhs",
-      actionText: "Cek Tagihan",
+      actionText: "Cek Tagihan →",
       url: "#",
-      detailInfo:
-        "Pembayaran terintegrasi otomatis dengan sistem akademik SIAKAD. Gunakan kode Virtual Account yang tertera di portal keuangan.",
     },
     {
       id: "keringanan-ukt",
@@ -78,10 +68,8 @@ export default function Layanan() {
       who: "Mahasiswa",
       login: true,
       aud: "mhs",
-      actionText: "Form Pengajuan",
+      actionText: "Form Pengajuan →",
       url: "#",
-      detailInfo:
-        "Melampirkan surat keterangan tidak mampu, slip gaji orang tua, dan dokumen pendukung sesuai periode gelombang pengajuan UKT.",
     },
     {
       id: "sso-email",
@@ -92,10 +80,8 @@ export default function Layanan() {
       who: "Semua sivitas",
       login: false,
       aud: "all",
-      actionText: "Aktivasi / Reset",
+      actionText: "Aktivasi / Reset →",
       url: "#",
-      detailInfo:
-        "Gunakan email institusi (@unizar.ac.id / @student.unizar.ac.id) untuk mengakses seluruh ekosistem layanan digital kampus.",
     },
     {
       id: "lms",
@@ -106,10 +92,8 @@ export default function Layanan() {
       who: "Mahasiswa · Dosen",
       login: true,
       aud: "mhs",
-      actionText: "Buka LMS ↗",
+      actionText: "Buka LMS →",
       url: "#",
-      detailInfo:
-        "Portal resmi Moodle UNIZAR. Mahasiswa masuk menggunakan akun SSO untuk mengakses ruang kelas dan pengumpulan tugas.",
     },
     {
       id: "perpus",
@@ -120,10 +104,8 @@ export default function Layanan() {
       who: "Semua sivitas",
       login: true,
       aud: "all",
-      actionText: "Akses Perpus ↗",
+      actionText: "Akses Perpus →",
       url: "#",
-      detailInfo:
-        "Fasilitas pencarian koleksi buku fisik, akses jurnal terindeks (ScienceDirect, ProQuest), dan pengajuan verifikasi Turnitin skripsi.",
     },
     {
       id: "klinik",
@@ -134,10 +116,8 @@ export default function Layanan() {
       who: "Mahasiswa · Pegawai",
       login: false,
       aud: "mhs",
-      actionText: "Jadwal Konsul",
+      actionText: "Jadwal Konsul →",
       url: "#",
-      detailInfo:
-        "Layanan pendaftaran berobat di Klinik Kampus UNIZAR serta sesi konseling rahasia bersama tim Psikolog Kampus.",
     },
     {
       id: "simpeg",
@@ -148,10 +128,8 @@ export default function Layanan() {
       who: "Dosen · Tendik",
       login: true,
       aud: "pegawai",
-      actionText: "Masuk SIMPEG ↗",
+      actionText: "Masuk SIMPEG →",
       url: "#",
-      detailInfo:
-        "Manajemen data kepegawaian, pengurusan Beban Kerja Dosen (BKD), serta pengajuan Kenaikan Jabatan Akademik Dosen.",
     },
     {
       id: "sarpras-pinjam",
@@ -162,10 +140,8 @@ export default function Layanan() {
       who: "Semua · Publik",
       login: false,
       aud: "all",
-      actionText: "Pinjam Ruangan",
+      actionText: "Pinjam Ruangan →",
       url: "#",
-      detailInfo:
-        "Reservasi Gedung Serbaguna, Ruang Aula, Laboratorium Komputer, atau Alat Pendukung Kegiatan Mahasiswa.",
     },
     {
       id: "lapor-k3",
@@ -176,10 +152,8 @@ export default function Layanan() {
       who: "Semua",
       login: false,
       aud: "all",
-      actionText: "Lapor Kerusakan",
+      actionText: "Lapor Kerusakan →",
       url: "#",
-      detailInfo:
-        "Form cepat pelaporan fasilitas AC/Proyektor rusak, kebocoran, atau potensi bahaya K3 lingkungan kampus UNIZAR.",
     },
   ];
 
@@ -214,7 +188,6 @@ export default function Layanan() {
     { n: "Portal PMB", up: "99,7%", s: "Normal", c: "#0A6B4F" },
   ];
 
-  // Filtering Logic
   const filteredAudienceServices = useMemo(() => {
     return ALL_SERVICES.filter(
       (x) => selectedAud === "all" || x.aud === selectedAud || x.aud === "all",
@@ -234,9 +207,14 @@ export default function Layanan() {
 
   return (
     <div
-      style={{ background: "#F4F8F6", minHeight: "100vh", color: "#13231C" }}
+      style={{
+        background: "#F4F8F6",
+        minHeight: "100vh",
+        color: "#13231C",
+        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+      }}
     >
-      {/* Banner Header Hijau Minimalis */}
+      {/* Banner Header Hijau */}
       <section
         style={{ background: "#064E3B", color: "#FFFFFF", padding: "28px 0" }}
       >
@@ -271,7 +249,6 @@ export default function Layanan() {
             Layanan apa yang Anda butuhkan?
           </h1>
 
-          {/* Search Box */}
           <div
             style={{
               display: "flex",
@@ -297,7 +274,6 @@ export default function Layanan() {
             />
           </div>
 
-          {/* Audience Pills Filter */}
           <div
             style={{
               display: "flex",
@@ -333,7 +309,7 @@ export default function Layanan() {
         </div>
       </section>
 
-      {/* Main Content Area */}
+      {/* Main Container */}
       <div
         style={{
           maxWidth: "1280px",
@@ -345,7 +321,7 @@ export default function Layanan() {
           alignItems: "flex-start",
         }}
       >
-        {/* Sidebar Filter Kategori (Kiri) */}
+        {/* Sidebar Kategori */}
         <nav
           aria-label="Kategori layanan"
           style={{
@@ -394,7 +370,7 @@ export default function Layanan() {
           })}
         </nav>
 
-        {/* Dynamic Grid Cards (Kanan) */}
+        {/* Dynamic Grid Cards */}
         <main
           style={{
             flex: "999 1 600px",
@@ -424,10 +400,8 @@ export default function Layanan() {
                     flexDirection: "column",
                     gap: "12px",
                     boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
-                    position: "relative",
                   }}
                 >
-                  {/* Top Badge Info */}
                   <div
                     style={{
                       display: "flex",
@@ -463,7 +437,6 @@ export default function Layanan() {
                     )}
                   </div>
 
-                  {/* Judul & Deskripsi */}
                   <h3
                     style={{
                       margin: 0,
@@ -486,7 +459,6 @@ export default function Layanan() {
                     {s.d}
                   </p>
 
-                  {/* Meta SLA & Target User */}
                   <div
                     style={{
                       fontSize: "12px",
@@ -502,47 +474,27 @@ export default function Layanan() {
                     <span style={{ color: "#44574E" }}>👤 {s.who}</span>
                   </div>
 
-                  {/* ACTION BUTTONS (Fungsi Utama!) */}
+                  {/* TOMBOL AKSI RAPAT KANAN DENGAN PANAH LURUS KANAN (→) */}
                   <div
                     style={{
                       display: "flex",
-                      gap: "8px",
+                      justifyContent: "flex-end",
                       marginTop: "8px",
-                      paddingTop: "12px",
-                      borderTop: "1px solid #EEF3F0",
                     }}
                   >
-                    <button
-                      type="button"
-                      onClick={() => setActiveModalItem(s)}
-                      style={{
-                        flex: "1",
-                        background: "#E3F1EA",
-                        color: "#064E3B",
-                        border: 0,
-                        borderRadius: "8px",
-                        padding: "9px 12px",
-                        fontSize: "13px",
-                        fontWeight: 700,
-                        cursor: "pointer",
-                      }}
-                    >
-                      Detail ℹ️
-                    </button>
                     <a
                       href={s.url}
-                      target={s.url.startsWith("http") ? "_blank" : "_self"}
-                      rel="noopener noreferrer"
                       style={{
-                        flex: "1.5",
+                        display: "inline-block",
                         background: "#064E3B",
                         color: "#FFFFFF",
                         textDecoration: "none",
-                        borderRadius: "8px",
-                        padding: "9px 12px",
-                        fontSize: "13px",
+                        borderRadius: "14px",
+                        padding: "10px 18px",
+                        fontSize: "14px",
                         fontWeight: 700,
                         textAlign: "center",
+                        boxSizing: "border-box",
                       }}
                     >
                       {s.actionText}
@@ -580,33 +532,16 @@ export default function Layanan() {
                 gap: "10px",
               }}
             >
-              <div
+              <h2
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
+                  margin: 0,
+                  fontSize: "18px",
+                  color: "#064E3B",
+                  fontWeight: 800,
                 }}
               >
-                <h2
-                  style={{
-                    margin: 0,
-                    fontSize: "18px",
-                    color: "#064E3B",
-                    fontWeight: 800,
-                  }}
-                >
-                  Status Sistem Informasi
-                </h2>
-                <span
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    color: "#0A6B4F",
-                  }}
-                >
-                  Ind. 9, 26
-                </span>
-              </div>
+                Status Sistem Informasi
+              </h2>
               {SYSTEM_STATUS.map((y, idx) => (
                 <div
                   key={idx}
@@ -689,166 +624,19 @@ export default function Layanan() {
                   background: "#064E3B",
                   color: "#FFFFFF",
                   padding: "12px",
-                  borderRadius: "10px",
+                  borderRadius: "14px",
                   fontWeight: 700,
                   textAlign: "center",
                   textDecoration: "none",
                   fontSize: "14px",
                 }}
               >
-                Buat tiket helpdesk
+                Buat tiket helpdesk →
               </a>
             </section>
           </div>
         </main>
       </div>
-
-      {/* POP-UP MODAL DETAIL LAYANAN */}
-      {activeModalItem && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.5)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 9999,
-            padding: "20px",
-          }}
-        >
-          <div
-            style={{
-              background: "#FFFFFF",
-              borderRadius: "16px",
-              maxWidth: "500px",
-              width: "100%",
-              padding: "24px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "16px",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-              }}
-            >
-              <div>
-                <span
-                  style={{
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    color: "#8E1B20",
-                    letterSpacing: ".06em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {activeModalItem.cat}
-                </span>
-                <h2
-                  style={{
-                    margin: "4px 0 0",
-                    fontSize: "20px",
-                    color: "#064E3B",
-                    fontWeight: 800,
-                  }}
-                >
-                  {activeModalItem.t}
-                </h2>
-              </div>
-              <button
-                onClick={() => setActiveModalItem(null)}
-                style={{
-                  border: 0,
-                  background: "transparent",
-                  fontSize: "20px",
-                  cursor: "pointer",
-                  fontWeight: 800,
-                  color: "#44574E",
-                }}
-              >
-                ✕
-              </button>
-            </div>
-
-            <p
-              style={{
-                margin: 0,
-                fontSize: "14px",
-                color: "#44574E",
-                lineHeight: 1.6,
-              }}
-            >
-              {activeModalItem.detailInfo}
-            </p>
-
-            <div
-              style={{
-                background: "#F4F8F6",
-                padding: "12px 16px",
-                borderRadius: "10px",
-                fontSize: "13px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "6px",
-              }}
-            >
-              <div>
-                <strong>Estimasi SLA:</strong> {activeModalItem.sla}
-              </div>
-              <div>
-                <strong>Sasaran Pengguna:</strong> {activeModalItem.who}
-              </div>
-              <div>
-                <strong>Akses Login:</strong>{" "}
-                {activeModalItem.login
-                  ? "Memerlukan SSO Kampus"
-                  : "Akses Publik"}
-              </div>
-            </div>
-
-            <div style={{ display: "flex", gap: "10px", marginTop: "8px" }}>
-              <button
-                onClick={() => setActiveModalItem(null)}
-                style={{
-                  flex: 1,
-                  padding: "12px",
-                  border: "1px solid #DCE6E0",
-                  background: "#FFF",
-                  borderRadius: "10px",
-                  fontWeight: 700,
-                  cursor: "pointer",
-                }}
-              >
-                Tutup
-              </button>
-              <a
-                href={activeModalItem.url}
-                target={
-                  activeModalItem.url.startsWith("http") ? "_blank" : "_self"
-                }
-                rel="noopener noreferrer"
-                style={{
-                  flex: 1.5,
-                  padding: "12px",
-                  background: "#064E3B",
-                  color: "#FFF",
-                  textAlign: "center",
-                  textDecoration: "none",
-                  borderRadius: "10px",
-                  fontWeight: 700,
-                }}
-              >
-                {activeModalItem.actionText}
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
