@@ -90,13 +90,35 @@ export default function Prodi() {
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: C.text, background: C.bg, minHeight: '100vh' }}>
       <section style={{ background: C.primary, color: C.white }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '22px 32px 0' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '18px 32px 0' }}>
+          {/* Tombol kembali kiri atas */}
+          <div style={{ marginBottom: 12 }}>
+            <Link
+              to={`/fakultas/${f.id}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                color: C.light,
+                fontSize: 14,
+                fontWeight: 700,
+                textDecoration: 'none',
+                padding: '8px 14px',
+                borderRadius: 10,
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+              }}
+            >
+              ← Kembali ke {f.nama}
+            </Link>
+          </div>
+
           <nav style={{ fontSize: 13, color: '#B7DCC9' }}>
-            <Link to="/" style={{ color: '#B7DCC9' }}>Beranda</Link>
+            <Link to="/" style={{ color: '#B7DCC9', textDecoration: 'none' }}>Beranda</Link>
             {' / '}
-            <Link to="/fakultas" style={{ color: '#B7DCC9' }}>Fakultas</Link>
+            <Link to="/fakultas" style={{ color: '#B7DCC9', textDecoration: 'none' }}>Fakultas</Link>
             {' / '}
-            <Link to={`/fakultas/${f.id}`} style={{ color: '#B7DCC9' }}>{f.nama}</Link>
+            <Link to={`/fakultas/${f.id}`} style={{ color: '#B7DCC9', textDecoration: 'none' }}>{f.nama}</Link>
             {' / '}
             <span style={{ color: C.white }}>{p.nama}</span>
           </nav>
@@ -288,7 +310,7 @@ export default function Prodi() {
         )}
 
 
-        {/* TAB DOSEN — persis seperti Orang.jsx / screenshot */}
+        {/* TAB DOSEN  */}
         {tab === 'dosen' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div
