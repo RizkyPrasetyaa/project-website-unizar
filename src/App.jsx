@@ -22,6 +22,7 @@ import Orang from "./pages/Orang";
 import Kerjasama from "./pages/Kerjasama";
 import KemahasiswaanAlumni from "./pages/kemahasiswaanAlumni";
 import PetaBuktiBanPt from "./pages/PetaBuktiBanPt";
+import TransparansiPpid from "./pages/TransparansiPpid";
 import Prodi from "./pages/Prodi";
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/kerjasama" element={<Kerjasama />} />
         <Route path="/kemahasiswaan" element={<KemahasiswaanAlumni />} />
         <Route path="/peta-bukti-banpt" element={<PetaBuktiBanPt />} />
+        <Route path="/transparansi-ppid" element={<TransparansiPpid />} />
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 
