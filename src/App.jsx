@@ -18,6 +18,11 @@ import Bpm from "./pages/Bpm";
 import Footer from "./components/Footer";
 import Gug from "./pages/Gug";
 import Layanan from "./pages/layanan";
+import Orang from "./pages/Orang";
+import Kerjasama from "./pages/Kerjasama";
+import KemahasiswaanAlumni from "./pages/kemahasiswaanAlumni";
+import PetaBuktiBanPt from "./pages/PetaBuktiBanPt";
+import Prodi from "./pages/Prodi";
 
 export default function App() {
   return (
@@ -28,6 +33,10 @@ export default function App() {
         {/* Beranda */}
         <Route path="/" element={<Home />} />
         <Route path="/layanan" element={<Layanan />} />
+        <Route path="/orang" element={<Orang />} />
+        <Route path="/kerjasama" element={<Kerjasama />} />
+        <Route path="/kemahasiswaan" element={<KemahasiswaanAlumni />} />
+        <Route path="/peta-bukti-banpt" element={<PetaBuktiBanPt />} />
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 
@@ -47,6 +56,7 @@ export default function App() {
         <Route path="/penelitian" element={<Penelitian />} />
         <Route path="/pengabdian" element={<Pengabdian />} />
         <Route path="/bpm" element={<Bpm />} />
+        <Route path="/prodi" element={<Prodi />} />
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
