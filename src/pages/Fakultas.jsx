@@ -569,7 +569,7 @@ function FakultasDetail({ fac }) {
         )}
 
 
-        {/* TAB DOSEN — persis seperti Orang.jsx / screenshot */}
+        {/* TAB DOSEN — */}
         {tab === 'dosen' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div
@@ -629,7 +629,6 @@ function FakultasDetail({ fac }) {
                   <option value="Fakultas Teknik">Fakultas Teknik</option>
                   <option value="Fakultas Pertanian">Fakultas Pertanian</option>
                   <option value="Fakultas Ekonomi">Fakultas Ekonomi</option>
-                  <option value="FKIP">FKIP</option>
                   <option value="Fakultas Agama Islam">Fakultas Agama Islam</option>
                 </select>
               </div>
