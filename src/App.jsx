@@ -21,6 +21,7 @@ import Layanan from "./pages/layanan";
 import Orang from "./pages/Orang";
 import Kerjasama from "./pages/Kerjasama";
 import KemahasiswaanAlumni from "./pages/kemahasiswaanAlumni";
+import PetaBuktiBanPt from "./pages/PetaBuktiBanPt";
 import Prodi from "./pages/Prodi";
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/orang" element={<Orang />} />
         <Route path="/kerjasama" element={<Kerjasama />} />
         <Route path="/kemahasiswaan" element={<KemahasiswaanAlumni />} />
+        <Route path="/peta-bukti-banpt" element={<PetaBuktiBanPt />} />
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 

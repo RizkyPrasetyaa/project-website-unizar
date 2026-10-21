@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Sidebar() {
   const [sideOpen, setSideOpen] = useState({
     layanan: true,
-    orang: false, // Default kebuka biar keliatan sub-menunya
+    orang: false,
     kerjasama: false,
     mhs: false,
   });
@@ -58,7 +58,7 @@ export default function Sidebar() {
       k: "mhs",
       mono: "Mh",
       label: "Kemahasiswaan & Alumni",
-      route: "/kemahasiswaan",
+      route: "/kemahasiswaan-alumni",
       paramKey: "tab",
       items: [
         { label: "Layanan Mahasiswa", val: "layanan" },
@@ -79,6 +79,7 @@ export default function Sidebar() {
         flexDirection: "column",
         gap: "16px",
         width: "100%",
+        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
       }}
     >
       {/* Tombol Login SSO */}
@@ -235,18 +236,18 @@ export default function Sidebar() {
         style={{
           background: "#FFF8E1",
           border: "1px solid #F2D27A",
-          borderRadius: "14px",
-          padding: "16px",
+          borderRadius: "20px",
+          padding: "22px 20px",
         }}
       >
         <div
           style={{
-            fontSize: "12px",
+            fontSize: "13px",
             fontWeight: 800,
-            letterSpacing: ".12em",
-            color: "#7A5900",
+            letterSpacing: ".1em",
+            color: "#8A6500",
             textTransform: "uppercase",
-            marginBottom: "10px",
+            marginBottom: "16px",
           }}
         >
           PUSAT AKREDITASI
@@ -258,55 +259,168 @@ export default function Sidebar() {
             padding: 0,
             display: "flex",
             flexDirection: "column",
-            gap: "2px",
+            gap: "12px",
           }}
         >
           <li>
             <Link
-              to="/bpm"
+              to="/peta-bukti-banpt"
               style={{
                 width: "100%",
                 textDecoration: "none",
-                display: "flex",
-                justifyContent: "space-between",
-                padding: "10px 6px",
+                display: "block",
                 fontWeight: 700,
-                fontSize: "14px",
+                fontSize: "15px",
                 color: "#13231C",
+                padding: "2px 0",
               }}
             >
-              <span>Peta Bukti BAN-PT</span>
-              <span
-                style={{
-                  background: "#064E3B",
-                  color: "#FFF",
-                  fontSize: "11px",
-                  padding: "2px 8px",
-                  borderRadius: "999px",
-                }}
-              >
-                39
-              </span>
+              Peta Bukti BAN-PT
             </Link>
           </li>
           <li>
             <Link
               to="/bpm"
               style={{
-                width: "100%",
                 textDecoration: "none",
                 display: "block",
-                padding: "10px 6px",
                 fontWeight: 600,
-                fontSize: "14px",
+                fontSize: "15px",
                 color: "#13231C",
+                padding: "2px 0",
               }}
             >
               Pusat Dokumen
             </Link>
           </li>
+          <li>
+            <Link
+              to="/bpm"
+              style={{
+                textDecoration: "none",
+                display: "block",
+                fontWeight: 600,
+                fontSize: "15px",
+                color: "#13231C",
+                padding: "2px 0",
+              }}
+            >
+              Dashboard Kinerja
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/bpm"
+              style={{
+                textDecoration: "none",
+                display: "block",
+                fontWeight: 600,
+                fontSize: "15px",
+                color: "#13231C",
+                padding: "2px 0",
+              }}
+            >
+              Transparansi & PPID
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/bpm"
+              style={{
+                textDecoration: "none",
+                display: "block",
+                fontWeight: 600,
+                fontSize: "15px",
+                color: "#13231C",
+                padding: "2px 0",
+              }}
+            >
+              Pengaduan / WBS
+            </Link>
+          </li>
         </ul>
       </nav>
+
+      {/* Card Akses Dokumen */}
+      <div
+        style={{
+          background: "#FFFFFF",
+          border: "1px solid #DCE6E0",
+          borderRadius: "20px",
+          padding: "22px 20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+        }}
+      >
+        <div style={{ fontWeight: 800, fontSize: "15px", color: "#13231C" }}>
+          Akses dokumen
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "14px",
+            fontSize: "14px",
+            color: "#44574E",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <span
+              style={{
+                background: "#E3F1EA",
+                color: "#064E3B",
+                fontWeight: 800,
+                fontSize: "12px",
+                padding: "4px 12px",
+                borderRadius: "999px",
+                flexShrink: 0,
+              }}
+            >
+              Publik
+            </span>
+            <span>terbuka untuk semua</span>
+          </div>
+
+          <div
+            style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}
+          >
+            <span
+              style={{
+                background: "#FFF3C4",
+                color: "#6B4E00",
+                fontWeight: 800,
+                fontSize: "12px",
+                padding: "4px 12px",
+                borderRadius: "999px",
+                flexShrink: 0,
+              }}
+            >
+              Ringkasan
+            </span>
+            <span style={{ lineHeight: 1.35 }}>
+              ikhtisar publik, dokumen penuh terkunci
+            </span>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <span
+              style={{
+                background: "#FCE8E6",
+                color: "#C1272D",
+                fontWeight: 800,
+                fontSize: "12px",
+                padding: "4px 12px",
+                borderRadius: "999px",
+                flexShrink: 0,
+              }}
+            >
+              Terbatas
+            </span>
+            <span>login SSO / asesor</span>
+          </div>
+        </div>
+      </div>
     </aside>
   );
 }
