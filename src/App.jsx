@@ -20,6 +20,7 @@ import Gug from "./pages/Gug";
 import Layanan from "./pages/layanan";
 import Orang from "./pages/Orang";
 import Kerjasama from "./pages/Kerjasama";
+import KemahasiswaanAlumni from "./pages/kemahasiswaanAlumni";
 import Prodi from "./pages/Prodi";
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/layanan" element={<Layanan />} />
         <Route path="/orang" element={<Orang />} />
         <Route path="/kerjasama" element={<Kerjasama />} />
+        <Route path="/kemahasiswaan" element={<KemahasiswaanAlumni />} />
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 
