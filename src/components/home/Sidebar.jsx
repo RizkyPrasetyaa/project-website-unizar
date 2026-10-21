@@ -279,8 +279,10 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
+            {/* PUSAT DOKUMEN (Kirim state: { tab: "dokumen" } ke Direktori) */}
             <Link
-              to="/bpm"
+              to="/direktori"
+              state={{ tab: "dokumen" }}
               style={{
                 textDecoration: "none",
                 display: "block",
@@ -295,7 +297,7 @@ export default function Sidebar() {
           </li>
           <li>
             <Link
-              to="/bpm"
+              to="/#"
               style={{
                 textDecoration: "none",
                 display: "block",
@@ -310,7 +312,7 @@ export default function Sidebar() {
           </li>
           <li>
             <Link
-              to="/bpm"
+              to="/transparansi-ppid"
               style={{
                 textDecoration: "none",
                 display: "block",
@@ -325,7 +327,8 @@ export default function Sidebar() {
           </li>
           <li>
             <Link
-              to="/bpm"
+              to="/gug"
+              state={{ tab: "wbs" }}
               style={{
                 textDecoration: "none",
                 display: "block",
