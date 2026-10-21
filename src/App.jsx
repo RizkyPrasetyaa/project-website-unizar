@@ -42,8 +42,14 @@ export default function App() {
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 
-        {/* Fakultas */}
+        {/* Fakultas: daftar + detail */}
         <Route path="/fakultas" element={<Fakultas />} />
+        <Route path="/fakultas/:id" element={<Fakultas />} />
+
+        {/* Prodi dinamis */}
+        <Route path="/prodi/:id" element={<Prodi />} />
+        <Route path="/prodi" element={<Prodi />} />
+
 
         {/* Halaman Direktori UNIZAR (Termasuk Pusat Dokumen, Dosen, Unit, dll) */}
         <Route path="/direktori" element={<Direktori />} />
@@ -58,7 +64,6 @@ export default function App() {
         <Route path="/penelitian" element={<Penelitian />} />
         <Route path="/pengabdian" element={<Pengabdian />} />
         <Route path="/bpm" element={<Bpm />} />
-        <Route path="/prodi" element={<Prodi />} />
         {/* Fallback jika rute tidak ditemukan */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

@@ -1,0 +1,1780 @@
+{
+  "fakultas": [
+    {
+      "id": "kedokteran",
+      "nama": "Fakultas Kedokteran",
+      "singkatan": "FK",
+      "tagline": "Mencetak dokter profesional, beretika, dan berwawasan keislaman di NTB",
+      "deskripsi": "Fakultas Kedokteran UNIZAR menyelenggarakan pendidikan dokter dan profesi dokter dengan kurikulum Outcome-Based Education (OBE), jejaring rumah sakit pendidikan, dan penekanan nilai keislaman.",
+      "warna": "#0A6B4F",
+      "dekan": "dr. H. Hendra Kurniawan, Sp.PD",
+      "stats": [
+        {
+          "label": "Dosen",
+          "value": "48"
+        },
+        {
+          "label": "Mahasiswa",
+          "value": "620"
+        },
+        {
+          "label": "Prodi",
+          "value": "2"
+        },
+        {
+          "label": "Akreditasi",
+          "value": "Baik"
+        }
+      ],
+      "lab": [
+        {
+          "nama": "Laboratorium Anatomi",
+          "fungsi": "Praktikum anatomi makroskopis & mikroskopis"
+        },
+        {
+          "nama": "Laboratorium Fisiologi",
+          "fungsi": "Pengukuran fungsi tubuh & praktikum sistem organ"
+        },
+        {
+          "nama": "Skills Lab Klinik",
+          "fungsi": "Simulasi keterampilan klinis dasar & advanced"
+        },
+        {
+          "nama": "Laboratorium Biokimia & Mikrobiologi",
+          "fungsi": "Analisis biokimia dan mikroorganisme patogen"
+        }
+      ],
+      "prodi": [
+        {
+          "id": "pendidikan-dokter",
+          "nama": "Pendidikan Dokter",
+          "jenjang": "S1",
+          "gelar": "S.Ked",
+          "sks": 146,
+          "semester": 7,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "LAM-PTKes",
+            "tahun": "2024",
+            "berlaku": "2029"
+          },
+          "profil": "Program Sarjana Pendidikan Dokter menghasilkan lulusan yang menguasai ilmu kedokteran dasar dan klinis, beretika Islami, serta siap melanjutkan ke tahap profesi dokter.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Sikap: profesionalisme luhur, etika, dan nilai keislaman",
+              "v": "88%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Pengetahuan: landasan ilmiah ilmu kedokteran",
+              "v": "79%"
+            },
+            {
+              "code": "CPL-3",
+              "text": "Keterampilan umum: komunikasi efektif & kolaborasi",
+              "v": "84%"
+            },
+            {
+              "code": "CPL-4",
+              "text": "Keterampilan khusus: keterampilan klinis dasar",
+              "v": "76%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan bekerja di rumah sakit, puskesmas, klinik, dan melanjutkan Profesi Dokter.",
+            "profil": [
+              "Dokter Umum (setelah profesi)",
+              "Peneliti kesehatan",
+              "Pengelola fasilitas kesehatan primer"
+            ],
+            "tracer": {
+              "bekerja": "72%",
+              "studi_lanjut": "18%",
+              "wirausaha": "10%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "dr. H. Hendra Kurniawan, Sp.PD",
+              "jabatan": "Lektor Kepala",
+              "bidang": "Penyakit Dalam"
+            },
+            {
+              "nama": "dr. Siti Aisyah, Sp.A",
+              "jabatan": "Lektor",
+              "bidang": "Ilmu Kesehatan Anak"
+            },
+            {
+              "nama": "dr. Ahmad Fauzi, M.Ked",
+              "jabatan": "Asisten Ahli",
+              "bidang": "Anatomi"
+            },
+            {
+              "nama": "dr. Rina Marlina, Sp.OG",
+              "jabatan": "Lektor",
+              "bidang": "Obstetri & Ginekologi"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pendidikan Agama & Etika Profesi",
+              "sks": "4",
+              "blok": "Blok 1"
+            },
+            {
+              "sem": "1",
+              "mk": "Anatomi Dasar",
+              "sks": "6",
+              "blok": "Blok 2"
+            },
+            {
+              "sem": "2",
+              "mk": "Fisiologi & Biokimia",
+              "sks": "7",
+              "blok": "Blok 3"
+            },
+            {
+              "sem": "2",
+              "mk": "Histologi & Embriologi",
+              "sks": "5",
+              "blok": "Blok 4"
+            },
+            {
+              "sem": "3",
+              "mk": "Bioetika, Hukum Kesehatan & Integritas",
+              "sks": "4",
+              "blok": "Blok 5"
+            },
+            {
+              "sem": "3",
+              "mk": "Patologi Umum",
+              "sks": "6",
+              "blok": "Blok 6"
+            },
+            {
+              "sem": "4",
+              "mk": "Farmakologi Dasar",
+              "sks": "5",
+              "blok": "Blok 7"
+            },
+            {
+              "sem": "4",
+              "mk": "Mikrobiologi & Parasitologi",
+              "sks": "5",
+              "blok": "Blok 8"
+            },
+            {
+              "sem": "5",
+              "mk": "Ilmu Penyakit Dalam Dasar",
+              "sks": "6",
+              "blok": "Blok 9"
+            },
+            {
+              "sem": "5",
+              "mk": "Elektif / Lintas Prodi",
+              "sks": "4",
+              "blok": "Blok Elektif"
+            },
+            {
+              "sem": "6",
+              "mk": "Ilmu Bedah Dasar",
+              "sks": "6",
+              "blok": "Blok 10"
+            },
+            {
+              "sem": "7",
+              "mk": "Keterampilan Klinik & Skripsi",
+              "sks": "8",
+              "blok": "Blok 11"
+            }
+          ]
+        },
+        {
+          "id": "profesi-dokter",
+          "nama": "Profesi Dokter",
+          "jenjang": "Profesi",
+          "gelar": "dr.",
+          "sks": 36,
+          "semester": 4,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "LAM-PTKes",
+            "tahun": "2024",
+            "berlaku": "2029"
+          },
+          "profil": "Program Profesi Dokter menempatkan mahasiswa di rumah sakit pendidikan dan jejaring untuk kepaniteraan klinik hingga siap praktik mandiri.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Kompetensi klinis komprehensif sesuai standar KKI",
+              "v": "82%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Profesionalisme dan etika kedokteran Islam",
+              "v": "90%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan memperoleh gelar dokter dan berhak mengikuti UKMPPD serta praktik.",
+            "profil": [
+              "Dokter Umum",
+              "Dokter di fasilitas primer",
+              "Calon spesialis"
+            ],
+            "tracer": {
+              "bekerja": "85%",
+              "studi_lanjut": "12%",
+              "wirausaha": "3%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "dr. H. Hendra Kurniawan, Sp.PD",
+              "jabatan": "Lektor Kepala",
+              "bidang": "Klinik Penyakit Dalam"
+            },
+            {
+              "nama": "dr. Budi Santoso, Sp.B",
+              "jabatan": "Lektor",
+              "bidang": "Bedah"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Kepaniteraan Klinik Penyakit Dalam",
+              "sks": "6",
+              "blok": "Stase 1"
+            },
+            {
+              "sem": "1",
+              "mk": "Kepaniteraan Klinik Bedah",
+              "sks": "6",
+              "blok": "Stase 2"
+            },
+            {
+              "sem": "2",
+              "mk": "Kepaniteraan Klinik Anak",
+              "sks": "5",
+              "blok": "Stase 3"
+            },
+            {
+              "sem": "2",
+              "mk": "Kepaniteraan Klinik Obstetri-Ginekologi",
+              "sks": "5",
+              "blok": "Stase 4"
+            },
+            {
+              "sem": "3",
+              "mk": "Kepaniteraan Klinik Neurologi & Jiwa",
+              "sks": "4",
+              "blok": "Stase 5"
+            },
+            {
+              "sem": "3",
+              "mk": "Kepaniteraan Klinik IGD & Anestesi",
+              "sks": "4",
+              "blok": "Stase 6"
+            },
+            {
+              "sem": "4",
+              "mk": "Kepaniteraan Klinik Komunitas",
+              "sks": "4",
+              "blok": "Stase 7"
+            },
+            {
+              "sem": "4",
+              "mk": "Ujian Kompetensi & Portofolio",
+              "sks": "2",
+              "blok": "Final"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teknik",
+      "nama": "Fakultas Teknik",
+      "singkatan": "FT",
+      "tagline": "Teknologi tepat guna untuk pembangunan berkelanjutan NTB",
+      "deskripsi": "Fakultas Teknik UNIZAR mengembangkan keilmuan teknik sipil dan ilmu komputer dengan orientasi aplikasi lokal dan industri digital.",
+      "warna": "#0A6B4F",
+      "dekan": "Dr. Maya Syafitri, S.T., M.T.",
+      "stats": [
+        {
+          "label": "Dosen",
+          "value": "32"
+        },
+        {
+          "label": "Mahasiswa",
+          "value": "410"
+        },
+        {
+          "label": "Prodi",
+          "value": "2"
+        },
+        {
+          "label": "Akreditasi",
+          "value": "Baik"
+        }
+      ],
+      "lab": [
+        {
+          "nama": "Laboratorium Struktur & Bahan",
+          "fungsi": "Uji material beton, baja, dan kayu"
+        },
+        {
+          "nama": "Laboratorium Hidrolika",
+          "fungsi": "Simulasi aliran air dan drainase"
+        },
+        {
+          "nama": "Laboratorium Komputasi",
+          "fungsi": "Pemrograman, jaringan, dan AI"
+        },
+        {
+          "nama": "Workshop CAD/CAM",
+          "fungsi": "Desain digital dan prototipe"
+        }
+      ],
+      "prodi": [
+        {
+          "id": "teknik-sipil",
+          "nama": "Teknik Sipil",
+          "jenjang": "S1",
+          "gelar": "S.T.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2023",
+            "berlaku": "2028"
+          },
+          "profil": "Menghasilkan sarjana teknik sipil yang mampu merancang infrastruktur berkelanjutan sesuai kondisi geografis NTB.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Kemampuan desain struktur dan infrastruktur",
+              "v": "81%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Etika profesional dan keselamatan kerja",
+              "v": "87%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan bekerja di kontraktor, konsultan, BUMN, dan pemerintah daerah.",
+            "profil": [
+              "Perencana struktur",
+              "Site engineer",
+              "Konsultan infrastruktur"
+            ],
+            "tracer": {
+              "bekerja": "78%",
+              "studi_lanjut": "8%",
+              "wirausaha": "14%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Dr. Maya Syafitri, S.T., M.T.",
+              "jabatan": "Lektor",
+              "bidang": "Struktur & Bahan"
+            },
+            {
+              "nama": "Ir. Agus Wijaya, M.T.",
+              "jabatan": "Lektor",
+              "bidang": "Geoteknik"
+            },
+            {
+              "nama": "Rina Kartika, S.T., M.T.",
+              "jabatan": "Asisten Ahli",
+              "bidang": "Hidrologi"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Teknik Sipil",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "1",
+              "mk": "Matematika Teknik I",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "1",
+              "mk": "Fisika Dasar",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Mekanika Teknik",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Gambar Teknik & CAD",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Struktur Beton",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Mekanika Tanah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Struktur Baja",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Hidrologi & Drainase",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Perancangan Jalan",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Manajemen Konstruksi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Kerja Praktik",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Tugas Akhir",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        },
+        {
+          "id": "ilmu-komputer",
+          "nama": "Ilmu Komputer",
+          "jenjang": "S1",
+          "gelar": "S.Kom.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2023",
+            "berlaku": "2028"
+          },
+          "profil": "Program studi ilmu komputer berfokus pada pengembangan perangkat lunak, data science, dan sistem informasi.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Pemrograman dan rekayasa perangkat lunak",
+              "v": "85%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Analisis data dan kecerdasan buatan dasar",
+              "v": "78%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan menjadi developer, data analyst, dan wirausaha digital.",
+            "profil": [
+              "Software engineer",
+              "Data analyst",
+              "System analyst"
+            ],
+            "tracer": {
+              "bekerja": "70%",
+              "studi_lanjut": "10%",
+              "wirausaha": "20%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Dr. Andi Pratama, S.Kom., M.Kom.",
+              "jabatan": "Lektor",
+              "bidang": "Rekayasa Perangkat Lunak"
+            },
+            {
+              "nama": "Siti Nurhaliza, S.Kom., M.T.",
+              "jabatan": "Asisten Ahli",
+              "bidang": "Jaringan & Keamanan"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Ilmu Komputer",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "1",
+              "mk": "Algoritma & Pemrograman",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Struktur Data",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Matematika Diskrit",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Basis Data",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Pemrograman Berorientasi Objek",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Jaringan Komputer",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Sistem Operasi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Rekayasa Perangkat Lunak",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Kecerdasan Buatan",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Keamanan Siber",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Magang Industri",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hukum",
+      "nama": "Fakultas Hukum",
+      "singkatan": "FH",
+      "tagline": "Hukum berkeadilan dengan integrasi nilai keislaman",
+      "deskripsi": "Fakultas Hukum UNIZAR menyelenggarakan pendidikan hukum yang mengintegrasikan hukum positif Indonesia dengan nilai-nilai Islam dan kearifan lokal NTB.",
+      "warna": "#0A6B4F",
+      "dekan": "Dr. H. Usman, S.H., M.H.",
+      "stats": [
+        {
+          "label": "Dosen",
+          "value": "22"
+        },
+        {
+          "label": "Mahasiswa",
+          "value": "280"
+        },
+        {
+          "label": "Prodi",
+          "value": "1"
+        },
+        {
+          "label": "Akreditasi",
+          "value": "Baik"
+        }
+      ],
+      "lab": [
+        {
+          "nama": "Laboratorium Hukum",
+          "fungsi": "Simulasi sidang dan legal drafting"
+        },
+        {
+          "nama": "Klinik Hukum",
+          "fungsi": "Bantuan hukum masyarakat"
+        },
+        {
+          "nama": "Perpustakaan Hukum Khusus",
+          "fungsi": "Koleksi undang-undang dan yurisprudensi"
+        }
+      ],
+      "prodi": [
+        {
+          "id": "hukum",
+          "nama": "Hukum",
+          "jenjang": "S1",
+          "gelar": "S.H.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2022",
+            "berlaku": "2027"
+          },
+          "profil": "Menghasilkan sarjana hukum yang mampu menganalisis dan menerapkan hukum secara adil, inklusif, dan berintegritas.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Penguasaan teori dan praktik hukum",
+              "v": "80%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Etika profesi dan keadilan sosial",
+              "v": "86%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan menjadi advokat, jaksa, hakim, legal officer, dan akademisi.",
+            "profil": [
+              "Advokat",
+              "Legal officer",
+              "Aparatur penegak hukum"
+            ],
+            "tracer": {
+              "bekerja": "68%",
+              "studi_lanjut": "15%",
+              "wirausaha": "17%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Ahmad Rizky, S.H., M.H.",
+              "jabatan": "Asisten Ahli",
+              "bidang": "Hukum Pidana & Agraria"
+            },
+            {
+              "nama": "Dr. H. Usman, S.H., M.H.",
+              "jabatan": "Lektor Kepala",
+              "bidang": "Hukum Tata Negara"
+            },
+            {
+              "nama": "Nurul Hidayati, S.H., M.H.",
+              "jabatan": "Lektor",
+              "bidang": "Hukum Perdata"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Ilmu Hukum",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "1",
+              "mk": "Pengantar Hukum Indonesia",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Hukum Pidana",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Hukum Perdata",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Hukum Tata Negara",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Hukum Administrasi Negara",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Hukum Acara Pidana",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Hukum Acara Perdata",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Hukum Islam",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Legal Drafting",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Klinik Hukum",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Magang Advokasi",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ekonomi",
+      "nama": "Fakultas Ekonomi & Bisnis",
+      "singkatan": "FEB",
+      "tagline": "Ekonomi dan bisnis inklusif berbasis syariah dan kewirausahaan",
+      "deskripsi": "Fakultas Ekonomi & Bisnis UNIZAR membekali mahasiswa dengan kompetensi akuntansi, ekonomi pembangunan, dan jiwa kewirausahaan.",
+      "warna": "#0A6B4F",
+      "dekan": "H. Muhammad Zaini, S.E., M.M.",
+      "stats": [
+        {
+          "label": "Dosen",
+          "value": "28"
+        },
+        {
+          "label": "Mahasiswa",
+          "value": "520"
+        },
+        {
+          "label": "Prodi",
+          "value": "2"
+        },
+        {
+          "label": "Akreditasi",
+          "value": "Baik"
+        }
+      ],
+      "lab": [
+        {
+          "nama": "Laboratorium Akuntansi",
+          "fungsi": "Praktik pembukuan dan audit"
+        },
+        {
+          "nama": "Laboratorium Komputer Bisnis",
+          "fungsi": "Software akuntansi & analisis data"
+        },
+        {
+          "nama": "Inkubator Bisnis Mahasiswa",
+          "fungsi": "Pendampingan startup mahasiswa"
+        }
+      ],
+      "prodi": [
+        {
+          "id": "akuntansi",
+          "nama": "Akuntansi",
+          "jenjang": "S1",
+          "gelar": "S.Ak.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2023",
+            "berlaku": "2028"
+          },
+          "profil": "Menghasilkan akuntan yang kompeten, berintegritas, dan siap bersertifikasi profesional.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Pelaporan keuangan dan audit",
+              "v": "83%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Etika akuntan dan tata kelola",
+              "v": "88%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan bekerja di KAP, perusahaan, BUMN, dan lembaga keuangan.",
+            "profil": [
+              "Akuntan",
+              "Auditor",
+              "Controller"
+            ],
+            "tracer": {
+              "bekerja": "75%",
+              "studi_lanjut": "12%",
+              "wirausaha": "13%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Dewi Lestari, S.E., M.Ak.",
+              "jabatan": "Lektor",
+              "bidang": "Akuntansi Keuangan"
+            },
+            {
+              "nama": "Bambang Sutrisno, S.E., M.M.",
+              "jabatan": "Asisten Ahli",
+              "bidang": "Akuntansi Manajemen"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Akuntansi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "1",
+              "mk": "Pengantar Bisnis",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Akuntansi Keuangan Menengah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Statistika Bisnis",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Akuntansi Biaya",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Perpajakan",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Akuntansi Manajemen",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Sistem Informasi Akuntansi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Audit",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Akuntansi Sektor Publik",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Magang KAP/Perusahaan",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        },
+        {
+          "id": "ekonomi-pembangunan",
+          "nama": "Ekonomi Pembangunan",
+          "jenjang": "S1",
+          "gelar": "S.E.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2022",
+            "berlaku": "2027"
+          },
+          "profil": "Fokus pada pembangunan ekonomi daerah, UMKM, dan kebijakan publik.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Analisis kebijakan ekonomi daerah",
+              "v": "79%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Pemberdayaan ekonomi masyarakat",
+              "v": "84%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan bekerja di pemerintah daerah, lembaga pembangunan, dan wirausaha.",
+            "profil": [
+              "Perencana pembangunan",
+              "Analis kebijakan",
+              "Pengelola UMKM"
+            ],
+            "tracer": {
+              "bekerja": "65%",
+              "studi_lanjut": "18%",
+              "wirausaha": "17%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Dr. Fitriani, S.E., M.Si.",
+              "jabatan": "Lektor",
+              "bidang": "Ekonomi Regional"
+            },
+            {
+              "nama": "H. Muhammad Zaini, S.E., M.M.",
+              "jabatan": "Lektor Kepala",
+              "bidang": "Manajemen & Keuangan"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Ekonomi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Mikroekonomi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Makroekonomi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Ekonomi Pembangunan",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Ekonomi Regional",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Ekonomi Publik",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Ekonomi UMKM & Koperasi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Perencanaan Pembangunan",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Magang Instansi",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pertanian",
+      "nama": "Fakultas Pertanian",
+      "singkatan": "FP",
+      "tagline": "Pertanian berkelanjutan dan ketahanan pangan NTB",
+      "deskripsi": "Fakultas Pertanian UNIZAR mengembangkan agribisnis dan agroekoteknologi yang sesuai dengan potensi lokal Nusa Tenggara Barat.",
+      "warna": "#0A6B4F",
+      "dekan": "Dr. Ir. H. Ahmad, M.T.",
+      "stats": [
+        {
+          "label": "Dosen",
+          "value": "24"
+        },
+        {
+          "label": "Mahasiswa",
+          "value": "310"
+        },
+        {
+          "label": "Prodi",
+          "value": "2"
+        },
+        {
+          "label": "Akreditasi",
+          "value": "Baik"
+        }
+      ],
+      "lab": [
+        {
+          "nama": "Laboratorium Tanah & Agroklimat",
+          "fungsi": "Analisis kesuburan tanah dan iklim"
+        },
+        {
+          "nama": "Laboratorium Kultur Jaringan",
+          "fungsi": "Perbanyakan tanaman unggul"
+        },
+        {
+          "nama": "Kebun Percobaan",
+          "fungsi": "Praktik budidaya dan demplot"
+        },
+        {
+          "nama": "Laboratorium Pascapanen",
+          "fungsi": "Pengolahan hasil pertanian"
+        }
+      ],
+      "prodi": [
+        {
+          "id": "agribisnis",
+          "nama": "Agribisnis",
+          "jenjang": "S1",
+          "gelar": "S.P.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2023",
+            "berlaku": "2028"
+          },
+          "profil": "Menghasilkan lulusan yang mampu mengelola rantai nilai pertanian dari hulu ke hilir.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Manajemen agribisnis dan pemasaran",
+              "v": "82%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Kewirausahaan pertanian",
+              "v": "85%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan menjadi pengusaha tani, penyuluh, dan manajer agribisnis.",
+            "profil": [
+              "Entrepreneur pertanian",
+              "Penyuluh",
+              "Manajer rantai pasok"
+            ],
+            "tracer": {
+              "bekerja": "60%",
+              "studi_lanjut": "10%",
+              "wirausaha": "30%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Ir. Suryani, M.Si.",
+              "jabatan": "Lektor",
+              "bidang": "Ekonomi Pertanian"
+            },
+            {
+              "nama": "Dr. Bambang Hermawan, S.P., M.P.",
+              "jabatan": "Lektor",
+              "bidang": "Agribisnis"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Agribisnis",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Ekonomi Pertanian",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Manajemen Agribisnis",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Pemasaran Hasil Pertanian",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Kewirausahaan Pertanian",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Rantai Pasok Agribisnis",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Pembiayaan Agribisnis",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Magang Usaha Tani",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        },
+        {
+          "id": "agroekoteknologi",
+          "nama": "Agroekoteknologi",
+          "jenjang": "S1",
+          "gelar": "S.P.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2022",
+            "berlaku": "2027"
+          },
+          "profil": "Fokus pada teknologi budidaya tanaman yang ramah lingkungan dan produktif.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Teknologi budidaya dan proteksi tanaman",
+              "v": "80%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Pengelolaan sumber daya lahan berkelanjutan",
+              "v": "77%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan menjadi teknolog pertanian, peneliti, dan pengelola lahan.",
+            "profil": [
+              "Teknolog budidaya",
+              "Peneliti pertanian",
+              "Pengelola kebun"
+            ],
+            "tracer": {
+              "bekerja": "62%",
+              "studi_lanjut": "15%",
+              "wirausaha": "23%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Dr. Ir. H. Ahmad, M.T.",
+              "jabatan": "Lektor Kepala",
+              "bidang": "Agroteknologi"
+            },
+            {
+              "nama": "Rina Wulandari, S.P., M.Si.",
+              "jabatan": "Asisten Ahli",
+              "bidang": "Ilmu Tanah"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Agroekoteknologi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Ilmu Tanah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Botani",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Budidaya Tanaman",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Perlindungan Tanaman",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Agroklimatologi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Teknologi Benih",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Pascapanen",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Praktik Lapang",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mipa",
+      "nama": "Fakultas MIPA",
+      "singkatan": "FMIPA",
+      "tagline": "Sains dasar untuk inovasi dan keberlanjutan",
+      "deskripsi": "Fakultas Matematika dan Ilmu Pengetahuan Alam UNIZAR berfokus pada biologi terapan yang mendukung kesehatan, lingkungan, dan biodiversitas NTB.",
+      "warna": "#0A6B4F",
+      "dekan": "Dr. Siti Fatimah, M.Pd.",
+      "stats": [
+        {
+          "label": "Dosen",
+          "value": "16"
+        },
+        {
+          "label": "Mahasiswa",
+          "value": "180"
+        },
+        {
+          "label": "Prodi",
+          "value": "1"
+        },
+        {
+          "label": "Akreditasi",
+          "value": "Baik"
+        }
+      ],
+      "lab": [
+        {
+          "nama": "Laboratorium Biologi Umum",
+          "fungsi": "Praktikum botani, zoologi, dan mikrobiologi"
+        },
+        {
+          "nama": "Laboratorium Genetika",
+          "fungsi": "Analisis DNA dan bioteknologi dasar"
+        },
+        {
+          "nama": "Herbarium & Koleksi Spesimen",
+          "fungsi": "Dokumentasi biodiversitas lokal"
+        }
+      ],
+      "prodi": [
+        {
+          "id": "biologi",
+          "nama": "Biologi",
+          "jenjang": "S1",
+          "gelar": "S.Si.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2023",
+            "berlaku": "2028"
+          },
+          "profil": "Menghasilkan sarjana biologi yang mampu meneliti dan mengelola sumber daya hayati secara berkelanjutan.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Penguasaan konsep biologi dan metode ilmiah",
+              "v": "81%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Konservasi dan pemanfaatan biodiversitas",
+              "v": "79%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan bekerja di lembaga riset, laboratorium, pendidikan, dan konservasi.",
+            "profil": [
+              "Peneliti biologi",
+              "Analis laboratorium",
+              "Konservasionis"
+            ],
+            "tracer": {
+              "bekerja": "58%",
+              "studi_lanjut": "25%",
+              "wirausaha": "17%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Dr. Siti Fatimah, M.Pd.",
+              "jabatan": "Lektor Kepala",
+              "bidang": "Biologi Pendidikan"
+            },
+            {
+              "nama": "Dr. Andi Rahman, S.Si., M.Si.",
+              "jabatan": "Lektor",
+              "bidang": "Ekologi"
+            },
+            {
+              "nama": "Laila Fitri, S.Si., M.Si.",
+              "jabatan": "Asisten Ahli",
+              "bidang": "Mikrobiologi"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Biologi Umum",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "1",
+              "mk": "Kimia Dasar",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Botani",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Zoologi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Mikrobiologi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Genetika",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Ekologi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Bioteknologi",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Konservasi Biodiversitas",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Praktik Lapang",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "agama-islam",
+      "nama": "Fakultas Agama Islam",
+      "singkatan": "FAI",
+      "tagline": "Ilmu keislaman dan ekonomi syariah untuk ummat",
+      "deskripsi": "Fakultas Agama Islam UNIZAR mengembangkan pendidikan ekonomi dan manajemen syariah yang relevan dengan kebutuhan industri keuangan Islam.",
+      "warna": "#0A6B4F",
+      "dekan": "Dr. H. Zulkarnain, M.Ag.",
+      "stats": [
+        {
+          "label": "Dosen",
+          "value": "20"
+        },
+        {
+          "label": "Mahasiswa",
+          "value": "260"
+        },
+        {
+          "label": "Prodi",
+          "value": "2"
+        },
+        {
+          "label": "Akreditasi",
+          "value": "Baik"
+        }
+      ],
+      "lab": [
+        {
+          "nama": "Laboratorium Keuangan Syariah",
+          "fungsi": "Simulasi bank & pasar modal syariah"
+        },
+        {
+          "nama": "Perpustakaan Islam",
+          "fungsi": "Koleksi kitab dan literatur syariah"
+        },
+        {
+          "nama": "Studio Dakwah Digital",
+          "fungsi": "Konten dakwah dan literasi keuangan Islam"
+        }
+      ],
+      "prodi": [
+        {
+          "id": "bisnis-ekonomi-syariah",
+          "nama": "Bisnis Ekonomi Syariah",
+          "jenjang": "S1",
+          "gelar": "S.E.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2023",
+            "berlaku": "2028"
+          },
+          "profil": "Menghasilkan praktisi ekonomi syariah yang menguasai prinsip muamalah dan instrumen keuangan Islam.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Prinsip dan praktik ekonomi syariah",
+              "v": "84%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Etika bisnis Islam dan social finance",
+              "v": "89%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan bekerja di bank syariah, BMT, fintech syariah, dan lembaga zakat.",
+            "profil": [
+              "Praktisi keuangan syariah",
+              "Analis produk syariah",
+              "Pengelola BMT"
+            ],
+            "tracer": {
+              "bekerja": "70%",
+              "studi_lanjut": "12%",
+              "wirausaha": "18%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Dr. H. Zulkarnain, M.Ag.",
+              "jabatan": "Lektor Kepala",
+              "bidang": "Ekonomi Islam"
+            },
+            {
+              "nama": "Nur Aisyah, S.E.I., M.E.",
+              "jabatan": "Lektor",
+              "bidang": "Perbankan Syariah"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Ekonomi Syariah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "1",
+              "mk": "Fiqh Muamalah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Akuntansi Syariah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Perbankan Syariah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Pasar Modal Syariah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Manajemen ZISWAF",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Fintech Syariah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Analisis Laporan Keuangan Syariah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Magang LKS",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        },
+        {
+          "id": "manajemen-syariah",
+          "nama": "Manajemen Syariah",
+          "jenjang": "S1",
+          "gelar": "S.E.",
+          "sks": 144,
+          "semester": 8,
+          "akreditasi": {
+            "peringkat": "Baik",
+            "lembaga": "BAN-PT",
+            "tahun": "2022",
+            "berlaku": "2027"
+          },
+          "profil": "Fokus pada manajemen organisasi dan sumber daya manusia berbasis nilai syariah.",
+          "cpl": [
+            {
+              "code": "CPL-1",
+              "text": "Manajemen organisasi berbasis syariah",
+              "v": "80%"
+            },
+            {
+              "code": "CPL-2",
+              "text": "Kepemimpinan dan etika Islam",
+              "v": "86%"
+            }
+          ],
+          "lulusan": {
+            "ringkasan": "Lulusan menjadi manajer, konsultan SDM, dan pengelola lembaga Islam.",
+            "profil": [
+              "Manajer SDM",
+              "Konsultan organisasi",
+              "Pengelola yayasan"
+            ],
+            "tracer": {
+              "bekerja": "66%",
+              "studi_lanjut": "14%",
+              "wirausaha": "20%"
+            }
+          },
+          "dosen": [
+            {
+              "nama": "Dr. Fatimah Zahra, M.M.",
+              "jabatan": "Lektor",
+              "bidang": "Manajemen Syariah"
+            },
+            {
+              "nama": "H. Rizal, S.E.I., M.M.",
+              "jabatan": "Asisten Ahli",
+              "bidang": "Manajemen Operasional"
+            }
+          ],
+          "kurikulum": [
+            {
+              "sem": "1",
+              "mk": "Pengantar Manajemen Syariah",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "2",
+              "mk": "Manajemen SDM Islam",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Manajemen Operasional",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "3",
+              "mk": "Etika Bisnis Islam",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "4",
+              "mk": "Manajemen Strategik",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "5",
+              "mk": "Kepemimpinan Islam",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "6",
+              "mk": "Manajemen Organisasi Nirlaba",
+              "sks": "3",
+              "blok": "-"
+            },
+            {
+              "sem": "7",
+              "mk": "Magang Lembaga Islam",
+              "sks": "2",
+              "blok": "-"
+            },
+            {
+              "sem": "8",
+              "mk": "Skripsi",
+              "sks": "6",
+              "blok": "-"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
