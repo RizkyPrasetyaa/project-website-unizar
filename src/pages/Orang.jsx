@@ -75,7 +75,7 @@ export default function Orang() {
       f: "[Fakultas] · [Bidang keahlian]",
       j: "Lektor",
       e: "Magister",
-      rawF: "FKIP",
+      rawF: "Fakultas Ekonomi",
     },
     {
       n: "[Nama dosen 7]",
@@ -483,7 +483,6 @@ export default function Orang() {
                   <option value="Fakultas Teknik">Fakultas Teknik</option>
                   <option value="Fakultas Pertanian">Fakultas Pertanian</option>
                   <option value="Fakultas Ekonomi">Fakultas Ekonomi</option>
-                  <option value="FKIP">FKIP</option>
                   <option value="Fakultas Agama Islam">
                     Fakultas Agama Islam
                   </option>
