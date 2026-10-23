@@ -15,19 +15,12 @@ const C = {
   white: '#FFFFFF',
 };
 
-/** Daftar semua fakultas — banner hijau + submenu nama fakultas + tombol kembali */
+/** Daftar semua fakultas — banner hijau + tombol kembali (tanpa submenu, agar tidak double dengan Header) */
 function FakultasList() {
-  const SUBMENU = data.fakultas.map((f) => ({
-    label: f.nama,
-    href: `/fakultas/${f.id}`,
-    access: 'Publik',
-  }));
-
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: C.text, background: C.bg, minHeight: '100vh' }}>
-      {/* Banner hijau */}
       <section style={{ background: C.primary, color: C.white }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '18px 32px 0' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '18px 32px 28px' }}>
           <div style={{ marginBottom: 14 }}>
             <Link
               to="/"
@@ -55,101 +48,11 @@ function FakultasList() {
             <span style={{ color: C.white, fontWeight: 600 }}>Fakultas</span>
           </nav>
 
-          <h1 style={{ margin: '0 0 8px', fontSize: 36, fontWeight: 800, color: C.white, lineHeight: 1.15 }}>
+          <h1 style={{ margin: 0, fontSize: 36, fontWeight: 800, color: C.white, lineHeight: 1.15 }}>
             Fakultas & Program Studi
           </h1>
-          <p style={{ margin: '0 0 20px', fontSize: 15, color: C.light, maxWidth: 560 }}>
-            Klik fakultas di submenu atau kartu di bawah untuk membuka halaman detail.
-          </p>
         </div>
       </section>
-
-      {/* SUBMENU nama fakultas (di dalam Fakultas.jsx, tanpa Header) */}
-      <div style={{ background: C.white, borderBottom: `1px solid ${C.border}`, boxShadow: '0 8px 20px rgba(5,59,44,.06)' }}>
-        <div
-          style={{
-            maxWidth: 1440,
-            margin: '0 auto',
-            padding: '24px 32px',
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 28,
-          }}
-        >
-          <div style={{ flex: '1 1 240px', maxWidth: 300 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.12em', color: '#8A6500', textTransform: 'uppercase' }}>
-              Jelajahi
-            </div>
-            <div style={{ margin: '8px 0 10px', fontSize: 26, fontWeight: 800, color: C.primary, lineHeight: 1.2 }}>
-              Fakultas
-            </div>
-            <p style={{ margin: '0 0 14px', fontSize: 14, lineHeight: 1.55, color: C.muted }}>
-              Fakultas, program studi, status akreditasi, dan kurikulum.
-            </p>
-            <Link
-              to="/fakultas"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                background: C.mid,
-                color: C.white,
-                padding: '10px 16px',
-                borderRadius: 10,
-                fontWeight: 700,
-                fontSize: 14,
-                textDecoration: 'none',
-              }}
-            >
-              Buka halaman →
-            </Link>
-          </div>
-
-          <ul
-            style={{
-              flex: '999 1 560px',
-              listStyle: 'none',
-              margin: 0,
-              padding: 0,
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-              gap: '4px 20px',
-            }}
-          >
-            {SUBMENU.map((it) => (
-              <li key={it.href} style={{ borderBottom: '1px solid #EEF3F0' }}>
-                <Link
-                  to={it.href}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    justifyContent: 'space-between',
-                    gap: 10,
-                    padding: '12px 4px',
-                    color: C.text,
-                    textDecoration: 'none',
-                  }}
-                >
-                  <span style={{ fontWeight: 600, fontSize: 15 }}>{it.label}</span>
-                  <span
-                    style={{
-                      flex: 'none',
-                      fontSize: 11,
-                      fontWeight: 700,
-                      padding: '3px 8px',
-                      borderRadius: 999,
-                      background: C.soft,
-                      color: C.primary,
-                    }}
-                  >
-                    {it.access}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
 
       <div style={{ maxWidth: 1440, margin: '0 auto', padding: '28px 32px 64px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: 16 }}>
@@ -176,7 +79,6 @@ function FakultasList() {
                 </span>
                 <div>
                   <div style={{ fontWeight: 800, fontSize: 18, color: C.primary }}>{f.nama}</div>
-                  <div style={{ fontSize: 13, color: C.muted }}>{f.prodi.length} program studi</div>
                 </div>
               </Link>
 
@@ -187,7 +89,7 @@ function FakultasList() {
                 {f.prodi.map((p) => (
                   <Link
                     key={p.id}
-                    to={`/prodi/${p.id}`}
+                    to={`/fakultas/${f.id}/${p.id}/profil`}
                     style={{
                       fontSize: 14, fontWeight: 600, color: C.text, padding: '8px 10px', borderRadius: 8,
                       background: C.bg, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8,
@@ -262,22 +164,6 @@ function FakultasDetail({ fac }) {
     { l: 'Belum JAD', v: '6%', w: '6%' },
   ];
 
-  const jadStats = useMemo(() => {
-    const total = dosen.length || 1;
-    const order = ['Guru Besar', 'Lektor Kepala', 'Lektor', 'Asisten Ahli'];
-    const counts = {};
-    dosen.forEach((d) => {
-      const key = order.includes(d.jabatan) ? d.jabatan : 'Lainnya';
-      counts[key] = (counts[key] || 0) + 1;
-    });
-    return order
-      .filter((l) => counts[l])
-      .map((l) => {
-        const pct = Math.round((counts[l] / total) * 100);
-        return { l, v: `${pct}%`, w: `${pct}%` };
-      });
-  }, [dosen]);
-
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: C.text, background: C.bg, minHeight: '100vh' }}>
       <div style={{ background: C.primary, color: C.white }}>
@@ -341,14 +227,12 @@ function FakultasDetail({ fac }) {
 
         {tab === 'beranda' && (
           <>
-            {/* Hero: diferensiasi + dekan & angka */}
             <section style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginBottom: 28 }}>
               <div style={{ flex: '3 1 520px', background: C.white, border: `1px solid ${C.border}`, borderRadius: 20, padding: 32 }}>
                 <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.12em', color: '#8A6500', textTransform: 'uppercase' }}>
                   Diferensiasi fakultas
                 </div>
-                <h1 style={{ margin: '10px 0', fontSize: 30, color: C.primary, fontWeight: 800, lineHeight: 1.2 }}>{fac.tagline}</h1>
-                <p style={{ color: '#2B3D35', lineHeight: 1.65, marginBottom: 18 }}>{fac.deskripsi}</p>
+                <h1 style={{ margin: '10px 0 18px', fontSize: 30, color: C.primary, fontWeight: 800, lineHeight: 1.2 }}>{fac.tagline}</h1>
                 <a
                   href="#"
                   style={{
@@ -394,23 +278,12 @@ function FakultasDetail({ fac }) {
               </div>
             </section>
 
-            {/* Program studi */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
-              <div>
-                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.1em', color: '#8A6500', textTransform: 'uppercase' }}>
-                  Indikator 4 · Akreditasi prodi
-                </div>
-                <h2 style={{ margin: '4px 0 0', fontSize: 24, color: C.primary }}>Program studi</h2>
-              </div>
-              <button type="button" onClick={() => setTab('prodi')} style={{ background: 'none', border: 'none', color: C.mid, fontWeight: 700, fontSize: 14, cursor: 'pointer', fontFamily: 'inherit' }}>
-                Bandingkan prodi →
-              </button>
-            </div>
+            <h2 style={{ margin: '0 0 14px', fontSize: 24, color: C.primary }}>Program studi</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 14, marginBottom: 28 }}>
               {fac.prodi.map((p, i) => (
                 <Link
                   key={p.id}
-                  to={`/prodi/${p.id}`}
+                  to={`/fakultas/${fac.id}/${p.id}/profil`}
                   style={{
                     background: C.white, border: `1px solid ${C.border}`, borderRadius: 16, padding: 22,
                     borderTop: `5px solid ${i === 0 ? C.mid : '#3A9B76'}`,
@@ -430,12 +303,8 @@ function FakultasDetail({ fac }) {
               ))}
             </div>
 
-            {/* Mutu Fakultas + Kepakaran */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 16, marginBottom: 28 }}>
               <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 18, padding: 24 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.08em', color: '#8A6500', textTransform: 'uppercase', marginBottom: 6 }}>
-                  Ind. 1–3 di tingkat fakultas
-                </div>
                 <h3 style={{ margin: '0 0 16px', fontSize: 20, color: C.primary }}>Mutu Fakultas (Gugus Penjaminan Mutu)</h3>
                 {[
                   { n: 'Renstra & Standar Fakultas', b: 'Publik', bg: C.soft, fg: C.primary },
@@ -459,12 +328,9 @@ function FakultasDetail({ fac }) {
               </div>
 
               <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 18, padding: 24 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.08em', color: '#8A6500', textTransform: 'uppercase', marginBottom: 6 }}>
-                  Ind. 16–23 · Kepakaran
-                </div>
                 <h3 style={{ margin: '0 0 16px', fontSize: 20, color: C.primary }}>Kelompok keilmuan & pakar</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
-                  {(fac.prodi || []).slice(0, 4).map((p, i) => (
+                  {(fac.prodi || []).slice(0, 4).map((p) => (
                     <div key={p.id} style={{ background: C.bg, borderRadius: 12, padding: 14 }}>
                       <div style={{ fontWeight: 800, fontSize: 14, color: C.primary }}>{p.nama}</div>
                       <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>
@@ -479,7 +345,6 @@ function FakultasDetail({ fac }) {
               </div>
             </div>
 
-            {/* Kabar fakultas */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14 }}>
               <h2 style={{ margin: 0, fontSize: 24, color: C.primary }}>Kabar fakultas</h2>
               <a href="#" style={{ fontSize: 14, fontWeight: 700, color: C.mid, textDecoration: 'none' }}>Semua berita →</a>
@@ -502,7 +367,6 @@ function FakultasDetail({ fac }) {
               ))}
             </div>
 
-            {/* Lab singkat */}
             <h2 style={{ fontSize: 24, color: C.primary, marginBottom: 14 }}>Laboratorium & Fasilitas</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 12 }}>
               {fac.lab.map((l) => (
@@ -523,7 +387,7 @@ function FakultasDetail({ fac }) {
               {fac.prodi.map((p) => (
                 <Link
                   key={p.id}
-                  to={`/prodi/${p.id}`}
+                  to={`/fakultas/${fac.id}/${p.id}/profil`}
                   style={{
                     background: C.white, border: `1px solid ${C.border}`, borderRadius: 16, padding: 24,
                     borderLeft: `5px solid ${C.mid}`, display: 'flex', flexDirection: 'column', gap: 10, color: C.text,
@@ -536,7 +400,9 @@ function FakultasDetail({ fac }) {
                     </span>
                   </div>
                   <div style={{ fontSize: 22, fontWeight: 800 }}>{p.nama}</div>
-                  <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.5, margin: 0 }}>{p.profil.slice(0, 120)}…</p>
+                  {p.profil ? (
+                    <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.5, margin: 0 }}>{p.profil.slice(0, 120)}…</p>
+                  ) : null}
                   <span style={{ fontWeight: 700, color: C.mid, fontSize: 14 }}>Lihat detail →</span>
                 </Link>
               ))}
@@ -568,8 +434,6 @@ function FakultasDetail({ fac }) {
           </>
         )}
 
-
-        {/* TAB DOSEN — */}
         {tab === 'dosen' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div
@@ -777,7 +641,6 @@ function FakultasDetail({ fac }) {
             </div>
           </div>
         )}
-
       </div>
     </div>
   );
