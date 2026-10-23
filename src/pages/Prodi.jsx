@@ -88,7 +88,7 @@ export default function Prodi() {
     });
   }, [p.dosen, f.nama, dosenFac, dosenJad, dosenSearch]);
 
-  // Komposisi tetap seperti Orang (persentase simulasi + dari data prodi)
+  // Komposisi (persentase simulasi + dari data prodi)
   const JAD_STATS_FIXED = [
     { l: 'Guru Besar', v: '4%', w: '4%' },
     { l: 'Lektor Kepala', v: '30%', w: '30%' },
@@ -338,7 +338,7 @@ export default function Prodi() {
         )}
 
 
-        {/* TAB DOSEN — persis seperti Orang.jsx / screenshot */}
+        {/* TAB DOSEN */}
         {tab === 'dosen' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div
@@ -398,7 +398,6 @@ export default function Prodi() {
                   <option value="Fakultas Teknik">Fakultas Teknik</option>
                   <option value="Fakultas Pertanian">Fakultas Pertanian</option>
                   <option value="Fakultas Ekonomi">Fakultas Ekonomi</option>
-                  <option value="FKIP">FKIP</option>
                   <option value="Fakultas Agama Islam">Fakultas Agama Islam</option>
                 </select>
               </div>

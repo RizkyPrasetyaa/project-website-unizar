@@ -52,7 +52,7 @@ export default function App() {
         {/* Detail fakultas: /fakultas/kedokteran */}
         <Route path="/fakultas/:id" element={<Fakultas />} />
 
-        {/* Alias lama */}
+        {/* */}
         <Route path="/prodi/:id/:tab" element={<Prodi />} />
         <Route path="/prodi/:id" element={<Prodi />} />
         <Route path="/prodi" element={<Prodi />} />

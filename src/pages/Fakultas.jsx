@@ -15,7 +15,7 @@ const C = {
   white: '#FFFFFF',
 };
 
-/** Daftar semua fakultas — banner hijau + tombol kembali (tanpa submenu, agar tidak double dengan Header) */
+/** Daftar semua fakultas — banner hijau + tombol kembali */
 function FakultasList() {
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: C.text, background: C.bg, minHeight: '100vh' }}>
@@ -646,7 +646,7 @@ function FakultasDetail({ fac }) {
   );
 }
 
-/** Router internal: /fakultas atau /fakultas/:id */
+/** Router internal: fakultas/:id */
 export default function Fakultas() {
   const { id } = useParams();
   if (!id) return <FakultasList />;
