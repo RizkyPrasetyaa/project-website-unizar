@@ -15,7 +15,7 @@ const C = {
   white: '#FFFFFF',
 };
 
-/** Daftar semua fakultas — banner hijau + tombol kembali */
+/** Daftar semua fakultas — banner hijau + tombol kembali (tanpa submenu, agar tidak double dengan Header) */
 function FakultasList() {
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: C.text, background: C.bg, minHeight: '100vh' }}>
@@ -229,10 +229,7 @@ function FakultasDetail({ fac }) {
           <>
             <section style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginBottom: 28 }}>
               <div style={{ flex: '3 1 520px', background: C.white, border: `1px solid ${C.border}`, borderRadius: 20, padding: 32 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.12em', color: '#8A6500', textTransform: 'uppercase' }}>
-                  Diferensiasi fakultas
-                </div>
-                <h1 style={{ margin: '10px 0 18px', fontSize: 30, color: C.primary, fontWeight: 800, lineHeight: 1.2 }}>{fac.tagline}</h1>
+                <h1 style={{ margin: '0 0 18px', fontSize: 30, color: C.primary, fontWeight: 800, lineHeight: 1.2 }}>{fac.tagline}</h1>
                 <a
                   href="#"
                   style={{
@@ -646,7 +643,7 @@ function FakultasDetail({ fac }) {
   );
 }
 
-/** Router internal: fakultas/:id */
+/** Router internal: /fakultas atau /fakultas/:id */
 export default function Fakultas() {
   const { id } = useParams();
   if (!id) return <FakultasList />;
