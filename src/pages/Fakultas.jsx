@@ -117,7 +117,7 @@ function FakultasList() {
   );
 }
 
-/** Detail satu fakultas */
+/** Detail satu fakultass */
 function FakultasDetail({ fac }) {
   const [sp, setSp] = useSearchParams();
   const tab = sp.get('tab') || 'beranda';
