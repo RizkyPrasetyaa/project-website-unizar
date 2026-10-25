@@ -42,11 +42,18 @@ export default function App() {
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 
-        {/* Fakultas: daftar + detail */}
+        {/* Daftar fakultas */}
         <Route path="/fakultas" element={<Fakultas />} />
+
+        {/* Prodi: /fakultas/kedokteran/profesi-dokter/dosen */}
+        <Route path="/fakultas/:facId/:prodiId/:tab" element={<Prodi />} />
+        <Route path="/fakultas/:facId/:prodiId" element={<Prodi />} />
+
+        {/* Detail fakultas: /fakultas/kedokteran */}
         <Route path="/fakultas/:id" element={<Fakultas />} />
 
-        {/* Prodi dinamis */}
+        {/* */}
+        <Route path="/prodi/:id/:tab" element={<Prodi />} />
         <Route path="/prodi/:id" element={<Prodi />} />
         <Route path="/prodi" element={<Prodi />} />
 

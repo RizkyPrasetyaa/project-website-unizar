@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Link, useParams, Navigate } from 'react-router-dom';
+import { Link, useParams, Navigate, useNavigate } from 'react-router-dom';
 import data from '../data/fakultas.json';
 
 const C = {
@@ -23,17 +23,44 @@ function findProdi(slug) {
   return null;
 }
 
+const VALID_TABS = ['profil', 'akreditasi', 'kurikulum', 'lulusan', 'dosen'];
+
 export default function Prodi() {
-  const { id } = useParams();
-  const [tab, setTab] = useState('profil');
+  // Support:
+  //   /fakultas/:facId/:prodiId/:tab   ← path utama (sesuai breadcrumb)
+  //   /fakultas/:facId/:prodiId
+  //   /prodi/:id/:tab
+  //   /prodi/:id
+  const params = useParams();
+  const navigate = useNavigate();
+  const prodiId = params.prodiId || params.id;
+  const facId = params.facId;
+  const tabParam = params.tab;
+  const tab = VALID_TABS.includes(tabParam) ? tabParam : 'profil';
+
   const [dosenSearch, setDosenSearch] = useState('');
   const [dosenJad, setDosenJad] = useState('all');
   const [dosenFac, setDosenFac] = useState('all');
 
-  const found = findProdi(id || 'pendidikan-dokter');
+  const found = findProdi(prodiId || 'pendidikan-dokter');
   if (!found) return <Navigate to="/fakultas" replace />;
 
   const { prodi: p, fakultas: f } = found;
+
+  // Base path: prefer /fakultas/{fac}/{prodi}/...
+  const basePath = facId
+    ? `/fakultas/${facId}/${p.id}`
+    : `/fakultas/${f.id}/${p.id}`;
+
+  // Redirect ke .../profil jika tab belum ada / tidak valid
+  if (!tabParam) {
+    return <Navigate to={`${basePath}/profil`} replace />;
+  }
+  if (!VALID_TABS.includes(tabParam)) {
+    return <Navigate to={`${basePath}/profil`} replace />;
+  }
+
+  const setTab = (t) => navigate(`${basePath}/${t}`);
   const kurikulum = p.kurikulum || [];
   const bySem = kurikulum.reduce((a, r) => {
     (a[r.sem] = a[r.sem] || []).push(r);
@@ -61,7 +88,7 @@ export default function Prodi() {
     });
   }, [p.dosen, f.nama, dosenFac, dosenJad, dosenSearch]);
 
-  // Komposisi tetap seperti Orang (persentase simulasi + dari data prodi)
+  // Komposisi (persentase simulasi + dari data prodi)
   const JAD_STATS_FIXED = [
     { l: 'Guru Besar', v: '4%', w: '4%' },
     { l: 'Lektor Kepala', v: '30%', w: '30%' },
@@ -90,15 +117,39 @@ export default function Prodi() {
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: C.text, background: C.bg, minHeight: '100vh' }}>
       <section style={{ background: C.primary, color: C.white }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '22px 32px 0' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '18px 32px 0' }}>
+          {/* Tombol kembali kiri atas */}
+          <div style={{ marginBottom: 12 }}>
+            <Link
+              to={`/fakultas/${f.id}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                color: C.light,
+                fontSize: 14,
+                fontWeight: 700,
+                textDecoration: 'none',
+                padding: '8px 14px',
+                borderRadius: 10,
+                background: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+              }}
+            >
+              ← Kembali ke {f.nama}
+            </Link>
+          </div>
+
           <nav style={{ fontSize: 13, color: '#B7DCC9' }}>
-            <Link to="/" style={{ color: '#B7DCC9' }}>Beranda</Link>
+            <Link to="/" style={{ color: '#B7DCC9', textDecoration: 'none' }}>Beranda</Link>
             {' / '}
-            <Link to="/fakultas" style={{ color: '#B7DCC9' }}>Fakultas</Link>
+            <Link to="/fakultas" style={{ color: '#B7DCC9', textDecoration: 'none' }}>Fakultas</Link>
             {' / '}
-            <Link to={`/fakultas/${f.id}`} style={{ color: '#B7DCC9' }}>{f.nama}</Link>
+            <Link to={`/fakultas/${f.id}`} style={{ color: '#B7DCC9', textDecoration: 'none' }}>{f.nama}</Link>
             {' / '}
-            <span style={{ color: C.white }}>{p.nama}</span>
+            <Link to={basePath + '/profil'} style={{ color: '#B7DCC9', textDecoration: 'none' }}>{p.nama}</Link>
+            {' / '}
+            <span style={{ color: C.white, textTransform: 'capitalize' }}>{tab}</span>
           </nav>
 
           <div style={{
@@ -110,7 +161,6 @@ export default function Prodi() {
                 PROGRAM {p.jenjang === 'Profesi' ? 'PROFESI' : 'SARJANA'} · {f.nama.toUpperCase()}
               </span>
               <h1 style={{ margin: '8px 0 10px', fontSize: 36, fontWeight: 800 }}>{p.nama}</h1>
-              <p style={{ margin: 0, fontSize: 15, color: C.light, maxWidth: 640 }}>{p.profil.slice(0, 140)}…</p>
             </div>
             <div style={{
               background: C.white, color: C.text, borderRadius: 16, padding: '16px 20px',
@@ -154,7 +204,7 @@ export default function Prodi() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 18, padding: 26 }}>
               <h2 style={{ margin: '0 0 12px', fontSize: 22, color: C.primary }}>Profil Program Studi</h2>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.7, color: '#2B3D35' }}>{p.profil}</p>
+              {p.profil ? <p style={{ margin: 0, fontSize: 15, lineHeight: 1.7, color: '#2B3D35' }}>{p.profil}</p> : null}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12, marginTop: 20 }}>
                 {[
                   { l: 'Jenjang', v: p.jenjang },
@@ -288,7 +338,7 @@ export default function Prodi() {
         )}
 
 
-        {/* TAB DOSEN — persis seperti Orang.jsx / screenshot */}
+        {/* TAB DOSEN */}
         {tab === 'dosen' && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div
