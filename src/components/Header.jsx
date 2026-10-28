@@ -47,14 +47,14 @@ export default function Header() {
       desc: "Fakultas, program studi, status akreditasi, dan kurikulum.",
       href: "/fakultas",
       items: [
-  { label: "Fakultas Kedokteran", access: "Publik", href: "/fakultas/kedokteran" },
-  { label: "Fakultas Teknik", access: "Publik", href: "/fakultas/teknik" },
-  { label: "Fakultas Hukum", access: "Publik", href: "/fakultas/hukum" },
-  { label: "Fakultas Ekonomi & Bisnis", access: "Publik", href: "/fakultas/ekonomi" },
-  { label: "Fakultas Pertanian", access: "Publik", href: "/fakultas/pertanian" },
-  { label: "Fakultas MIPA", access: "Publik", href: "/fakultas/mipa" },
-  { label: "Fakultas Agama Islam", access: "Publik", href: "/fakultas/agama-islam" },
-],
+        { label: "Fakultas Kedokteran", access: "Publik", href: "/fakultas/kedokteran" },
+        { label: "Fakultas Teknik", access: "Publik", href: "/fakultas/teknik" },
+        { label: "Fakultas Hukum", access: "Publik", href: "/fakultas/hukum" },
+        { label: "Fakultas Ekonomi & Bisnis", access: "Publik", href: "/fakultas/ekonomi" },
+        { label: "Fakultas Pertanian", access: "Publik", href: "/fakultas/pertanian" },
+        { label: "Fakultas MIPA", access: "Publik", href: "/fakultas/mipa" },
+        { label: "Fakultas Agama Islam", access: "Publik", href: "/fakultas/agama-islam" },
+      ],
     },
     direktori: {
       id: "Direktori",
@@ -202,10 +202,15 @@ export default function Header() {
             <span>Mataram, Nusa Tenggara Barat</span>
           </div>
           <div style={{ display: "flex", gap: "18px", alignItems: "center", flexWrap: "wrap" }}>
-            <a href="#" style={{ color: "#E7F2EC", textDecoration: "none" }}>
+            <a
+              href="https://pmb.unizar.ac.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#E7F2EC", textDecoration: "none" }}
+            >
               PMB 2027
             </a>
-            <Link to="/ppid" style={{ color: "#E7F2EC", textDecoration: "none" }}>
+            <Link to="/transparansi-ppid" style={{ color: "#E7F2EC", textDecoration: "none" }}>
               PPID
             </Link>
             <a href="#" style={{ color: "#E7F2EC", textDecoration: "none" }}>
