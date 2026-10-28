@@ -373,34 +373,7 @@ export default function Prodi() {
                     fontFamily: 'inherit',
                   }}
                 />
-              </div>
-              <div style={{ flex: '1 1 180px', display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <label htmlFor="o-f" style={{ fontSize: 12, fontWeight: 700, color: '#44574E' }}>
-                  Fakultas
-                </label>
-                <select
-                  id="o-f"
-                  value={dosenFac}
-                  onChange={(e) => setDosenFac(e.target.value)}
-                  style={{
-                    height: 46,
-                    border: '1.5px solid #B9CCC2',
-                    borderRadius: 10,
-                    padding: '0 12px',
-                    fontSize: 15,
-                    background: '#FFFFFF',
-                    fontFamily: 'inherit',
-                  }}
-                >
-                  <option value="all">Semua fakultas</option>
-                  <option value="Fakultas Kedokteran">Fakultas Kedokteran</option>
-                  <option value="Fakultas Hukum">Fakultas Hukum</option>
-                  <option value="Fakultas Teknik">Fakultas Teknik</option>
-                  <option value="Fakultas Pertanian">Fakultas Pertanian</option>
-                  <option value="Fakultas Ekonomi">Fakultas Ekonomi</option>
-                  <option value="Fakultas Agama Islam">Fakultas Agama Islam</option>
-                </select>
-              </div>
+              </div>              
               <div style={{ flex: '1 1 180px', display: 'flex', flexDirection: 'column', gap: 6 }}>
                 <label htmlFor="o-j" style={{ fontSize: 12, fontWeight: 700, color: '#44574E' }}>
                   Jabatan akademik
