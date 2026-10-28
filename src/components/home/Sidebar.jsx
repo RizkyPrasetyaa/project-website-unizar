@@ -58,7 +58,7 @@ export default function Sidebar() {
       k: "mhs",
       mono: "Mh",
       label: "Kemahasiswaan & Alumni",
-      route: "/kemahasiswaan-alumni",
+      route: "/kemahasiswaan",
       paramKey: "tab",
       items: [
         { label: "Layanan Mahasiswa", val: "layanan" },
@@ -356,9 +356,7 @@ export default function Sidebar() {
           gap: "16px",
         }}
       >
-        <div style={{ fontWeight: 800, fontSize: "15px", color: "#13231C" }}>
-          Akses dokumen
-        </div>
+        <div style={{ fontWeight: 800, fontSize: "15px", color: "#13231C" }}>Akses dokumen</div>
         <div
           style={{
             display: "flex",
@@ -385,9 +383,7 @@ export default function Sidebar() {
             <span>terbuka untuk semua</span>
           </div>
 
-          <div
-            style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}
-          >
+          <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
             <span
               style={{
                 background: "#FFF3C4",
@@ -401,9 +397,7 @@ export default function Sidebar() {
             >
               Ringkasan
             </span>
-            <span style={{ lineHeight: 1.35 }}>
-              ikhtisar publik, dokumen penuh terkunci
-            </span>
+            <span style={{ lineHeight: 1.35 }}>ikhtisar publik, dokumen penuh terkunci</span>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>

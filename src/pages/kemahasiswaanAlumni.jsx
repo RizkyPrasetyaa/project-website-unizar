@@ -122,10 +122,7 @@ export default function KemahasiswaanAlumni() {
               gap: "12px",
             }}
           >
-            <nav
-              aria-label="Breadcrumb"
-              style={{ fontSize: "13px", color: "#B7DCC9" }}
-            >
+            <nav aria-label="Breadcrumb" style={{ fontSize: "13px", color: "#B7DCC9" }}>
               <Link to="/" style={{ color: "#B7DCC9", textDecoration: "none" }}>
                 Beranda
               </Link>{" "}
@@ -143,10 +140,7 @@ export default function KemahasiswaanAlumni() {
             </h1>
           </div>
 
-          <nav
-            aria-label="Lompat ke bagian"
-            style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}
-          >
+          <nav aria-label="Lompat ke bagian" style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
             <button
               onClick={() => scrollToSection("layanan")}
               style={{
@@ -224,11 +218,7 @@ export default function KemahasiswaanAlumni() {
       >
         {/* Section Layanan Mahasiswa dengan Margin Offset Header */}
         <section id="layanan" style={{ scrollMarginTop: "120px" }}>
-          <h2
-            style={{ margin: "0 0 14px", fontSize: "24px", color: "#064E3B" }}
-          >
-            Layanan untuk Mahasiswa
-          </h2>
+          <h2 style={{ margin: "0 0 14px", fontSize: "24px", color: "#064E3B" }}>Layanan untuk Mahasiswa</h2>
           <div
             style={{
               display: "grid",
@@ -268,11 +258,7 @@ export default function KemahasiswaanAlumni() {
                 >
                   {s.m}
                 </span>
-                <span
-                  style={{ fontWeight: 800, fontSize: "15px", lineHeight: 1.3 }}
-                >
-                  {s.t}
-                </span>
+                <span style={{ fontWeight: 800, fontSize: "15px", lineHeight: 1.3 }}>{s.t}</span>
                 <span
                   style={{
                     fontSize: "13px",
@@ -319,9 +305,7 @@ export default function KemahasiswaanAlumni() {
               }}
             >
               <div>
-                <h2 style={{ margin: 0, fontSize: "22px", color: "#064E3B" }}>
-                  Prestasi Mahasiswa per Tingkat
-                </h2>
+                <h2 style={{ margin: 0, fontSize: "22px", color: "#064E3B" }}>Prestasi Mahasiswa per Tingkat</h2>
               </div>
               <div
                 style={{
@@ -385,9 +369,7 @@ export default function KemahasiswaanAlumni() {
               </div>
             </div>
 
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-            >
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               {PRESTASI_STATS.map((p, idx) => (
                 <div
                   key={idx}
@@ -398,9 +380,7 @@ export default function KemahasiswaanAlumni() {
                     alignItems: "center",
                   }}
                 >
-                  <span style={{ fontWeight: 800, color: "#44574E" }}>
-                    {p.y}
-                  </span>
+                  <span style={{ fontWeight: 800, color: "#44574E" }}>{p.y}</span>
                   <span
                     style={{
                       display: "flex",
@@ -440,9 +420,7 @@ export default function KemahasiswaanAlumni() {
               gap: "12px",
             }}
           >
-            <h2 style={{ margin: 0, fontSize: "22px", color: "#064E3B" }}>
-              Prestasi Terbaru
-            </h2>
+            <h2 style={{ margin: 0, fontSize: "22px", color: "#064E3B" }}>Prestasi Terbaru</h2>
             {LATEST_PRESTASI.map((l, idx) => (
               <div
                 key={idx}
@@ -474,12 +452,8 @@ export default function KemahasiswaanAlumni() {
                     gap: "2px",
                   }}
                 >
-                  <span style={{ fontWeight: 700, fontSize: "14px" }}>
-                    {l.t}
-                  </span>
-                  <span style={{ fontSize: "12px", color: "#44574E" }}>
-                    {l.w}
-                  </span>
+                  <span style={{ fontWeight: 700, fontSize: "14px" }}>{l.t}</span>
+                  <span style={{ fontSize: "12px", color: "#44574E" }}>{l.w}</span>
                 </span>
               </div>
             ))}
@@ -522,11 +496,7 @@ export default function KemahasiswaanAlumni() {
             scrollMarginTop: "120px",
           }}
         >
-          <h2
-            style={{ margin: "0 0 14px", fontSize: "22px", color: "#064E3B" }}
-          >
-            Organisasi Mahasiswa & UKM
-          </h2>
+          <h2 style={{ margin: "0 0 14px", fontSize: "22px", color: "#064E3B" }}>Organisasi Mahasiswa & UKM</h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {ORMAWA_LIST.map((u, idx) => (
               <a
@@ -571,9 +541,7 @@ export default function KemahasiswaanAlumni() {
               gap: "16px",
             }}
           >
-            <h2 style={{ margin: 0, fontSize: "24px" }}>
-              Ke mana lulusan UNIZAR melangkah?
-            </h2>
+            <h2 style={{ margin: 0, fontSize: "24px" }}>Ke mana lulusan UNIZAR melangkah?</h2>
             <div
               style={{
                 display: "grid",
@@ -589,9 +557,7 @@ export default function KemahasiswaanAlumni() {
                 }}
               >
                 <div style={{ fontSize: "26px", fontWeight: 800 }}>4,1 bln</div>
-                <div style={{ fontSize: "12px", color: "#D3EBDF" }}>
-                  Masa tunggu kerja
-                </div>
+                <div style={{ fontSize: "12px", color: "#D3EBDF" }}>Masa tunggu kerja</div>
               </div>
               <div
                 style={{
@@ -601,9 +567,7 @@ export default function KemahasiswaanAlumni() {
                 }}
               >
                 <div style={{ fontSize: "26px", fontWeight: 800 }}>72%</div>
-                <div style={{ fontSize: "12px", color: "#D3EBDF" }}>
-                  Bekerja sesuai bidang
-                </div>
+                <div style={{ fontSize: "12px", color: "#D3EBDF" }}>Bekerja sesuai bidang</div>
               </div>
               <div
                 style={{
@@ -613,9 +577,7 @@ export default function KemahasiswaanAlumni() {
                 }}
               >
                 <div style={{ fontSize: "26px", fontWeight: 800 }}>11%</div>
-                <div style={{ fontSize: "12px", color: "#D3EBDF" }}>
-                  Berwirausaha
-                </div>
+                <div style={{ fontSize: "12px", color: "#D3EBDF" }}>Berwirausaha</div>
               </div>
               <div
                 style={{
@@ -625,9 +587,7 @@ export default function KemahasiswaanAlumni() {
                 }}
               >
                 <div style={{ fontSize: "26px", fontWeight: 800 }}>85%</div>
-                <div style={{ fontSize: "12px", color: "#D3EBDF" }}>
-                  Kepuasan pengguna
-                </div>
+                <div style={{ fontSize: "12px", color: "#D3EBDF" }}>Kepuasan pengguna</div>
               </div>
             </div>
             <div
@@ -680,9 +640,7 @@ export default function KemahasiswaanAlumni() {
               gap: "12px",
             }}
           >
-            <h2 style={{ margin: 0, fontSize: "22px", color: "#064E3B" }}>
-              Pusat Karir & Ikatan Alumni
-            </h2>
+            <h2 style={{ margin: 0, fontSize: "22px", color: "#064E3B" }}>Pusat Karir & Ikatan Alumni</h2>
             {JOB_LIST.map((j, idx) => (
               <a
                 key={idx}
@@ -705,9 +663,7 @@ export default function KemahasiswaanAlumni() {
                   }}
                 >
                   <span style={{ fontWeight: 700 }}>{j.t}</span>
-                  <span style={{ fontSize: "12px", color: "#44574E" }}>
-                    {j.c}
-                  </span>
+                  <span style={{ fontSize: "12px", color: "#44574E" }}>{j.c}</span>
                 </span>
                 <span
                   style={{
