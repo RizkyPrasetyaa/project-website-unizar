@@ -27,7 +27,8 @@
         { "label": "Fakultas Hukum", "access": "public", "path": "/fakultas" },
         { "label": "Fakultas Ekonomi & Bisnis", "access": "public", "path": "/fakultas" },
         { "label": "Fakultas Pertanian", "access": "public", "path": "/fakultas" },
-        { "label": "Fakultas MIPA", "access": "public", "path": "/fakultas" }
+        { "label": "Fakultas MIPA", "access": "public", "path": "/fakultas" },
+        { "label": "Fakultas Agama Islam", "access": "public", "path": "/fakultas" }
       ]
     },
     {

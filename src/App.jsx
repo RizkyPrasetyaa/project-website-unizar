@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Profil from "./pages/Profil";
@@ -12,6 +17,13 @@ import Pengabdian from "./pages/Pengabdian";
 import Bpm from "./pages/Bpm";
 import Footer from "./components/Footer";
 import Gug from "./pages/Gug";
+import Layanan from "./pages/layanan";
+import Orang from "./pages/Orang";
+import Kerjasama from "./pages/Kerjasama";
+import KemahasiswaanAlumni from "./pages/kemahasiswaanAlumni";
+import PetaBuktiBanPt from "./pages/PetaBuktiBanPt";
+import TransparansiPpid from "./pages/TransparansiPpid";
+import Prodi from "./pages/Prodi";
 
 export default function App() {
   return (
@@ -21,12 +33,30 @@ export default function App() {
       <Routes>
         {/* Beranda */}
         <Route path="/" element={<Home />} />
-
+        <Route path="/layanan" element={<Layanan />} />
+        <Route path="/orang" element={<Orang />} />
+        <Route path="/kerjasama" element={<Kerjasama />} />
+        <Route path="/kemahasiswaan" element={<KemahasiswaanAlumni />} />
+        <Route path="/peta-bukti-banpt" element={<PetaBuktiBanPt />} />
+        <Route path="/transparansi-ppid" element={<TransparansiPpid />} />
         {/* Profil Institusi */}
         <Route path="/profil" element={<Profil />} />
 
-        {/* Fakultas */}
+        {/* Daftar fakultas */}
         <Route path="/fakultas" element={<Fakultas />} />
+
+        {/* Prodi: /fakultas/kedokteran/profesi-dokter/dosen */}
+        <Route path="/fakultas/:facId/:prodiId/:tab" element={<Prodi />} />
+        <Route path="/fakultas/:facId/:prodiId" element={<Prodi />} />
+
+        {/* Detail fakultas: /fakultas/kedokteran */}
+        <Route path="/fakultas/:id" element={<Fakultas />} />
+
+        {/* */}
+        <Route path="/prodi/:id/:tab" element={<Prodi />} />
+        <Route path="/prodi/:id" element={<Prodi />} />
+        <Route path="/prodi" element={<Prodi />} />
+
 
         {/* Halaman Direktori UNIZAR (Termasuk Pusat Dokumen, Dosen, Unit, dll) */}
         <Route path="/direktori" element={<Direktori />} />
