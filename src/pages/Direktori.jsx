@@ -4,18 +4,17 @@ import { Link, useLocation } from "react-router-dom";
 export default function Direktori() {
   const location = useLocation();
 
-  // Mapping label untuk Breadcrumb Dinamis
+  // Mapping label untuk Breadcrumb Dinamis (Program Studi dihapus)
   const TAB_LABELS = {
     unit: "Unit Kerja",
     dosen: "Direktori Dosen & Pakar",
-    prodi: "Direktori Program Studi",
     dokumen: "Pusat Dokumen",
     kerjasama: "Direktori MoU/MoA",
     peta: "Peta Kampus",
   };
 
-  // 1. Daftar key tab valid yang ada di Direktori
-  const VALID_TABS = ["unit", "dosen", "prodi", "dokumen", "kerjasama", "peta"];
+  // 1. Daftar key tab valid yang ada di Direktori (Program Studi dihapus)
+  const VALID_TABS = ["unit", "dosen", "dokumen", "kerjasama", "peta"];
 
   // 2. Fungsi pembantu untuk dapatkan tab aktif dari location.state
   const getActiveTab = () => {
@@ -29,6 +28,9 @@ export default function Direktori() {
 
   // State sub-tab internal khusus untuk "Unit Kerja"
   const [subUnit, setSubUnit] = useState("biro");
+
+  // State sub-tab internal khusus untuk "Direktori MoU/MoA"
+  const [subKerjasama, setSubKerjasama] = useState("mou");
 
   // 3. Efek re-render otomatis saat location.state ATAU location.key berubah
   useEffect(() => {
@@ -271,6 +273,30 @@ export default function Direktori() {
     ],
   };
 
+  // Data kerja sama terstruktur (MoU & MoA)
+  const KERJASAMA_DATA = {
+    mou: [
+      {
+        title: "MoU Pemda NTB & UNIZAR",
+        desc: "Kemitraan strategis bidang pengabdian masyarakat dan riset daerah.",
+      },
+      {
+        title: "MoU Universitas Mitra Internasional",
+        desc: "Kerja sama pertukaran pelajar, joint research, dan penguatan tridharma perguruan tinggi.",
+      },
+    ],
+    moa: [
+      {
+        title: "MoA Fakultas Kedokteran & RSUD",
+        desc: "Kerja sama wahana pendidikan klinis mahasiswa kedokteran.",
+      },
+      {
+        title: "MoA Fakultas Teknik & Industri Mitra",
+        desc: "Implementasi program magang mahasiswa dan riset terapan industri.",
+      },
+    ],
+  };
+
   return (
     <div
       style={{
@@ -311,7 +337,7 @@ export default function Direktori() {
             </h1>
           </div>
 
-          {/* Sub-Menu Navigasi Tab Utama */}
+          {/* Sub-Menu Navigasi Tab Utama (Program Studi Dihapus) */}
           <div
             role="tablist"
             style={{
@@ -324,7 +350,6 @@ export default function Direktori() {
             {[
               ["unit", "Unit Kerja"],
               ["dosen", "Direktori Dosen & Pakar"],
-              ["prodi", "Direktori Program Studi"],
               ["dokumen", "Pusat Dokumen"],
               ["kerjasama", "Direktori MoU/MoA"],
               ["peta", "Peta Kampus"],
@@ -607,111 +632,7 @@ export default function Direktori() {
           </section>
         )}
 
-        {/* 3. SUB-MENU: DIREKTORI PROGRAM STUDI */}
-        {tab === "prodi" && (
-          <section
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid #DCE6E0",
-              borderRadius: "18px",
-              padding: "28px",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "12px",
-                fontWeight: 800,
-                color: "#8A6500",
-                textTransform: "uppercase",
-              }}
-            >
-              PROGRAM AKADEMIK
-            </span>
-            <h2
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#064E3B",
-                margin: "8px 0 16px",
-              }}
-            >
-              Direktori Program Studi
-            </h2>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "16px",
-              }}
-            >
-              <div
-                style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <h4
-                  style={{
-                    margin: "0 0 8px",
-                    color: "#064E3B",
-                    fontSize: "16px",
-                  }}
-                >
-                  Fakultas Kedokteran
-                </h4>
-                <p style={{ margin: 0, fontSize: "14px", color: "#44574E" }}>
-                  S1 Pendidikan Dokter · Profesi Dokter
-                </p>
-              </div>
-              <div
-                style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <h4
-                  style={{
-                    margin: "0 0 8px",
-                    color: "#064E3B",
-                    fontSize: "16px",
-                  }}
-                >
-                  Fakultas Teknik
-                </h4>
-                <p style={{ margin: 0, fontSize: "14px", color: "#44574E" }}>
-                  S1 Teknik Sipil · S1 Informatika
-                </p>
-              </div>
-              <div
-                style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <h4
-                  style={{
-                    margin: "0 0 8px",
-                    color: "#064E3B",
-                    fontSize: "16px",
-                  }}
-                >
-                  Fakultas Ekonomi
-                </h4>
-                <p style={{ margin: 0, fontSize: "14px", color: "#44574E" }}>
-                  S1 Akuntansi · S1 Manajemen
-                </p>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 4. SUB-MENU: PUSAT DOKUMEN */}
+        {/* 3. SUB-MENU: PUSAT DOKUMEN */}
         {tab === "dokumen" && (
           <div
             style={{ display: "flex", flexDirection: "column", gap: "20px" }}
@@ -1331,7 +1252,7 @@ export default function Direktori() {
           </div>
         )}
 
-        {/* 5. SUB-MENU: DIREKTORI MOU / MOA */}
+        {/* 4. SUB-MENU: DIREKTORI MOU / MOA (WITH SUB-TAB KAPSUL INTERAKTIF) */}
         {tab === "kerjasama" && (
           <section
             style={{
@@ -1356,46 +1277,83 @@ export default function Direktori() {
                 fontSize: "24px",
                 fontWeight: 800,
                 color: "#064E3B",
-                margin: "8px 0 16px",
+                margin: "8px 0 12px",
               }}
             >
               Direktori MoU / MoA
             </h2>
+            <p
+              style={{
+                fontSize: "15px",
+                color: "#44574E",
+                lineHeight: 1.6,
+                margin: "0 0 20px",
+              }}
+            >
+              Daftar Nota Kesepahaman (MoU) dan Perjanjian Kerja Sama (MoA) di
+              lingkungan Universitas Islam Al-Azhar.
+            </p>
+
+            {/* Sub-Tab Internal Kapsul MoU / MoA */}
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                flexWrap: "wrap",
+                marginBottom: "24px",
+              }}
+            >
+              {[
+                ["mou", "MoU (Nota Kesepahaman)"],
+                ["moa", "MoA (Perjanjian Kerja Sama)"],
+              ].map(([subKey, subLabel]) => {
+                const isSel = subKerjasama === subKey;
+                return (
+                  <button
+                    key={subKey}
+                    type="button"
+                    onClick={() => setSubKerjasama(subKey)}
+                    style={{
+                      border: 0,
+                      cursor: "pointer",
+                      padding: "8px 18px",
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      borderRadius: "999px",
+                      background: isSel ? "#064E3B" : "#F4F8F6",
+                      color: isSel ? "#FFFFFF" : "#44574E",
+                      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                    }}
+                  >
+                    {subLabel}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Content Cards MoU / MoA */}
             <div
               style={{ display: "flex", flexDirection: "column", gap: "12px" }}
             >
-              <div
-                style={{
-                  padding: "16px",
-                  background: "#F4F8F6",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <strong style={{ color: "#064E3B" }}>
-                  MoU Pemda NTB & UNIZAR
-                </strong>{" "}
-                — Kemitraan strategis bidang pengabdian masyarakat dan riset
-                daerah.
-              </div>
-              <div
-                style={{
-                  padding: "16px",
-                  background: "#F4F8F6",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <strong style={{ color: "#064E3B" }}>
-                  MoA Fakultas Kedokteran & RSUD
-                </strong>{" "}
-                — Kerja sama wahana pendidikan klinis mahasiswa kedokteran.
-              </div>
+              {KERJASAMA_DATA[subKerjasama]?.map((item, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    padding: "16px",
+                    background: "#F4F8F6",
+                    borderRadius: "12px",
+                    borderLeft: "4px solid #0A6B4F",
+                  }}
+                >
+                  <strong style={{ color: "#064E3B" }}>{item.title}</strong> —{" "}
+                  {item.desc}
+                </div>
+              ))}
             </div>
           </section>
         )}
 
-        {/* 6. SUB-MENU: PETA KAMPUS */}
+        {/* 5. SUB-MENU: PETA KAMPUS */}
         {tab === "peta" && (
           <section
             style={{
