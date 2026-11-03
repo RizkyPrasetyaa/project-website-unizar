@@ -29,17 +29,11 @@ export default function Profil() {
     "capaian",
   ];
 
-  // Ambil state dari navigasi, kalau gak ada atau gak valid otomatis fallback ke 'identitas'
-  const initialTab =
-    location.state?.tab && VALID_TABS.includes(location.state.tab)
-      ? location.state.tab
-      : "identitas";
-
   useEffect(() => {
     if (location.state?.tab && VALID_TABS.includes(location.state.tab)) {
       setTab(location.state.tab);
     } else if (!location.state?.tab) {
-      setTab("identitas"); // Default jika klik langsung menu utama Profil
+      setTab("identitas");
     }
   }, [location.state, location.key]);
 
@@ -715,7 +709,7 @@ export default function Profil() {
           </section>
         )}
 
-        {/* 6. STRUKTUR ORGANISASI */}
+        {/* 6. STRUKTUR ORGANISASI (DIAGRAM + LEGEND GARIS HUBUNGAN) */}
         {tab === "sotk" && (
           <section
             style={{
@@ -723,23 +717,176 @@ export default function Profil() {
               border: "1px solid #DCE6E0",
               borderRadius: "18px",
               padding: "28px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "18px",
             }}
           >
-            <h2
+            <div>
+              <span
+                style={{
+                  fontSize: "12px",
+                  fontWeight: 800,
+                  color: "#8A6500",
+                  textTransform: "uppercase",
+                }}
+              >
+                TATA KELOLA KAMPUS
+              </span>
+              <h2
+                style={{
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  color: "#064E3B",
+                  margin: "6px 0 8px",
+                }}
+              >
+                Struktur Organisasi & Tata Kerja (SOTK)
+              </h2>
+              <p
+                style={{
+                  fontSize: "15px",
+                  color: "#44574E",
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                Bagan tata kerja terintegrasi antara Senat Universitas, Yayasan
+                Pesantren Luhur Al-Azhar, Rektorat, Badan Penjaminan Mutu,
+                Fakultas, dan Unit Pelaksana Teknis.
+              </p>
+            </div>
+
+            {/* Container Gambarnya */}
+            <div
               style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#064E3B",
-                margin: "0 0 16px",
+                background: "#F4F8F6",
+                border: "1px solid #DCE6E0",
+                borderRadius: "14px",
+                padding: "16px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
+                overflowX: "auto",
               }}
             >
-              Struktur Organisasi & Tata Kerja (SOTK)
-            </h2>
-            <p style={{ fontSize: "15px", color: "#44574E", lineHeight: 1.6 }}>
-              Bagan tata kerja terintegrasi antara Senat Universitas, Yayasan,
-              Rektorat, Badan Penjaminan Mutu, Fakultas, dan Unit Pelaksana
-              Teknis.
-            </p>
+              <img
+                src="/assets/img/struktur-organisasi.png"
+                alt="Bagan Struktur Organisasi UNIZAR"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  borderRadius: "8px",
+                  display: "block",
+                }}
+              />
+            </div>
+
+            {/* KETERANGAN PENUTUP: LEGEND GARIS PERINTAH & KOORDINASI (SESUAI GAMBAR MOCKUP) */}
+            <div
+              style={{
+                background: "#F4F8F6",
+                border: "1px solid #DCE6E0",
+                borderRadius: "14px",
+                padding: "18px 22px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
+            >
+              <div
+                style={{ fontSize: "14px", fontWeight: 800, color: "#13231C" }}
+              >
+                Keterangan Hubungan Kerja & Koordinasi:
+              </div>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                  gap: "12px",
+                  fontSize: "13px",
+                  color: "#44574E",
+                }}
+              >
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <span
+                    style={{
+                      width: "24px",
+                      height: "3px",
+                      background: "#13231C",
+                    }}
+                  ></span>
+                  <span>Garis Perintah</span>
+                </div>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <span
+                    style={{
+                      width: "24px",
+                      height: "2px",
+                      borderBottom: "2px dashed #13231C",
+                    }}
+                  ></span>
+                  <span>Garis Koordinasi</span>
+                </div>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <span
+                    style={{
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "3px",
+                      background: "#0A6B4F",
+                    }}
+                  ></span>
+                  <span>Garis Perintah WR I</span>
+                </div>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <span
+                    style={{
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "3px",
+                      background: "#6B46C1",
+                    }}
+                  ></span>
+                  <span>Garis Perintah WR II</span>
+                </div>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <span
+                    style={{
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "3px",
+                      background: "#2B6CB0",
+                    }}
+                  ></span>
+                  <span>Garis Perintah WR III</span>
+                </div>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <span
+                    style={{
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "3px",
+                      background: "#DD6B20",
+                    }}
+                  ></span>
+                  <span>Garis Perintah WR IV</span>
+                </div>
+              </div>
+            </div>
           </section>
         )}
 
@@ -761,7 +908,7 @@ export default function Profil() {
                 margin: "0 0 16px",
               }}
             >
-              Pimpinan Universitas & Yayasan
+              Pimpinan Universitas
             </h2>
             <div
               style={{
@@ -771,11 +918,11 @@ export default function Profil() {
               }}
             >
               {[
-                "Ketua Yayasan",
                 "Rektor",
                 "Wakil Rektor I",
                 "Wakil Rektor II",
                 "Wakil Rektor III",
+                "Wakil Rektor IV",
               ].map((jabatan, i) => (
                 <div
                   key={i}
