@@ -5,6 +5,9 @@ export default function Profil() {
   const location = useLocation();
   const [tab, setTab] = useState("identitas");
 
+  // State untuk internal sub-tab di "pimpinan" (Pimpinan & Yayasan)
+  const [subPimpinan, setSubPimpinan] = useState("universitas");
+
   // Mapping nama key tab ke label untuk Breadcrumb Dinamis
   const TAB_LABELS = {
     identitas: "Sejarah & Identitas",
@@ -709,7 +712,7 @@ export default function Profil() {
           </section>
         )}
 
-        {/* 6. STRUKTUR ORGANISASI (DIAGRAM + LEGEND GARIS HUBUNGAN) */}
+        {/* 6. STRUKTUR ORGANISASI */}
         {tab === "sotk" && (
           <section
             style={{
@@ -757,7 +760,7 @@ export default function Profil() {
               </p>
             </div>
 
-            {/* Container Gambarnya */}
+            {/* Container Gambar (EKSPLISIT STRUKTUR-ORGANISASI.PNG) */}
             <div
               style={{
                 background: "#F4F8F6",
@@ -783,7 +786,7 @@ export default function Profil() {
               />
             </div>
 
-            {/* KETERANGAN PENUTUP: LEGEND GARIS PERINTAH & KOORDINASI (SESUAI GAMBAR MOCKUP) */}
+            {/* Keterangan Penutup */}
             <div
               style={{
                 background: "#F4F8F6",
@@ -900,70 +903,190 @@ export default function Profil() {
               padding: "28px",
             }}
           >
-            <h2
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#064E3B",
-                margin: "0 0 16px",
-              }}
-            >
-              Pimpinan Universitas
-            </h2>
+            {/* SUB-NAVIGASI */}
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: "16px",
+                display: "flex",
+                gap: "12px",
+                borderBottom: "1.5px solid #EEF3F0",
+                paddingBottom: "14px",
+                marginBottom: "24px",
+                overflowX: "auto",
               }}
             >
-              {[
-                "Rektor",
-                "Wakil Rektor I",
-                "Wakil Rektor II",
-                "Wakil Rektor III",
-                "Wakil Rektor IV",
-              ].map((jabatan, i) => (
-                <div
-                  key={i}
+              <button
+                type="button"
+                onClick={() => setSubPimpinan("universitas")}
+                style={{
+                  border: 0,
+                  cursor: "pointer",
+                  padding: "8px 18px",
+                  fontSize: "18px",
+                  fontWeight: 800,
+                  borderRadius: "999px",
+                  background:
+                    subPimpinan === "universitas" ? "#064E3B" : "transparent",
+                  color: subPimpinan === "universitas" ? "#FFFFFF" : "#44574E",
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Pimpinan Universitas
+              </button>
+              <button
+                type="button"
+                onClick={() => setSubPimpinan("yayasan")}
+                style={{
+                  border: 0,
+                  cursor: "pointer",
+                  padding: "8px 18px",
+                  fontSize: "18px",
+                  fontWeight: 800,
+                  borderRadius: "999px",
+                  background:
+                    subPimpinan === "yayasan" ? "#064E3B" : "transparent",
+                  color: subPimpinan === "yayasan" ? "#FFFFFF" : "#44574E",
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Yayasan
+              </button>
+            </div>
+
+            {subPimpinan === "universitas" ? (
+              <div>
+                <h3
                   style={{
-                    background: "#F4F8F6",
-                    border: "1px solid #DCE6E0",
-                    borderRadius: "14px",
-                    padding: "16px",
-                    textAlign: "center",
+                    fontSize: "20px",
+                    fontWeight: 800,
+                    color: "#064E3B",
+                    margin: "0 0 16px",
                   }}
                 >
-                  <div
-                    style={{
-                      width: "64px",
-                      height: "64px",
-                      borderRadius: "50%",
-                      background: "#D3EBDF",
-                      margin: "0 auto 12px",
-                    }}
-                  ></div>
-                  <div
-                    style={{
-                      fontSize: "12px",
-                      fontWeight: 800,
-                      color: "#8A6500",
-                    }}
-                  >
-                    {jabatan}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "15px",
-                      fontWeight: 800,
-                      marginTop: "4px",
-                    }}
-                  >
-                    [Nama Pimpinan]
-                  </div>
+                  Rektorat & Pimpinan Universitas
+                </h3>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                    gap: "16px",
+                  }}
+                >
+                  {[
+                    "Rektor",
+                    "Wakil Rektor I",
+                    "Wakil Rektor II",
+                    "Wakil Rektor III",
+                    "Wakil Rektor IV",
+                  ].map((jabatan, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        background: "#F4F8F6",
+                        border: "1px solid #DCE6E0",
+                        borderRadius: "14px",
+                        padding: "16px",
+                        textAlign: "center",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "64px",
+                          height: "64px",
+                          borderRadius: "50%",
+                          background: "#D3EBDF",
+                          margin: "0 auto 12px",
+                        }}
+                      ></div>
+                      <div
+                        style={{
+                          fontSize: "12px",
+                          fontWeight: 800,
+                          color: "#8A6500",
+                        }}
+                      >
+                        {jabatan}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "15px",
+                          fontWeight: 800,
+                          marginTop: "4px",
+                        }}
+                      >
+                        [Nama Pimpinan]
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div>
+                <h3
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 800,
+                    color: "#064E3B",
+                    margin: "0 0 16px",
+                  }}
+                >
+                  Pengurus Yayasan Pesantren Luhur Al-Azhar
+                </h3>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                    gap: "16px",
+                  }}
+                >
+                  {[
+                    "Ketua Yayasan",
+                    "Sekretaris Yayasan",
+                    "Bendahara Yayasan",
+                  ].map((jabatan, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        background: "#F1F5F2",
+                        border: "1px solid #DCE6E0",
+                        borderRadius: "14px",
+                        padding: "16px",
+                        textAlign: "center",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "64px",
+                          height: "64px",
+                          borderRadius: "50%",
+                          background: "#B7DCC9",
+                          margin: "0 auto 12px",
+                        }}
+                      ></div>
+                      <div
+                        style={{
+                          fontSize: "12px",
+                          fontWeight: 800,
+                          color: "#8A6500",
+                        }}
+                      >
+                        {jabatan}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "15px",
+                          fontWeight: 800,
+                          marginTop: "4px",
+                        }}
+                      >
+                        [Nama Pengurus Yayasan]
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
         )}
 
