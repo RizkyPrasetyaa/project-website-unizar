@@ -6,7 +6,7 @@ export default function Direktori() {
 
   // Mapping label untuk Breadcrumb Dinamis
   const TAB_LABELS = {
-    unit: "Unit Kerja & Kontak",
+    unit: "Unit Kerja",
     dosen: "Direktori Dosen & Pakar",
     prodi: "Direktori Program Studi",
     dokumen: "Pusat Dokumen",
@@ -26,6 +26,9 @@ export default function Direktori() {
   };
 
   const [tab, setTab] = useState(getActiveTab());
+
+  // State sub-tab internal khusus untuk "Unit Kerja"
+  const [subUnit, setSubUnit] = useState("biro");
 
   // 3. Efek re-render otomatis saat location.state ATAU location.key berubah
   useEffect(() => {
@@ -178,6 +181,96 @@ export default function Direktori() {
   const selDoc = DOCS[selectedIdx] || DOCS[0];
   const selStyle = STY[selDoc.acc];
 
+  // Data unit kerja terstruktur berdasarkan kategori sub-tab
+  const UNIT_KERJA_DATA = {
+    biro: [
+      {
+        name: "Biro Akademik",
+        email: "akademik@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Kemahasiswaan",
+        email: "kemahasiswaan@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Keuangan",
+        email: "keuangan@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro SDM",
+        email: "sdm@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Umum",
+        email: "biroumum@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 1",
+      },
+      {
+        name: "Biro HKA (Humas & Kerjasama)",
+        email: "hka@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Renstrabang",
+        email: "renstrabang@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Hukum & Adm",
+        email: "hukum@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+    ],
+    lembaga: [
+      {
+        name: "Lembaga Penelitian dan Pengabdian (LPPM)",
+        email: "lppm@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+    ],
+    badan: [
+      {
+        name: "Badan Penjaminan Mutu (BPM)",
+        email: "bpm@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+    ],
+    upt: [
+      {
+        name: "Perpustakaan",
+        email: "perpus@unizar.ac.id",
+        loc: "Gedung UPT Lt. 1",
+      },
+      {
+        name: "Unizar Learning Center (ULC)",
+        email: "ulc@unizar.ac.id",
+        loc: "Gedung UPT Lt. 2",
+      },
+      {
+        name: "Inkubator Bisnis Teknologi (ITe)",
+        email: "ite@unizar.ac.id",
+        loc: "Gedung Inkubasi",
+      },
+      {
+        name: "Unit Bisnis",
+        email: "unitbisnis@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 1",
+      },
+      { name: "Unit K3", email: "k3@unizar.ac.id", loc: "Gedung Pelayanan K3" },
+    ],
+    ppkpt: [
+      {
+        name: "Satgas Pencegahan dan Penanganan Kekerasan di Perguruan Tinggi (PPKPT)",
+        email: "satgas.ppkpt@unizar.ac.id",
+        loc: "Gedung Layanan Khusus",
+      },
+    ],
+  };
+
   return (
     <div
       style={{
@@ -206,7 +299,7 @@ export default function Direktori() {
             </Link>{" "}
             / <span style={{ color: "#B7DCC9" }}>Direktori</span> /{" "}
             <span style={{ color: "#FFFFFF", fontWeight: 600 }}>
-              {TAB_LABELS[tab] || "Unit Kerja & Kontak"}
+              {TAB_LABELS[tab] || "Unit Kerja"}
             </span>
           </nav>
 
@@ -214,11 +307,11 @@ export default function Direktori() {
             <h1
               style={{ margin: "6px 0 0", fontSize: "40px", fontWeight: 800 }}
             >
-              Direktori
+              Direktori UNIZAR
             </h1>
           </div>
 
-          {/* Sub-Menu Navigasi Tab Persis Profil */}
+          {/* Sub-Menu Navigasi Tab Utama */}
           <div
             role="tablist"
             style={{
@@ -229,7 +322,7 @@ export default function Direktori() {
             }}
           >
             {[
-              ["unit", "Unit Kerja & Kontak"],
+              ["unit", "Unit Kerja"],
               ["dosen", "Direktori Dosen & Pakar"],
               ["prodi", "Direktori Program Studi"],
               ["dokumen", "Pusat Dokumen"],
@@ -271,7 +364,7 @@ export default function Direktori() {
           gap: "24px",
         }}
       >
-        {/* 1. SUB-MENU: UNIT KERJA & KONTAK */}
+        {/* 1. SUB-MENU: UNIT KERJA (WITH SUB-TAB KAPSUL) */}
         {tab === "unit" && (
           <section
             style={{
@@ -299,7 +392,7 @@ export default function Direktori() {
                 margin: "8px 0 12px",
               }}
             >
-              Unit Kerja & Kontak Kampus
+              Unit Kerja
             </h2>
             <p
               style={{
@@ -309,9 +402,51 @@ export default function Direktori() {
                 margin: "0 0 20px",
               }}
             >
-              Daftar biro, lembaga, dan unit kerja operasional di lingkungan
+              Daftar biro, lembaga, badan, UPT, dan satgas di lingkungan
               Universitas Islam Al-Azhar.
             </p>
+
+            {/* Sub-Tab Internal Kapsul */}
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                flexWrap: "wrap",
+                marginBottom: "24px",
+              }}
+            >
+              {[
+                ["biro", "Biro"],
+                ["lembaga", "Lembaga"],
+                ["badan", "Badan"],
+                ["upt", "UPT"],
+                ["ppkpt", "Satgas PPKPT"],
+              ].map(([subKey, subLabel]) => {
+                const isSel = subUnit === subKey;
+                return (
+                  <button
+                    key={subKey}
+                    type="button"
+                    onClick={() => setSubUnit(subKey)}
+                    style={{
+                      border: 0,
+                      cursor: "pointer",
+                      padding: "8px 18px",
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      borderRadius: "999px",
+                      background: isSel ? "#064E3B" : "#F4F8F6",
+                      color: isSel ? "#FFFFFF" : "#44574E",
+                      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                    }}
+                  >
+                    {subLabel}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Content Cards */}
             <div
               style={{
                 display: "grid",
@@ -319,14 +454,7 @@ export default function Direktori() {
                 gap: "16px",
               }}
             >
-              {[
-                "Rektorat & Sekretariat",
-                "Badan Penjaminan Mutu (BPM)",
-                "LPPM UNIZAR",
-                "Biro Keuangan & Administrasi",
-                "Biro Kemahasiswaan",
-                "UPT Perpustakaan",
-              ].map((u, i) => (
+              {UNIT_KERJA_DATA[subUnit]?.map((u, i) => (
                 <div
                   key={i}
                   style={{
@@ -345,7 +473,7 @@ export default function Direktori() {
                       fontWeight: 800,
                     }}
                   >
-                    {u}
+                    {u.name}
                   </h4>
                   <p
                     style={{
@@ -355,9 +483,9 @@ export default function Direktori() {
                       lineHeight: 1.5,
                     }}
                   >
-                    Email: unit{i + 1}@unizar.ac.id
+                    Email: {u.email}
                     <br />
-                    Lokasi: Gedung Rektorat Lt. 2
+                    Lokasi: {u.loc}
                   </p>
                 </div>
               ))}
@@ -1267,7 +1395,7 @@ export default function Direktori() {
           </section>
         )}
 
-        {/* 6. SUB-MENU: PETA KAMPUS (PETA INTERAKTIF + LINK BUKA MAPS) */}
+        {/* 6. SUB-MENU: PETA KAMPUS */}
         {tab === "peta" && (
           <section
             style={{
@@ -1310,7 +1438,6 @@ export default function Direktori() {
                 </h2>
               </div>
 
-              {/* Tombol Langsung Buka Google Maps */}
               <a
                 href="https://maps.google.com/?q=-8.606907,116.144187"
                 target="_blank"
@@ -1332,7 +1459,6 @@ export default function Direktori() {
               </a>
             </div>
 
-            {/* Container Embed Google Maps */}
             <div
               style={{
                 position: "relative",
