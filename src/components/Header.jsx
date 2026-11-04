@@ -32,6 +32,7 @@ export default function Header() {
       href: "/profil",
       defaultTab: "identitas",
       items: [
+<<<<<<< HEAD
         { label: "Sejarah & Identitas", access: "Publik", tab: "identitas" },
         {
           label: "Visi, Misi & Diferensiasi Misi",
@@ -48,6 +49,12 @@ export default function Header() {
           access: "Ringkasan",
           tab: "evaluasi",
         },
+=======
+        { label: "Sambutan & Sejarah", access: "Publik", tab: "identitas" },
+        { label: "Visi, Misi & Diferensiasi Misi", access: "Publik", tab: "visimisi" },
+        { label: "RIP, Renstra & Roadmap", access: "Ringkasan", tab: "renstra" },
+        { label: "Evaluasi Capaian Tridharma", access: "Ringkasan", tab: "evaluasi" },
+>>>>>>> page-profil
         { label: "Statuta", access: "Publik", tab: "statuta" },
         {
           label: "Struktur Organisasi & Tata Kerja",
