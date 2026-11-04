@@ -32,7 +32,7 @@ export default function Header() {
       href: "/profil",
       defaultTab: "identitas",
       items: [
-        { label: "Sejarah & Identitas", access: "Publik", tab: "identitas" },
+        { label: "Sambutan & Sejarah", access: "Publik", tab: "identitas" },
         { label: "Visi, Misi & Diferensiasi Misi", access: "Publik", tab: "visimisi" },
         { label: "RIP, Renstra & Roadmap", access: "Ringkasan", tab: "renstra" },
         { label: "Evaluasi Capaian Tridharma", access: "Ringkasan", tab: "evaluasi" },

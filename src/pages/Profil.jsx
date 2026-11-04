@@ -10,14 +10,14 @@ export default function Profil() {
 
   // Mapping nama key tab ke label untuk Breadcrumb Dinamis
   const TAB_LABELS = {
-    identitas: "Sejarah & Identitas",
+    identitas: "Sambutan & Sejarah",
     visimisi: "Visi, Misi & Diferensiasi",
     renstra: "RIP, Renstra & Roadmap",
     evaluasi: "Evaluasi Tridharma",
     statuta: "Statuta",
     sotk: "Struktur Organisasi",
     pimpinan: "Pimpinan & Yayasan",
-    capaian: "Capaian & Penghargaan",
+    penghargaan: "Penghargaan",
   };
 
   // Daftar key tab yang valid di halaman Profil
@@ -29,7 +29,7 @@ export default function Profil() {
     "statuta",
     "sotk",
     "pimpinan",
-    "capaian",
+    "penghargaan",
   ];
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function Profil() {
             </Link>{" "}
             / <span style={{ color: "#B7DCC9" }}>Profil</span> /{" "}
             <span style={{ color: "#FFFFFF", fontWeight: 600 }}>
-              {TAB_LABELS[tab] || "Sejarah & Identitas"}
+              {TAB_LABELS[tab] || "Sambutan & Sejarah"}
             </span>
           </nav>
 
@@ -91,14 +91,14 @@ export default function Profil() {
             }}
           >
             {[
-              ["identitas", "Sejarah & Identitas"],
+              ["identitas", "Sambutan & Sejarah"],
               ["visimisi", "Visi, Misi & Diferensiasi"],
               ["renstra", "RIP, Renstra & Roadmap"],
               ["evaluasi", "Evaluasi Tridharma"],
               ["statuta", "Statuta"],
               ["sotk", "Struktur Organisasi"],
               ["pimpinan", "Pimpinan & Yayasan"],
-              ["capaian", "Capaian & Penghargaan"],
+              ["penghargaan", "Penghargaan"],
             ].map(([k, label]) => (
               <button
                 key={k}
@@ -134,197 +134,364 @@ export default function Profil() {
           gap: "24px",
         }}
       >
-        {/* 1. SEJARAH & IDENTITAS */}
+        {/* 1. SAMBUTAN & SEJARAH */}
         {tab === "identitas" && (
-          <section
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid #DCE6E0",
-              borderRadius: "18px",
-              padding: "28px",
-            }}
-          >
-            <span
+          <>
+            <section
               style={{
-                fontSize: "12px",
-                fontWeight: 800,
-                color: "#8A6500",
-                textTransform: "uppercase",
-              }}
-            >
-              SEJARAH & REKAM JEJAK
-            </span>
-            <h2
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#064E3B",
-                margin: "8px 0 12px",
-              }}
-            >
-              Sejarah Universitas Islam Al-Azhar
-            </h2>
-            <p
-              style={{
-                fontSize: "15px",
-                color: "#44574E",
-                lineHeight: 1.6,
-                margin: "0 0 16px",
-              }}
-            >
-              Yayasan Pesantren Luhur Al-Azhar berdiri tahun 1979, mengambil
-              peran di bidang pendidikan. Yayasan menganggap bidang pendidikan
-              merupakan persoalan yang sangat urgen untuk dipecahkan. Pada saat
-              yang bersamaan, jumlah perguruan tinggi di NTB masih sangat
-              sedikit, tidak sebanding dengan jumlah calon mahasiswa yang terus
-              mengalami peningkatan dari tahun ke tahun. Untuk alasan itulah,
-              kemudian pada tanggal 10 Mei 1981 Yayasan Pesantren Luhur Al-Azhar
-              mengeluarkan Surat Keputusan Nomor 01/YPLA/1981 tentang
-              Pembentukan Universitas Islam Al-Azhar di Provinsi Nusa Tenggara
-              Barat. Pada mulanya UNIZAR memiliki 4 (empat) Fakultas, yakni: (1)
-              Fakultas Hukum: Jurusan Hukum Keperdataan dan Jurusan Hukum
-              Pidana, yang belakangan pada tahun 1993, program nasional
-              pendidikan tinggi ilmu hukum mengalami reorientasi pendidikan yang
-              dilaksanakan dengan melebur seluruh jurusan menjadi program studi
-              tunggal, yakni program studi ilmu hukum, (2) Fakultas Pertanian:
-              Program Studi Sosial Ekonomi, (3) Fakultas Teknik: Program Studi
-              Teknik Sipil, (4) Fakultas Ekonomi: Program Studi Ekonomi
-              Pembangunan. Kesemuanya mendapat status terdaftar dari Menteri
-              Pendidikan dan Kebudayaan, yang kala itu dijabat oleh Prof. Dr.
-              Nugroho Notusanto, pada tanggal 18 Agustus 1984, dengan SK Nomor
-              0378/0/1984 tentang Pemberian Status Terdaftar kepada Fakultas dan
-              Jurusan dalam Lingkungan Universitas Islam Al-Azhar di Mataram.
-              Setelah itu, Rektor sekaligus pendiri Unizar, orang menyebutnya
-              tokoh tiga zaman, H. Abdurrahim, S.H, menggagas pendirian Fakultas
-              Kedokteran. Namun, karena berbagai persyaratan masih belum
-              dipenuhi saat itu, maka atas saran Prof. Dr. dr. Soewignjo
-              Soemohardjo, Sp.PD, KGEH, tahun 1990 berdirilah Fakultas Biologi.
-              Dalam proses pengurusan ijin, atas saran dari Kopertis Wilayah
-              VIII, namanya kemudian berubah menjadi Fakultas Matematika dan
-              Ilmu Pengetahuan Alam (MIPA), sedangkan biologi dijadikan nama
-              jurusan dan program studi. Kurang lebih dua tahun berikutnya,
-              tepatnya tanggal 28 April 1992, Fakultas MIPA mendapat status
-              terdaftar dari Direktur Jenderal Pendidikan Tinggi (Dirjen Dikti)
-              dengan Keputusan Nomor 154/DIKTI/Kep/1992 tentang Pemberian Status
-              Terdaftar kepada Jurusan Biologi Program Studi Biologi untuk
-              Jenjang Program S1 pada Fakultas MIPA di Lingkungan Unizar di
-              Mataram. Fakultas baru ini dianggap sebagai embrio dari Fakultas
-              Kedokteran. Beberapa tahun setelahnya, tepatnya tahun 2000,
-              gagasan untuk mendirikan Fakultas Kedokteran dimunculkan kembali,
-              dan baru setelah 4 (empat) tahun kemudian, tepatnya pada tanggal
-              17 Juni 2004, Dirjen Dikti mengeluarkan Surat Ijin
-              Penyelenggaraan, yakni dengan Surat nomor 2100/D/T/2004, perihal
-              Ijin Penyelenggaraan Program Studi Pendidikan Dokter pada
-              Universitas Islam Al-Azhar (Unizar) Mataram. Setelah itu,
-              berdirilah Program Studi Akuntansi dengan SK Izin Operasional
-              Nomor 500/KPT/I/2016 tanggal 7 Desember 2016. Selanjutnya, Program
-              Studi Agroekoteknologi berdiri melalui Keputusan Menteri
-              Pendidikan Dan Kebudayaan Republik Indonesia Nomor 1193/M/2020
-              tentang Izin Pembukaan Program Studi Agroekoteknologi Program
-              Sarjana Pada Universitas Islam Al-Azhar di Kota Mataram yang
-              diselenggarakan oleh Yayasan Pesantren Luhur Al-Azhar tanggal 30
-              Desember 2020. Untuk memenuhi kebutuhan dan tantangan di zaman
-              yang semakin berkembang saat ini. Pada tahun 2022 didirikan
-              Program Studi Ilmu Komputer pada Fakultas Teknik yang saat ini
-              terakreditasi dengan nomor 007/SK/LAM-INFOKOM/Ak.Min/S/I/2024.
-              Setahun berikutnya, yaitu pada 2023, selain penambahan program
-              studi, Universitas Islam Al-Azhar juga mendirikan Fakultas Agama
-              Islam yang memiliki Program Studi Ekonomi Syariah yang
-              terakreditasi dengan nomor: 050/DE/A.5/AR.11/X/2023, dan Program
-              Studi Manajemen Bisnis Syariah dengan nomor akreditasi:
-              081/DE/A.5/AR.11/XII/2023.
-            </p>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-                gap: "16px",
-                marginTop: "20px",
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "28px",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "28px",
+                alignItems: "start",
               }}
             >
               <div
                 style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  gap: "12px",
+                  flex: "0 1 240px",
                 }}
               >
-                <div
+                {/* Foto Rektor menggantikan div placeholder */}
+                <img
+                  src="/assets/img/rektor.png" /* Sesuaikan nama & format file gambarmu (jpg/png) */
+                  alt="Rektor UNIZAR"
                   style={{
-                    fontSize: "13px",
-                    fontWeight: 700,
-                    color: "#0A6B4F",
+                    width: "100%",
+                    maxWidth: "220px",
+                    aspectRatio: "3 / 4",
+                    borderRadius: "16px",
+                    objectFit: "cover" /* Memastikan gambar tidak gepeng */,
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                   }}
-                >
-                  Nama Resmi
-                </div>
-                <div
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: 800,
-                    marginTop: "4px",
-                  }}
-                >
-                  Universitas Islam Al-Azhar
+                />
+                <div>
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: 800,
+                      color: "#064E3B",
+                    }}
+                  >
+                    Rektor UNIZAR
+                  </div>
+                  <div style={{ fontSize: "13px", color: "#44574E" }}>
+                    Universitas Islam Al-Azhar
+                  </div>
                 </div>
               </div>
+
+              <div style={{ flex: "1 1 420px", minWidth: "280px" }}>
+                <span
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 800,
+                    color: "#8A6500",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                  }}
+                >
+                  Sambutan Rektor
+                </span>
+                <h2
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: 800,
+                    color: "#064E3B",
+                    margin: "8px 0 16px",
+                  }}
+                >
+                  Membangun generasi unggul berintegritas
+                </h2>
+                <div
+                  style={{
+                    fontSize: "15px",
+                    color: "#44574E",
+                    lineHeight: 1.75,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "14px",
+                    borderLeft: "4px solid #0A6B4F",
+                    paddingLeft: "18px",
+                  }}
+                >
+                  <p
+                    style={{ margin: 0, fontStyle: "italic", color: "#13231C" }}
+                  >
+                    Salam sejahtera bagi kita semua.
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    Sebagai pionir pendidikan tinggi di Indonesia, Universitas
+                    Islam Al-Azhar Mataram (UNIZAR) memiliki akar yang kuat
+                    dalam tradisi kebebasan akademik, di mana keberagaman
+                    pemikiran mendapatkan ruang apresiasi yang tinggi. Kami
+                    senantiasa menjaga dan mengembangkan lingkungan akademik
+                    yang tidak hanya kondusif, tetapi juga mendorong mahasiswa
+                    untuk berpikir kritis, kreatif, dan inovatif.
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    Dalam perjalanan kami, UNIZAR berkomitmen untuk menjadi
+                    lembaga pendidikan yang unggul dan dapat diandalkan dalam
+                    mencetak pemimpin masa depan. Melalui pendidikan yang
+                    berbasis pada nilai-nilai Islam yang moderat, kami mendidik
+                    mahasiswa tidak hanya dalam aspek ilmu pengetahuan dan
+                    keterampilan, tetapi juga dalam membangun karakter yang
+                    tangguh, berintegritas, dan memiliki kepedulian sosial yang
+                    tinggi.
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    Lingkungan pembelajaran di UNIZAR dipenuhi dengan semangat,
+                    kolaborasi, serta potensi untuk berinovasi. Kami memberikan
+                    ruang bagi mahasiswa untuk mengeksplorasi berbagai ide dan
+                    gagasan, serta mendorong mereka untuk menjadi agen perubahan
+                    yang berkontribusi positif baik di tingkat nasional maupun
+                    global. Selain itu, kami berkomitmen untuk terus memperkuat
+                    kualitas pengajaran dan penelitian yang berorientasi pada
+                    kebutuhan masyarakat dan dunia kerja.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "28px",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "12px",
+                  fontWeight: 800,
+                  color: "#8A6500",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                Sejarah & Rekam Jejak
+              </span>
+              <h2
+                style={{
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  color: "#064E3B",
+                  margin: "8px 0 16px",
+                }}
+              >
+                Sejarah Universitas Islam Al-Azhar
+              </h2>
               <div
                 style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
+                  fontSize: "15px",
+                  color: "#44574E",
+                  lineHeight: 1.75,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "14px",
+                  maxWidth: "920px",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "13px",
-                    fontWeight: 700,
-                    color: "#0A6B4F",
-                  }}
-                >
-                  Lokasi Utama
-                </div>
-                <div
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: 800,
-                    marginTop: "4px",
-                  }}
-                >
-                  Mataram, NTB
-                </div>
+                <p style={{ margin: 0 }}>
+                  Yayasan Pesantren Luhur Al-Azhar berdiri tahun 1979 dan
+                  mengambil peran di bidang pendidikan. Pendidikan dipandang
+                  sebagai persoalan yang sangat urgen, sementara jumlah
+                  perguruan tinggi di NTB masih sangat sedikit dibanding calon
+                  mahasiswa yang terus bertambah.
+                </p>
+                <p style={{ margin: 0 }}>
+                  Karena itu, pada 10 Mei 1981 Yayasan mengeluarkan Surat
+                  Keputusan Nomor 01/YPLA/1981 tentang Pembentukan Universitas
+                  Islam Al-Azhar di Provinsi Nusa Tenggara Barat.
+                </p>
+                <p style={{ margin: 0 }}>
+                  Pada mulanya UNIZAR memiliki empat fakultas: Hukum (Jurusan
+                  Hukum Keperdataan dan Hukum Pidana, yang pada 1993 melebur
+                  menjadi Program Studi Ilmu Hukum), Pertanian (Program Studi
+                  Sosial Ekonomi), Teknik (Program Studi Teknik Sipil), dan
+                  Ekonomi (Program Studi Ekonomi Pembangunan). Keempatnya
+                  mendapat status terdaftar dari Menteri Pendidikan dan
+                  Kebudayaan, Prof. Dr. Nugroho Notusanto, pada 18 Agustus 1984
+                  melalui SK Nomor 0378/0/1984.
+                </p>
+                <p style={{ margin: 0 }}>
+                  Rektor sekaligus pendiri Unizar, H. Abdurrahim, S.H., kemudian
+                  menggagas Fakultas Kedokteran. Karena persyaratan belum
+                  terpenuhi, atas saran Prof. Dr. dr. Soewignjo Soemohardjo,
+                  Sp.PD, KGEH, pada 1990 berdiri Fakultas Biologi. Atas saran
+                  Kopertis Wilayah VIII, nama itu berubah menjadi Fakultas
+                  Matematika dan Ilmu Pengetahuan Alam (MIPA), dengan Biologi
+                  sebagai jurusan dan program studi.
+                </p>
+                <p style={{ margin: 0 }}>
+                  Pada 28 April 1992, Fakultas MIPA mendapat status terdaftar
+                  dari Direktur Jenderal Pendidikan Tinggi melalui Keputusan
+                  Nomor 154/DIKTI/Kep/1992. Fakultas ini menjadi embrio Fakultas
+                  Kedokteran. Gagasan itu diangkat kembali pada 2000, dan pada
+                  17 Juni 2004 Dirjen Dikti mengeluarkan izin penyelenggaraan
+                  Program Studi Pendidikan Dokter melalui Surat nomor
+                  2100/D/T/2004.
+                </p>
+                <p style={{ margin: 0 }}>
+                  Pengembangan program studi berlanjut hingga kini: Akuntansi
+                  (2016), Agroekoteknologi (2020), Ilmu Komputer pada Fakultas
+                  Teknik (2022), serta Fakultas Agama Islam (2023) dengan
+                  Program Studi Ekonomi Syariah dan Manajemen Bisnis Syariah.
+                </p>
               </div>
+
               <div
                 style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: "12px",
+                  marginTop: "24px",
+                }}
+              >
+                {[
+                  ["1979", "Yayasan Pesantren Luhur Al-Azhar berdiri"],
+                  ["1981", "UNIZAR dibentuk melalui SK 01/YPLA/1981"],
+                  ["1984", "Status terdaftar empat fakultas awal"],
+                  ["1990", "Fakultas Biologi berdiri, cikal bakal MIPA"],
+                  ["1992", "Fakultas MIPA mendapat status terdaftar"],
+                  ["2004", "Izin Program Studi Pendidikan Dokter"],
+                  ["2016", "Program Studi Akuntansi dibuka"],
+                  ["2020", "Program Studi Agroekoteknologi dibuka"],
+                  ["2022", "Program Studi Ilmu Komputer dibuka"],
+                  ["2023", "Fakultas Agama Islam berdiri"],
+                ].map(([year, note]) => (
+                  <div
+                    key={year}
+                    style={{
+                      background: "#F4F8F6",
+                      borderRadius: "12px",
+                      padding: "14px 16px",
+                      borderLeft: "4px solid #0A6B4F",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "18px",
+                        fontWeight: 800,
+                        color: "#064E3B",
+                      }}
+                    >
+                      {year}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "13px",
+                        color: "#44574E",
+                        marginTop: "4px",
+                        lineHeight: 1.45,
+                      }}
+                    >
+                      {note}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: "16px",
+                  marginTop: "24px",
                 }}
               >
                 <div
                   style={{
-                    fontSize: "13px",
-                    fontWeight: 700,
-                    color: "#0A6B4F",
+                    background: "#F4F8F6",
+                    padding: "18px",
+                    borderRadius: "12px",
+                    borderLeft: "4px solid #0A6B4F",
                   }}
                 >
-                  Penyelenggara
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      color: "#0A6B4F",
+                    }}
+                  >
+                    Nama Resmi
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: 800,
+                      marginTop: "4px",
+                    }}
+                  >
+                    Universitas Islam Al-Azhar
+                  </div>
                 </div>
                 <div
                   style={{
-                    fontSize: "16px",
-                    fontWeight: 800,
-                    marginTop: "4px",
+                    background: "#F4F8F6",
+                    padding: "18px",
+                    borderRadius: "12px",
+                    borderLeft: "4px solid #0A6B4F",
                   }}
                 >
-                  Yayasan Pesantren Luhur Al-Azhar
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      color: "#0A6B4F",
+                    }}
+                  >
+                    Lokasi Utama
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: 800,
+                      marginTop: "4px",
+                    }}
+                  >
+                    Mataram, NTB
+                  </div>
+                </div>
+                <div
+                  style={{
+                    background: "#F4F8F6",
+                    padding: "18px",
+                    borderRadius: "12px",
+                    borderLeft: "4px solid #0A6B4F",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      color: "#0A6B4F",
+                    }}
+                  >
+                    Penyelenggara
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: 800,
+                      marginTop: "4px",
+                    }}
+                  >
+                    Yayasan Pesantren Luhur Al-Azhar
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </>
         )}
 
         {/* 2. VISI, MISI & DIFERENSIASI */}
@@ -385,6 +552,38 @@ export default function Profil() {
                   margin: "0 0 12px",
                 }}
               >
+                Diferensiasi Misi
+              </h2>
+              <p
+                style={{
+                  fontSize: "15px",
+                  color: "#44574E",
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                Fokus pada solusi kebutuhan masyarakat NTB melalui pendidikan
+                kedokteran, hukum, teknik, ekonomi, pertanian, dan sains yang
+                terintegrasi nilai keislaman.
+              </p>
+            </div>
+
+            <div
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "28px",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  color: "#064E3B",
+                  margin: "0 0 12px",
+                }}
+              >
                 Misi
               </h2>
               <ul
@@ -419,38 +618,6 @@ export default function Profil() {
                   Rahmatan Lil Alamin.
                 </li>
               </ul>
-            </div>
-
-            <div
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #DCE6E0",
-                borderRadius: "18px",
-                padding: "28px",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "24px",
-                  fontWeight: 800,
-                  color: "#064E3B",
-                  margin: "0 0 12px",
-                }}
-              >
-                Diferensiasi Misi
-              </h2>
-              <p
-                style={{
-                  fontSize: "15px",
-                  color: "#44574E",
-                  lineHeight: 1.6,
-                  margin: 0,
-                }}
-              >
-                Fokus pada solusi kebutuhan masyarakat NTB melalui pendidikan
-                kedokteran, hukum, teknik, ekonomi, pertanian, dan sains yang
-                terintegrasi nilai keislaman.
-              </p>
             </div>
           </div>
         )}
@@ -903,7 +1070,7 @@ export default function Profil() {
               padding: "28px",
             }}
           >
-            {/* SUB-NAVIGASI */}
+            {/* SUB-NAVIGASI (TAB KAPSUL INTERAKTIF) */}
             <div
               style={{
                 display: "flex",
@@ -954,6 +1121,7 @@ export default function Profil() {
               </button>
             </div>
 
+            {/* KONTEN 1: PIMPINAN UNIVERSITAS */}
             {subPimpinan === "universitas" ? (
               <div>
                 <h3
@@ -974,12 +1142,32 @@ export default function Profil() {
                   }}
                 >
                   {[
-                    "Rektor",
-                    "Wakil Rektor I",
-                    "Wakil Rektor II",
-                    "Wakil Rektor III",
-                    "Wakil Rektor IV",
-                  ].map((jabatan, i) => (
+                    {
+                      jabatan: "Rektor",
+                      nama: "Dr. Ir. Muh. Ansyar, MP.",
+                      foto: "/assets/img/pimpinan/Dr. Ir. Muh. Ansyar, MP..png",
+                    },
+                    {
+                      jabatan: "Wakil Rektor I",
+                      nama: "Dr. Sri Karyati, SH., MH",
+                      foto: "/assets/img/pimpinan/Dr. Sri Karyati, SH., MH.png",
+                    },
+                    {
+                      jabatan: "Wakil Rektor II",
+                      nama: "Restusari Evayanti, ST., M.Eng",
+                      foto: "/assets/img/pimpinan/Restusari Evayanti, ST., M.Eng.png",
+                    },
+                    {
+                      jabatan: "Wakil Rektor III",
+                      nama: "Fathurrahman, S.E., M.Ak",
+                      foto: "/assets/img/pimpinan/Fathurrahman, S.E., M.Ak.png",
+                    },
+                    {
+                      jabatan: "Wakil Rektor IV",
+                      nama: "Dr. dr. Iing. M.Erg",
+                      foto: "/assets/img/pimpinan/Dr. dr. Iing. M.Erg.png",
+                    },
+                  ].map((pimpinan, i) => (
                     <div
                       key={i}
                       style={{
@@ -990,38 +1178,46 @@ export default function Profil() {
                         textAlign: "center",
                       }}
                     >
-                      <div
+                      <img
+                        src={pimpinan.foto}
+                        alt={`${pimpinan.jabatan} - ${pimpinan.nama}`}
                         style={{
-                          width: "64px",
-                          height: "64px",
+                          width: "80px",
+                          height: "80px",
                           borderRadius: "50%",
-                          background: "#D3EBDF",
+                          objectFit: "cover",
                           margin: "0 auto 12px",
+                          display: "block",
+                          border: "2px solid #0A6B4F",
                         }}
-                      ></div>
+                      />
                       <div
                         style={{
                           fontSize: "12px",
                           fontWeight: 800,
                           color: "#8A6500",
+                          textTransform: "uppercase",
                         }}
                       >
-                        {jabatan}
+                        {pimpinan.jabatan}
                       </div>
                       <div
                         style={{
                           fontSize: "15px",
                           fontWeight: 800,
+                          color: "#13231C",
                           marginTop: "4px",
+                          lineHeight: 1.3,
                         }}
                       >
-                        [Nama Pimpinan]
+                        {pimpinan.nama}
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
             ) : (
+              /* KONTEN 2: PENGURUS YAYASAN */
               <div>
                 <h3
                   style={{
@@ -1041,10 +1237,22 @@ export default function Profil() {
                   }}
                 >
                   {[
-                    "Ketua Yayasan",
-                    "Sekretaris Yayasan",
-                    "Bendahara Yayasan",
-                  ].map((jabatan, i) => (
+                    {
+                      jabatan: "Ketua Yayasan",
+                      nama: "[Nama Ketua Yayasan]",
+                      foto: "/assets/img/yayasan/ketua.jpg",
+                    },
+                    {
+                      jabatan: "Sekretaris Yayasan",
+                      nama: "[Nama Sekretaris Yayasan]",
+                      foto: "/assets/img/yayasan/sekretaris.jpg",
+                    },
+                    {
+                      jabatan: "Bendahara Yayasan",
+                      nama: "[Nama Bendahara Yayasan]",
+                      foto: "/assets/img/yayasan/bendahara.jpg",
+                    },
+                  ].map((pengurus, i) => (
                     <div
                       key={i}
                       style={{
@@ -1055,32 +1263,39 @@ export default function Profil() {
                         textAlign: "center",
                       }}
                     >
-                      <div
+                      <img
+                        src={pengurus.foto}
+                        alt={`${pengurus.jabatan} - ${pengurus.nama}`}
                         style={{
-                          width: "64px",
-                          height: "64px",
+                          width: "80px",
+                          height: "80px",
                           borderRadius: "50%",
-                          background: "#B7DCC9",
+                          objectFit: "cover",
                           margin: "0 auto 12px",
+                          display: "block",
+                          border: "2px solid #0A6B4F",
                         }}
-                      ></div>
+                      />
                       <div
                         style={{
                           fontSize: "12px",
                           fontWeight: 800,
                           color: "#8A6500",
+                          textTransform: "uppercase",
                         }}
                       >
-                        {jabatan}
+                        {pengurus.jabatan}
                       </div>
                       <div
                         style={{
                           fontSize: "15px",
                           fontWeight: 800,
+                          color: "#13231C",
                           marginTop: "4px",
+                          lineHeight: 1.3,
                         }}
                       >
-                        [Nama Pengurus Yayasan]
+                        {pengurus.nama}
                       </div>
                     </div>
                   ))}
@@ -1090,8 +1305,8 @@ export default function Profil() {
           </section>
         )}
 
-        {/* 8. CAPAIAN & PENGHARGAAN */}
-        {tab === "capaian" && (
+        {/* 8. PENGHARGAAN */}
+        {tab === "penghargaan" && (
           <section
             style={{
               background: "#FFFFFF",
@@ -1108,7 +1323,7 @@ export default function Profil() {
                 margin: "0 0 16px",
               }}
             >
-              Capaian & Penghargaan Institusi
+              Penghargaan Institusi
             </h2>
             <div
               style={{ display: "flex", flexDirection: "column", gap: "12px" }}

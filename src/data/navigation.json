@@ -6,7 +6,7 @@
       "path": "/",
       "desc": "Identitas, arah strategis, dan dokumen legal-formal institusi.",
       "items": [
-        { "label": "Sejarah & Identitas", "access": "public", "path": "/#sejarah" },
+        { "label": "Sambutan & Sejarah", "access": "public", "path": "/#sejarah" },
         { "label": "Visi, Misi & Diferensiasi Misi", "access": "public", "path": "/#visi-misi" },
         { "label": "RIP, Renstra & Roadmap", "access": "summary", "path": "/pusat-dokumen" },
         { "label": "Evaluasi Capaian Tridharma", "access": "summary", "path": "/pusat-dokumen" },
