@@ -107,7 +107,7 @@ function FakultasList() {
               </div>
 
               <Link to={`/fakultas/${f.id}?tab=lab`} style={{ marginTop: 'auto', fontWeight: 700, fontSize: 14, color: C.mid }}>
-                Laboratorium & Fasilitas →
+                {f.id === 'hukum' ? 'Fasilitas →' : 'Laboratorium & Fasilitas →'}
               </Link>
             </div>
           ))}
@@ -130,7 +130,7 @@ function FakultasDetail({ fac }) {
   const tabs = [
     { id: 'beranda', label: 'Beranda' },
     { id: 'prodi', label: 'Program Studi' },
-    { id: 'lab', label: 'Laboratorium & Fasilitas' },
+    { id: 'lab', label: fac.id === 'hukum' ? 'Fasilitas' : 'Laboratorium & Fasilitas' },
     { id: 'dosen', label: 'Dosen' },
   ];
 
@@ -167,8 +167,8 @@ function FakultasDetail({ fac }) {
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: C.text, background: C.bg, minHeight: '100vh' }}>
       <div style={{ background: C.primary, color: C.white }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 32px' }}>
-          <div style={{ paddingTop: 14, marginBottom: 8 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '18px 32px 0' }}>
+          <div style={{ marginBottom: 12 }}>
             <Link
               to="/fakultas"
               style={{
@@ -188,6 +188,13 @@ function FakultasDetail({ fac }) {
               ← Kembali ke daftar fakultas
             </Link>
           </div>
+          <nav style={{ fontSize: 13, color: '#B7DCC9', marginBottom: 10 }}>
+            <Link to="/" style={{ color: '#B7DCC9', textDecoration: 'none' }}>Beranda</Link>
+            {' / '}
+            <Link to="/fakultas" style={{ color: '#B7DCC9', textDecoration: 'none' }}>Fakultas</Link>
+            {' / '}
+            <span style={{ color: C.white, fontWeight: 600 }}>{fac.nama}</span>
+          </nav>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 4 }}>
             <span style={{
               width: 36, height: 36, borderRadius: 8, background: C.white, color: C.primary,
@@ -219,34 +226,50 @@ function FakultasDetail({ fac }) {
       </div>
 
       <div style={{ maxWidth: 1440, margin: '0 auto', padding: '26px 32px 64px' }}>
-        <nav style={{ fontSize: 13, color: C.muted, marginBottom: 20 }}>
-          <Link to="/fakultas" style={{ color: C.mid }}>Fakultas</Link>
-          {' / '}
-          <span style={{ color: C.text, fontWeight: 600 }}>{fac.nama}</span>
-        </nav>
-
         {tab === 'beranda' && (
           <>
             <section style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginBottom: 28 }}>
               <div style={{ flex: '3 1 520px', background: C.white, border: `1px solid ${C.border}`, borderRadius: 20, padding: 32 }}>
                 <h1 style={{ margin: '0 0 18px', fontSize: 30, color: C.primary, fontWeight: 800, lineHeight: 1.2 }}>{fac.tagline}</h1>
-                <a
-                  href="#"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    background: 'transparent',
-                    color: C.primary,
-                    border: `1.5px solid ${C.border}`,
-                    padding: '10px 16px',
-                    borderRadius: 10,
-                    fontWeight: 700,
-                    fontSize: 14,
-                    textDecoration: 'none',
-                  }}
-                >
-                  Renstra Fakultas
-                </a>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                  <a
+                    href="#"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      background: 'transparent',
+                      color: C.primary,
+                      border: `1.5px solid ${C.border}`,
+                      padding: '10px 16px',
+                      borderRadius: 10,
+                      fontWeight: 700,
+                      fontSize: 14,
+                      textDecoration: 'none',
+                    }}
+                  >
+                    Renstra Fakultas
+                  </a>
+                  <a
+                    href={fac.website || '#'}
+                    target={fac.website ? '_blank' : undefined}
+                    rel={fac.website ? 'noopener noreferrer' : undefined}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      background: C.primary,
+                      color: C.white,
+                      border: `1.5px solid ${C.primary}`,
+                      padding: '10px 16px',
+                      borderRadius: 10,
+                      fontWeight: 700,
+                      fontSize: 14,
+                      fontStyle: 'italic',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    Kunjungi Website
+                  </a>
+                </div>
               </div>
 
               <div style={{ flex: '1 1 280px', background: C.primary, color: C.white, borderRadius: 20, padding: 22, display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -301,7 +324,7 @@ function FakultasDetail({ fac }) {
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 16, marginBottom: 28 }}>
               <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 18, padding: 24 }}>
-                <h3 style={{ margin: '0 0 16px', fontSize: 20, color: C.primary }}>Mutu Fakultas (Gugus Penjaminan Mutu)</h3>
+                <h3 style={{ margin: '0 0 16px', fontSize: 20, color: C.primary }}>Mutu Fakultas</h3>
                 {[
                   { n: 'Renstra & Standar Fakultas', b: 'Publik', bg: C.soft, fg: C.primary },
                   { n: 'Laporan Kinerja Fakultas 2025', b: 'Ringkasan', bg: '#FFF1C2', fg: '#6B4E00' },
@@ -363,15 +386,6 @@ function FakultasDetail({ fac }) {
               ))}
             </div>
 
-            <h2 style={{ fontSize: 24, color: C.primary, marginBottom: 14 }}>Laboratorium & Fasilitas</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 12 }}>
-              {fac.lab.map((l) => (
-                <div key={l.nama} style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 14, padding: 18 }}>
-                  <div style={{ fontWeight: 800, fontSize: 15, color: C.primary }}>{l.nama}</div>
-                  <div style={{ fontSize: 13, color: C.muted, marginTop: 6 }}>{l.fungsi}</div>
-                </div>
-              ))}
-            </div>
           </>
         )}
 
@@ -408,7 +422,9 @@ function FakultasDetail({ fac }) {
 
         {tab === 'lab' && (
           <>
-            <h2 style={{ fontSize: 28, color: C.primary, marginBottom: 8 }}>Laboratorium & Fasilitas</h2>
+            <h2 style={{ fontSize: 28, color: C.primary, marginBottom: 8 }}>
+              {fac.id === 'hukum' ? 'Fasilitas' : 'Laboratorium & Fasilitas'}
+            </h2>
             <p style={{ color: C.muted, marginBottom: 20 }}>Fasilitas di {fac.nama}.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
               {fac.lab.map((l, i) => (

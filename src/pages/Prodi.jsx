@@ -219,6 +219,19 @@ export default function Prodi() {
                 ))}
               </div>
             </div>
+            {f.id === 'hukum' && (f.lab || []).length > 0 && (
+              <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 18, padding: 26 }}>
+                <h2 style={{ margin: '0 0 14px', fontSize: 22, color: C.primary }}>Fasilitas</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 12 }}>
+                  {f.lab.map((l) => (
+                    <div key={l.nama} style={{ background: C.bg, borderRadius: 14, padding: 16 }}>
+                      <div style={{ fontWeight: 800, fontSize: 15, color: C.primary }}>{l.nama}</div>
+                      <div style={{ fontSize: 13, color: C.muted, marginTop: 6 }}>{l.fungsi}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             <div style={{ background: C.white, border: `1px solid ${C.border}`, borderRadius: 18, padding: 26 }}>
               <h2 style={{ margin: '0 0 12px', fontSize: 22, color: C.primary }}>Capaian Pembelajaran (CPL)</h2>
               {p.cpl.map((c, i) => (
