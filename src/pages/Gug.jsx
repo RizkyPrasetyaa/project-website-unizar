@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 export default function Gug() {
   const location = useLocation();
 
-  // 11 SUB-MENU TAB BERSIH
+  // 9 SUB-MENU TAB BERSIH (Renstra & Keuangan digabung, WBS digabung ke Pengawasan)
   const MENU_ITEMS = [
     { key: "ikhtisar", label: "Ikhtisar" },
     { key: "kebijakan", label: "Kebijakan & Praktik Baik GUG" },
@@ -12,27 +12,21 @@ export default function Gug() {
     { key: "kode-etik", label: "Kode Etik & Lembaga Etik" },
     { key: "ppkpt", label: "Kampus Aman & Satgas PPKPT" },
     { key: "pengawasan", label: "Pengawasan & WBK/WBBM" },
-    { key: "wbs", label: "Whistleblowing System" },
-    { key: "pengelolaan", label: "Pengelolaan & 11 Pedoman" },
+    { key: "Pedoman", label: "Pedoman & SOP" },
     { key: "survei", label: "Survei Kepuasan Tata Pamong" },
-    { key: "renstra", label: "Renstra & Pola Keuangan" },
-    { key: "laporan-keuangan", label: "Laporan Keuangan & Audit Eksternal" },
+    { key: "keuangan", label: "Tata Kelola Keuangan" },
+    { key: "Arsip", label: "Arsip" }
   ];
 
   const [tab, setTab] = useState(location.state?.tab || "ikhtisar");
-
-  // Ref untuk menampung elemen tombol tab
   const tabRefs = useRef({});
 
-  // EFFECT UNTUK NAVIGASI DARI HEADER / PERUBAHAN LOCATION STATE
   useEffect(() => {
     const targetTab = location.state?.tab || "ikhtisar";
     setTab(targetTab);
 
-    // 1. LOMPAT BROWSER LANGSUNG KE PALING ATAS
     window.scrollTo(0, 0);
 
-    // 2. SCROLL TOMBOL TAB KE TENGAH CONTAINER SETELAH RENDER
     const timer = setTimeout(() => {
       if (tabRefs.current[targetTab]) {
         tabRefs.current[targetTab].scrollIntoView({
@@ -46,7 +40,6 @@ export default function Gug() {
     return () => clearTimeout(timer);
   }, [location.state, location.key]);
 
-  // FUNGSI SAAT TOMBOL TAB DIKLIK MANUAL DI DALAM HALAMAN
   const handleTabClick = (key) => {
     setTab(key);
     window.scrollTo(0, 0);
@@ -61,7 +54,6 @@ export default function Gug() {
 
   const activeMenu = MENU_ITEMS.find((m) => m.key === tab) || MENU_ITEMS[0];
 
-  // STYLING BADGE AKSES DOKUMEN
   const STY = {
     pub: { badge: "Publik", bg: "#E3F1EA", fg: "#064E3B", action: "Unduh PDF" },
     sum: { badge: "Ringkasan", bg: "#FFF1C2", fg: "#6B4E00", action: "Lihat ringkasan" },
@@ -77,39 +69,13 @@ export default function Gug() {
   const S = (label, v) => ({ label, v });
   const SK = "SK Rektor No. [—] · [tgl]";
 
-  // DATA TAB IKHTISAR
   const pillars = [
-    {
-      no: "1",
-      title: "Kredibilitas",
-      desc: "Kepemimpinan yang dipercaya, keputusan berbasis data dan regulasi.",
-      count: 6,
-    },
-    {
-      no: "2",
-      title: "Transparansi",
-      desc: "Informasi publik terbuka melalui website, PPID, dan laporan berkala.",
-      count: 9,
-    },
-    {
-      no: "3",
-      title: "Akuntabilitas",
-      desc: "Laporan kinerja dan keuangan diaudit serta diumumkan ke masyarakat.",
-      count: 7,
-    },
-    {
-      no: "4",
-      title: "Tanggung jawab",
-      desc: "Kepatuhan pada peraturan, etika akademik, dan tanggung jawab sosial.",
-      count: 5,
-    },
+    { no: "1", title: "Kredibilitas", desc: "Kepemimpinan yang dipercaya, keputusan berbasis data dan regulasi.", count: 6 },
+    { no: "2", title: "Transparansi", desc: "Informasi publik terbuka melalui website, PPID, dan laporan berkala.", count: 9 },
+    { no: "3", title: "Akuntabilitas", desc: "Laporan kinerja dan keuangan diaudit serta diumumkan ke masyarakat.", count: 7 },
+    { no: "4", title: "Tanggung jawab", desc: "Kepatuhan pada peraturan, etika akademik, dan tanggung jawab sosial.", count: 5 },
     { no: "5", title: "Keadilan", desc: "Perlakuan setara bagi sivitas, penerimaan afirmatif dan inklusif.", count: 4 },
-    {
-      no: "6",
-      title: "Manajemen risiko",
-      desc: "Pemetaan dan mitigasi risiko institusi, termasuk risiko korupsi.",
-      count: 5,
-    },
+    { no: "6", title: "Manajemen risiko", desc: "Pemetaan dan mitigasi risiko institusi, termasuk risiko korupsi.", count: 5 },
   ];
 
   const years = [
@@ -126,7 +92,6 @@ export default function Gug() {
     { label: "Mitra & pengguna lulusan", v: "88%", w: "88%" },
   ];
 
-  // DATA KONTEN SUB-MENU (HANYA DOKUMEN & STATS)
   const KONTEN_SUBMENU = {
     kebijakan: {
       stats: [S("Pilar Tata Kelola", "6 Pilar"), S("Tingkat Kepatuhan", "98%"), S("Unit Terimplementasi", "100%")],
@@ -153,16 +118,13 @@ export default function Gug() {
       ],
     },
     "laporan-tahunan": {
-      stats: [S("Arsip Terdokumentasi", "≥ 3 Tahun"), S("Capaian IKU 2025", "94%"), S("Opini Audit", "WTP")],
+      stats: [S("Capaian IKU 2025", "94%")],
       sections: [
         {
           title: "Laporan Tahunan & Keuangan Teraudit",
           docs: [
             D("Laporan Tahunan UNIZAR 2025", "sum", "Ringkasan Eksekutif"),
             D("Ikhtisar Laporan Keuangan 2025", "sum", "Audited KAP"),
-            D("Laporan Tahunan UNIZAR 2024", "sum", "Ringkasan Eksekutif"),
-            D("Ikhtisar Laporan Keuangan 2024", "sum", "Audited KAP"),
-            D("Laporan Tahunan UNIZAR 2023", "sum", "Ringkasan Eksekutif"),
             D("Laporan Keuangan Rinci", "lock", "Akses Terbatas / Asesor"),
           ],
         },
@@ -240,17 +202,8 @@ export default function Gug() {
             D("Laporan Audit Lengkap", "lock", "Untuk Pimpinan & Asesor"),
           ],
         },
-      ],
-    },
-    wbs: {
-      stats: [
-        S("Kanal Pengaduan", "24 Jam"),
-        S("Kerahasiaan Identitas", "100% Protected"),
-        S("Proses Verifikasi", "Maks 3 Hari"),
-      ],
-      sections: [
         {
-          title: "Kanal & Pedoman Whistleblowing System",
+          title: "Whistleblowing System (WBS)",
           docs: [
             D("Whistleblowing System (WBS)", "svc", "Identitas Dirahasiakan"),
             D("Pedoman & SOP Pengaduan WBS", "pub", SK),
@@ -259,9 +212,9 @@ export default function Gug() {
         },
       ],
     },
-    pengelolaan: {
+    Pedoman: {
       stats: [
-        S("Pedoman Bidang Tersedia", "11 / 11"),
+        S("Pedoman Bidang Tersedia", "11"),
         S("Unit SOP Mutakhir", "87%"),
         S("Rapat Kerja Terdokumentasi", "4 / tahun"),
       ],
@@ -278,8 +231,16 @@ export default function Gug() {
           title: "11 Pedoman Pengelolaan Bidang",
           docs: [
             D("Pedoman Pendidikan & Suasana Akademik", "pub", SK),
-            D("Pedoman Penelitian, PkM & Kerjasama", "pub", SK),
-            D("Pedoman SDM, Keuangan, Sarpras, SI & SPMI", "pub", SK),
+            D("Bidang Pengabdian kepada Masyarakat (PkM)", "pub", SK),
+            D("Bidang Sumber Daya Manusia (SDM / Kepegawaian), SI", "pub", SK),
+            D("Bidang Kemahasiswaan dan Alumni", "pub", SK),
+            D("Bidang Keuangan dan Penganggaran", "pub", SK),
+            D("Bidang Sistem Informasi dan Teknologi (IT / ICT)", "pub", SK),
+            D("Bidang Kerjasama, Humas, dan Hubungan Internasional", "pub", SK),
+            D("Bidang Sarana, Prasarana, dan Fasilitas", "pub", SK),
+            D("Bidang Penelitian (Riset)", "pub", SK),
+            D("Bidang Penjaminan Mutu Internal (SPMI)", "pub", SK),
+            D("Bidang Tata Kelola, Hukum, dan Kelembagaan (Tata Pamong)", "pub", SK),
           ],
         },
       ],
@@ -301,10 +262,10 @@ export default function Gug() {
         },
       ],
     },
-    renstra: {
+    keuangan: {
       stats: [
         S("Dana di luar UKT/SPP", "18%"),
-        S("Penerima Bantuan Biaya", "1.120 mhs"),
+        S("Opini Akuntan Publik (2025)", "WTP"),
         S("Periode Renstra", "2025–2029"),
       ],
       sections: [
@@ -317,16 +278,26 @@ export default function Gug() {
             D("Kebijakan Bantuan Biaya Pendidikan", "pub", SK),
           ],
         },
-      ],
-    },
-    "laporan-keuangan": {
-      stats: [S("Opini Akuntan Publik (2025)", "WTP"), S("Siklus Audit", "Tahunan"), S("Kategori PTS", "Akuntabel")],
-      sections: [
         {
           title: "Pelaporan & Hasil Audit Eksternal",
           docs: [
             D("Ikhtisar Laporan Keuangan Teraudit", "sum", "KAP Independen · 2023–2025"),
             D("Laporan Audit Eksternal Rinci", "lock", "Untuk Pimpinan & Asesor"),
+          ],
+        },
+      ],
+    },
+    Arsip: {
+      stats: [S("Total Arsip Aktif", "5 Tahun"), S("Status Dokumen", "Lengkap & Terverifikasi")],
+      sections: [
+        {
+          title: "Arsip Dokumen Tata Kelola & Laporan Historis",
+          docs: [
+            D("Arsip Dokumen GUG & SK Rektor 2025", "pub", "Arsip Tahunan · 2025"),
+            D("Arsip Laporan Kinerja & Keuangan 2024", "pub", "Arsip Tahunan · 2024"),
+            D("Arsip Evaluasi Mutu Internal 2023", "pub", "Arsip Tahunan · 2023"),
+            D("Arsip Dokumen Historis & Pendukung 2022", "lock", "Akses Khusus Internal"),
+            D("Arsip Dokumen Historis & Pendukung 2021", "lock", "Akses Khusus Internal"),
           ],
         },
       ],
@@ -701,6 +672,42 @@ export default function Gug() {
             <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>{activeMenu.label}</h2>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "12px" }}>
+              {/* KHUSUS TAB LAPORAN TAHUNAN: TOMBOL HIJAU 5 TAHUN TERAKHIR */}
+              {tab === "laporan-tahunan" && (
+                <div
+                  style={{
+                    background: "#FFFFFF",
+                    border: "1px solid #DCE6E0",
+                    borderRadius: "14px",
+                    padding: "18px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                  }}
+                >
+                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#44574E" }}>Arsip Terdokumentasi</span>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                    {["2021", "2022", "2023", "2024", "2025"].map((yr) => (
+                      <button
+                        key={yr}
+                        style={{
+                          background: "#064E3B",
+                          color: "#FFFFFF",
+                          border: "none",
+                          padding: "6px 12px",
+                          borderRadius: "6px",
+                          fontSize: "14px",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                        }}
+                      >
+                        {yr}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {curData.stats.map((st, i) => (
                 <div
                   key={i}
