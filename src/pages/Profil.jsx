@@ -12,7 +12,7 @@ export default function Profil() {
   const TAB_LABELS = {
     identitas: "Sambutan & Sejarah",
     visimisi: "Visi, Misi & Diferensiasi",
-    renstra: "RIP, Renstra & Roadmap",
+    renstra: "Renip & Roadmap",
     evaluasi: "Evaluasi Tridharma",
     statuta: "Statuta",
     sotk: "Struktur Organisasi",
@@ -75,7 +75,7 @@ export default function Profil() {
             {[
               ["identitas", "Sambutan & Sejarah"],
               ["visimisi", "Visi, Misi & Diferensiasi"],
-              ["renstra", "RIP, Renstra & Roadmap"],
+              ["renstra", "Renip & Roadmap"],
               ["evaluasi", "Evaluasi Tridharma"],
               ["statuta", "Statuta"],
               ["sotk", "Struktur Organisasi"],
@@ -605,7 +605,7 @@ export default function Profil() {
                 margin: "8px 0 16px",
               }}
             >
-              RIP, Renstra & Roadmap 2025–2029
+              Renip & Roadmap 2025–2029
             </h2>
             <div
               style={{

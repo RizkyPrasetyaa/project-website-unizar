@@ -39,7 +39,7 @@ export default function Header() {
           tab: "visimisi",
         },
         {
-          label: "RIP, Renstra & Roadmap",
+          label: "Renip & Roadmap",
           access: "Ringkasan",
           tab: "renstra",
         },
