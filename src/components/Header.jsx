@@ -94,14 +94,14 @@ export default function Header() {
     },
     direktori: {
       id: "Direktori",
-      desc: "Satu pintu menemukan unit, orang, dan dokumen.",
-      href: "/pusat-dokumen",
+      desc: "Satu pintu menemukan unit, orang, data, dan dokumen.",
+      href: "/direktori",
       defaultTab: "unit",
       items: [
         { label: "Unit Kerja & Kontak", access: "Publik", tab: "unit" },
         { label: "Direktori Dosen & Pakar", access: "Publik", tab: "dosen" },
-        { label: "Pusat Dokumen", access: "Publik", tab: "dokumen" },
-        { label: "Direktori MoU/MoA", access: "Publik", tab: "kerjasama" },
+        { label: "Pusat Data & Informasi", access: "Publik", tab: "dokumen" },
+        { label: "Direktori Kerjasama", access: "Publik", href: "/kerjasama" },
         { label: "Peta Kampus", access: "Publik", tab: "peta" },
       ],
     },
@@ -613,8 +613,8 @@ export default function Header() {
               {activeMega.items.map((it, idx) => (
                 <li key={idx} style={{ borderBottom: "1px solid #EEF3F0" }}>
                   <Link
-                    to={activeMega.href}
-                    state={{ tab: it.tab }}
+                    to={it.href || activeMega.href}
+                    state={it.href ? (it.state || undefined) : { tab: it.tab }}
                     onClick={() => setOpen(null)}
                     style={{
                       display: "flex",
