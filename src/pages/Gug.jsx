@@ -4,13 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 export default function Gug() {
   const location = useLocation();
 
-  // 9 SUB-MENU TAB BERSIH (Renstra & Keuangan digabung, WBS digabung ke Pengawasan)
+  // 8 SUB-MENU TAB BERSIH (Kode Etik & Satgas PPKPT digabung menjadi Etik & Kampus Aman)
   const MENU_ITEMS = [
     { key: "ikhtisar", label: "Ikhtisar" },
     { key: "kebijakan", label: "Kebijakan & Praktik Baik GUG" },
     { key: "laporan-tahunan", label: "Laporan Tahunan" },
-    { key: "kode-etik", label: "Kode Etik & Lembaga Etik" },
-    { key: "ppkpt", label: "Kampus Aman & Satgas PPKPT" },
+    { key: "etik-ppkpt", label: "Etik & Kampus Aman" },
     { key: "pengawasan", label: "Pengawasan & WBK/WBBM" },
     { key: "Pedoman", label: "Pedoman & SOP" },
     { key: "survei", label: "Survei Kepuasan Tata Pamong" },
@@ -130,11 +129,11 @@ export default function Gug() {
         },
       ],
     },
-    "kode-etik": {
+    "etik-ppkpt": {
       stats: [
-        S("Kasus Etik Ditangani (2025)", "7"),
-        S("Rata-rata Penyelesaian", "21 hari"),
-        S("Sosialisasi Kode Etik", "100% unit"),
+        S("Kasus Etik Ditangani", "7"),
+        S("Laporan PPKPT", "5"),
+        S("Sosialisasi & Kampus Aman", "100% unit"),
       ],
       sections: [
         {
@@ -153,15 +152,6 @@ export default function Gug() {
             D("Rekap Putusan Etik", "sum", "Tanpa Identitas Pihak"),
           ],
         },
-      ],
-    },
-    ppkpt: {
-      stats: [
-        S("Laporan Diterima (2025)", "5"),
-        S("Laporan Selesai Ditangani", "100%"),
-        S("Sivitas Terpapar Sosialisasi", "3.800+"),
-      ],
-      sections: [
         {
           title: "Kebijakan & Pedoman PPKPT",
           docs: [
