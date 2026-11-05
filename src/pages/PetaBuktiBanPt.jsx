@@ -331,8 +331,8 @@ export default function PetaBuktiBanPt() {
       "Proses",
       "Penerimaan mahasiswa baru afirmatif, inklusif, adil; perluasan akses.",
       [
-        { label: "Pendidikan › PMB Afirmatif", href: "#" },
-        { label: "Pendidikan › RPL & PJJ", href: "#" },
+        { label: "Pendidikan › PMB & Beasiswa", href: "#" },
+        { label: "Pendidikan › RPL & PKKMB", href: "#" },
       ],
       "pub",
     ],

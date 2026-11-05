@@ -158,6 +158,7 @@ export default function Header() {
       href: "/pendidikan",
       defaultTab: "pmb",
       items: [
+        { label: "PMB & Beasiswa", access: "Publik", tab: "pmb" },
         {
           label: "Kebijakan Kurikulum OBE",
           access: "Publik",
@@ -184,17 +185,7 @@ export default function Header() {
           access: "Ringkasan",
           tab: "capaian",
         },
-        {
-          label: "PMB Afirmatif & Inklusif",
-          access: "Publik",
-          tab: "pmb-inklusif",
-        },
-        {
-          label: "Beasiswa & Bantuan Biaya",
-          access: "Publik",
-          tab: "beasiswa",
-        },
-        { label: "RPL · PJJ · PKKMB", access: "Publik", tab: "rpl" },
+        { label: "RPL · PKKMB", access: "Publik", tab: "rpl" },
       ],
     },
     penelitian: {
