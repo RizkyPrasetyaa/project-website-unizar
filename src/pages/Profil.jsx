@@ -227,7 +227,7 @@ export default function Profil() {
                   >
                     Salam sejahtera bagi kita semua.
                   </p>
-                  <p style={{ margin: 0 }}>
+                  <p style={{ margin: 0, textAlign: "justify" }}>
                     Sebagai pionir pendidikan tinggi di Indonesia, Universitas
                     Islam Al-Azhar Mataram (UNIZAR) memiliki akar yang kuat
                     dalam tradisi kebebasan akademik, di mana keberagaman
@@ -236,7 +236,7 @@ export default function Profil() {
                     yang tidak hanya kondusif, tetapi juga mendorong mahasiswa
                     untuk berpikir kritis, kreatif, dan inovatif.
                   </p>
-                  <p style={{ margin: 0 }}>
+                  <p style={{ margin: 0, textAlign: "justify" }}>
                     Dalam perjalanan kami, UNIZAR berkomitmen untuk menjadi
                     lembaga pendidikan yang unggul dan dapat diandalkan dalam
                     mencetak pemimpin masa depan. Melalui pendidikan yang
@@ -246,7 +246,7 @@ export default function Profil() {
                     tangguh, berintegritas, dan memiliki kepedulian sosial yang
                     tinggi.
                   </p>
-                  <p style={{ margin: 0 }}>
+                  <p style={{ margin: 0, textAlign: "justify" }}>
                     Lingkungan pembelajaran di UNIZAR dipenuhi dengan semangat,
                     kolaborasi, serta potensi untuk berinovasi. Kami memberikan
                     ruang bagi mahasiswa untuk mengeksplorasi berbagai ide dan
@@ -293,58 +293,80 @@ export default function Profil() {
                 style={{
                   fontSize: "15px",
                   color: "#44574E",
-                  lineHeight: 1.75,
+                  lineHeight: 1.8,
                   display: "flex",
                   flexDirection: "column",
-                  gap: "14px",
-                  maxWidth: "920px",
+                  gap: "16px",
+                  maxWidth: "1280px",
                 }}
               >
-                <p style={{ margin: 0 }}>
-                  Yayasan Pesantren Luhur Al-Azhar berdiri tahun 1979 dan
-                  mengambil peran di bidang pendidikan. Pendidikan dipandang
-                  sebagai persoalan yang sangat urgen, sementara jumlah
-                  perguruan tinggi di NTB masih sangat sedikit dibanding calon
-                  mahasiswa yang terus bertambah.
+                <p style={{ margin: 0, textAlign: "justify", lineHeight: 1.8 }}>
+                  <strong>Yayasan Pesantren Luhur Al-Azhar</strong> didirikan
+                  pada tahun 1979 dengan komitmen luhur mengambil peran aktif
+                  dalam mencerdaskan kehidupan bangsa melalui bidang pendidikan
+                  tinggi. Pada masa tersebut, ketersediaan perguruan tinggi di
+                  Provinsi Nusa Tenggara Barat masih sangat terbatas dan tidak
+                  sebanding dengan lonjakan animo lulusan menengah atas yang
+                  ingin melanjutkan studi. Menjawab tantangan dan urgensi
+                  tersebut, Yayasan secara resmi menerbitkan{" "}
+                  <strong>Surat Keputusan Nomor 01/YPLA/1981</strong> pada
+                  tanggal <strong>10 Mei 1981</strong> tentang pembentukan{" "}
+                  <strong>Universitas Islam Al-Azhar (UNIZAR)</strong> di
+                  Provinsi Nusa Tenggara Barat.
                 </p>
-                <p style={{ margin: 0 }}>
-                  Karena itu, pada 10 Mei 1981 Yayasan mengeluarkan Surat
-                  Keputusan Nomor 01/YPLA/1981 tentang Pembentukan Universitas
-                  Islam Al-Azhar di Provinsi Nusa Tenggara Barat.
+                <p style={{ margin: 0, textAlign: "justify", lineHeight: 1.8 }}>
+                  Pada masa awal pendiriannya, UNIZAR mengoperasikan empat
+                  fakultas perintis: <strong>Fakultas Hukum</strong> (Jurusan
+                  Hukum Keperdataan dan Hukum Pidana, yang pada tahun 1993
+                  melebur menjadi Program Studi Ilmu Hukum),{" "}
+                  <strong>Fakultas Pertanian</strong> (Program Studi Sosial
+                  Ekonomi Pertanian), <strong>Fakultas Teknik</strong> (Program
+                  Studi Teknik Sipil), dan <strong>Fakultas Ekonomi</strong>{" "}
+                  (Program Studi Ekonomi Pembangunan). Landasan legalitas
+                  institusi ini semakin kokoh setelah keempat fakultas tersebut
+                  secara serentak memperoleh status terdaftar dari Menteri
+                  Pendidikan dan Kebudayaan Republik Indonesia,{" "}
+                  <strong>Prof. Dr. Nugroho Notusanto</strong>, melalui{" "}
+                  <strong>SK Nomor 0378/0/1984</strong> tertanggal{" "}
+                  <strong>18 Agustus 1984</strong>.
                 </p>
-                <p style={{ margin: 0 }}>
-                  Pada mulanya UNIZAR memiliki empat fakultas: Hukum (Jurusan
-                  Hukum Keperdataan dan Hukum Pidana, yang pada 1993 melebur
-                  menjadi Program Studi Ilmu Hukum), Pertanian (Program Studi
-                  Sosial Ekonomi), Teknik (Program Studi Teknik Sipil), dan
-                  Ekonomi (Program Studi Ekonomi Pembangunan). Keempatnya
-                  mendapat status terdaftar dari Menteri Pendidikan dan
-                  Kebudayaan, Prof. Dr. Nugroho Notusanto, pada 18 Agustus 1984
-                  melalui SK Nomor 0378/0/1984.
+                <p style={{ margin: 0, textAlign: "justify", lineHeight: 1.8 }}>
+                  Seiring berjalannya waktu, Rektor sekaligus pendiri UNIZAR,{" "}
+                  <strong>H. Abdurrahim, S.H.</strong>, memprakarsai gagasan
+                  visioner untuk mendirikan Fakultas Kedokteran guna mencetak
+                  tenaga medis lokal yang kompeten. Mengingat persyaratan awal
+                  yang sangat ketat, atas saran dari{" "}
+                  <strong>
+                    Prof. Dr. dr. Soewignjo Soemohardjo, Sp.PD, KGEH
+                  </strong>
+                  , UNIZAR mendirikan Fakultas Biologi terlebih dahulu pada
+                  tahun 1990. Berdasarkan arahan Kopertis Wilayah VIII, entitas
+                  ini kemudian bertransformasi menjadi{" "}
+                  <strong>
+                    Fakultas Matematika dan Ilmu Pengetahuan Alam (MIPA)
+                  </strong>{" "}
+                  dengan Biologi sebagai jurusan dan program studi, serta resmi
+                  meraih status terdaftar melalui Keputusan Dirjen Dikti{" "}
+                  <strong>Nomor 154/DIKTI/Kep/1992</strong> pada 28 April 1992.
+                  Fakultas MIPA ini menjadi embrio utama yang melahirkan Program
+                  Studi Pendidikan Dokter setelah Dirjen Dikti menerbitkan izin
+                  penyelenggaraan resmi melalui Surat{" "}
+                  <strong>Nomor 2100/D/T/2004</strong> pada tanggal{" "}
+                  <strong>17 Juni 2004</strong>.
                 </p>
-                <p style={{ margin: 0 }}>
-                  Rektor sekaligus pendiri Unizar, H. Abdurrahim, S.H., kemudian
-                  menggagas Fakultas Kedokteran. Karena persyaratan belum
-                  terpenuhi, atas saran Prof. Dr. dr. Soewignjo Soemohardjo,
-                  Sp.PD, KGEH, pada 1990 berdiri Fakultas Biologi. Atas saran
-                  Kopertis Wilayah VIII, nama itu berubah menjadi Fakultas
-                  Matematika dan Ilmu Pengetahuan Alam (MIPA), dengan Biologi
-                  sebagai jurusan dan program studi.
-                </p>
-                <p style={{ margin: 0 }}>
-                  Pada 28 April 1992, Fakultas MIPA mendapat status terdaftar
-                  dari Direktur Jenderal Pendidikan Tinggi melalui Keputusan
-                  Nomor 154/DIKTI/Kep/1992. Fakultas ini menjadi embrio Fakultas
-                  Kedokteran. Gagasan itu diangkat kembali pada 2000, dan pada
-                  17 Juni 2004 Dirjen Dikti mengeluarkan izin penyelenggaraan
-                  Program Studi Pendidikan Dokter melalui Surat nomor
-                  2100/D/T/2004.
-                </p>
-                <p style={{ margin: 0 }}>
-                  Pengembangan program studi berlanjut hingga kini: Akuntansi
-                  (2016), Agroekoteknologi (2020), Ilmu Komputer pada Fakultas
-                  Teknik (2022), serta Fakultas Agama Islam (2023) dengan
-                  Program Studi Ekonomi Syariah dan Manajemen Bisnis Syariah.
+                <p style={{ margin: 0, textAlign: "justify", lineHeight: 1.8 }}>
+                  Memasuki era pendidikan tinggi modern, dinamika pengembangan
+                  program studi di UNIZAR terus bergerak progresif guna menjawab
+                  kebutuhan dunia industri dan masyarakat luas. Ekspansi
+                  akademik tersebut ditandai dengan dibukanya Program Studi{" "}
+                  <strong>Akuntansi</strong> (2016), Program Studi{" "}
+                  <strong>Agroekoteknologi</strong> (2020), serta Program Studi{" "}
+                  <strong>Ilmu Komputer</strong> pada Fakultas Teknik (2022).
+                  Komitmen penguatan nilai-nilai keislaman dan tata kelola
+                  bisnis modern semakin ditegaskan dengan berdirinya{" "}
+                  <strong>Fakultas Agama Islam (FAI)</strong> pada tahun 2023,
+                  yang menaungi Program Studi <strong>Ekonomi Syariah</strong>{" "}
+                  dan <strong>Manajemen Bisnis Syariah</strong>.
                 </p>
               </div>
 
