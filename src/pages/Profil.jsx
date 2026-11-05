@@ -21,16 +21,7 @@ export default function Profil() {
   };
 
   // Daftar key tab yang valid di halaman Profil
-  const VALID_TABS = [
-    "identitas",
-    "visimisi",
-    "renstra",
-    "evaluasi",
-    "statuta",
-    "sotk",
-    "pimpinan",
-    "penghargaan",
-  ];
+  const VALID_TABS = ["identitas", "visimisi", "renstra", "evaluasi", "statuta", "sotk", "pimpinan", "penghargaan"];
 
   useEffect(() => {
     if (location.state?.tab && VALID_TABS.includes(location.state.tab)) {
@@ -59,25 +50,16 @@ export default function Profil() {
           }}
         >
           {/* Breadcrumb Dinamis */}
-          <nav
-            aria-label="Breadcrumb"
-            style={{ fontSize: "13px", color: "#B7DCC9", marginBottom: "12px" }}
-          >
+          <nav aria-label="Breadcrumb" style={{ fontSize: "13px", color: "#B7DCC9", marginBottom: "12px" }}>
             <Link to="/" style={{ color: "#B7DCC9", textDecoration: "none" }}>
               Beranda
             </Link>{" "}
             / <span style={{ color: "#B7DCC9" }}>Profil</span> /{" "}
-            <span style={{ color: "#FFFFFF", fontWeight: 600 }}>
-              {TAB_LABELS[tab] || "Sambutan & Sejarah"}
-            </span>
+            <span style={{ color: "#FFFFFF", fontWeight: 600 }}>{TAB_LABELS[tab] || "Sambutan & Sejarah"}</span>
           </nav>
 
           <div style={{ paddingBottom: "20px" }}>
-            <h1
-              style={{ margin: "6px 0 0", fontSize: "40px", fontWeight: 800 }}
-            >
-              Profil Institusi
-            </h1>
+            <h1 style={{ margin: "6px 0 0", fontSize: "40px", fontWeight: 800 }}>Profil Institusi</h1>
           </div>
 
           {/* Sub-Menu Navigasi Profil */}
@@ -182,9 +164,7 @@ export default function Profil() {
                   >
                     Rektor UNIZAR
                   </div>
-                  <div style={{ fontSize: "13px", color: "#44574E" }}>
-                    Universitas Islam Al-Azhar
-                  </div>
+                  <div style={{ fontSize: "13px", color: "#44574E" }}>Universitas Islam Al-Azhar</div>
                 </div>
               </div>
 
@@ -222,39 +202,26 @@ export default function Profil() {
                     paddingLeft: "18px",
                   }}
                 >
-                  <p
-                    style={{ margin: 0, fontStyle: "italic", color: "#13231C" }}
-                  >
-                    Salam sejahtera bagi kita semua.
+                  <p style={{ margin: 0, fontStyle: "italic", color: "#13231C" }}>Salam sejahtera bagi kita semua.</p>
+                  <p style={{ margin: 0, textAlign: "justify" }}>
+                    Sebagai pionir pendidikan tinggi di Indonesia, Universitas Islam Al-Azhar Mataram (UNIZAR) memiliki
+                    akar yang kuat dalam tradisi kebebasan akademik, di mana keberagaman pemikiran mendapatkan ruang
+                    apresiasi yang tinggi. Kami senantiasa menjaga dan mengembangkan lingkungan akademik yang tidak
+                    hanya kondusif, tetapi juga mendorong mahasiswa untuk berpikir kritis, kreatif, dan inovatif.
                   </p>
                   <p style={{ margin: 0, textAlign: "justify" }}>
-                    Sebagai pionir pendidikan tinggi di Indonesia, Universitas
-                    Islam Al-Azhar Mataram (UNIZAR) memiliki akar yang kuat
-                    dalam tradisi kebebasan akademik, di mana keberagaman
-                    pemikiran mendapatkan ruang apresiasi yang tinggi. Kami
-                    senantiasa menjaga dan mengembangkan lingkungan akademik
-                    yang tidak hanya kondusif, tetapi juga mendorong mahasiswa
-                    untuk berpikir kritis, kreatif, dan inovatif.
+                    Dalam perjalanan kami, UNIZAR berkomitmen untuk menjadi lembaga pendidikan yang unggul dan dapat
+                    diandalkan dalam mencetak pemimpin masa depan. Melalui pendidikan yang berbasis pada nilai-nilai
+                    Islam yang moderat, kami mendidik mahasiswa tidak hanya dalam aspek ilmu pengetahuan dan
+                    keterampilan, tetapi juga dalam membangun karakter yang tangguh, berintegritas, dan memiliki
+                    kepedulian sosial yang tinggi.
                   </p>
                   <p style={{ margin: 0, textAlign: "justify" }}>
-                    Dalam perjalanan kami, UNIZAR berkomitmen untuk menjadi
-                    lembaga pendidikan yang unggul dan dapat diandalkan dalam
-                    mencetak pemimpin masa depan. Melalui pendidikan yang
-                    berbasis pada nilai-nilai Islam yang moderat, kami mendidik
-                    mahasiswa tidak hanya dalam aspek ilmu pengetahuan dan
-                    keterampilan, tetapi juga dalam membangun karakter yang
-                    tangguh, berintegritas, dan memiliki kepedulian sosial yang
-                    tinggi.
-                  </p>
-                  <p style={{ margin: 0, textAlign: "justify" }}>
-                    Lingkungan pembelajaran di UNIZAR dipenuhi dengan semangat,
-                    kolaborasi, serta potensi untuk berinovasi. Kami memberikan
-                    ruang bagi mahasiswa untuk mengeksplorasi berbagai ide dan
-                    gagasan, serta mendorong mereka untuk menjadi agen perubahan
-                    yang berkontribusi positif baik di tingkat nasional maupun
-                    global. Selain itu, kami berkomitmen untuk terus memperkuat
-                    kualitas pengajaran dan penelitian yang berorientasi pada
-                    kebutuhan masyarakat dan dunia kerja.
+                    Lingkungan pembelajaran di UNIZAR dipenuhi dengan semangat, kolaborasi, serta potensi untuk
+                    berinovasi. Kami memberikan ruang bagi mahasiswa untuk mengeksplorasi berbagai ide dan gagasan,
+                    serta mendorong mereka untuk menjadi agen perubahan yang berkontribusi positif baik di tingkat
+                    nasional maupun global. Selain itu, kami berkomitmen untuk terus memperkuat kualitas pengajaran dan
+                    penelitian yang berorientasi pada kebutuhan masyarakat dan dunia kerja.
                   </p>
                 </div>
               </div>
@@ -301,72 +268,45 @@ export default function Profil() {
                 }}
               >
                 <p style={{ margin: 0, textAlign: "justify", lineHeight: 1.8 }}>
-                  <strong>Yayasan Pesantren Luhur Al-Azhar</strong> didirikan
-                  pada tahun 1979 dengan komitmen luhur mengambil peran aktif
-                  dalam mencerdaskan kehidupan bangsa melalui bidang pendidikan
-                  tinggi. Pada masa tersebut, ketersediaan perguruan tinggi di
-                  Provinsi Nusa Tenggara Barat masih sangat terbatas dan tidak
-                  sebanding dengan lonjakan animo lulusan menengah atas yang
-                  ingin melanjutkan studi. Menjawab tantangan dan urgensi
-                  tersebut, Yayasan secara resmi menerbitkan{" "}
-                  <strong>Surat Keputusan Nomor 01/YPLA/1981</strong> pada
-                  tanggal <strong>10 Mei 1981</strong> tentang pembentukan{" "}
-                  <strong>Universitas Islam Al-Azhar (UNIZAR)</strong> di
-                  Provinsi Nusa Tenggara Barat.
+                  <strong>Yayasan Pesantren Luhur Al-Azhar</strong> didirikan pada tahun 1979 dengan komitmen luhur
+                  mengambil peran aktif dalam mencerdaskan kehidupan bangsa melalui bidang pendidikan tinggi. Pada masa
+                  tersebut, ketersediaan perguruan tinggi di Provinsi Nusa Tenggara Barat masih sangat terbatas dan
+                  tidak sebanding dengan lonjakan animo lulusan menengah atas yang ingin melanjutkan studi. Menjawab
+                  tantangan dan urgensi tersebut, Yayasan secara resmi menerbitkan{" "}
+                  <strong>Surat Keputusan Nomor 01/YPLA/1981</strong> pada tanggal <strong>10 Mei 1981</strong> tentang
+                  pembentukan <strong>Universitas Islam Al-Azhar (UNIZAR)</strong> di Provinsi Nusa Tenggara Barat.
                 </p>
                 <p style={{ margin: 0, textAlign: "justify", lineHeight: 1.8 }}>
-                  Pada masa awal pendiriannya, UNIZAR mengoperasikan empat
-                  fakultas perintis: <strong>Fakultas Hukum</strong> (Jurusan
-                  Hukum Keperdataan dan Hukum Pidana, yang pada tahun 1993
-                  melebur menjadi Program Studi Ilmu Hukum),{" "}
-                  <strong>Fakultas Pertanian</strong> (Program Studi Sosial
-                  Ekonomi Pertanian), <strong>Fakultas Teknik</strong> (Program
-                  Studi Teknik Sipil), dan <strong>Fakultas Ekonomi</strong>{" "}
-                  (Program Studi Ekonomi Pembangunan). Landasan legalitas
-                  institusi ini semakin kokoh setelah keempat fakultas tersebut
-                  secara serentak memperoleh status terdaftar dari Menteri
-                  Pendidikan dan Kebudayaan Republik Indonesia,{" "}
-                  <strong>Prof. Dr. Nugroho Notusanto</strong>, melalui{" "}
-                  <strong>SK Nomor 0378/0/1984</strong> tertanggal{" "}
-                  <strong>18 Agustus 1984</strong>.
+                  Pada masa awal pendiriannya, UNIZAR mengoperasikan empat fakultas perintis:{" "}
+                  <strong>Fakultas Hukum</strong> (Jurusan Hukum Keperdataan dan Hukum Pidana, yang pada tahun 1993
+                  melebur menjadi Program Studi Ilmu Hukum), <strong>Fakultas Pertanian</strong> (Program Studi Sosial
+                  Ekonomi Pertanian), <strong>Fakultas Teknik</strong> (Program Studi Teknik Sipil), dan{" "}
+                  <strong>Fakultas Ekonomi</strong> (Program Studi Ekonomi Pembangunan). Landasan legalitas institusi
+                  ini semakin kokoh setelah keempat fakultas tersebut secara serentak memperoleh status terdaftar dari
+                  Menteri Pendidikan dan Kebudayaan Republik Indonesia, <strong>Prof. Dr. Nugroho Notusanto</strong>,
+                  melalui <strong>SK Nomor 0378/0/1984</strong> tertanggal <strong>18 Agustus 1984</strong>.
                 </p>
                 <p style={{ margin: 0, textAlign: "justify", lineHeight: 1.8 }}>
-                  Seiring berjalannya waktu, Rektor sekaligus pendiri UNIZAR,{" "}
-                  <strong>H. Abdurrahim, S.H.</strong>, memprakarsai gagasan
-                  visioner untuk mendirikan Fakultas Kedokteran guna mencetak
-                  tenaga medis lokal yang kompeten. Mengingat persyaratan awal
-                  yang sangat ketat, atas saran dari{" "}
-                  <strong>
-                    Prof. Dr. dr. Soewignjo Soemohardjo, Sp.PD, KGEH
-                  </strong>
-                  , UNIZAR mendirikan Fakultas Biologi terlebih dahulu pada
-                  tahun 1990. Berdasarkan arahan Kopertis Wilayah VIII, entitas
-                  ini kemudian bertransformasi menjadi{" "}
-                  <strong>
-                    Fakultas Matematika dan Ilmu Pengetahuan Alam (MIPA)
-                  </strong>{" "}
-                  dengan Biologi sebagai jurusan dan program studi, serta resmi
-                  meraih status terdaftar melalui Keputusan Dirjen Dikti{" "}
-                  <strong>Nomor 154/DIKTI/Kep/1992</strong> pada 28 April 1992.
-                  Fakultas MIPA ini menjadi embrio utama yang melahirkan Program
-                  Studi Pendidikan Dokter setelah Dirjen Dikti menerbitkan izin
-                  penyelenggaraan resmi melalui Surat{" "}
-                  <strong>Nomor 2100/D/T/2004</strong> pada tanggal{" "}
+                  Seiring berjalannya waktu, Rektor sekaligus pendiri UNIZAR, <strong>H. Abdurrahim, S.H.</strong>,
+                  memprakarsai gagasan visioner untuk mendirikan Fakultas Kedokteran guna mencetak tenaga medis lokal
+                  yang kompeten. Mengingat persyaratan awal yang sangat ketat, atas saran dari{" "}
+                  <strong>Prof. Dr. dr. Soewignjo Soemohardjo, Sp.PD, KGEH</strong>, UNIZAR mendirikan Fakultas Biologi
+                  terlebih dahulu pada tahun 1990. Berdasarkan arahan Kopertis Wilayah VIII, entitas ini kemudian
+                  bertransformasi menjadi <strong>Fakultas Matematika dan Ilmu Pengetahuan Alam (MIPA)</strong> dengan
+                  Biologi sebagai jurusan dan program studi, serta resmi meraih status terdaftar melalui Keputusan
+                  Dirjen Dikti <strong>Nomor 154/DIKTI/Kep/1992</strong> pada 28 April 1992. Fakultas MIPA ini menjadi
+                  embrio utama yang melahirkan Program Studi Pendidikan Dokter setelah Dirjen Dikti menerbitkan izin
+                  penyelenggaraan resmi melalui Surat <strong>Nomor 2100/D/T/2004</strong> pada tanggal{" "}
                   <strong>17 Juni 2004</strong>.
                 </p>
                 <p style={{ margin: 0, textAlign: "justify", lineHeight: 1.8 }}>
-                  Memasuki era pendidikan tinggi modern, dinamika pengembangan
-                  program studi di UNIZAR terus bergerak progresif guna menjawab
-                  kebutuhan dunia industri dan masyarakat luas. Ekspansi
-                  akademik tersebut ditandai dengan dibukanya Program Studi{" "}
-                  <strong>Akuntansi</strong> (2016), Program Studi{" "}
-                  <strong>Agroekoteknologi</strong> (2020), serta Program Studi{" "}
-                  <strong>Ilmu Komputer</strong> pada Fakultas Teknik (2022).
-                  Komitmen penguatan nilai-nilai keislaman dan tata kelola
-                  bisnis modern semakin ditegaskan dengan berdirinya{" "}
-                  <strong>Fakultas Agama Islam (FAI)</strong> pada tahun 2023,
-                  yang menaungi Program Studi <strong>Ekonomi Syariah</strong>{" "}
-                  dan <strong>Manajemen Bisnis Syariah</strong>.
+                  Memasuki era pendidikan tinggi modern, dinamika pengembangan program studi di UNIZAR terus bergerak
+                  progresif guna menjawab kebutuhan dunia industri dan masyarakat luas. Ekspansi akademik tersebut
+                  ditandai dengan dibukanya Program Studi <strong>Akuntansi</strong> (2016), Program Studi{" "}
+                  <strong>Agroekoteknologi</strong> (2020), serta Program Studi <strong>Ilmu Komputer</strong> pada
+                  Fakultas Teknik (2022). Komitmen penguatan nilai-nilai keislaman dan tata kelola bisnis modern semakin
+                  ditegaskan dengan berdirinya <strong>Fakultas Agama Islam (FAI)</strong> pada tahun 2023, yang
+                  menaungi Program Studi <strong>Ekonomi Syariah</strong> dan <strong>Manajemen Bisnis Syariah</strong>.
                 </p>
               </div>
 
@@ -551,10 +491,8 @@ export default function Profil() {
                   margin: 0,
                 }}
               >
-                Menjadi Universitas terkemuka dalam pengembangan ilmu
-                pengetahuan dan teknologi (IPTEK) berwawasan kepariwisataan yang
-                professional dan berintegritas berdasarkan nilai Islam Rahmatan
-                Lil Alamin.
+                Menjadi Universitas terkemuka dalam pengembangan ilmu pengetahuan dan teknologi (IPTEK) berwawasan
+                kepariwisataan yang professional dan berintegritas berdasarkan nilai Islam Rahmatan Lil Alamin.
               </p>
             </div>
 
@@ -576,18 +514,27 @@ export default function Profil() {
               >
                 Diferensiasi Misi
               </h2>
-              <p
+              <ul
                 style={{
-                  fontSize: "15px",
+                  fontSize: "14px",
                   color: "#44574E",
                   lineHeight: 1.6,
                   margin: 0,
+                  paddingLeft: "18px",
                 }}
               >
-                Fokus pada solusi kebutuhan masyarakat NTB melalui pendidikan
-                kedokteran, hukum, teknik, ekonomi, pertanian, dan sains yang
-                terintegrasi nilai keislaman.
-              </p>
+                <li>
+                  Menyelenggarakan Pendidikan dan pembelajaran secara professional yang berwawasan kepariwisataan dalam
+                  perkembangan IPTEK.
+                </li>
+                <li>
+                  Menyelenggarakan penelitian berwawasan kepariwisataan yang berkontribusi pada perkembangan IPTEK.
+                </li>
+                <li>
+                  Menyelenggarakan pengabdian kepada masyarakat berwawasan kepariwisataan untuk meningkatkan
+                  kesejahteraan masyarakat.
+                </li>
+              </ul>
             </div>
 
             <div
@@ -618,26 +565,12 @@ export default function Profil() {
                 }}
               >
                 <li>
-                  Menyelenggarakan Pendidikan dan pembelajaran secara
-                  professional yang berwawasan kepariwisataan dalam perkembangan
-                  IPTEK.
+                  Menyelenggarakan tata Kelola kelembagaan universitas secara professional berdasarkan nilai-nilai
+                  Islam.
                 </li>
                 <li>
-                  Menyelenggarakan penelitian berwawasan kepariwisataan yang
-                  berkontribusi pada perkembangan IPTEK.
-                </li>
-                <li>
-                  Menyelenggarakan pengabdian kepada masyarakat berwawasan
-                  kepariwisataan untuk meningkatkan kesejahteraan masyarakat.
-                </li>
-                <li>
-                  Menyelenggarakan tata Kelola kelembagaan universitas secara
-                  professional berdasarkan nilai-nilai Islam.
-                </li>
-                <li>
-                  Mengembangkan Sumber Daya Manusia dan Kerjasama dengan pihak
-                  lain secara professional berdasarkan nilai-nilai Islam
-                  Rahmatan Lil Alamin.
+                  Mengembangkan Sumber Daya Manusia dan Kerjasama dengan pihak lain secara professional berdasarkan
+                  nilai-nilai Islam Rahmatan Lil Alamin.
                 </li>
               </ul>
             </div>
@@ -699,8 +632,7 @@ export default function Profil() {
                   Penguatan Akademik & OBE
                 </h3>
                 <p style={{ fontSize: "14px", color: "#44574E", margin: 0 }}>
-                  Penerapan kurikulum berbasis capaian dan akreditasi
-                  internasional.
+                  Penerapan kurikulum berbasis capaian dan akreditasi internasional.
                 </p>
               </div>
               <div
@@ -721,8 +653,7 @@ export default function Profil() {
                   Pengembangan SDM & Dosen
                 </h3>
                 <p style={{ fontSize: "14px", color: "#44574E", margin: 0 }}>
-                  Peningkatan kualifikasi doktor dan jabatan akademik Lektor
-                  Kepala/Guru Besar.
+                  Peningkatan kualifikasi doktor dan jabatan akademik Lektor Kepala/Guru Besar.
                 </p>
               </div>
               <div
@@ -743,8 +674,7 @@ export default function Profil() {
                   Kemitraan & Riset Terapan
                 </h3>
                 <p style={{ fontSize: "14px", color: "#44574E", margin: 0 }}>
-                  Kolaborasi riset regional dan pengabdian masyarakat berbasis
-                  keunggulan lokal.
+                  Kolaborasi riset regional dan pengabdian masyarakat berbasis keunggulan lokal.
                 </p>
               </div>
             </div>
@@ -881,9 +811,8 @@ export default function Profil() {
               Statuta UNIZAR
             </h2>
             <p style={{ fontSize: "15px", color: "#44574E", lineHeight: 1.6 }}>
-              Statuta UNIZAR merupakan pedoman dasar penyelenggaraan kegiatan
-              tridharma, tata kelola, dan norma akademik di Universitas Islam
-              Al-Azhar.
+              Statuta UNIZAR merupakan pedoman dasar penyelenggaraan kegiatan tridharma, tata kelola, dan norma akademik
+              di Universitas Islam Al-Azhar.
             </p>
             <div
               style={{
@@ -943,9 +872,8 @@ export default function Profil() {
                   margin: 0,
                 }}
               >
-                Bagan tata kerja terintegrasi antara Senat Universitas, Yayasan
-                Pesantren Luhur Al-Azhar, Rektorat, Badan Penjaminan Mutu,
-                Fakultas, dan Unit Pelaksana Teknis.
+                Bagan tata kerja terintegrasi antara Senat Universitas, Yayasan Pesantren Luhur Al-Azhar, Rektorat,
+                Badan Penjaminan Mutu, Fakultas, dan Unit Pelaksana Teknis.
               </p>
             </div>
 
@@ -987,9 +915,7 @@ export default function Profil() {
                 gap: "12px",
               }}
             >
-              <div
-                style={{ fontSize: "14px", fontWeight: 800, color: "#13231C" }}
-              >
+              <div style={{ fontSize: "14px", fontWeight: 800, color: "#13231C" }}>
                 Keterangan Hubungan Kerja & Koordinasi:
               </div>
               <div
@@ -1001,9 +927,7 @@ export default function Profil() {
                   color: "#44574E",
                 }}
               >
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <span
                     style={{
                       width: "24px",
@@ -1013,9 +937,7 @@ export default function Profil() {
                   ></span>
                   <span>Garis Perintah</span>
                 </div>
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <span
                     style={{
                       width: "24px",
@@ -1025,9 +947,7 @@ export default function Profil() {
                   ></span>
                   <span>Garis Koordinasi</span>
                 </div>
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <span
                     style={{
                       width: "12px",
@@ -1038,9 +958,7 @@ export default function Profil() {
                   ></span>
                   <span>Garis Perintah WR I</span>
                 </div>
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <span
                     style={{
                       width: "12px",
@@ -1051,9 +969,7 @@ export default function Profil() {
                   ></span>
                   <span>Garis Perintah WR II</span>
                 </div>
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <span
                     style={{
                       width: "12px",
@@ -1064,9 +980,7 @@ export default function Profil() {
                   ></span>
                   <span>Garis Perintah WR III</span>
                 </div>
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <span
                     style={{
                       width: "12px",
@@ -1113,8 +1027,7 @@ export default function Profil() {
                   fontSize: "18px",
                   fontWeight: 800,
                   borderRadius: "999px",
-                  background:
-                    subPimpinan === "universitas" ? "#064E3B" : "transparent",
+                  background: subPimpinan === "universitas" ? "#064E3B" : "transparent",
                   color: subPimpinan === "universitas" ? "#FFFFFF" : "#44574E",
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   whiteSpace: "nowrap",
@@ -1132,8 +1045,7 @@ export default function Profil() {
                   fontSize: "18px",
                   fontWeight: 800,
                   borderRadius: "999px",
-                  background:
-                    subPimpinan === "yayasan" ? "#064E3B" : "transparent",
+                  background: subPimpinan === "yayasan" ? "#064E3B" : "transparent",
                   color: subPimpinan === "yayasan" ? "#FFFFFF" : "#44574E",
                   fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   whiteSpace: "nowrap",
@@ -1347,9 +1259,7 @@ export default function Profil() {
             >
               Penghargaan Institusi
             </h2>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
-            >
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               <div
                 style={{
                   padding: "16px",
@@ -1359,10 +1269,8 @@ export default function Profil() {
                   color: "#5A4500",
                 }}
               >
-                <strong style={{ color: "#3D2E00" }}>
-                  Akreditasi Unggul Institusi
-                </strong>{" "}
-                — Diakui BAN-PT berdasarkan penilaian instrumen IAPT 4.1.
+                <strong style={{ color: "#3D2E00" }}>Akreditasi Unggul Institusi</strong> — Diakui BAN-PT berdasarkan
+                penilaian instrumen IAPT 4.1.
               </div>
               <div
                 style={{
@@ -1371,8 +1279,8 @@ export default function Profil() {
                   borderRadius: "12px",
                 }}
               >
-                <strong>Penghargaan Kampus Islami Berdampak</strong> — Rekognisi
-                atas pengabdian masyarakat dan pemberdayaan desa binaan di NTB.
+                <strong>Penghargaan Kampus Islami Berdampak</strong> — Rekognisi atas pengabdian masyarakat dan
+                pemberdayaan desa binaan di NTB.
               </div>
             </div>
           </section>
