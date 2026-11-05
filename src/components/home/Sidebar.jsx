@@ -279,7 +279,7 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            {/* PUSAT DOKUMEN (Kirim state: { tab: "dokumen" } ke Direktori) */}
+            {/* PUSAT DATA & INFORMASI (Kirim state: { tab: "dokumen" } ke Direktori) */}
             <Link
               to="/direktori"
               state={{ tab: "dokumen" }}
@@ -292,7 +292,7 @@ export default function Sidebar() {
                 padding: "2px 0",
               }}
             >
-              Pusat Dokumen
+              Pusat Data & Informasi
             </Link>
           </li>
           <li>
@@ -356,7 +356,9 @@ export default function Sidebar() {
           gap: "16px",
         }}
       >
-        <div style={{ fontWeight: 800, fontSize: "15px", color: "#13231C" }}>Akses dokumen</div>
+        <div style={{ fontWeight: 800, fontSize: "15px", color: "#13231C" }}>
+          Akses dokumen
+        </div>
         <div
           style={{
             display: "flex",
@@ -383,7 +385,9 @@ export default function Sidebar() {
             <span>terbuka untuk semua</span>
           </div>
 
-          <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+          <div
+            style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}
+          >
             <span
               style={{
                 background: "#FFF3C4",
@@ -397,7 +401,9 @@ export default function Sidebar() {
             >
               Ringkasan
             </span>
-            <span style={{ lineHeight: 1.35 }}>ikhtisar publik, dokumen penuh terkunci</span>
+            <span style={{ lineHeight: 1.35 }}>
+              ikhtisar publik, dokumen penuh terkunci
+            </span>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
