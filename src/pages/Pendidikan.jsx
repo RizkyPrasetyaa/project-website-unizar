@@ -10,7 +10,7 @@ export default function Pendidikan() {
     { key: "kurikulum", label: "Kebijakan Kurikulum OBE" },
     { key: "kalender", label: "Kalender & Panduan Akademik" },
     { key: "proses", label: "Proses & Evaluasi Pembelajaran" },
-    { key: "mbkm", label: "MBKM (≥ 10 sks luar prodi)" },
+    { key: "mbkm", label: "MBKM" },
     { key: "suasana", label: "Suasana Akademik & Kebebasan Mimbar" },
     { key: "capaian", label: "Capaian Kompetensi Lulusan" },
     { key: "rpl", label: "RPL · PKKMB" },
@@ -112,6 +112,16 @@ export default function Pendidikan() {
             D("Jadwal Wisuda & Kelulusan", "pub", "Periode I & II"),
           ],
         },
+        {
+          title: "Arsip Kalender Akademik (5 Tahun Terakhir)",
+          docs: [
+            D("Kalender Akademik 2025/2026", "pub", "Arsip"),
+            D("Kalender Akademik 2024/2025", "pub", "Arsip"),
+            D("Kalender Akademik 2023/2024", "pub", "Arsip"),
+            D("Kalender Akademik 2022/2023", "pub", "Arsip"),
+            D("Kalender Akademik 2021/2022", "pub", "Arsip"),
+          ],
+        },
       ],
     },
     proses: {
@@ -152,6 +162,14 @@ export default function Pendidikan() {
             D("Rekap Partisipasi MBKM 3 Tahun", "sum", "2023–2025"),
             D("Testimoni & Luaran MBKM", "pub", "Dokumentasi Kegiatan"),
             D("Portal MBKM Nasional Kemdiktisaintek", "ext", "Sistem Eksternal"),
+          ],
+        },
+        {
+          title: "Arsip MBKM (3 Tahun Terakhir)",
+          docs: [
+            D("Laporan Tahunan MBKM 2025", "pub", "Arsip Tahunan"),
+            D("Laporan Tahunan MBKM 2024", "pub", "Arsip Tahunan"),
+            D("Laporan Tahunan MBKM 2023", "pub", "Arsip Tahunan"),
           ],
         },
       ],

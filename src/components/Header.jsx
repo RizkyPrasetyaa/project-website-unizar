@@ -174,7 +174,7 @@ export default function Header() {
           access: "Publik",
           tab: "proses",
         },
-        { label: "MBKM (≥ 10 sks luar prodi)", access: "Publik", tab: "mbkm" },
+        { label: "MBKM", access: "Publik", tab: "mbkm" },
         {
           label: "Suasana Akademik & Kebebasan Mimbar",
           access: "Publik",
