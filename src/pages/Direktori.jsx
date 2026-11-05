@@ -4,18 +4,16 @@ import { Link, useLocation } from "react-router-dom";
 export default function Direktori() {
   const location = useLocation();
 
-  // Mapping label untuk Breadcrumb Dinamis
+  // Mapping label untuk Breadcrumb Dinamis (Program Studi dihapus)
   const TAB_LABELS = {
-    unit: "Unit Kerja & Kontak",
+    unit: "Unit Kerja",
     dosen: "Direktori Dosen & Pakar",
-    prodi: "Direktori Program Studi",
-    dokumen: "Pusat Dokumen",
-    kerjasama: "Direktori MoU/MoA",
+    dokumen: "Pusat Data & Informasi",
     peta: "Peta Kampus",
   };
 
-  // 1. Daftar key tab valid yang ada di Direktori
-  const VALID_TABS = ["unit", "dosen", "prodi", "dokumen", "kerjasama", "peta"];
+  // 1. Daftar key tab valid yang ada di Direktori (Program Studi dihapus)
+  const VALID_TABS = ["unit", "dosen", "dokumen", "peta"];
 
   // 2. Fungsi pembantu untuk dapatkan tab aktif dari location.state
   const getActiveTab = () => {
@@ -27,6 +25,10 @@ export default function Direktori() {
 
   const [tab, setTab] = useState(getActiveTab());
 
+  // State sub-tab internal khusus untuk "Unit Kerja"
+  const [subUnit, setSubUnit] = useState("biro");
+
+
   // 3. Efek re-render otomatis saat location.state ATAU location.key berubah
   useEffect(() => {
     if (location.state?.tab && VALID_TABS.includes(location.state.tab)) {
@@ -34,7 +36,7 @@ export default function Direktori() {
     }
   }, [location.state, location.key]);
 
-  // Data & State Simulasi Khusus Sub-Menu Pusat Dokumen
+  // Data & State Simulasi Khusus Sub-Menu Pusat Data & Informasi
   const [docFilter, setDocFilter] = useState("all");
   const [selectedIdx, setSelectedIdx] = useState(0);
 
@@ -170,10 +172,104 @@ export default function Direktori() {
     },
   ];
 
-  const countByAcc = (k) => (k === "all" ? DOCS.length : DOCS.filter((d) => d.acc === k).length);
-  const filteredDocs = DOCS.filter((d) => docFilter === "all" || d.acc === docFilter);
+  const countByAcc = (k) =>
+    k === "all" ? DOCS.length : DOCS.filter((d) => d.acc === k).length;
+  const filteredDocs = DOCS.filter(
+    (d) => docFilter === "all" || d.acc === docFilter,
+  );
   const selDoc = DOCS[selectedIdx] || DOCS[0];
   const selStyle = STY[selDoc.acc];
+
+  // Data unit kerja terstruktur berdasarkan kategori sub-tab
+  const UNIT_KERJA_DATA = {
+    biro: [
+      {
+        name: "Biro Akademik",
+        email: "akademik@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Kemahasiswaan",
+        email: "kemahasiswaan@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Keuangan",
+        email: "keuangan@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro SDM",
+        email: "sdm@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Umum",
+        email: "biroumum@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 1",
+      },
+      {
+        name: "Biro HKA (Humas & Kerjasama)",
+        email: "hka@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Renstrabang",
+        email: "renstrabang@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+      {
+        name: "Biro Hukum & Adm",
+        email: "hukum@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+    ],
+    lembaga: [
+      {
+        name: "Lembaga Penelitian dan Pengabdian (LPPM)",
+        email: "lppm@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+    ],
+    badan: [
+      {
+        name: "Badan Penjaminan Mutu (BPM)",
+        email: "bpm@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+      },
+    ],
+    upt: [
+      {
+        name: "Perpustakaan",
+        email: "perpus@unizar.ac.id",
+        loc: "Gedung UPT Lt. 1",
+      },
+      {
+        name: "Unizar Learning Center (ULC)",
+        email: "ulc@unizar.ac.id",
+        loc: "Gedung UPT Lt. 2",
+      },
+      {
+        name: "Inkubator Bisnis Teknologi (ITe)",
+        email: "ite@unizar.ac.id",
+        loc: "Gedung Inkubasi",
+      },
+      {
+        name: "Unit Bisnis",
+        email: "unitbisnis@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 1",
+      },
+      { name: "Unit K3", email: "k3@unizar.ac.id", loc: "Gedung Pelayanan K3" },
+    ],
+    ppkpt: [
+      {
+        name: "Satgas Pencegahan dan Penanganan Kekerasan di Perguruan Tinggi (PPKPT)",
+        email: "satgas.ppkpt@unizar.ac.id",
+        loc: "Gedung Layanan Khusus",
+      },
+    ],
+  };
+
 
   return (
     <div
@@ -194,30 +290,28 @@ export default function Direktori() {
           }}
         >
           {/* Breadcrumb Dinamis */}
-          <nav aria-label="Breadcrumb" style={{ fontSize: "13px", color: "#B7DCC9", marginBottom: "12px" }}>
+          <nav
+            aria-label="Breadcrumb"
+            style={{ fontSize: "13px", color: "#B7DCC9", marginBottom: "12px" }}
+          >
             <Link to="/" style={{ color: "#B7DCC9", textDecoration: "none" }}>
               Beranda
             </Link>{" "}
             / <span style={{ color: "#B7DCC9" }}>Direktori</span> /{" "}
-            <span style={{ color: "#FFFFFF", fontWeight: 600 }}>{TAB_LABELS[tab] || "Unit Kerja & Kontak"}</span>
+            <span style={{ color: "#FFFFFF", fontWeight: 600 }}>
+              {TAB_LABELS[tab] || "Unit Kerja"}
+            </span>
           </nav>
 
           <div style={{ paddingBottom: "20px" }}>
-            <span
-              style={{
-                fontSize: "12px",
-                fontWeight: 700,
-                color: "#F2C230",
-                letterSpacing: ".12em",
-                textTransform: "uppercase",
-              }}
+            <h1
+              style={{ margin: "6px 0 0", fontSize: "40px", fontWeight: 800 }}
             >
-              Universitas Islam Al-Azhar Mataram
-            </span>
-            <h1 style={{ margin: "6px 0 0", fontSize: "40px", fontWeight: 800 }}>Direktori UNIZAR</h1>
+              Direktori UNIZAR
+            </h1>
           </div>
 
-          {/* Sub-Menu Navigasi Tab Persis Profil */}
+          {/* Sub-Menu Navigasi Tab Utama (Program Studi Dihapus) */}
           <div
             role="tablist"
             style={{
@@ -228,11 +322,9 @@ export default function Direktori() {
             }}
           >
             {[
-              ["unit", "Unit Kerja & Kontak"],
+              ["unit", "Unit Kerja"],
               ["dosen", "Direktori Dosen & Pakar"],
-              ["prodi", "Direktori Program Studi"],
-              ["dokumen", "Pusat Dokumen"],
-              ["kerjasama", "Direktori MoU/MoA"],
+              ["dokumen", "Pusat Data & Informasi"],
               ["peta", "Peta Kampus"],
             ].map(([k, label]) => (
               <button
@@ -270,7 +362,7 @@ export default function Direktori() {
           gap: "24px",
         }}
       >
-        {/* 1. SUB-MENU: UNIT KERJA & KONTAK */}
+        {/* 1. SUB-MENU: UNIT KERJA (WITH SUB-TAB KAPSUL) */}
         {tab === "unit" && (
           <section
             style={{
@@ -298,7 +390,7 @@ export default function Direktori() {
                 margin: "8px 0 12px",
               }}
             >
-              Unit Kerja & Kontak Kampus
+              Unit Kerja
             </h2>
             <p
               style={{
@@ -308,8 +400,51 @@ export default function Direktori() {
                 margin: "0 0 20px",
               }}
             >
-              Daftar biro, lembaga, dan unit kerja operasional di lingkungan Universitas Islam Al-Azhar.
+              Daftar biro, lembaga, badan, UPT, dan satgas di lingkungan
+              Universitas Islam Al-Azhar.
             </p>
+
+            {/* Sub-Tab Internal Kapsul */}
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                flexWrap: "wrap",
+                marginBottom: "24px",
+              }}
+            >
+              {[
+                ["biro", "Biro"],
+                ["lembaga", "Lembaga"],
+                ["badan", "Badan"],
+                ["upt", "UPT"],
+                ["ppkpt", "Satgas PPKPT"],
+              ].map(([subKey, subLabel]) => {
+                const isSel = subUnit === subKey;
+                return (
+                  <button
+                    key={subKey}
+                    type="button"
+                    onClick={() => setSubUnit(subKey)}
+                    style={{
+                      border: 0,
+                      cursor: "pointer",
+                      padding: "8px 18px",
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      borderRadius: "999px",
+                      background: isSel ? "#064E3B" : "#F4F8F6",
+                      color: isSel ? "#FFFFFF" : "#44574E",
+                      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+                    }}
+                  >
+                    {subLabel}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Content Cards */}
             <div
               style={{
                 display: "grid",
@@ -317,14 +452,7 @@ export default function Direktori() {
                 gap: "16px",
               }}
             >
-              {[
-                "Rektorat & Sekretariat",
-                "Badan Penjaminan Mutu (BPM)",
-                "LPPM UNIZAR",
-                "Biro Keuangan & Administrasi",
-                "Biro Kemahasiswaan",
-                "UPT Perpustakaan",
-              ].map((u, i) => (
+              {UNIT_KERJA_DATA[subUnit]?.map((u, i) => (
                 <div
                   key={i}
                   style={{
@@ -343,7 +471,7 @@ export default function Direktori() {
                       fontWeight: 800,
                     }}
                   >
-                    {u}
+                    {u.name}
                   </h4>
                   <p
                     style={{
@@ -353,9 +481,9 @@ export default function Direktori() {
                       lineHeight: 1.5,
                     }}
                   >
-                    Email: unit{i + 1}@unizar.ac.id
+                    Email: {u.email}
                     <br />
-                    Lokasi: Gedung Rektorat Lt. 2
+                    Lokasi: {u.loc}
                   </p>
                 </div>
               ))}
@@ -401,7 +529,8 @@ export default function Direktori() {
                 margin: "0 0 20px",
               }}
             >
-              Pencarian kepakaran, profil akademis, dan rekam jejak riset dosen UNIZAR.
+              Pencarian kepakaran, profil akademis, dan rekam jejak riset dosen
+              UNIZAR.
             </p>
             <input
               type="search"
@@ -476,107 +605,11 @@ export default function Direktori() {
           </section>
         )}
 
-        {/* 3. SUB-MENU: DIREKTORI PROGRAM STUDI */}
-        {tab === "prodi" && (
-          <section
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid #DCE6E0",
-              borderRadius: "18px",
-              padding: "28px",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "12px",
-                fontWeight: 800,
-                color: "#8A6500",
-                textTransform: "uppercase",
-              }}
-            >
-              PROGRAM AKADEMIK
-            </span>
-            <h2
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#064E3B",
-                margin: "8px 0 16px",
-              }}
-            >
-              Direktori Program Studi
-            </h2>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "16px",
-              }}
-            >
-              <div
-                style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <h4
-                  style={{
-                    margin: "0 0 8px",
-                    color: "#064E3B",
-                    fontSize: "16px",
-                  }}
-                >
-                  Fakultas Kedokteran
-                </h4>
-                <p style={{ margin: 0, fontSize: "14px", color: "#44574E" }}>S1 Pendidikan Dokter · Profesi Dokter</p>
-              </div>
-              <div
-                style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <h4
-                  style={{
-                    margin: "0 0 8px",
-                    color: "#064E3B",
-                    fontSize: "16px",
-                  }}
-                >
-                  Fakultas Teknik
-                </h4>
-                <p style={{ margin: 0, fontSize: "14px", color: "#44574E" }}>S1 Teknik Sipil · S1 Informatika</p>
-              </div>
-              <div
-                style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <h4
-                  style={{
-                    margin: "0 0 8px",
-                    color: "#064E3B",
-                    fontSize: "16px",
-                  }}
-                >
-                  Fakultas Ekonomi
-                </h4>
-                <p style={{ margin: 0, fontSize: "14px", color: "#44574E" }}>S1 Akuntansi · S1 Manajemen</p>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 4. SUB-MENU: PUSAT DOKUMEN */}
+        {/* 3. SUB-MENU: PUSAT DATA & INFORMASI */}
         {tab === "dokumen" && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+          >
             <div
               style={{
                 display: "flex",
@@ -587,15 +620,24 @@ export default function Direktori() {
               }}
             >
               <div>
-                <h2 style={{ margin: "0 0 4px", fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>
-                  Pusat Dokumen & Kebijakan
+                <h2
+                  style={{
+                    margin: "0 0 4px",
+                    fontSize: "28px",
+                    color: "#064E3B",
+                    fontWeight: 800,
+                  }}
+                >
+                  Pusat Data & Informasi
                 </h2>
                 <p style={{ margin: 0, fontSize: "14px", color: "#44574E" }}>
-                  Satu pintu untuk statuta, renstra, kebijakan, pedoman, SOP, dan laporan resmi UNIZAR.
+                  Satu pintu untuk data, informasi, dan dokumen resmi UNIZAR.
                 </p>
               </div>
 
-              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <div
+                style={{ display: "flex", gap: "10px", alignItems: "center" }}
+              >
                 <span
                   style={{
                     background: "#FFFFFF",
@@ -607,7 +649,10 @@ export default function Direktori() {
                     boxShadow: "0 1px 3px rgba(0,0,0,0.03)",
                   }}
                 >
-                  <strong style={{ color: "#064E3B", fontSize: "16px" }}>412</strong> dokumen
+                  <strong style={{ color: "#064E3B", fontSize: "16px" }}>
+                    412
+                  </strong>{" "}
+                  dokumen
                 </span>
                 <span
                   style={{
@@ -620,7 +665,8 @@ export default function Direktori() {
                     boxShadow: "0 1px 3px rgba(0,0,0,0.03)",
                   }}
                 >
-                  Diperbarui <strong style={{ color: "#064E3B" }}>10 Okt 2026</strong>
+                  Diperbarui{" "}
+                  <strong style={{ color: "#064E3B" }}>10 Okt 2026</strong>
                 </span>
               </div>
             </div>
@@ -637,8 +683,22 @@ export default function Direktori() {
                 alignItems: "flex-end",
               }}
             >
-              <div style={{ flex: "3 1 360px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                <label htmlFor="d-q" style={{ fontSize: "12px", fontWeight: 700, color: "#44574E" }}>
+              <div
+                style={{
+                  flex: "3 1 360px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                <label
+                  htmlFor="d-q"
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    color: "#44574E",
+                  }}
+                >
                   Cari dokumen, nomor SK, atau indikator
                 </label>
                 <input
@@ -654,8 +714,22 @@ export default function Direktori() {
                   }}
                 />
               </div>
-              <div style={{ flex: "1 1 180px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                <label htmlFor="d-unit" style={{ fontSize: "12px", fontWeight: 700, color: "#44574E" }}>
+              <div
+                style={{
+                  flex: "1 1 180px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                <label
+                  htmlFor="d-unit"
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    color: "#44574E",
+                  }}
+                >
                   Unit penerbit
                 </label>
                 <select
@@ -676,8 +750,22 @@ export default function Direktori() {
                   <option>Biro Keuangan</option>
                 </select>
               </div>
-              <div style={{ flex: "1 1 140px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                <label htmlFor="d-yr" style={{ fontSize: "12px", fontWeight: 700, color: "#44574E" }}>
+              <div
+                style={{
+                  flex: "1 1 140px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                <label
+                  htmlFor="d-yr"
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    color: "#44574E",
+                  }}
+                >
                   Tahun
                 </label>
                 <select
@@ -718,9 +806,23 @@ export default function Direktori() {
             <div
               role="group"
               aria-label="Filter akses"
-              style={{ display: "flex", gap: "8px", flexWrap: "wrap", alignItems: "center" }}
+              style={{
+                display: "flex",
+                gap: "8px",
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
             >
-              <span style={{ fontSize: "13px", fontWeight: 700, color: "#44574E", marginRight: "4px" }}>Akses:</span>
+              <span
+                style={{
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  color: "#44574E",
+                  marginRight: "4px",
+                }}
+              >
+                Akses:
+              </span>
               {[
                 ["all", "Semua", "#13231C"],
                 ["pub", "Publik", "#064E3B"],
@@ -752,7 +854,14 @@ export default function Direktori() {
               })}
             </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", alignItems: "flex-start" }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "20px",
+                alignItems: "flex-start",
+              }}
+            >
               <div
                 style={{
                   flex: "999 1 720px",
@@ -764,7 +873,14 @@ export default function Direktori() {
                 }}
               >
                 <div style={{ overflowX: "auto" }}>
-                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px", minWidth: "760px" }}>
+                  <table
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      fontSize: "14px",
+                      minWidth: "760px",
+                    }}
+                  >
                     <thead>
                       <tr
                         style={{
@@ -791,7 +907,10 @@ export default function Direktori() {
                         <th scope="col" style={{ padding: "14px 12px" }}>
                           AKSES
                         </th>
-                        <th scope="col" style={{ padding: "14px 16px", textAlign: "right" }}>
+                        <th
+                          scope="col"
+                          style={{ padding: "14px 16px", textAlign: "right" }}
+                        >
                           AKSI
                         </th>
                       </tr>
@@ -803,7 +922,10 @@ export default function Direktori() {
                         return (
                           <tr
                             key={i}
-                            style={{ borderTop: "1px solid #EEF3F0", background: isSelected ? "#F1F8F4" : "#FFFFFF" }}
+                            style={{
+                              borderTop: "1px solid #EEF3F0",
+                              background: isSelected ? "#F1F8F4" : "#FFFFFF",
+                            }}
                           >
                             <td style={{ padding: "14px 16px" }}>
                               <button
@@ -820,19 +942,46 @@ export default function Direktori() {
                                   gap: "3px",
                                 }}
                               >
-                                <span style={{ fontWeight: 700, fontSize: "15px", color: "#13231C" }}>{d.name}</span>
-                                <span style={{ fontSize: "12px", color: "#44574E" }}>
+                                <span
+                                  style={{
+                                    fontWeight: 700,
+                                    fontSize: "15px",
+                                    color: "#13231C",
+                                  }}
+                                >
+                                  {d.name}
+                                </span>
+                                <span
+                                  style={{ fontSize: "12px", color: "#44574E" }}
+                                >
                                   {d.unit} · {d.cat}
                                 </span>
                               </button>
                             </td>
-                            <td style={{ padding: "14px 12px", color: "#2B3D35", fontSize: "13px" }}>
+                            <td
+                              style={{
+                                padding: "14px 12px",
+                                color: "#2B3D35",
+                                fontSize: "13px",
+                              }}
+                            >
                               {d.sk}
                               <br />
                               <span style={{ color: "#44574E" }}>{d.date}</span>
                             </td>
-                            <td style={{ padding: "14px 12px", fontWeight: 700 }}>{d.ver}</td>
-                            <td style={{ padding: "14px 12px", color: "#0A6B4F", fontWeight: 700, fontSize: "13px" }}>
+                            <td
+                              style={{ padding: "14px 12px", fontWeight: 700 }}
+                            >
+                              {d.ver}
+                            </td>
+                            <td
+                              style={{
+                                padding: "14px 12px",
+                                color: "#0A6B4F",
+                                fontWeight: 700,
+                                fontSize: "13px",
+                              }}
+                            >
                               {d.ind}
                             </td>
                             <td style={{ padding: "14px 12px" }}>
@@ -850,7 +999,12 @@ export default function Direktori() {
                                 {st.badge}
                               </span>
                             </td>
-                            <td style={{ padding: "14px 16px", textAlign: "right" }}>
+                            <td
+                              style={{
+                                padding: "14px 16px",
+                                textAlign: "right",
+                              }}
+                            >
                               <button
                                 type="button"
                                 style={{
@@ -899,7 +1053,15 @@ export default function Direktori() {
                 >
                   DETAIL DOKUMEN
                 </div>
-                <h2 style={{ margin: 0, fontSize: "22px", lineHeight: 1.25, color: "#064E3B", fontWeight: 800 }}>
+                <h2
+                  style={{
+                    margin: 0,
+                    fontSize: "22px",
+                    lineHeight: 1.25,
+                    color: "#064E3B",
+                    fontWeight: 800,
+                  }}
+                >
                   {selDoc.name}
                 </h2>
                 <span
@@ -932,7 +1094,9 @@ export default function Direktori() {
                   <dt style={{ color: "#44574E" }}>Unit</dt>
                   <dd style={{ margin: 0, fontWeight: 600 }}>{selDoc.unit}</dd>
                   <dt style={{ color: "#44574E" }}>Indikator</dt>
-                  <dd style={{ margin: 0, fontWeight: 700, color: "#0A6B4F" }}>Ind. {selDoc.ind}</dd>
+                  <dd style={{ margin: 0, fontWeight: 700, color: "#0A6B4F" }}>
+                    Ind. {selDoc.ind}
+                  </dd>
                 </dl>
 
                 <div
@@ -949,7 +1113,13 @@ export default function Direktori() {
                 </div>
 
                 <div>
-                  <div style={{ fontSize: "13px", fontWeight: 800, marginBottom: "8px" }}>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: 800,
+                      marginBottom: "8px",
+                    }}
+                  >
                     Riwayat versi (siklus PPEPP)
                   </div>
                   <ol
@@ -971,8 +1141,18 @@ export default function Direktori() {
                         paddingLeft: "14px",
                       }}
                     >
-                      <span style={{ fontWeight: 800, color: "#064E3B", minWidth: "36px" }}>{selDoc.ver}</span>
-                      <span style={{ fontSize: "13px", color: "#2B3D35" }}>Berlaku · ditetapkan {selDoc.date}</span>
+                      <span
+                        style={{
+                          fontWeight: 800,
+                          color: "#064E3B",
+                          minWidth: "36px",
+                        }}
+                      >
+                        {selDoc.ver}
+                      </span>
+                      <span style={{ fontSize: "13px", color: "#2B3D35" }}>
+                        Berlaku · ditetapkan {selDoc.date}
+                      </span>
                     </li>
                     <li
                       style={{
@@ -983,7 +1163,15 @@ export default function Direktori() {
                         paddingLeft: "14px",
                       }}
                     >
-                      <span style={{ fontWeight: 800, color: "#064E3B", minWidth: "36px" }}>v—</span>
+                      <span
+                        style={{
+                          fontWeight: 800,
+                          color: "#064E3B",
+                          minWidth: "36px",
+                        }}
+                      >
+                        v—
+                      </span>
                       <span style={{ fontSize: "13px", color: "#2B3D35" }}>
                         Revisi setelah evaluasi & RTM tahun sebelumnya
                       </span>
@@ -997,8 +1185,18 @@ export default function Direktori() {
                         paddingLeft: "14px",
                       }}
                     >
-                      <span style={{ fontWeight: 800, color: "#064E3B", minWidth: "36px" }}>v1.0</span>
-                      <span style={{ fontSize: "13px", color: "#2B3D35" }}>Penetapan awal</span>
+                      <span
+                        style={{
+                          fontWeight: 800,
+                          color: "#064E3B",
+                          minWidth: "36px",
+                        }}
+                      >
+                        v1.0
+                      </span>
+                      <span style={{ fontSize: "13px", color: "#2B3D35" }}>
+                        Penetapan awal
+                      </span>
                     </li>
                   </ol>
                 </div>
@@ -1026,64 +1224,7 @@ export default function Direktori() {
           </div>
         )}
 
-        {/* 5. SUB-MENU: DIREKTORI MOU / MOA */}
-        {tab === "kerjasama" && (
-          <section
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid #DCE6E0",
-              borderRadius: "18px",
-              padding: "28px",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "12px",
-                fontWeight: 800,
-                color: "#8A6500",
-                textTransform: "uppercase",
-              }}
-            >
-              KEMITRAAN & KERJA SAMA
-            </span>
-            <h2
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#064E3B",
-                margin: "8px 0 16px",
-              }}
-            >
-              Direktori MoU / MoA
-            </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              <div
-                style={{
-                  padding: "16px",
-                  background: "#F4F8F6",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <strong style={{ color: "#064E3B" }}>MoU Pemda NTB & UNIZAR</strong> — Kemitraan strategis bidang
-                pengabdian masyarakat dan riset daerah.
-              </div>
-              <div
-                style={{
-                  padding: "16px",
-                  background: "#F4F8F6",
-                  borderRadius: "12px",
-                  borderLeft: "4px solid #0A6B4F",
-                }}
-              >
-                <strong style={{ color: "#064E3B" }}>MoA Fakultas Kedokteran & RSUD</strong> — Kerja sama wahana
-                pendidikan klinis mahasiswa kedokteran.
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* 6. SUB-MENU: PETA KAMPUS (PETA INTERAKTIF + LINK BUKA MAPS) */}
+        {/* 4. SUB-MENU: PETA KAMPUS */}
         {tab === "peta" && (
           <section
             style={{
@@ -1126,7 +1267,6 @@ export default function Direktori() {
                 </h2>
               </div>
 
-              {/* Tombol Langsung Buka Google Maps */}
               <a
                 href="https://maps.google.com/?q=-8.606907,116.144187"
                 target="_blank"
@@ -1148,7 +1288,6 @@ export default function Direktori() {
               </a>
             </div>
 
-            {/* Container Embed Google Maps */}
             <div
               style={{
                 position: "relative",

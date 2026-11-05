@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const [sideOpen, setSideOpen] = useState({
@@ -17,39 +18,69 @@ export default function Sidebar() {
       k: "layanan",
       mono: "Ly",
       label: "Layanan",
+      route: "/layanan",
+      paramKey: "sub",
       items: [
-        "SIAKAD & Layanan Akademik",
-        "E-Learning / LMS",
-        "Perpustakaan Digital",
-        "Layanan TIK & Helpdesk",
-        "Sarpras & K3",
-        "Layanan Informasi Publik",
+        { label: "SIAKAD & Layanan Akademik", val: "siakad" },
+        { label: "E-Learning / LMS", val: "lms" },
+        { label: "Perpustakaan Digital", val: "perpus" },
+        { label: "Layanan TIK & Helpdesk", val: "tik" },
+        { label: "Sarpras & K3", val: "sarpras" },
+        { label: "Layanan Informasi Publik", val: "ppid" },
       ],
     },
     {
       k: "orang",
       mono: "Or",
       label: "Orang",
-      items: ["Pimpinan Universitas", "Dosen & Kepakaran", "Tenaga Kependidikan", "Renstra SDM"],
+      route: "/orang",
+      paramKey: "tab",
+      items: [
+        { label: "Pimpinan Universitas", val: "pimpinan" },
+        { label: "Dosen & Kepakaran", val: "dosen" },
+        { label: "Tenaga Kependidikan", val: "tendik" },
+        { label: "Renstra SDM", val: "renstra" },
+      ],
     },
     {
       k: "kerjasama",
       mono: "Ks",
       label: "Kerjasama",
-      items: ["Kerjasama Dalam Negeri", "Kerjasama Luar Negeri", "MoU/MoA & Realisasi"],
+      route: "/kerjasama",
+      paramKey: "tab",
+      items: [
+        { label: "Kerjasama Dalam Negeri", val: "dn" },
+        { label: "Kerjasama Luar Negeri", val: "ln" },
+        { label: "MoU/MoA & Realisasi", val: "mou" },
+      ],
     },
     {
       k: "mhs",
       mono: "Mh",
       label: "Kemahasiswaan & Alumni",
-      items: ["Layanan Mahasiswa", "Prestasi Mahasiswa", "Tracer Study & Kepuasan Pengguna", "Ikatan Alumni & Karir"],
+      route: "/kemahasiswaan",
+      paramKey: "tab",
+      items: [
+        { label: "Layanan Mahasiswa", val: "layanan" },
+        { label: "Prestasi Mahasiswa", val: "prestasi" },
+        { label: "Tracer Study & Kepuasan Pengguna", val: "tracer" },
+        { label: "Ikatan Alumni & Karir", val: "alumni" },
+      ],
     },
   ];
 
   return (
     <aside
       aria-label="Menu samping"
-      style={{ flex: "1 1 260px", maxWidth: "290px", display: "flex", flexDirection: "column", gap: "16px" }}
+      style={{
+        flex: "1 1 260px",
+        maxWidth: "290px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        width: "100%",
+        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
+      }}
     >
       {/* Tombol Login SSO */}
       <button
@@ -88,10 +119,15 @@ export default function Sidebar() {
         Masuk · SSO UNIZAR
       </button>
 
-      {/* Menu Samping Utama Accordion */}
+      {/* Accordion Navigation */}
       <nav
         aria-label="Menu samping utama"
-        style={{ background: "#FFFFFF", border: "1px solid #DCE6E0", borderRadius: "14px", overflow: "hidden" }}
+        style={{
+          background: "#FFFFFF",
+          border: "1px solid #DCE6E0",
+          borderRadius: "14px",
+          overflow: "hidden",
+        }}
       >
         {sideGroups.map((g) => {
           const isOpen = sideOpen[g.k];
@@ -133,53 +169,59 @@ export default function Sidebar() {
                   {g.mono}
                 </span>
                 <span style={{ flex: 1 }}>{g.label}</span>
-                <span aria-hidden="true" style={{ color: "#0A6B4F", fontSize: "18px", fontWeight: 700 }}>
+                <span
+                  aria-hidden="true"
+                  style={{
+                    color: "#0A6B4F",
+                    fontSize: "18px",
+                    fontWeight: 700,
+                  }}
+                >
                   {isOpen ? "−" : "+"}
                 </span>
               </button>
 
               {isOpen && (
-                <ul style={{ listStyle: "none", margin: 0, padding: "4px 0 10px" }}>
-                  {g.items.map((itemLabel, idx) => (
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: 0,
+                    padding: "4px 0 10px",
+                  }}
+                >
+                  {g.items.map((subItem, idx) => (
                     <li key={idx}>
-                      <button
-                        type="button"
+                      <Link
+                        to={`${g.route}?${g.paramKey}=${subItem.val}`}
                         style={{
                           width: "100%",
-                          border: 0,
-                          background: "transparent",
-                          textAlign: "left",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          gap: "8px",
-                          padding: "9px 16px 9px 58px",
+                          textDecoration: "none",
+                          display: "block",
+                          padding: "8px 16px 8px 58px",
                           fontSize: "14px",
                           color: "#2B3D35",
-                          cursor: "pointer",
+                          fontWeight: 500,
+                          boxSizing: "border-box",
                         }}
                       >
-                        <span>{itemLabel}</span>
-                      </button>
+                        {subItem.label}
+                      </Link>
                     </li>
                   ))}
                   <li>
-                    <button
-                      type="button"
+                    <Link
+                      to={g.route}
                       style={{
-                        width: "100%",
-                        border: 0,
-                        background: "transparent",
-                        textAlign: "left",
                         display: "block",
-                        padding: "9px 16px 4px 58px",
+                        padding: "8px 16px 4px 58px",
                         fontSize: "13px",
                         fontWeight: 700,
                         color: "#0A6B4F",
-                        cursor: "pointer",
+                        textDecoration: "none",
                       }}
                     >
                       Buka halaman →
-                    </button>
+                    </Link>
                   </li>
                 </ul>
               )}
@@ -188,192 +230,198 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {/* Pusat Akreditasi Hub Card */}
+      {/* Pusat Akreditasi Card */}
       <nav
         aria-label="Pusat Akreditasi"
-        style={{ background: "#FFF8E1", border: "1px solid #F2D27A", borderRadius: "14px", padding: "16px" }}
+        style={{
+          background: "#FFF8E1",
+          border: "1px solid #F2D27A",
+          borderRadius: "20px",
+          padding: "22px 20px",
+        }}
       >
         <div
           style={{
-            fontSize: "12px",
+            fontSize: "13px",
             fontWeight: 800,
-            letterSpacing: ".12em",
-            color: "#7A5900",
+            letterSpacing: ".1em",
+            color: "#8A6500",
             textTransform: "uppercase",
-            marginBottom: "10px",
+            marginBottom: "16px",
           }}
         >
           PUSAT AKREDITASI
         </div>
-        <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "2px" }}>
+        <ul
+          style={{
+            listStyle: "none",
+            margin: 0,
+            padding: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+          }}
+        >
           <li>
-            <button
-              type="button"
+            <Link
+              to="/peta-bukti-banpt"
               style={{
                 width: "100%",
-                border: 0,
-                background: "transparent",
-                display: "flex",
-                justifyContent: "space-between",
-                padding: "10px 6px",
+                textDecoration: "none",
+                display: "block",
                 fontWeight: 700,
-                fontSize: "14px",
+                fontSize: "15px",
                 color: "#13231C",
-                cursor: "pointer",
+                padding: "2px 0",
               }}
             >
-              <span>Peta Bukti BAN-PT</span>
-              <span
-                style={{
-                  background: "#064E3B",
-                  color: "#FFF",
-                  fontSize: "11px",
-                  padding: "2px 8px",
-                  borderRadius: "999px",
-                }}
-              >
-                39
-              </span>
-            </button>
+              Peta Bukti BAN-PT
+            </Link>
           </li>
           <li>
-            <button
-              type="button"
+            {/* PUSAT DATA & INFORMASI (Kirim state: { tab: "dokumen" } ke Direktori) */}
+            <Link
+              to="/direktori"
+              state={{ tab: "dokumen" }}
               style={{
-                width: "100%",
-                border: 0,
-                background: "transparent",
-                textAlign: "left",
+                textDecoration: "none",
                 display: "block",
-                padding: "10px 6px",
                 fontWeight: 600,
-                fontSize: "14px",
+                fontSize: "15px",
                 color: "#13231C",
-                cursor: "pointer",
+                padding: "2px 0",
               }}
             >
-              Pusat Dokumen
-            </button>
+              Pusat Data & Informasi
+            </Link>
           </li>
           <li>
-            <button
-              type="button"
+            <Link
+              to="/#"
               style={{
-                width: "100%",
-                border: 0,
-                background: "transparent",
-                textAlign: "left",
+                textDecoration: "none",
                 display: "block",
-                padding: "10px 6px",
                 fontWeight: 600,
-                fontSize: "14px",
+                fontSize: "15px",
                 color: "#13231C",
-                cursor: "pointer",
+                padding: "2px 0",
               }}
             >
               Dashboard Kinerja
-            </button>
+            </Link>
           </li>
           <li>
-            <button
-              type="button"
+            <Link
+              to="/transparansi-ppid"
               style={{
-                width: "100%",
-                border: 0,
-                background: "transparent",
-                textAlign: "left",
+                textDecoration: "none",
                 display: "block",
-                padding: "10px 6px",
                 fontWeight: 600,
-                fontSize: "14px",
+                fontSize: "15px",
                 color: "#13231C",
-                cursor: "pointer",
+                padding: "2px 0",
               }}
             >
               Transparansi & PPID
-            </button>
+            </Link>
           </li>
           <li>
-            <button
-              type="button"
+            <Link
+              to="/gug"
+              state={{ tab: "wbs" }}
               style={{
-                width: "100%",
-                border: 0,
-                background: "transparent",
-                textAlign: "left",
+                textDecoration: "none",
                 display: "block",
-                padding: "10px 6px",
                 fontWeight: 600,
-                fontSize: "14px",
+                fontSize: "15px",
                 color: "#13231C",
-                cursor: "pointer",
+                padding: "2px 0",
               }}
             >
               Pengaduan / WBS
-            </button>
+            </Link>
           </li>
         </ul>
       </nav>
 
-      {/* Legenda Akses Dokumen */}
+      {/* Card Akses Dokumen */}
       <div
         style={{
           background: "#FFFFFF",
           border: "1px solid #DCE6E0",
-          borderRadius: "14px",
-          padding: "16px",
-          fontSize: "13px",
-          color: "#44574E",
+          borderRadius: "20px",
+          padding: "22px 20px",
           display: "flex",
           flexDirection: "column",
-          gap: "8px",
+          gap: "16px",
         }}
       >
-        <div style={{ fontWeight: 700, color: "#13231C" }}>Akses dokumen</div>
-        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-          <span
-            style={{
-              fontSize: "11px",
-              fontWeight: 700,
-              padding: "2px 8px",
-              borderRadius: "999px",
-              background: "#E3F1EA",
-              color: "#064E3B",
-            }}
-          >
-            Publik
-          </span>
-          terbuka untuk semua
+        <div style={{ fontWeight: 800, fontSize: "15px", color: "#13231C" }}>
+          Akses dokumen
         </div>
-        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-          <span
-            style={{
-              fontSize: "11px",
-              fontWeight: 700,
-              padding: "2px 8px",
-              borderRadius: "999px",
-              background: "#FFF1C2",
-              color: "#6B4E00",
-            }}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "14px",
+            fontSize: "14px",
+            color: "#44574E",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <span
+              style={{
+                background: "#E3F1EA",
+                color: "#064E3B",
+                fontWeight: 800,
+                fontSize: "12px",
+                padding: "4px 12px",
+                borderRadius: "999px",
+                flexShrink: 0,
+              }}
+            >
+              Publik
+            </span>
+            <span>terbuka untuk semua</span>
+          </div>
+
+          <div
+            style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}
           >
-            Ringkasan
-          </span>
-          ikhtisar publik, dokumen penuh terkunci
-        </div>
-        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-          <span
-            style={{
-              fontSize: "11px",
-              fontWeight: 700,
-              padding: "2px 8px",
-              borderRadius: "999px",
-              background: "#FBE3E4",
-              color: "#8E1B20",
-            }}
-          >
-            Terbatas
-          </span>
-          login SSO / asesor
+            <span
+              style={{
+                background: "#FFF3C4",
+                color: "#6B4E00",
+                fontWeight: 800,
+                fontSize: "12px",
+                padding: "4px 12px",
+                borderRadius: "999px",
+                flexShrink: 0,
+              }}
+            >
+              Ringkasan
+            </span>
+            <span style={{ lineHeight: 1.35 }}>
+              ikhtisar publik, dokumen penuh terkunci
+            </span>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <span
+              style={{
+                background: "#FCE8E6",
+                color: "#C1272D",
+                fontWeight: 800,
+                fontSize: "12px",
+                padding: "4px 12px",
+                borderRadius: "999px",
+                flexShrink: 0,
+              }}
+            >
+              Terbatas
+            </span>
+            <span>login SSO / asesor</span>
+          </div>
         </div>
       </div>
     </aside>

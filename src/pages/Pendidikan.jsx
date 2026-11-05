@@ -4,18 +4,16 @@ import { Link, useLocation } from "react-router-dom";
 export default function Pendidikan() {
   const location = useLocation();
 
-  // 10 TAB SUB-MENU PENDIDIKAN
+  // 8 TAB SUB-MENU PENDIDIKAN
   const MENU_ITEMS = [
     { key: "pmb", label: "PMB & Beasiswa" },
     { key: "kurikulum", label: "Kebijakan Kurikulum OBE" },
     { key: "kalender", label: "Kalender & Panduan Akademik" },
     { key: "proses", label: "Proses & Evaluasi Pembelajaran" },
-    { key: "mbkm", label: "MBKM (≥ 10 sks luar prodi)" },
+    { key: "mbkm", label: "MBKM" },
     { key: "suasana", label: "Suasana Akademik & Kebebasan Mimbar" },
     { key: "capaian", label: "Capaian Kompetensi Lulusan" },
-    { key: "pmb-inklusif", label: "PMB Afirmatif & Inklusif" },
-    { key: "beasiswa", label: "Beasiswa & Bantuan Biaya" },
-    { key: "rpl", label: "RPL · PJJ · PKKMB" },
+    { key: "rpl", label: "RPL · PKKMB" },
   ];
 
   const VALID_TABS = MENU_ITEMS.map((m) => m.key);
@@ -114,6 +112,16 @@ export default function Pendidikan() {
             D("Jadwal Wisuda & Kelulusan", "pub", "Periode I & II"),
           ],
         },
+        {
+          title: "Arsip Kalender Akademik (5 Tahun Terakhir)",
+          docs: [
+            D("Kalender Akademik 2025/2026", "pub", "Arsip"),
+            D("Kalender Akademik 2024/2025", "pub", "Arsip"),
+            D("Kalender Akademik 2023/2024", "pub", "Arsip"),
+            D("Kalender Akademik 2022/2023", "pub", "Arsip"),
+            D("Kalender Akademik 2021/2022", "pub", "Arsip"),
+          ],
+        },
       ],
     },
     proses: {
@@ -156,6 +164,14 @@ export default function Pendidikan() {
             D("Portal MBKM Nasional Kemdiktisaintek", "ext", "Sistem Eksternal"),
           ],
         },
+        {
+          title: "Arsip MBKM (3 Tahun Terakhir)",
+          docs: [
+            D("Laporan Tahunan MBKM 2025", "pub", "Arsip Tahunan"),
+            D("Laporan Tahunan MBKM 2024", "pub", "Arsip Tahunan"),
+            D("Laporan Tahunan MBKM 2023", "pub", "Arsip Tahunan"),
+          ],
+        },
       ],
     },
     suasana: {
@@ -176,8 +192,16 @@ export default function Pendidikan() {
         {
           title: "Bukti Pelaksanaan",
           docs: [
-            D("Agenda Kuliah Umum & Seminar Akademik", "pub", "Arsip 3 Tahun"),
+            D("Agenda Kuliah Umum & Seminar Akademik 2026", "pub", "Arsip tahunan"),
             D("Laporan Suasana Akademik Tahunan", "sum", "Ikhtisar Institusi"),
+          ],
+        },
+        {
+          title: "Arsip Agenda Kuliah Umum & Seminar Akademik (3 Tahun Terakhir)",
+          docs: [
+            D("Agenda Kuliah Umum & Seminar Akademik 2025", "pub", "Arsip Tahunan"),
+            D("Agenda Kuliah Umum & Seminar Akademik 2024", "pub", "Arsip Tahunan"),
+            D("Agenda Kuliah Umum & Seminar Akademik 2023", "pub", "Arsip Tahunan"),
           ],
         },
       ],
@@ -199,52 +223,13 @@ export default function Pendidikan() {
         },
       ],
     },
-    "pmb-inklusif": {
-      stats: [
-        S("Kapasitas Penerimaan", "1.500 Kuota"),
-        S("Jalur Seleksi Aktif", "5 Jalur"),
-        S("Pendaftar Afirmasi", "100% Inklusif"),
-      ],
-      sections: [
-        {
-          title: "Penerimaan Mahasiswa Baru & Inklusivitas",
-          docs: [
-            D("Kebijakan PMB Afirmatif & Inklusif", "pub", SK),
-            D("Panduan Layanan Disabilitas PMB", "pub", "SOP Layanan"),
-            D("Portal Pendaftaran Online PMB", "ext", "Sistem PMB UNIZAR"),
-          ],
-        },
-      ],
-    },
-    beasiswa: {
-      stats: [
-        S("Penerima Beasiswa", "1.120 Mhs"),
-        S("Kuota KIP-Kuliah", "220 Kursi"),
-        S("Cakupan Bantuan Biaya", "Hingga 100%"),
-      ],
-      sections: [
-        {
-          title: "Skema Beasiswa & Keringanan UKT",
-          docs: [
-            D("Pedoman Beasiswa KIP-Kuliah", "pub", SK),
-            D("Kebijakan Beasiswa Afirmasi 3T & Tahfidz", "pub", SK),
-            D("Prosedur Pengajuan Keringanan UKT", "pub", SK),
-          ],
-        },
-      ],
-    },
     rpl: {
-      stats: [
-        S("Prodi Penyelenggara RPL", "100% Terakreditasi"),
-        S("Layanan PJJ Aktif", "Tersedia"),
-        S("Kelulusan PKKMB", "100% Mhs Baru"),
-      ],
+      stats: [S("Prodi Penyelenggara RPL", "100% Terakreditasi"), S("Kelulusan PKKMB", "100% Mhs Baru")],
       sections: [
         {
-          title: "RPL, PJJ & Layanan Akademik Khusus",
+          title: "RPL & Layanan Akademik Khusus",
           docs: [
             D("Pedoman Rekognisi Pembelajaran Lampau (RPL)", "pub", SK),
-            D("Panduan Pembelajaran Jarak Jauh (PJJ)", "pub", SK),
             D("Panduan PKKMB & Adaptasi Kampus", "pub", SK),
           ],
         },
@@ -260,7 +245,7 @@ export default function Pendidikan() {
     {
       t: "Afirmasi & KIP-Kuliah",
       d: "Untuk calon mahasiswa kurang mampu dan daerah 3T.",
-      l: "Ind. 31A, 27B",
+      l: "Potongan UKT hingga 100%",
       c: "#F2C230",
     },
     { t: "RPL", d: "Rekognisi pengalaman kerja menjadi sks.", l: "Terhubung SIERRA", c: "#E8A33A" },
@@ -274,6 +259,86 @@ export default function Pendidikan() {
     { t: "Beasiswa Tahfidz Al-Qur’an", d: "Hafalan minimal [n] juz", q: "30 kursi" },
     { t: "Keringanan UKT", d: "Bagi mahasiswa terdampak ekonomi", q: "Sepanjang tahun" },
   ];
+
+  // Dokumen unduhan/akses gabungan (mantan sub-menu "PMB Afirmatif & Inklusif" + "Beasiswa & Bantuan Biaya")
+  const PMB_DOCS = [
+    D("Kebijakan PMB Afirmatif & Inklusif", "pub", SK),
+    D("Panduan Layanan Disabilitas PMB", "pub", "SOP Layanan"),
+    D("Portal Pendaftaran Online PMB", "ext", "Sistem PMB UNIZAR"),
+    D("Pedoman Beasiswa KIP-Kuliah", "pub", SK),
+    D("Kebijakan Beasiswa Afirmasi 3T & Tahfidz", "pub", SK),
+    D("Prosedur Pengajuan Keringanan UKT", "pub", SK),
+  ];
+
+  // Kartu dokumen seragam (dipakai tab "PMB & Beasiswa" maupun tab sub-menu lainnya)
+  const renderDocCard = (d, i) => (
+    <div
+      key={i}
+      style={{
+        background: "#FFFFFF",
+        border: "1px solid #DCE6E0",
+        borderRadius: "14px",
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "10px",
+          alignItems: "flex-start",
+        }}
+      >
+        <span style={{ fontSize: "16px", fontWeight: 700, lineHeight: 1.35, color: "#13231C" }}>{d.name}</span>
+        <span
+          style={{
+            flex: "none",
+            fontSize: "11px",
+            fontWeight: 700,
+            padding: "3px 9px",
+            borderRadius: "999px",
+            background: d.bg,
+            color: d.fg,
+          }}
+        >
+          {d.badge}
+        </span>
+      </div>
+      <span style={{ fontSize: "12px", color: "#44574E" }}>{d.meta}</span>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          gap: 8,
+          marginTop: "auto",
+        }}
+      >
+        <a
+          href="#"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            background: "#0A6B4F",
+            color: "#FFFFFF",
+            padding: "11px 18px",
+            borderRadius: "10px",
+            fontWeight: 700,
+            fontSize: "14px",
+            textDecoration: "none",
+            cursor: "pointer",
+          }}
+        >
+          {d.action} →
+        </a>
+      </div>
+    </div>
+  );
 
   const FAQ = [
     [
@@ -428,18 +493,7 @@ export default function Pendidikan() {
 
             {/* Jalur Masuk */}
             <section aria-labelledby="h-jal">
-              <div
-                style={{
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: ".12em",
-                  color: "#8A6500",
-                  textTransform: "uppercase",
-                }}
-              >
-                IND. 31B · PERLUASAN AKSES
-              </div>
-              <h2 id="h-jal" style={{ margin: "6px 0 14px", fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
+              <h2 id="h-jal" style={{ margin: "0 0 14px", fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
                 Jalur masuk
               </h2>
               <div
@@ -487,17 +541,6 @@ export default function Pendidikan() {
                   gap: "12px",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: ".12em",
-                    color: "#8A6500",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  IND. 27B, 31B · BANTUAN BIAYA
-                </div>
                 <h2 id="h-bea" style={{ margin: 0, fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
                   Beasiswa & keringanan
                 </h2>
@@ -546,9 +589,6 @@ export default function Pendidikan() {
                     gap: "10px",
                   }}
                 >
-                  <div style={{ fontSize: "12px", fontWeight: 700, letterSpacing: ".12em", color: "#F2C230" }}>
-                    IND. 31A · KEBIJAKAN INKLUSIF
-                  </div>
                   <h2 style={{ margin: 0, fontSize: "20px", fontWeight: 800 }}>Kampus untuk semua</h2>
                   <p style={{ margin: 0, fontSize: "14px", lineHeight: 1.6, color: "#D3EBDF" }}>
                     Unit Layanan Disabilitas mendampingi sejak pendaftaran: akomodasi ujian, akses gedung, dan materi
@@ -570,9 +610,6 @@ export default function Pendidikan() {
                     gap: "8px",
                   }}
                 >
-                  <div style={{ fontSize: "12px", fontWeight: 700, letterSpacing: ".12em", color: "#8A6500" }}>
-                    IND. 32A · PKKMB
-                  </div>
                   <div style={{ fontSize: "17px", fontWeight: 800 }}>Pengenalan Kehidupan Kampus</div>
                   <div style={{ fontSize: "14px", color: "#44574E", lineHeight: 1.55 }}>
                     Integritas akademik, kampus bebas kekerasan, dan adaptasi kehidupan kampus.
@@ -583,6 +620,18 @@ export default function Pendidikan() {
                 </div>
               </section>
             </div>
+
+            {/* Dokumen Gabungan: PMB Afirmatif & Inklusif + Beasiswa & Bantuan Biaya */}
+            <section aria-labelledby="h-dok">
+              <h2 id="h-dok" style={{ margin: "0 0 14px", fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
+                Dokumen resmi & tautan akses
+              </h2>
+              <div
+                style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "14px" }}
+              >
+                {PMB_DOCS.map(renderDocCard)}
+              </div>
+            </section>
 
             {/* FAQ */}
             <section
@@ -661,76 +710,7 @@ export default function Pendidikan() {
                 <div
                   style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "14px" }}
                 >
-                  {sec.docs.map((d, j) => (
-                    <div
-                      key={j}
-                      style={{
-                        background: "#FFFFFF",
-                        border: "1px solid #DCE6E0",
-                        borderRadius: "14px",
-                        padding: "20px",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "12px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          gap: "10px",
-                          alignItems: "flex-start",
-                        }}
-                      >
-                        <span style={{ fontSize: "16px", fontWeight: 700, lineHeight: 1.35, color: "#13231C" }}>
-                          {d.name}
-                        </span>
-                        <span
-                          style={{
-                            flex: "none",
-                            fontSize: "11px",
-                            fontWeight: 700,
-                            padding: "3px 9px",
-                            borderRadius: "999px",
-                            background: d.bg,
-                            color: d.fg,
-                          }}
-                        >
-                          {d.badge}
-                        </span>
-                      </div>
-                      <span style={{ fontSize: "12px", color: "#44574E" }}>{d.meta}</span>
-
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "flex-end",
-                          alignItems: "center",
-                          gap: 8,
-                          marginTop: "auto",
-                        }}
-                      >
-                        <a
-                          href="#"
-                          style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: "8px",
-                            background: "#0A6B4F",
-                            color: "#FFFFFF",
-                            padding: "11px 18px",
-                            borderRadius: "10px",
-                            fontWeight: 700,
-                            fontSize: "14px",
-                            textDecoration: "none",
-                            cursor: "pointer",
-                          }}
-                        >
-                          {d.action} →
-                        </a>
-                      </div>
-                    </div>
-                  ))}
+                  {sec.docs.map(renderDocCard)}
                 </div>
               </section>
             ))}

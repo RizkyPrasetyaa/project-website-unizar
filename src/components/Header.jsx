@@ -32,12 +32,28 @@ export default function Header() {
       href: "/profil",
       defaultTab: "identitas",
       items: [
-        { label: "Sejarah & Identitas", access: "Publik", tab: "identitas" },
-        { label: "Visi, Misi & Diferensiasi Misi", access: "Publik", tab: "visimisi" },
-        { label: "RIP, Renstra & Roadmap", access: "Ringkasan", tab: "renstra" },
-        { label: "Evaluasi Capaian Tridharma", access: "Ringkasan", tab: "evaluasi" },
+        { label: "Sambutan & Sejarah", access: "Publik", tab: "identitas" },
+        {
+          label: "Visi, Misi & Diferensiasi Misi",
+          access: "Publik",
+          tab: "visimisi",
+        },
+        {
+          label: "Renip & Roadmap",
+          access: "Ringkasan",
+          tab: "renstra",
+        },
+        {
+          label: "Evaluasi Capaian Tridharma",
+          access: "Ringkasan",
+          tab: "evaluasi",
+        },
         { label: "Statuta", access: "Publik", tab: "statuta" },
-        { label: "Struktur Organisasi & Tata Kerja", access: "Publik", tab: "sotk" },
+        {
+          label: "Struktur Organisasi & Tata Kerja",
+          access: "Publik",
+          tab: "sotk",
+        },
         { label: "Pimpinan & Yayasan", access: "Publik", tab: "pimpinan" },
         { label: "Capaian & Penghargaan", access: "Publik", tab: "capaian" },
       ],
@@ -47,25 +63,45 @@ export default function Header() {
       desc: "Fakultas, program studi, status akreditasi, dan kurikulum.",
       href: "/fakultas",
       items: [
-        { label: "Daftar Fakultas & Prodi", access: "Publik" },
-        { label: "Status Akreditasi Prodi", access: "Publik" },
-        { label: "Kurikulum OBE per Prodi", access: "Publik" },
-        { label: "Dosen per Prodi", access: "Publik" },
-        { label: "Capaian Unggulan Prodi", access: "Publik" },
-        { label: "Laboratorium & Fasilitas", access: "Publik" },
+        {
+          label: "Fakultas Kedokteran",
+          access: "Publik",
+          href: "/fakultas/kedokteran",
+        },
+        {
+          label: "Fakultas Teknik",
+          access: "Publik",
+          href: "/fakultas/teknik",
+        },
+        { label: "Fakultas Hukum", access: "Publik", href: "/fakultas/hukum" },
+        {
+          label: "Fakultas Ekonomi & Bisnis",
+          access: "Publik",
+          href: "/fakultas/ekonomi",
+        },
+        {
+          label: "Fakultas Pertanian",
+          access: "Publik",
+          href: "/fakultas/pertanian",
+        },
+        { label: "Fakultas MIPA", access: "Publik", href: "/fakultas/mipa" },
+        {
+          label: "Fakultas Agama Islam",
+          access: "Publik",
+          href: "/fakultas/agama-islam",
+        },
       ],
     },
     direktori: {
       id: "Direktori",
-      desc: "Satu pintu menemukan unit, orang, dan dokumen.",
-      href: "/pusat-dokumen",
+      desc: "Satu pintu menemukan unit, orang, data, dan dokumen.",
+      href: "/direktori",
       defaultTab: "unit",
       items: [
         { label: "Unit Kerja & Kontak", access: "Publik", tab: "unit" },
         { label: "Direktori Dosen & Pakar", access: "Publik", tab: "dosen" },
-        { label: "Direktori Program Studi", access: "Publik", tab: "prodi" },
-        { label: "Pusat Dokumen", access: "Publik", tab: "dokumen" },
-        { label: "Direktori MoU/MoA", access: "Publik", tab: "kerjasama" },
+        { label: "Pusat Data & Informasi", access: "Publik", tab: "dokumen" },
+        { label: "Direktori Kerjasama", access: "Publik", href: "/kerjasama" },
         { label: "Peta Kampus", access: "Publik", tab: "peta" },
       ],
     },
@@ -76,16 +112,44 @@ export default function Header() {
       defaultTab: "ikhtisar",
       items: [
         { label: "Ikhtisar GUG", access: "Publik", tab: "ikhtisar" },
-        { label: "Kebijakan & Praktik Baik GUG", access: "Publik", tab: "kebijakan" },
-        { label: "Laporan Tahunan", access: "Ringkasan", tab: "laporan-tahunan" },
-        { label: "Kode Etik & Lembaga Etik", access: "Publik", tab: "kode-etik" },
+        {
+          label: "Kebijakan & Praktik Baik GUG",
+          access: "Publik",
+          tab: "kebijakan",
+        },
+        {
+          label: "Laporan Tahunan",
+          access: "Ringkasan",
+          tab: "laporan-tahunan",
+        },
+        {
+          label: "Kode Etik & Lembaga Etik",
+          access: "Publik",
+          tab: "kode-etik",
+        },
         { label: "Kampus Aman & Satgas PPKPT", access: "Publik", tab: "ppkpt" },
-        { label: "Pengawasan & WBK/WBBM", access: "Ringkasan", tab: "pengawasan" },
+        {
+          label: "Pengawasan & WBK/WBBM",
+          access: "Ringkasan",
+          tab: "pengawasan",
+        },
         { label: "Whistleblowing System", access: "Publik", tab: "wbs" },
-        { label: "Pengelolaan & 11 Pedoman", access: "Publik", tab: "pengelolaan" },
-        { label: "Survei Kepuasan Tata Pamong", access: "Ringkasan", tab: "survei" },
+        {
+          label: "Pengelolaan & 11 Pedoman",
+          access: "Publik",
+          tab: "pengelolaan",
+        },
+        {
+          label: "Survei Kepuasan Tata Pamong",
+          access: "Ringkasan",
+          tab: "survei",
+        },
         { label: "Renstra & Pola Keuangan", access: "Publik", tab: "renstra" },
-        { label: "Laporan Keuangan & Audit Eksternal", access: "Ringkasan", tab: "laporan-keuangan" },
+        {
+          label: "Laporan Keuangan & Audit Eksternal",
+          access: "Ringkasan",
+          tab: "laporan-keuangan",
+        },
       ],
     },
     pendidikan: {
@@ -94,15 +158,34 @@ export default function Header() {
       href: "/pendidikan",
       defaultTab: "pmb",
       items: [
-        { label: "Kebijakan Kurikulum OBE", access: "Publik", tab: "kurikulum" },
-        { label: "Kalender & Panduan Akademik", access: "Publik", tab: "kalender" },
-        { label: "Proses & Evaluasi Pembelajaran", access: "Publik", tab: "proses" },
-        { label: "MBKM (≥ 10 sks luar prodi)", access: "Publik", tab: "mbkm" },
-        { label: "Suasana Akademik & Kebebasan Mimbar", access: "Publik", tab: "suasana" },
-        { label: "Capaian Kompetensi Lulusan", access: "Ringkasan", tab: "capaian" },
-        { label: "PMB Afirmatif & Inklusif", access: "Publik", tab: "pmb-inklusif" },
-        { label: "Beasiswa & Bantuan Biaya", access: "Publik", tab: "beasiswa" },
-        { label: "RPL · PJJ · PKKMB", access: "Publik", tab: "rpl" },
+        { label: "PMB & Beasiswa", access: "Publik", tab: "pmb" },
+        {
+          label: "Kebijakan Kurikulum OBE",
+          access: "Publik",
+          tab: "kurikulum",
+        },
+        {
+          label: "Kalender & Panduan Akademik",
+          access: "Publik",
+          tab: "kalender",
+        },
+        {
+          label: "Proses & Evaluasi Pembelajaran",
+          access: "Publik",
+          tab: "proses",
+        },
+        { label: "MBKM", access: "Publik", tab: "mbkm" },
+        {
+          label: "Suasana Akademik & Kebebasan Mimbar",
+          access: "Publik",
+          tab: "suasana",
+        },
+        {
+          label: "Capaian Kompetensi Lulusan",
+          access: "Ringkasan",
+          tab: "capaian",
+        },
+        { label: "RPL · PKKMB", access: "Publik", tab: "rpl" },
       ],
     },
     penelitian: {
@@ -112,11 +195,23 @@ export default function Header() {
       defaultTab: "ikhtisar",
       items: [
         { label: "Ikhtisar Penelitian", access: "Publik", tab: "ikhtisar" },
-        { label: "Renstra & Peta Jalan Penelitian", access: "Publik", tab: "renstra" },
-        { label: "Tata Kelola & Proses Penelitian", access: "Publik", tab: "tatakelola" },
+        {
+          label: "Renstra & Peta Jalan Penelitian",
+          access: "Publik",
+          tab: "renstra",
+        },
+        {
+          label: "Tata Kelola & Proses Penelitian",
+          access: "Publik",
+          tab: "tatakelola",
+        },
         { label: "Publikasi & Luaran", access: "Publik", tab: "luaran" },
         { label: "HKI & Rekognisi", access: "Publik", tab: "hki" },
-        { label: "Laporan Penelitian Rinci", access: "Terbatas", tab: "laporan" },
+        {
+          label: "Laporan Penelitian Rinci",
+          access: "Terbatas",
+          tab: "laporan",
+        },
       ],
     },
     pengabdian: {
@@ -126,7 +221,11 @@ export default function Header() {
       items: [
         { label: "Renstra & Peta Jalan PkM", access: "Publik", tab: "renstra" },
         { label: "Pedoman & Kepakaran", access: "Publik", tab: "pedoman" },
-        { label: "Tata Kelola & Proses PkM", access: "Publik", tab: "tatakelola" },
+        {
+          label: "Tata Kelola & Proses PkM",
+          access: "Publik",
+          tab: "tatakelola",
+        },
         { label: "Luaran & Kemitraan", access: "Publik", tab: "luaran" },
         { label: "Rekognisi Kepakaran", access: "Publik", tab: "rekognisi" },
       ],
@@ -171,7 +270,9 @@ export default function Header() {
       }}
     >
       {/* Utility Bar Atas */}
-      <div style={{ background: "#053B2C", color: "#E7F2EC", fontSize: "13px" }}>
+      <div
+        style={{ background: "#053B2C", color: "#E7F2EC", fontSize: "13px" }}
+      >
         <div
           style={{
             maxWidth: "1440px",
@@ -184,8 +285,21 @@ export default function Header() {
             justifyContent: "space-between",
           }}
         >
-          <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "16px",
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
               <span
                 style={{
                   display: "inline-block",
@@ -200,11 +314,26 @@ export default function Header() {
             <span style={{ opacity: 0.55 }}>|</span>
             <span>Mataram, Nusa Tenggara Barat</span>
           </div>
-          <div style={{ display: "flex", gap: "18px", alignItems: "center", flexWrap: "wrap" }}>
-            <a href="#" style={{ color: "#E7F2EC", textDecoration: "none" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "18px",
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <a
+              href="https://pmb.unizar.ac.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#E7F2EC", textDecoration: "none" }}
+            >
               PMB 2027
             </a>
-            <Link to="/ppid" style={{ color: "#E7F2EC", textDecoration: "none" }}>
+            <Link
+              to="/transparansi-ppid"
+              style={{ color: "#E7F2EC", textDecoration: "none" }}
+            >
               PPID
             </Link>
             <a href="#" style={{ color: "#E7F2EC", textDecoration: "none" }}>
@@ -269,7 +398,13 @@ export default function Header() {
       >
         <nav
           aria-label="Menu utama kiri"
-          style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "4px", flexWrap: "wrap" }}
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            gap: "4px",
+            flexWrap: "wrap",
+          }}
         >
           {keysL.map((k) => (
             <button
@@ -287,7 +422,8 @@ export default function Header() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "6px",
-                borderBottom: open === k ? "3px solid #0A6B4F" : "3px solid transparent",
+                borderBottom:
+                  open === k ? "3px solid #0A6B4F" : "3px solid transparent",
               }}
             >
               {MENUS[k].id}
@@ -310,7 +446,12 @@ export default function Header() {
           to="/"
           onClick={() => setOpen(null)}
           aria-label="Beranda UNIZAR"
-          style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textDecoration: "none",
+          }}
         >
           <img
             src="/assets/img/unizar-logo.png"
@@ -321,7 +462,13 @@ export default function Header() {
 
         <nav
           aria-label="Menu utama kanan"
-          style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", gap: "4px", flexWrap: "wrap" }}
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            gap: "4px",
+            flexWrap: "wrap",
+          }}
         >
           {keysR.map((k) => (
             <button
@@ -339,7 +486,8 @@ export default function Header() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "6px",
-                borderBottom: open === k ? "3px solid #0A6B4F" : "3px solid transparent",
+                borderBottom:
+                  open === k ? "3px solid #0A6B4F" : "3px solid transparent",
               }}
             >
               {MENUS[k].id}
@@ -398,15 +546,33 @@ export default function Header() {
               >
                 Jelajahi
               </div>
-              <h2 style={{ margin: "8px 0 10px", fontSize: "28px", lineHeight: 1.15, color: "#064E3B" }}>
+              <h2
+                style={{
+                  margin: "8px 0 10px",
+                  fontSize: "28px",
+                  lineHeight: 1.15,
+                  color: "#064E3B",
+                }}
+              >
                 {activeMega.id}
               </h2>
-              <p style={{ margin: "0 0 16px", fontSize: "15px", lineHeight: 1.6, color: "#44574E" }}>
+              <p
+                style={{
+                  margin: "0 0 16px",
+                  fontSize: "15px",
+                  lineHeight: 1.6,
+                  color: "#44574E",
+                }}
+              >
                 {activeMega.desc}
               </p>
               <Link
                 to={activeMega.href}
-                state={{ tab: activeMega.defaultTab || (activeMega.items[0] && activeMega.items[0].tab) }}
+                state={{
+                  tab:
+                    activeMega.defaultTab ||
+                    (activeMega.items[0] && activeMega.items[0].tab),
+                }}
                 onClick={() => setOpen(null)}
                 style={{
                   display: "inline-flex",
@@ -438,8 +604,8 @@ export default function Header() {
               {activeMega.items.map((it, idx) => (
                 <li key={idx} style={{ borderBottom: "1px solid #EEF3F0" }}>
                   <Link
-                    to={activeMega.href}
-                    state={{ tab: it.tab }}
+                    to={it.href || activeMega.href}
+                    state={it.href ? (it.state || undefined) : { tab: it.tab }}
                     onClick={() => setOpen(null)}
                     style={{
                       display: "flex",
@@ -451,7 +617,9 @@ export default function Header() {
                       textDecoration: "none",
                     }}
                   >
-                    <span style={{ fontWeight: 600, fontSize: "15px" }}>{it.label}</span>
+                    <span style={{ fontWeight: 600, fontSize: "15px" }}>
+                      {it.label}
+                    </span>
                     <span
                       style={{
                         flex: "none",
@@ -460,8 +628,17 @@ export default function Header() {
                         padding: "3px 8px",
                         borderRadius: "999px",
                         background:
-                          it.access === "Terbatas" ? "#FBE3E4" : it.access === "Ringkasan" ? "#FFF1C2" : "#E3F1EA",
-                        color: it.access === "Terbatas" ? "#8E1B20" : it.access === "Ringkasan" ? "#6B4E00" : "#064E3B",
+                          it.access === "Terbatas"
+                            ? "#FBE3E4"
+                            : it.access === "Ringkasan"
+                              ? "#FFF1C2"
+                              : "#E3F1EA",
+                        color:
+                          it.access === "Terbatas"
+                            ? "#8E1B20"
+                            : it.access === "Ringkasan"
+                              ? "#6B4E00"
+                              : "#064E3B",
                       }}
                     >
                       {it.access}
