@@ -107,7 +107,7 @@ function FakultasList() {
               </div>
 
               <Link to={`/fakultas/${f.id}?tab=lab`} style={{ marginTop: 'auto', fontWeight: 700, fontSize: 14, color: C.mid }}>
-                {f.id === 'hukum' ? 'Fasilitas →' : 'Laboratorium & Fasilitas →'}
+                {f.id === 'hukum' ? 'Fasilitas →' : 'Fasilitas →'}
               </Link>
             </div>
           ))}
@@ -130,7 +130,7 @@ function FakultasDetail({ fac }) {
   const tabs = [
     { id: 'beranda', label: 'Beranda' },
     { id: 'prodi', label: 'Program Studi' },
-    { id: 'lab', label: fac.id === 'hukum' ? 'Fasilitas' : 'Laboratorium & Fasilitas' },
+    { id: 'lab', label: fac.id === 'hukum' ? 'Fasilitas' : 'Fasilitas' },
     { id: 'dosen', label: 'Dosen' },
   ];
 
@@ -423,7 +423,7 @@ function FakultasDetail({ fac }) {
         {tab === 'lab' && (
           <>
             <h2 style={{ fontSize: 28, color: C.primary, marginBottom: 8 }}>
-              {fac.id === 'hukum' ? 'Fasilitas' : 'Laboratorium & Fasilitas'}
+              {fac.id === 'hukum' ? 'Fasilitas' : 'Fasilitas'}
             </h2>
             <p style={{ color: C.muted, marginBottom: 20 }}>Fasilitas di {fac.nama}.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
