@@ -192,8 +192,16 @@ export default function Pendidikan() {
         {
           title: "Bukti Pelaksanaan",
           docs: [
-            D("Agenda Kuliah Umum & Seminar Akademik", "pub", "Arsip 3 Tahun"),
+            D("Agenda Kuliah Umum & Seminar Akademik 2026", "pub", "Arsip tahunan"),
             D("Laporan Suasana Akademik Tahunan", "sum", "Ikhtisar Institusi"),
+          ],
+        },
+        {
+          title: "Arsip Agenda Kuliah Umum & Seminar Akademik (3 Tahun Terakhir)",
+          docs: [
+            D("Agenda Kuliah Umum & Seminar Akademik 2025", "pub", "Arsip Tahunan"),
+            D("Agenda Kuliah Umum & Seminar Akademik 2024", "pub", "Arsip Tahunan"),
+            D("Agenda Kuliah Umum & Seminar Akademik 2023", "pub", "Arsip Tahunan"),
           ],
         },
       ],
@@ -216,10 +224,7 @@ export default function Pendidikan() {
       ],
     },
     rpl: {
-      stats: [
-        S("Prodi Penyelenggara RPL", "100% Terakreditasi"),
-        S("Kelulusan PKKMB", "100% Mhs Baru"),
-      ],
+      stats: [S("Prodi Penyelenggara RPL", "100% Terakreditasi"), S("Kelulusan PKKMB", "100% Mhs Baru")],
       sections: [
         {
           title: "RPL & Layanan Akademik Khusus",
@@ -287,9 +292,7 @@ export default function Pendidikan() {
           alignItems: "flex-start",
         }}
       >
-        <span style={{ fontSize: "16px", fontWeight: 700, lineHeight: 1.35, color: "#13231C" }}>
-          {d.name}
-        </span>
+        <span style={{ fontSize: "16px", fontWeight: 700, lineHeight: 1.35, color: "#13231C" }}>{d.name}</span>
         <span
           style={{
             flex: "none",
