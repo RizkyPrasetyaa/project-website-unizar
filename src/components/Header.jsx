@@ -34,7 +34,7 @@ export default function Header() {
       items: [
         { label: "Sambutan & Sejarah", access: "Publik", tab: "identitas" },
         {
-          label: "Visi, Misi & Diferensiasi Misi",
+          label: "Visi, Misi & Diferensiasi",
           access: "Publik",
           tab: "visimisi",
         },
@@ -50,12 +50,12 @@ export default function Header() {
         },
         { label: "Statuta", access: "Publik", tab: "statuta" },
         {
-          label: "Struktur Organisasi & Tata Kerja",
+          label: "Struktur Organisasi",
           access: "Publik",
           tab: "sotk",
         },
         { label: "Pimpinan & Yayasan", access: "Publik", tab: "pimpinan" },
-        { label: "Capaian & Penghargaan", access: "Publik", tab: "capaian" },
+        { label: "Penghargaan", access: "Publik", tab: "penghargaan" },
       ],
     },
     fakultas: {

@@ -214,10 +214,15 @@ export default function Profil() {
   // Daftar key tab yang valid di halaman Profil
   const VALID_TABS = ["identitas", "visimisi", "renstra", "evaluasi", "statuta", "sotk", "pimpinan", "penghargaan"];
 
+  const getValidTab = (rawTab) => {
+    if (rawTab === "capaian") return "penghargaan";
+    return rawTab && VALID_TABS.includes(rawTab) ? rawTab : "identitas";
+  };
+
   useEffect(() => {
-    if (location.state?.tab && VALID_TABS.includes(location.state.tab)) {
-      setTab(location.state.tab);
-    } else if (!location.state?.tab) {
+    if (location.state?.tab) {
+      setTab(getValidTab(location.state.tab));
+    } else {
       setTab("identitas");
     }
   }, [location.state, location.key]);
@@ -762,6 +767,106 @@ export default function Profil() {
                 <li>
                   Mengembangkan Sumber Daya Manusia dan Kerjasama dengan pihak lain secara professional berdasarkan
                   nilai-nilai Islam Rahmatan Lil Alamin.
+                </li>
+              </ul>
+            </div>
+
+            <div
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "28px",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  color: "#064E3B",
+                  margin: "0 0 12px",
+                }}
+              >
+                Tujuan
+              </h2>
+              <ul
+                style={{
+                  fontSize: "14px",
+                  color: "#44574E",
+                  lineHeight: 1.6,
+                  margin: 0,
+                  paddingLeft: "18px",
+                }}
+              >
+                <li>
+                  Menghasilkan lulusan yang beriman, bertakwa, berakhlak mulia, kompeten di bidangnya, berwawasan
+                  kepariwisataan, dan berjiwa kewirausahaan.
+                </li>
+                <li>
+                  Menghasilkan penelitian inovatif dan publikasi ilmiah yang berdaya saing serta berkontribusi bagi
+                  perkembangan IPTEK dan masyarakat.
+                </li>
+                <li>
+                  Menerapkan hasil penelitian melalui pengabdian masyarakat untuk meningkatkan kesejahteraan dan
+                  kemandirian masyarakat.
+                </li>
+                <li>
+                  Mewujudkan tata kelola organisasi universitas yang mandiri, efektif, efisien, akuntabel, dan transparan
+                  (Good University Governance).
+                </li>
+                <li>
+                  Mewujudkan kerja sama strategis dengan berbagai pihak baik di tingkat regional, nasional, maupun
+                  internasional.
+                </li>
+              </ul>
+            </div>
+
+            <div
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "28px",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  color: "#064E3B",
+                  margin: "0 0 12px",
+                }}
+              >
+                Sasaran
+              </h2>
+              <ul
+                style={{
+                  fontSize: "14px",
+                  color: "#44574E",
+                  lineHeight: 1.6,
+                  margin: 0,
+                  paddingLeft: "18px",
+                }}
+              >
+                <li>
+                  Peningkatan persentase kelulusan tepat waktu dengan masa tunggu kerja singkat serta tersertifikasi
+                  kompetensi.
+                </li>
+                <li>
+                  Penerapan kurikulum berbasis Outcome-Based Education (OBE) dan perluasan implementasi program MBKM.
+                </li>
+                <li>
+                  Peningkatan jumlah publikasi ilmiah bereputasi nasional dan internasional serta perolehan HKI/Paten.
+                </li>
+                <li>
+                  Pencapaian akreditasi institusi dan seluruh program studi menuju predikat Unggul.
+                </li>
+                <li>
+                  Peningkatan kualifikasi dosen berpendidikan Doktor (S3) serta jabatan akademik Lektor Kepala dan Guru
+                  Besar.
+                </li>
+                <li>
+                  Penguatan realisasi kemitraan tridharma dengan dunia usaha, industri, dan perguruan tinggi mitra.
                 </li>
               </ul>
             </div>

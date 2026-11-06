@@ -405,7 +405,7 @@ export default function PetaBuktiBanPt() {
       "Diferensiasi Misi",
       "Dampak",
       "Pengakuan eksternal atas keunggulan tridharma sesuai diferensiasi misi.",
-      [{ label: "Profil › Capaian & Penghargaan", href: "#" }],
+      [{ label: "Profil › Penghargaan", href: "#" }],
       "pub",
     ],
   ];
