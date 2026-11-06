@@ -112,12 +112,28 @@ export default function Header() {
       defaultTab: "ikhtisar",
       items: [
         { label: "Ikhtisar", access: "Publik", tab: "ikhtisar" },
-        { label: "Kebijakan & Praktik Baik GUG", access: "Publik", tab: "kebijakan" },
-        { label: "Laporan Tahunan", access: "Ringkasan", tab: "laporan-tahunan" },
+        {
+          label: "Kebijakan & Praktik Baik GUG",
+          access: "Publik",
+          tab: "kebijakan",
+        },
+        {
+          label: "Laporan Tahunan",
+          access: "Ringkasan",
+          tab: "laporan-tahunan",
+        },
         { label: "Etik & Kampus Aman", access: "Publik", tab: "etik-ppkpt" },
-        { label: "Pengawasan & WBK/WBBM", access: "Ringkasan", tab: "pengawasan" },
+        {
+          label: "Pengawasan & WBK/WBBM",
+          access: "Ringkasan",
+          tab: "pengawasan",
+        },
         { label: "Pedoman & SOP", access: "Publik", tab: "Pedoman" },
-        { label: "Survei Kepuasan Tata Pamong", access: "Ringkasan", tab: "survei" },
+        {
+          label: "Survei Kepuasan Tata Pamong",
+          access: "Ringkasan",
+          tab: "survei",
+        },
         { label: "Tata Kelola Keuangan", access: "Publik", tab: "keuangan" },
         { label: "Arsip", access: "Publik", tab: "Arsip" },
       ],
@@ -182,7 +198,11 @@ export default function Header() {
       items: [
         { label: "Renstra & Peta Jalan PkM", access: "Publik", tab: "renstra" },
         { label: "Pedoman & Kepakaran", access: "Publik", tab: "pedoman" },
-        { label: "Tata Kelola & Proses PkM", access: "Publik", tab: "tatakelola" },
+        {
+          label: "Tata Kelola & Proses PkM",
+          access: "Publik",
+          tab: "tatakelola",
+        },
       ],
     },
     bpm: {
@@ -560,7 +580,7 @@ export default function Header() {
                 <li key={idx} style={{ borderBottom: "1px solid #EEF3F0" }}>
                   <Link
                     to={it.href || activeMega.href}
-                    state={it.href ? (it.state || undefined) : { tab: it.tab }}
+                    state={it.href ? it.state || undefined : { tab: it.tab }}
                     onClick={() => setOpen(null)}
                     style={{
                       display: "flex",
