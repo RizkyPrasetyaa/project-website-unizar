@@ -328,7 +328,7 @@ export default function Sidebar() {
           <li>
             <Link
               to="/gug"
-              state={{ tab: "wbs" }}
+              state={{ tab: "pengawasan" }}
               style={{
                 textDecoration: "none",
                 display: "block",
