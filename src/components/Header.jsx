@@ -126,8 +126,6 @@ export default function Header() {
         { label: "Renstra & Peta Jalan PkM", access: "Publik", tab: "renstra" },
         { label: "Pedoman & Kepakaran", access: "Publik", tab: "pedoman" },
         { label: "Tata Kelola & Proses PkM", access: "Publik", tab: "tatakelola" },
-        { label: "Luaran & Kemitraan", access: "Publik", tab: "luaran" },
-        { label: "Rekognisi Kepakaran", access: "Publik", tab: "rekognisi" },
       ],
     },
     bpm: {

@@ -4,27 +4,36 @@ import { Link, useLocation } from "react-router-dom";
 export default function Pengabdian() {
   const location = useLocation();
 
-  // 1. REGISTRASI 5 TAB VALID
+  // 1. REGISTRASI 3 TAB VALID
   const MENU_ITEMS = [
     { key: "renstra", label: "Renstra & Peta Jalan PkM" },
     { key: "pedoman", label: "Pedoman & Kepakaran" },
     { key: "tatakelola", label: "Tata Kelola & Proses PkM" },
-    { key: "luaran", label: "Luaran & Kemitraan" },
-    { key: "rekognisi", label: "Rekognisi Kepakaran" },
   ];
 
   const VALID_TABS = MENU_ITEMS.map((m) => m.key);
 
+  const TAB_ALIASES = {
+    rekognisi: "pedoman",
+    luaran: "tatakelola",
+  };
+
+  const resolveTab = (inputTab) => {
+    if (inputTab && TAB_ALIASES[inputTab]) return TAB_ALIASES[inputTab];
+    if (inputTab && VALID_TABS.includes(inputTab)) return inputTab;
+    return "renstra";
+  };
+
   // 2. INITIALIZATION STATE DENGAN FALLBACK AMAN
   const [tab, setTab] = useState(() => {
-    return location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "renstra";
+    return resolveTab(location.state?.tab);
   });
 
   const tabRefs = useRef({});
 
   // 3. SINKRONISASI REALTIME DARI MEGA MENU HEADER
   useEffect(() => {
-    const targetTab = location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "renstra";
+    const targetTab = resolveTab(location.state?.tab);
 
     setTab(targetTab);
     window.scrollTo(0, 0);
@@ -90,7 +99,8 @@ export default function Pengabdian() {
       ],
     },
     pedoman: {
-      intro: "Pedoman pelaksanaan PkM serta pengembangan kepakaran dosen untuk mendukung pengabdian berkualitas.",
+      intro:
+        "Pedoman pelaksanaan PkM, pemenuhan beban kerja SDM, serta rekognisi dan direktori kepakaran dosen UNIZAR tingkat regional dan nasional.",
       sections: [
         {
           title: "Pedoman & SDM",
@@ -100,44 +110,34 @@ export default function Pengabdian() {
             D("Program Klinik Proposal PkM Internal", "pub", "Jadwal 2026"),
           ],
         },
-      ],
-    },
-    tatakelola: {
-      intro: "Proses seleksi, tata cara review, kelayakan etika, serta pengawasan pelaksanaan PkM.",
-      sections: [
-        {
-          title: "Tata Kelola & Proses",
-          docs: [
-            D("Tata Cara Review & SK Reviewer PkM", "pub", "SOP · v2.0"),
-            D("Laporan Monev PkM 2025", "sum", "Ikhtisar 2025"),
-            D("Kontrak & Penugasan PkM Dosen", "lock", "Per judul"),
-          ],
-        },
-      ],
-    },
-    luaran: {
-      intro: "Kemitraan strategis dengan desa binaan, Pemda, UMKM, serta publikasi dan produk PkM.",
-      sections: [
-        {
-          title: "Luaran & Kemitraan Strategis",
-          docs: [
-            D("Analisis Luaran PkM vs Target", "sum", "Laporan tahunan LPPM"),
-            D("Direktori Mitra Aktif PkM (Pemda & Industri)", "dir", "64 Mitra aktif"),
-            D("Laporan Akhir PkM per Judul", "lock", "Khusus civitas akademika"),
-          ],
-        },
-      ],
-    },
-    rekognisi: {
-      intro:
-        "Pengakuan atas kepakaran dosen UNIZAR sebagai konsultan, reviewer, dan pemateri tingkat regional maupun nasional.",
-      sections: [
         {
           title: "Rekognisi Kepakaran Dosen",
           docs: [
             D("Direktori Pakar Bersertifikat", "dir", "39 Pakar tersertifikasi"),
             D("Daftar Dosen Saksi Ahli & Konsultan Pemda", "pub", "Rekap 2024–2026"),
             D("Penghargaan & Anugerah PkM", "pub", "Nasional & regional"),
+          ],
+        },
+      ],
+    },
+    tatakelola: {
+      intro:
+        "Tata kelola, mekanisme review, etika, dan monev pelaksanaan PkM, serta capaian luaran dan kemitraan strategis bersama pemerintah daerah, desa binaan, dan industri.",
+      sections: [
+        {
+          title: "Tata Kelola & Proses PkM",
+          docs: [
+            D("Tata Cara Review & SK Reviewer PkM", "pub", "SOP · v2.0"),
+            D("Laporan Monev PkM 2025", "sum", "Ikhtisar 2025"),
+            D("Kontrak & Penugasan PkM Dosen", "lock", "Per judul"),
+          ],
+        },
+        {
+          title: "Luaran",
+          docs: [
+            D("Analisis Luaran PkM vs Target", "sum", "Laporan tahunan LPPM"),
+            D("Direktori Mitra Aktif PkM (Pemda & Industri)", "dir", "64 Mitra aktif"),
+            D("Laporan Akhir PkM per Judul", "lock", "Khusus civitas akademika"),
           ],
         },
       ],
