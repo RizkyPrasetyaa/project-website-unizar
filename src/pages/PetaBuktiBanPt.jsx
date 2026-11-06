@@ -187,7 +187,7 @@ export default function PetaBuktiBanPt() {
       "Masukan",
       "Peta jalan & pedoman penelitian; pengembangan SDM peneliti.",
       [
-        { label: "Penelitian › Renstra & Peta Jalan", href: "#" },
+        { label: "Penelitian › Tata Kelola", href: "#" },
         { label: "Penelitian › Pedoman & SDM", href: "#" },
       ],
       "pub",
