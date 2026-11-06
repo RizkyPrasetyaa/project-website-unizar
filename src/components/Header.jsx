@@ -165,16 +165,7 @@ export default function Header() {
       defaultTab: "ikhtisar",
       items: [
         { label: "Ikhtisar Penelitian", access: "Publik", tab: "ikhtisar" },
-        {
-          label: "Renstra & Peta Jalan Penelitian",
-          access: "Publik",
-          tab: "renstra",
-        },
-        {
-          label: "Tata Kelola & Proses Penelitian",
-          access: "Publik",
-          tab: "tatakelola",
-        },
+        { label: "Tata Kelola", access: "Publik", tab: "tatakelola" },
         { label: "Publikasi & Luaran", access: "Publik", tab: "luaran" },
         { label: "HKI & Rekognisi", access: "Publik", tab: "hki" },
         {
@@ -191,13 +182,7 @@ export default function Header() {
       items: [
         { label: "Renstra & Peta Jalan PkM", access: "Publik", tab: "renstra" },
         { label: "Pedoman & Kepakaran", access: "Publik", tab: "pedoman" },
-        {
-          label: "Tata Kelola & Proses PkM",
-          access: "Publik",
-          tab: "tatakelola",
-        },
-        { label: "Luaran & Kemitraan", access: "Publik", tab: "luaran" },
-        { label: "Rekognisi Kepakaran", access: "Publik", tab: "rekognisi" },
+        { label: "Tata Kelola & Proses PkM", access: "Publik", tab: "tatakelola" },
       ],
     },
     bpm: {
