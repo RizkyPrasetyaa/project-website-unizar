@@ -39,12 +39,12 @@ export default function Header() {
           tab: "visimisi",
         },
         {
-          label: "RIP, Renstra & Roadmap",
+          label: "Renip & Roadmap",
           access: "Ringkasan",
           tab: "renstra",
         },
         {
-          label: "Evaluasi Capaian Tridharma",
+          label: "Ketercapaian IKU IKT",
           access: "Ringkasan",
           tab: "evaluasi",
         },
@@ -111,45 +111,15 @@ export default function Header() {
       href: "/gug",
       defaultTab: "ikhtisar",
       items: [
-        { label: "Ikhtisar GUG", access: "Publik", tab: "ikhtisar" },
-        {
-          label: "Kebijakan & Praktik Baik GUG",
-          access: "Publik",
-          tab: "kebijakan",
-        },
-        {
-          label: "Laporan Tahunan",
-          access: "Ringkasan",
-          tab: "laporan-tahunan",
-        },
-        {
-          label: "Kode Etik & Lembaga Etik",
-          access: "Publik",
-          tab: "kode-etik",
-        },
-        { label: "Kampus Aman & Satgas PPKPT", access: "Publik", tab: "ppkpt" },
-        {
-          label: "Pengawasan & WBK/WBBM",
-          access: "Ringkasan",
-          tab: "pengawasan",
-        },
-        { label: "Whistleblowing System", access: "Publik", tab: "wbs" },
-        {
-          label: "Pengelolaan & 11 Pedoman",
-          access: "Publik",
-          tab: "pengelolaan",
-        },
-        {
-          label: "Survei Kepuasan Tata Pamong",
-          access: "Ringkasan",
-          tab: "survei",
-        },
-        { label: "Renstra & Pola Keuangan", access: "Publik", tab: "renstra" },
-        {
-          label: "Laporan Keuangan & Audit Eksternal",
-          access: "Ringkasan",
-          tab: "laporan-keuangan",
-        },
+        { label: "Ikhtisar", access: "Publik", tab: "ikhtisar" },
+        { label: "Kebijakan & Praktik Baik GUG", access: "Publik", tab: "kebijakan" },
+        { label: "Laporan Tahunan", access: "Ringkasan", tab: "laporan-tahunan" },
+        { label: "Etik & Kampus Aman", access: "Publik", tab: "etik-ppkpt" },
+        { label: "Pengawasan & WBK/WBBM", access: "Ringkasan", tab: "pengawasan" },
+        { label: "Pedoman & SOP", access: "Publik", tab: "Pedoman" },
+        { label: "Survei Kepuasan Tata Pamong", access: "Ringkasan", tab: "survei" },
+        { label: "Tata Kelola Keuangan", access: "Publik", tab: "keuangan" },
+        { label: "Arsip", access: "Publik", tab: "Arsip" },
       ],
     },
     pendidikan: {
@@ -158,6 +128,7 @@ export default function Header() {
       href: "/pendidikan",
       defaultTab: "pmb",
       items: [
+        { label: "PMB & Beasiswa", access: "Publik", tab: "pmb" },
         {
           label: "Kebijakan Kurikulum OBE",
           access: "Publik",
@@ -173,7 +144,7 @@ export default function Header() {
           access: "Publik",
           tab: "proses",
         },
-        { label: "MBKM (≥ 10 sks luar prodi)", access: "Publik", tab: "mbkm" },
+        { label: "MBKM", access: "Publik", tab: "mbkm" },
         {
           label: "Suasana Akademik & Kebebasan Mimbar",
           access: "Publik",
@@ -184,17 +155,7 @@ export default function Header() {
           access: "Ringkasan",
           tab: "capaian",
         },
-        {
-          label: "PMB Afirmatif & Inklusif",
-          access: "Publik",
-          tab: "pmb-inklusif",
-        },
-        {
-          label: "Beasiswa & Bantuan Biaya",
-          access: "Publik",
-          tab: "beasiswa",
-        },
-        { label: "RPL · PJJ · PKKMB", access: "Publik", tab: "rpl" },
+        { label: "RPL · PKKMB", access: "Publik", tab: "rpl" },
       ],
     },
     penelitian: {
@@ -204,16 +165,7 @@ export default function Header() {
       defaultTab: "ikhtisar",
       items: [
         { label: "Ikhtisar Penelitian", access: "Publik", tab: "ikhtisar" },
-        {
-          label: "Renstra & Peta Jalan Penelitian",
-          access: "Publik",
-          tab: "renstra",
-        },
-        {
-          label: "Tata Kelola & Proses Penelitian",
-          access: "Publik",
-          tab: "tatakelola",
-        },
+        { label: "Tata Kelola", access: "Publik", tab: "tatakelola" },
         { label: "Publikasi & Luaran", access: "Publik", tab: "luaran" },
         { label: "HKI & Rekognisi", access: "Publik", tab: "hki" },
         {

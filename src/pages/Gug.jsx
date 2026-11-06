@@ -4,13 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 export default function Gug() {
   const location = useLocation();
 
-  // 9 SUB-MENU TAB BERSIH (Renstra & Keuangan digabung, WBS digabung ke Pengawasan)
+  // 8 SUB-MENU TAB BERSIH (Kode Etik & Satgas PPKPT digabung menjadi Etik & Kampus Aman)
   const MENU_ITEMS = [
     { key: "ikhtisar", label: "Ikhtisar" },
     { key: "kebijakan", label: "Kebijakan & Praktik Baik GUG" },
     { key: "laporan-tahunan", label: "Laporan Tahunan" },
-    { key: "kode-etik", label: "Kode Etik & Lembaga Etik" },
-    { key: "ppkpt", label: "Kampus Aman & Satgas PPKPT" },
+    { key: "etik-ppkpt", label: "Etik & Kampus Aman" },
     { key: "pengawasan", label: "Pengawasan & WBK/WBBM" },
     { key: "Pedoman", label: "Pedoman & SOP" },
     { key: "survei", label: "Survei Kepuasan Tata Pamong" },
@@ -19,7 +18,16 @@ export default function Gug() {
   ];
 
   const [tab, setTab] = useState(location.state?.tab || "ikhtisar");
+  const [tahunLaporan, setTahunLaporan] = useState("2021");
   const tabRefs = useRef({});
+
+  const IKU_DATA = {
+    "2021": "94%",
+    "2022": "92%",
+    "2023": "94%",
+    "2024": "95%",
+    "2025": "96%",
+  };
 
   useEffect(() => {
     const targetTab = location.state?.tab || "ikhtisar";
@@ -82,6 +90,8 @@ export default function Gug() {
     { y: "2025", op: "WTP" },
     { y: "2024", op: "WTP" },
     { y: "2023", op: "WTP" },
+    { y: "2022", op: "WTP" },
+    { y: "2021", op: "WTP" },
   ];
 
   const survey = [
@@ -130,11 +140,11 @@ export default function Gug() {
         },
       ],
     },
-    "kode-etik": {
+    "etik-ppkpt": {
       stats: [
-        S("Kasus Etik Ditangani (2025)", "7"),
-        S("Rata-rata Penyelesaian", "21 hari"),
-        S("Sosialisasi Kode Etik", "100% unit"),
+        S("Kasus Etik Ditangani", "7"),
+        S("Laporan PPKPT", "5"),
+        S("Sosialisasi & Kampus Aman", "100% unit"),
       ],
       sections: [
         {
@@ -153,15 +163,6 @@ export default function Gug() {
             D("Rekap Putusan Etik", "sum", "Tanpa Identitas Pihak"),
           ],
         },
-      ],
-    },
-    ppkpt: {
-      stats: [
-        S("Laporan Diterima (2025)", "5"),
-        S("Laporan Selesai Ditangani", "100%"),
-        S("Sivitas Terpapar Sosialisasi", "3.800+"),
-      ],
-      sections: [
         {
           title: "Kebijakan & Pedoman PPKPT",
           docs: [
@@ -666,48 +667,269 @@ export default function Gug() {
           </div>
         )}
 
-        {/* 2. TAB KONTEN SUB-MENU */}
-        {tab !== "ikhtisar" && curData && (
+        {/* 2. TAB KHUSUS LAPORAN TAHUNAN SESUAI SKETSA */}
+        {tab === "laporan-tahunan" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>{activeMenu.label}</h2>
+            <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>
+              {activeMenu.label}
+            </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "12px" }}>
-              {/* KHUSUS TAB LAPORAN TAHUNAN: TOMBOL HIJAU 5 TAHUN TERAKHIR */}
-              {tab === "laporan-tahunan" && (
-                <div
-                  style={{
-                    background: "#FFFFFF",
-                    border: "1px solid #DCE6E0",
-                    borderRadius: "14px",
-                    padding: "18px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "10px",
-                  }}
-                >
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#44574E" }}>Arsip Terdokumentasi</span>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                    {["2021", "2022", "2023", "2024", "2025"].map((yr) => (
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "20px",
+                alignItems: "flex-start",
+              }}
+            >
+              {/* KOTAK 1: ARSIP TERDOKUMENTASI */}
+              <div
+                style={{
+                  width: "240px",
+                  flex: "0 0 240px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "14px",
+                  padding: "18px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                <span style={{ fontSize: "14px", fontWeight: 700, color: "#44574E" }}>
+                  Arsip Terdokumentasi
+                </span>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+                  {["2021", "2022", "2023", "2024", "2025"].map((yr) => {
+                    const isSel = tahunLaporan === yr;
+                    return (
                       <button
                         key={yr}
+                        type="button"
+                        onClick={() => setTahunLaporan(yr)}
                         style={{
-                          background: "#064E3B",
-                          color: "#FFFFFF",
-                          border: "none",
-                          padding: "6px 12px",
-                          borderRadius: "6px",
+                          background: isSel ? "#064E3B" : "#E3F1EA",
+                          color: isSel ? "#FFFFFF" : "#064E3B",
+                          border: isSel ? "2px solid #064E3B" : "1.5px solid #064E3B",
+                          padding: "8px 12px",
+                          borderRadius: "8px",
                           fontSize: "14px",
                           fontWeight: 700,
                           cursor: "pointer",
+                          boxShadow: isSel ? "0 2px 8px rgba(6,78,59,0.3)" : "none",
+                          transition: "all 0.15s ease",
                         }}
                       >
                         {yr}
                       </button>
-                    ))}
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* KOTAK 2: CAPAIAN IKU {tahunLaporan} */}
+              <div
+                style={{
+                  width: "240px",
+                  flex: "0 0 240px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "14px",
+                  padding: "18px 20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                <span style={{ fontSize: "14px", fontWeight: 700, color: "#44574E" }}>
+                  Capaian IKU {tahunLaporan}
+                </span>
+                <span style={{ fontSize: "40px", fontWeight: 800, color: "#064E3B", lineHeight: 1.1 }}>
+                  {IKU_DATA[tahunLaporan] || "94%"}
+                </span>
+              </div>
+
+              {/* KOTAK 3: LAPORAN TAHUNAN & KEUANGAN TERAUDIT DI SAMPING KOTAK CAPAIAN IKU */}
+              <section
+                style={{
+                  flex: "1 1 380px",
+                  minWidth: "300px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>
+                  Laporan Tahunan & Keuangan Teraudit
+                </h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                  {/* CARD 1: Laporan Tahunan UNIZAR {tahunLaporan} */}
+                  <div
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid #DCE6E0",
+                      borderRadius: "14px",
+                      padding: "18px 20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "flex-start" }}>
+                      <span style={{ fontSize: "16px", fontWeight: 700, color: "#13231C" }}>
+                        Laporan Tahunan UNIZAR {tahunLaporan}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          padding: "3px 9px",
+                          borderRadius: "999px",
+                          background: "#FFF1C2",
+                          color: "#6B4E00",
+                        }}
+                      >
+                        Ringkasan
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "13px", color: "#44574E" }}>Ringkasan Eksekutif</span>
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
+                      <a
+                        href="#"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          background: "#0A6B4F",
+                          color: "#FFFFFF",
+                          padding: "9px 18px",
+                          borderRadius: "8px",
+                          fontWeight: 700,
+                          fontSize: "13px",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Lihat Ringkasan →
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* CARD 2: Ikhtisar Laporan Keuangan {tahunLaporan} */}
+                  <div
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid #DCE6E0",
+                      borderRadius: "14px",
+                      padding: "18px 20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "flex-start" }}>
+                      <span style={{ fontSize: "16px", fontWeight: 700, color: "#13231C" }}>
+                        Ikhtisar Laporan Keuangan {tahunLaporan}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          padding: "3px 9px",
+                          borderRadius: "999px",
+                          background: "#FFF1C2",
+                          color: "#6B4E00",
+                        }}
+                      >
+                        Ringkasan
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "13px", color: "#44574E" }}>Audited KAP</span>
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
+                      <a
+                        href="#"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          background: "#0A6B4F",
+                          color: "#FFFFFF",
+                          padding: "9px 18px",
+                          borderRadius: "8px",
+                          fontWeight: 700,
+                          fontSize: "13px",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Lihat Ringkasan →
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* CARD 3: Laporan Keuangan Rinci */}
+                  <div
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid #DCE6E0",
+                      borderRadius: "14px",
+                      padding: "18px 20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "flex-start" }}>
+                      <span style={{ fontSize: "16px", fontWeight: 700, color: "#13231C" }}>
+                        Laporan Keuangan Rinci
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          padding: "3px 9px",
+                          borderRadius: "999px",
+                          background: "#FBE3E4",
+                          color: "#8E1B20",
+                        }}
+                      >
+                        Terbatas
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "13px", color: "#44574E" }}>Akses Terbatas / Asesor</span>
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
+                      <a
+                        href="#"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          background: "#0A6B4F",
+                          color: "#FFFFFF",
+                          padding: "9px 18px",
+                          borderRadius: "8px",
+                          fontWeight: 700,
+                          fontSize: "13px",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Masuk untuk Buka →
+                      </a>
+                    </div>
                   </div>
                 </div>
-              )}
+              </section>
+            </div>
+          </div>
+        )}
 
+        {/* 3. TAB KONTEN SUB-MENU LAINNYA */}
+        {tab !== "ikhtisar" && tab !== "laporan-tahunan" && curData && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>{activeMenu.label}</h2>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "12px" }}>
               {curData.stats.map((st, i) => (
                 <div
                   key={i}

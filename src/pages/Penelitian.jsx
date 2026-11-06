@@ -4,10 +4,9 @@ import { Link, useLocation } from "react-router-dom";
 export default function Penelitian() {
   const location = useLocation();
 
-  // 1. REGISTRASI 6 TAB VALID
+  // 1. REGISTRASI 5 TAB VALID
   const MENU_ITEMS = [
     { key: "ikhtisar", label: "Ikhtisar" },
-    { key: "renstra", label: "Renstra & Peta Jalan" },
     { key: "tatakelola", label: "Tata Kelola" },
     { key: "luaran", label: "Publikasi & Luaran" },
     { key: "hki", label: "HKI & Rekognisi" },
@@ -16,16 +15,21 @@ export default function Penelitian() {
 
   const VALID_TABS = MENU_ITEMS.map((m) => m.key);
 
+  const getValidTab = (rawTab) => {
+    if (rawTab === "renstra") return "tatakelola";
+    return rawTab && VALID_TABS.includes(rawTab) ? rawTab : "ikhtisar";
+  };
+
   // 2. STATE INITIALIZATION DENGAN FALLBACK AMAN
   const [tab, setTab] = useState(() => {
-    return location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "ikhtisar";
+    return getValidTab(location.state?.tab);
   });
 
   const tabRefs = useRef({});
 
   // 3. SINKRONISASI REALTIME DARI MEGA MENU HEADER + JUMP TO TOP
   useEffect(() => {
-    const targetTab = location.state?.tab && VALID_TABS.includes(location.state.tab) ? location.state.tab : "ikhtisar";
+    const targetTab = getValidTab(location.state?.tab);
 
     setTab(targetTab);
     window.scrollTo(0, 0);
@@ -61,10 +65,30 @@ export default function Penelitian() {
   // HELPER STYLING DOKUMEN
   const STY = {
     pub: { badge: "Publik", bg: "#E3F1EA", fg: "#064E3B", action: "Unduh PDF" },
-    sum: { badge: "Ringkasan", bg: "#FFF1C2", fg: "#6B4E00", action: "Lihat ringkasan" },
-    lock: { badge: "Terbatas", bg: "#FBE3E4", fg: "#8E1B20", action: "Masuk untuk membuka" },
-    ext: { badge: "Tautan sistem", bg: "#E6EEF8", fg: "#1D3F6E", action: "Buka ↗" },
-    dir: { badge: "Direktori", bg: "#E3F1EA", fg: "#064E3B", action: "Jelajahi" },
+    sum: {
+      badge: "Ringkasan",
+      bg: "#FFF1C2",
+      fg: "#6B4E00",
+      action: "Lihat ringkasan",
+    },
+    lock: {
+      badge: "Terbatas",
+      bg: "#FBE3E4",
+      fg: "#8E1B20",
+      action: "Masuk untuk membuka",
+    },
+    ext: {
+      badge: "Tautan sistem",
+      bg: "#E6EEF8",
+      fg: "#1D3F6E",
+      action: "Buka ↗",
+    },
+    dir: {
+      badge: "Direktori",
+      bg: "#E3F1EA",
+      fg: "#064E3B",
+      action: "Jelajahi",
+    },
   };
 
   const D = (name, acc, meta) => {
@@ -76,16 +100,20 @@ export default function Penelitian() {
 
   // DATA DOKUMEN PER SUB-MENU
   const TABS_DATA = {
-    renstra: {
+    tatakelola: {
       intro:
-        "Landasan, peta jalan, sumber daya, serta sasaran dan indikator kinerja penelitian yang selaras dengan diferensiasi misi.",
+        "Landasan kebijakan, renstra, peta jalan riset, tata kelola, dan etika penelitian yang terstruktur dan ilmiah — dari perencanaan, review proposal, hingga monitoring dan evaluasi tridharma.",
       sections: [
         {
-          title: "Perencanaan",
+          title: "Perencanaan & Peta Jalan Riset",
           docs: [
             D("Renstra Penelitian 2025–2029", "pub", SK),
             D("Peta Jalan Penelitian per Tema", "pub", "Infografis + dokumen"),
-            D("Indikator Kinerja & Target Berdampak", "pub", "Tabel target 5 tahun"),
+            D(
+              "Indikator Kinerja & Target Berdampak",
+              "pub",
+              "Tabel target 5 tahun",
+            ),
           ],
         },
         {
@@ -93,17 +121,15 @@ export default function Penelitian() {
           docs: [
             D("Pedoman Penelitian", "pub", SK),
             D("Pedoman Penugasan & Bobot Kerja Dosen", "pub", SK),
-            D("Program Klinik Proposal & Penulisan Artikel", "pub", "Jadwal 2026"),
+            D(
+              "Program Klinik Proposal & Penulisan Artikel",
+              "pub",
+              "Jadwal 2026",
+            ),
           ],
         },
-      ],
-    },
-    tatakelola: {
-      intro:
-        "Pengelolaan penelitian yang terstruktur, ilmiah, dan etis — dari review proposal sampai monitoring-evaluasi.",
-      sections: [
         {
-          title: "Proses & Legalitas",
+          title: "Proses & Legalitas Riset",
           docs: [
             D("Tata Cara Review Proposal", "pub", "SOP · v2.0"),
             D("SK Reviewer Internal", "pub", "Periode 2026"),
@@ -111,7 +137,7 @@ export default function Penelitian() {
           ],
         },
         {
-          title: "Etika & Pengawasan",
+          title: "Etika & Pengawasan Riset",
           docs: [
             D("Kode Etik Penelitian & Komisi Etik", "pub", SK),
             D("Tata Kelola HKI", "pub", SK),
@@ -127,22 +153,35 @@ export default function Penelitian() {
         {
           title: "Direktori Luaran",
           docs: [
-            D("Direktori Publikasi (3 tahun)", "dir", "Terhubung SINTA & Scopus"),
-            D("Repositori Institusi (lisensi terbuka)", "ext", "Open access · CC BY"),
+            D(
+              "Direktori Publikasi (3 tahun)",
+              "dir",
+              "Terhubung SINTA & Scopus",
+            ),
+            D(
+              "Repositori Institusi (lisensi terbuka)",
+              "ext",
+              "Open access · CC BY",
+            ),
             D("Jurnal Terbitan UNIZAR", "ext", "OJS · status akreditasi Sinta"),
           ],
         },
         {
           title: "Analisis Ketercapaian",
           docs: [
-            D("Analisis Luaran vs Target Berdampak", "sum", "Laporan tahunan LPPM"),
+            D(
+              "Analisis Luaran vs Target Berdampak",
+              "sum",
+              "Laporan tahunan LPPM",
+            ),
             D("Penelitian Melibatkan Mahasiswa", "pub", "Rekap & konversi sks"),
           ],
         },
       ],
     },
     hki: {
-      intro: "Pengakuan bidang penelitian dan pemanfaatannya: HKI, sitasi, kolaborasi, dan hilirisasi.",
+      intro:
+        "Pengakuan bidang penelitian dan pemanfaatannya: HKI, sitasi, kolaborasi, dan hilirisasi.",
       sections: [
         {
           title: "Kekayaan Intelektual",
@@ -155,21 +194,38 @@ export default function Penelitian() {
         {
           title: "Rekognisi",
           docs: [
-            D("Kolaborasi Riset Internasional", "pub", "Mitra & luaran bersama"),
-            D("Dosen sebagai Reviewer / Editor Jurnal", "pub", "Rekap 2024–2026"),
+            D(
+              "Kolaborasi Riset Internasional",
+              "pub",
+              "Mitra & luaran bersama",
+            ),
+            D(
+              "Dosen sebagai Reviewer / Editor Jurnal",
+              "pub",
+              "Rekap 2024–2026",
+            ),
             D("Penghargaan Riset", "pub", "Nasional & internasional"),
           ],
         },
       ],
     },
     laporan: {
-      intro: "Laporan rinci hasil penelitian yang dapat diakses oleh civitas akademika sesuai kriteria otorisasi.",
+      intro:
+        "Laporan rinci hasil penelitian yang dapat diakses oleh civitas akademika sesuai kriteria otorisasi.",
       sections: [
         {
           title: "Laporan Penelitian Rinci",
           docs: [
-            D("Laporan Penelitian Rinci (Per Judul)", "lock", "Per judul penelitian"),
-            D("Laporan Akhir Hibah Internal", "lock", "Khusus peneliti & reviewer"),
+            D(
+              "Laporan Penelitian Rinci (Per Judul)",
+              "lock",
+              "Per judul penelitian",
+            ),
+            D(
+              "Laporan Akhir Hibah Internal",
+              "lock",
+              "Khusus peneliti & reviewer",
+            ),
           ],
         },
       ],
@@ -218,9 +274,17 @@ export default function Penelitian() {
   ];
 
   const flow = [
-    { n: 1, t: "Usulan", d: "Proposal diunggah ke SIM-LPPM sesuai tema peta jalan." },
+    {
+      n: 1,
+      t: "Usulan",
+      d: "Proposal diunggah ke SIM-LPPM sesuai tema peta jalan.",
+    },
     { n: 2, t: "Review", d: "Penilaian oleh reviewer ber-SK, dua tahap." },
-    { n: 3, t: "Etik & kontrak", d: "Kelaikan etik dan surat penugasan peneliti." },
+    {
+      n: 3,
+      t: "Etik & kontrak",
+      d: "Kelaikan etik dan surat penugasan peneliti.",
+    },
     { n: 4, t: "Pelaksanaan", d: "Logbook daring; mahasiswa memperoleh sks." },
     { n: 5, t: "Monev", d: "Monitoring kemajuan dan seminar hasil." },
     { n: 6, t: "Luaran", d: "Publikasi berlisensi terbuka, HKI, repositori." },
@@ -239,13 +303,25 @@ export default function Penelitian() {
     >
       {/* BANNER HEADER HIJAU */}
       <section style={{ background: "#064E3B", color: "#FFFFFF" }}>
-        <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "22px 32px 0" }}>
+        <div
+          style={{
+            maxWidth: "1440px",
+            margin: "0 auto",
+            padding: "22px 32px 0",
+          }}
+        >
           {/* Breadcrumb Dinamis */}
-          <nav aria-label="Breadcrumb" style={{ fontSize: "13px", color: "#B7DCC9" }}>
+          <nav
+            aria-label="Breadcrumb"
+            style={{ fontSize: "13px", color: "#B7DCC9" }}
+          >
             <Link to="/" style={{ color: "#B7DCC9", textDecoration: "none" }}>
               Beranda
             </Link>{" "}
-            / LPPM / <span style={{ color: "#FFFFFF", fontWeight: 600 }}>{activeMenu.label}</span>
+            / LPPM /{" "}
+            <span style={{ color: "#FFFFFF", fontWeight: 600 }}>
+              {activeMenu.label}
+            </span>
           </nav>
 
           <div
@@ -256,11 +332,20 @@ export default function Penelitian() {
               padding: "18px 0 26px",
             }}
           >
-            <h1 style={{ margin: 0, fontSize: "40px", lineHeight: 1.1, fontWeight: 800 }}>Penelitian</h1>
+            <h1
+              style={{
+                margin: 0,
+                fontSize: "40px",
+                lineHeight: 1.1,
+                fontWeight: 800,
+              }}
+            >
+              Penelitian
+            </h1>
 
             {/* ACTION BUTTON UTAMA */}
             <a
-              href="#"
+              href="https://lppm.unizar.ac.id/"
               style={{
                 background: "#FFFFFF",
                 color: "#064E3B",
@@ -279,7 +364,12 @@ export default function Penelitian() {
           <div
             role="tablist"
             aria-label="Sub-menu penelitian"
-            style={{ display: "flex", gap: "4px", overflowX: "auto", paddingBottom: "0" }}
+            style={{
+              display: "flex",
+              gap: "4px",
+              overflowX: "auto",
+              paddingBottom: "0",
+            }}
           >
             {MENU_ITEMS.map((item) => {
               const isSel = tab === item.key;
@@ -312,12 +402,26 @@ export default function Penelitian() {
       </section>
 
       {/* KONTEN UTAMA */}
-      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "28px 32px 64px" }}>
+      <div
+        style={{
+          maxWidth: "1440px",
+          margin: "0 auto",
+          padding: "28px 32px 64px",
+        }}
+      >
         {/* 1. TAB IKHTISAR */}
         {tab === "ikhtisar" && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "26px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "26px" }}
+          >
             {/* KPI Cards Grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "12px",
+              }}
+            >
               {kpi.map((k, idx) => (
                 <div
                   key={idx}
@@ -331,8 +435,25 @@ export default function Penelitian() {
                     gap: "6px",
                   }}
                 >
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#44574E" }}>{k.l}</span>
-                  <span style={{ fontSize: "30px", fontWeight: 800, color: "#064E3B", lineHeight: 1.1 }}>{k.v}</span>
+                  <span
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      color: "#44574E",
+                    }}
+                  >
+                    {k.l}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "30px",
+                      fontWeight: 800,
+                      color: "#064E3B",
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    {k.v}
+                  </span>
                 </div>
               ))}
             </div>
@@ -372,20 +493,56 @@ export default function Penelitian() {
                     >
                       TREN 5 TAHUN
                     </span>
-                    <h2 style={{ margin: "6px 0 0", fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
+                    <h2
+                      style={{
+                        margin: "6px 0 0",
+                        fontSize: "22px",
+                        color: "#064E3B",
+                        fontWeight: 800,
+                      }}
+                    >
                       Publikasi dosen per tahun
                     </h2>
                   </div>
-                  <div style={{ display: "flex", gap: "14px", fontSize: "12px", color: "#44574E" }}>
-                    <span style={{ display: "inline-flex", gap: "6px", alignItems: "center" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "14px",
+                      fontSize: "12px",
+                      color: "#44574E",
+                    }}
+                  >
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        gap: "6px",
+                        alignItems: "center",
+                      }}
+                    >
                       <span
-                        style={{ width: "12px", height: "12px", borderRadius: "3px", background: "#064E3B" }}
+                        style={{
+                          width: "12px",
+                          height: "12px",
+                          borderRadius: "3px",
+                          background: "#064E3B",
+                        }}
                       ></span>
                       Internasional bereputasi
                     </span>
-                    <span style={{ display: "inline-flex", gap: "6px", alignItems: "center" }}>
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        gap: "6px",
+                        alignItems: "center",
+                      }}
+                    >
                       <span
-                        style={{ width: "12px", height: "12px", borderRadius: "3px", background: "#9CCFB6" }}
+                        style={{
+                          width: "12px",
+                          height: "12px",
+                          borderRadius: "3px",
+                          background: "#9CCFB6",
+                        }}
                       ></span>
                       Nasional terakreditasi
                     </span>
@@ -415,10 +572,33 @@ export default function Penelitian() {
                         justifyContent: "flex-end",
                       }}
                     >
-                      <span style={{ fontSize: "13px", fontWeight: 800, color: "#064E3B" }}>{b.total}</span>
-                      <div style={{ width: "56px", display: "flex", flexDirection: "column", gap: "2px" }}>
-                        <div style={{ height: b.hn, background: "#9CCFB6", borderRadius: "6px 6px 0 0" }}></div>
-                        <div style={{ height: b.hi, background: "#064E3B" }}></div>
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: 800,
+                          color: "#064E3B",
+                        }}
+                      >
+                        {b.total}
+                      </span>
+                      <div
+                        style={{
+                          width: "56px",
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "2px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            height: b.hn,
+                            background: "#9CCFB6",
+                            borderRadius: "6px 6px 0 0",
+                          }}
+                        ></div>
+                        <div
+                          style={{ height: b.hi, background: "#064E3B" }}
+                        ></div>
                       </div>
                     </div>
                   ))}
@@ -476,18 +656,46 @@ export default function Penelitian() {
                 >
                   Hibah dibuka
                 </span>
-                <h2 style={{ margin: 0, fontSize: "22px", color: "#3D2E00", fontWeight: 800 }}>
+                <h2
+                  style={{
+                    margin: 0,
+                    fontSize: "22px",
+                    color: "#3D2E00",
+                    fontWeight: 800,
+                  }}
+                >
                   Hibah Penelitian Internal 2027
                 </h2>
-                <p style={{ margin: 0, fontSize: "14px", lineHeight: 1.6, color: "#5A4500" }}>
-                  Skema dasar, terapan, dan kolaborasi internasional. Proposal wajib selaras peta jalan dan melibatkan
-                  mahasiswa.
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: "14px",
+                    lineHeight: 1.6,
+                    color: "#5A4500",
+                  }}
+                >
+                  Skema dasar, terapan, dan kolaborasi internasional. Proposal
+                  wajib selaras peta jalan dan melibatkan mahasiswa.
                 </p>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", color: "#3D2E00" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontSize: "14px",
+                    color: "#3D2E00",
+                  }}
+                >
                   <span>Batas unggah</span>
                   <b>[tgl]</b>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px", color: "#3D2E00" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontSize: "14px",
+                    color: "#3D2E00",
+                  }}
+                >
                   <span>Pengumuman</span>
                   <b>[tgl]</b>
                 </div>
@@ -506,7 +714,15 @@ export default function Penelitian() {
                 >
                   Ajukan proposal
                 </a>
-                <a href="#" style={{ fontSize: "14px", fontWeight: 700, color: "#3D2E00", textDecoration: "none" }}>
+                <a
+                  href="#"
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    color: "#3D2E00",
+                    textDecoration: "none",
+                  }}
+                >
                   Panduan hibah (PDF) →
                 </a>
               </section>
@@ -525,10 +741,23 @@ export default function Penelitian() {
               >
                 Peta jalan
               </span>
-              <h2 style={{ margin: "6px 0 14px", fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
+              <h2
+                style={{
+                  margin: "6px 0 14px",
+                  fontSize: "22px",
+                  color: "#064E3B",
+                  fontWeight: 800,
+                }}
+              >
                 Tema riset unggulan
               </h2>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "14px" }}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                  gap: "14px",
+                }}
+              >
                 {themes.map((t, idx) => (
                   <div
                     key={idx}
@@ -542,10 +771,35 @@ export default function Penelitian() {
                       gap: "10px",
                     }}
                   >
-                    <span style={{ fontSize: "13px", fontWeight: 800, color: "#C1272D" }}>{t.no}</span>
-                    <span style={{ fontSize: "18px", fontWeight: 800 }}>{t.title}</span>
-                    <span style={{ fontSize: "14px", color: "#44574E", lineHeight: 1.55 }}>{t.sub}</span>
-                    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginTop: "auto" }}>
+                    <span
+                      style={{
+                        fontSize: "13px",
+                        fontWeight: 800,
+                        color: "#C1272D",
+                      }}
+                    >
+                      {t.no}
+                    </span>
+                    <span style={{ fontSize: "18px", fontWeight: 800 }}>
+                      {t.title}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "14px",
+                        color: "#44574E",
+                        lineHeight: 1.55,
+                      }}
+                    >
+                      {t.sub}
+                    </span>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "6px",
+                        flexWrap: "wrap",
+                        marginTop: "auto",
+                      }}
+                    >
                       <span
                         style={{
                           fontSize: "12px",
@@ -578,7 +832,12 @@ export default function Penelitian() {
 
             {/* Alur Penelitian */}
             <section
-              style={{ background: "#FFFFFF", border: "1px solid #DCE6E0", borderRadius: "18px", padding: "26px" }}
+              style={{
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "26px",
+              }}
             >
               <span
                 style={{
@@ -591,10 +850,23 @@ export default function Penelitian() {
               >
                 Tata kelola
               </span>
-              <h2 style={{ margin: "6px 0 18px", fontSize: "22px", color: "#064E3B", fontWeight: 800 }}>
+              <h2
+                style={{
+                  margin: "6px 0 18px",
+                  fontSize: "22px",
+                  color: "#064E3B",
+                  fontWeight: 800,
+                }}
+              >
                 Alur penelitian di UNIZAR
               </h2>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(6, minmax(0, 1fr))", gap: "10px" }}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(6, minmax(0, 1fr))",
+                  gap: "10px",
+                }}
+              >
                 {flow.map((f, idx) => (
                   <div
                     key={idx}
@@ -608,9 +880,27 @@ export default function Penelitian() {
                       borderTop: "4px solid #0A6B4F",
                     }}
                   >
-                    <span style={{ fontSize: "12px", fontWeight: 800, color: "#0A6B4F" }}>LANGKAH {f.n}</span>
-                    <span style={{ fontSize: "15px", fontWeight: 800 }}>{f.t}</span>
-                    <span style={{ fontSize: "13px", color: "#44574E", lineHeight: 1.5 }}>{f.d}</span>
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: 800,
+                        color: "#0A6B4F",
+                      }}
+                    >
+                      LANGKAH {f.n}
+                    </span>
+                    <span style={{ fontSize: "15px", fontWeight: 800 }}>
+                      {f.t}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "13px",
+                        color: "#44574E",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {f.d}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -620,16 +910,46 @@ export default function Penelitian() {
 
         {/* 2. TAB KONTEN SUB-MENU LAINNYA */}
         {tab !== "ikhtisar" && curData && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <p style={{ margin: 0, fontSize: "17px", lineHeight: 1.6, color: "#2B3D35", maxWidth: "860px" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "24px" }}
+          >
+            <p
+              style={{
+                margin: 0,
+                fontSize: "17px",
+                lineHeight: 1.6,
+                color: "#2B3D35",
+                maxWidth: "860px",
+              }}
+            >
               {curData.intro}
             </p>
 
             {curData.sections.map((sec, idx) => (
-              <section key={idx} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>{sec.title}</h3>
+              <section
+                key={idx}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                <h3
+                  style={{
+                    margin: 0,
+                    fontSize: "20px",
+                    color: "#064E3B",
+                    fontWeight: 800,
+                  }}
+                >
+                  {sec.title}
+                </h3>
                 <div
-                  style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "14px" }}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                    gap: "14px",
+                  }}
                 >
                   {sec.docs.map((d, dIdx) => (
                     <div
@@ -652,7 +972,14 @@ export default function Penelitian() {
                           alignItems: "flex-start",
                         }}
                       >
-                        <span style={{ fontSize: "16px", fontWeight: 700, lineHeight: 1.35, color: "#13231C" }}>
+                        <span
+                          style={{
+                            fontSize: "16px",
+                            fontWeight: 700,
+                            lineHeight: 1.35,
+                            color: "#13231C",
+                          }}
+                        >
                           {d.name}
                         </span>
                         <span
@@ -669,7 +996,9 @@ export default function Penelitian() {
                           {d.badge}
                         </span>
                       </div>
-                      <span style={{ fontSize: "12px", color: "#44574E" }}>{d.meta}</span>
+                      <span style={{ fontSize: "12px", color: "#44574E" }}>
+                        {d.meta}
+                      </span>
 
                       <div
                         style={{

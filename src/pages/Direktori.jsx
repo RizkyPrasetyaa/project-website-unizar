@@ -28,7 +28,6 @@ export default function Direktori() {
   // State sub-tab internal khusus untuk "Unit Kerja"
   const [subUnit, setSubUnit] = useState("biro");
 
-
   // 3. Efek re-render otomatis saat location.state ATAU location.key berubah
   useEffect(() => {
     if (location.state?.tab && VALID_TABS.includes(location.state.tab)) {
@@ -181,37 +180,45 @@ export default function Direktori() {
   const selStyle = STY[selDoc.acc];
 
   // Data unit kerja terstruktur berdasarkan kategori sub-tab
+  // (Setiap unit menampilkan bagan struktur organisasi resmi
+  // dari gambar yang diberikan, tersimpan di public/assets/img)
   const UNIT_KERJA_DATA = {
     biro: [
       {
         name: "Biro Akademik",
         email: "akademik@unizar.ac.id",
         loc: "Gedung Rektorat Lt. 2",
+        img: "/assets/img/struktur-biro-akademik.png",
       },
       {
         name: "Biro Kemahasiswaan",
         email: "kemahasiswaan@unizar.ac.id",
         loc: "Gedung Rektorat Lt. 2",
+        img: "/assets/img/struktur-biro-kemahasiswaan.png",
       },
       {
         name: "Biro Keuangan",
         email: "keuangan@unizar.ac.id",
         loc: "Gedung Rektorat Lt. 2",
+        img: "/assets/img/struktur-biro-keuangan.png",
       },
       {
-        name: "Biro SDM",
+        name: "Biro Sumber Daya Manusia (SDM)",
         email: "sdm@unizar.ac.id",
         loc: "Gedung Rektorat Lt. 2",
+        img: "/assets/img/struktur-biro-sdm.png",
+      },
+      {
+        name: "Biro Humas, Kerja Sama, dan Alumni (HKA)",
+        email: "hka@unizar.ac.id",
+        loc: "Gedung Rektorat Lt. 2",
+        img: "/assets/img/struktur-biro-hka.png",
       },
       {
         name: "Biro Umum",
         email: "biroumum@unizar.ac.id",
         loc: "Gedung Rektorat Lt. 1",
-      },
-      {
-        name: "Biro HKA (Humas & Kerjasama)",
-        email: "hka@unizar.ac.id",
-        loc: "Gedung Rektorat Lt. 2",
+        img: "/assets/img/struktur-biro-umum.png",
       },
       {
         name: "Biro Renstrabang",
@@ -226,9 +233,10 @@ export default function Direktori() {
     ],
     lembaga: [
       {
-        name: "Lembaga Penelitian dan Pengabdian (LPPM)",
+        name: "Lembaga Penelitian dan Pengabdian kepada Masyarakat (LPPM)",
         email: "lppm@unizar.ac.id",
         loc: "Gedung Rektorat Lt. 2",
+        img: "/assets/img/struktur-lppm.png",
       },
     ],
     badan: [
@@ -236,6 +244,7 @@ export default function Direktori() {
         name: "Badan Penjaminan Mutu (BPM)",
         email: "bpm@unizar.ac.id",
         loc: "Gedung Rektorat Lt. 2",
+        img: "/assets/img/struktur-bpm.png",
       },
     ],
     upt: [
@@ -266,10 +275,10 @@ export default function Direktori() {
         name: "Satgas Pencegahan dan Penanganan Kekerasan di Perguruan Tinggi (PPKPT)",
         email: "satgas.ppkpt@unizar.ac.id",
         loc: "Gedung Layanan Khusus",
+        img: "/assets/img/struktur-satgas-ppkpt.png",
       },
     ],
   };
-
 
   return (
     <div
@@ -307,7 +316,7 @@ export default function Direktori() {
             <h1
               style={{ margin: "6px 0 0", fontSize: "40px", fontWeight: 800 }}
             >
-              Direktori UNIZAR
+              Direktori
             </h1>
           </div>
 
@@ -485,6 +494,30 @@ export default function Direktori() {
                     <br />
                     Lokasi: {u.loc}
                   </p>
+                  {u.img && (
+                    <a
+                      href={u.img}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Klik untuk melihat bagan lebih besar"
+                      style={{ display: "block", marginTop: "12px" }}
+                    >
+                      <img
+                        src={u.img}
+                        alt={`Bagan Struktur Organisasi ${u.name}`}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          maxHeight: "320px",
+                          objectFit: "contain",
+                          borderRadius: "8px",
+                          border: "1px solid #DCE6E0",
+                          background: "#FFFFFF",
+                          display: "block",
+                        }}
+                      />
+                    </a>
+                  )}
                 </div>
               ))}
             </div>

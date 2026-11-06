@@ -187,7 +187,7 @@ export default function PetaBuktiBanPt() {
       "Masukan",
       "Peta jalan & pedoman penelitian; pengembangan SDM peneliti.",
       [
-        { label: "Penelitian › Renstra & Peta Jalan", href: "#" },
+        { label: "Penelitian › Tata Kelola", href: "#" },
         { label: "Penelitian › Pedoman & SDM", href: "#" },
       ],
       "pub",
@@ -331,8 +331,8 @@ export default function PetaBuktiBanPt() {
       "Proses",
       "Penerimaan mahasiswa baru afirmatif, inklusif, adil; perluasan akses.",
       [
-        { label: "Pendidikan › PMB Afirmatif", href: "#" },
-        { label: "Pendidikan › RPL & PJJ", href: "#" },
+        { label: "Pendidikan › PMB & Beasiswa", href: "#" },
+        { label: "Pendidikan › RPL & PKKMB", href: "#" },
       ],
       "pub",
     ],
@@ -389,7 +389,7 @@ export default function PetaBuktiBanPt() {
       "Diferensiasi Misi",
       "Proses",
       "Program tridharma sesuai renstra & peta jalan.",
-      [{ label: "Profil › Evaluasi Capaian Tridharma", href: "#" }],
+      [{ label: "Profil › Ketercapaian IKU IKT", href: "#" }],
       "sum",
     ],
     [
@@ -397,7 +397,7 @@ export default function PetaBuktiBanPt() {
       "Diferensiasi Misi",
       "Luaran",
       "Penilaian kesesuaian capaian tridharma terhadap diferensiasi misi.",
-      [{ label: "Profil › Evaluasi Capaian Tridharma", href: "#" }],
+      [{ label: "Profil › Ketercapaian IKU IKT", href: "#" }],
       "sum",
     ],
     [
