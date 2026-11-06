@@ -8,12 +8,203 @@ export default function Profil() {
   // State untuk internal sub-tab di "pimpinan" (Pimpinan & Yayasan)
   const [subPimpinan, setSubPimpinan] = useState("universitas");
 
+  // State untuk filter kategori di "evaluasi" (Ketercapaian IKU IKT)
+  const [ikuCategory, setIkuCategory] = useState("all");
+
+  const IKU_IKT_DATA = [
+    // IKU (8 Indikator Kinerja Utama - Diktiristek)
+    {
+      type: "iku",
+      code: "IKU 1",
+      title: "Kesiapan Kerja Lulusan",
+      desc: "Persentase lulusan S1/Profesi yang berhasil mendapat pekerjaan layak, berwirausaha mandiri, atau melanjutkan studi lanjut dalam waktu ≤ 6 bulan.",
+      target: "75%",
+      realisasi: "82.6%",
+      achievement: 110.1,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "LP2M & CDC UNIZAR",
+    },
+    {
+      type: "iku",
+      code: "IKU 2",
+      title: "Mahasiswa Berkegiatan di Luar Kampus",
+      desc: "Persentase mahasiswa yang menghabiskan minimal 20 SKS di luar kampus (Magang MBKM, Proyek Desa, Riset, Pertukaran Mahasiswa, Studi Independen).",
+      target: "30%",
+      realisasi: "36.4%",
+      achievement: 121.3,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Pusat MBKM UNIZAR",
+    },
+    {
+      type: "iku",
+      code: "IKU 3",
+      title: "Dosen Berkegiatan di Luar Kampus",
+      desc: "Persentase dosen berkegiatan tridharma di kampus lain, berkolaborasi dengan industri bereputasi, atau menjadi pakar/konsultan lembaga eksternal.",
+      target: "25%",
+      realisasi: "28.5%",
+      achievement: 114.0,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Biro Kepegawaian & SDM",
+    },
+    {
+      type: "iku",
+      code: "IKU 4",
+      title: "Praktisi Mengajar di Kampus",
+      desc: "Persentase dosen berkualifikasi S3/Doktor dan praktisi ahli industri terkemuka yang aktif mengajar di program studi.",
+      target: "40%",
+      realisasi: "43.8%",
+      achievement: 109.5,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Fakultas & Program Studi",
+    },
+    {
+      type: "iku",
+      code: "IKU 5",
+      title: "Hasil Riset & Karya Dosen Digunakan",
+      desc: "Publikasi ilmiah terindeks Scopus/SINTA, HKI/Paten terdaftar, dan hasil riset terapan yang diadopsi masyarakat serta pemerintah daerah.",
+      target: "200 Luaran",
+      realisasi: "246 Luaran",
+      achievement: 123.0,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "LPPM UNIZAR",
+    },
+    {
+      type: "iku",
+      code: "IKU 6",
+      title: "Kemitraan Program Studi dengan Mitra",
+      desc: "Persentase prodi yang memiliki kemitraan aktif dengan DUDI, lembaga pemerintah, dan perguruan tinggi bereputasi internasional.",
+      target: "85%",
+      realisasi: "91.2%",
+      achievement: 107.3,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Biro Humas & Kerjasama",
+    },
+    {
+      type: "iku",
+      code: "IKU 7",
+      title: "Kelas Kolaboratif & Partisipatif",
+      desc: "Persentase mata kuliah yang mengimplementasikan metode pembelajaran berbasis pemecahan kasus (Case Method) atau Team-Based Project.",
+      target: "60%",
+      realisasi: "68.5%",
+      achievement: 114.2,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Biro Akademik & BPM",
+    },
+    {
+      type: "iku",
+      code: "IKU 8",
+      title: "Akreditasi Program Studi Unggul",
+      desc: "Persentase program studi dengan capaian akreditasi Unggul/A dari LAM/BAN-PT atau tersertifikasi secara internasional.",
+      target: "70%",
+      realisasi: "78.6%",
+      achievement: 112.3,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Badan Penjaminan Mutu (BPM)",
+    },
+
+    // IKT (Indikator Kinerja Tambahan - Khusus UNIZAR)
+    {
+      type: "ikt",
+      code: "IKT 1",
+      title: "Integrasi Nilai Rahmatan Lil Alamin",
+      desc: "Integrasi kurikulum bermuatan nilai-nilai keislaman moderat, kepesantrenan luhur, dan etika profesi di 100% program studi.",
+      target: "100%",
+      realisasi: "100%",
+      achievement: 100.0,
+      status: "Tercapai Penuh",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Pusat Studi Islam & Karakter",
+    },
+    {
+      type: "ikt",
+      code: "IKT 2",
+      title: "Riset Berwawasan Kepariwisataan & Medis",
+      desc: "Jumlah proyek penelitian dan pengabdian unggulan yang berfokus pada ekowisata, halal tourism, dan kesehatan pariwisata NTB.",
+      target: "45 Judul",
+      realisasi: "52 Judul",
+      achievement: 115.6,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "LPPM & Fakultas Kedokteran",
+    },
+    {
+      type: "ikt",
+      code: "IKT 3",
+      title: "Sertifikasi Kompetensi Mahasiswa (SKPI)",
+      desc: "Persentase lulusan yang mengantongi sertifikasi kompetensi berlisensi BNSP atau lembaga profesi sebelum diwisuda.",
+      target: "70%",
+      realisasi: "76.5%",
+      achievement: 109.3,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Lembaga Sertifikasi Profesi (LSP)",
+    },
+    {
+      type: "ikt",
+      code: "IKT 4",
+      title: "Indeks Kepuasan Pengguna (Stakeholders)",
+      desc: "Skor survei kepuasan tahunan dari mitra industri, instansi pengguna lulusan, dan mahasiswa terhadap kualitas layanan tridharma.",
+      target: "3.50 / 4.00",
+      realisasi: "3.78 / 4.00",
+      achievement: 108.0,
+      status: "Sangat Memuaskan",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Badan Penjaminan Mutu (BPM)",
+    },
+    {
+      type: "ikt",
+      code: "IKT 5",
+      title: "Kepatuhan GUG & Tindak Lanjut AMI",
+      desc: "Persentase penyelesaian tindak lanjut temuan Audit Mutu Internal (AMI) dan kepatuhan sistem tata kelola akuntabel (WBK/WBBM).",
+      target: "90%",
+      realisasi: "94.8%",
+      achievement: 105.3,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Satuan Pengawas Internal (SPI)",
+    },
+    {
+      type: "ikt",
+      code: "IKT 6",
+      title: "Desa Binaan & Pemberdayaan NTB",
+      desc: "Jumlah desa binaan aktif di Pulau Lombok dan Sumbawa sebagai wahana terintegrasi KKN tematik dan pemberdayaan ekonomi masyarakat.",
+      target: "30 Desa",
+      realisasi: "38 Desa",
+      achievement: 126.7,
+      status: "Melampaui Target",
+      badgeColor: "#0A6B4F",
+      badgeBg: "#E3F1EA",
+      unit: "Pusat PkM LPPM UNIZAR",
+    },
+  ];
+
   // Mapping nama key tab ke label untuk Breadcrumb Dinamis
   const TAB_LABELS = {
     identitas: "Sambutan & Sejarah",
     visimisi: "Visi, Misi & Diferensiasi",
     renstra: "Renip & Roadmap",
-    evaluasi: "Evaluasi Tridharma",
+    evaluasi: "Ketercapaian IKU IKT",
     statuta: "Statuta",
     sotk: "Struktur Organisasi",
     pimpinan: "Pimpinan & Yayasan",
@@ -76,7 +267,7 @@ export default function Profil() {
               ["identitas", "Sambutan & Sejarah"],
               ["visimisi", "Visi, Misi & Diferensiasi"],
               ["renstra", "Renip & Roadmap"],
-              ["evaluasi", "Evaluasi Tridharma"],
+              ["evaluasi", "Ketercapaian IKU IKT"],
               ["statuta", "Statuta"],
               ["sotk", "Struktur Organisasi"],
               ["pimpinan", "Pimpinan & Yayasan"],
@@ -681,113 +872,572 @@ export default function Profil() {
           </section>
         )}
 
-        {/* 4. EVALUASI TRIDHARMA */}
+        {/* 4. KETERCAPAIAN IKU IKT */}
         {tab === "evaluasi" && (
-          <section
-            style={{
-              background: "#FFFFFF",
-              border: "1px solid #DCE6E0",
-              borderRadius: "18px",
-              padding: "28px",
-            }}
-          >
-            <h2
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <section
               style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#064E3B",
-                margin: "0 0 16px",
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "28px",
               }}
             >
-              Evaluasi Capaian Tridharma
-            </h2>
-            <div
+              <span
+                style={{
+                  fontSize: "12px",
+                  fontWeight: 800,
+                  color: "#8A6500",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                }}
+              >
+                Akuntabilitas & Kinerja Mutu
+              </span>
+              <h2
+                style={{
+                  fontSize: "24px",
+                  fontWeight: 800,
+                  color: "#064E3B",
+                  margin: "8px 0 12px",
+                }}
+              >
+                Ketercapaian IKU & IKT UNIZAR
+              </h2>
+              <p
+                style={{
+                  fontSize: "15px",
+                  color: "#44574E",
+                  lineHeight: 1.6,
+                  margin: "0 0 24px",
+                  maxWidth: "960px",
+                }}
+              >
+                Evaluasi komprehensif ketercapaian Indikator Kinerja Utama (IKU)
+                berdasarkan ketetapan Ditjen Diktiristek Kemendikbudristek serta
+                Indikator Kinerja Tambahan (IKT) yang mencerminkan diferensiasi
+                misi Universitas Islam Al-Azhar berbasis wawasan kepariwisataan,
+                kesehatan, dan nilai Islam Rahmatan Lil Alamin.
+              </p>
+
+              {/* 4 Highlight Metric Cards */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: "16px",
+                  marginBottom: "28px",
+                }}
+              >
+                <div
+                  style={{
+                    background: "#F4F8F6",
+                    padding: "20px",
+                    borderRadius: "14px",
+                    borderLeft: "4px solid #0A6B4F",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: 700,
+                      color: "#0A6B4F",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Rata-rata IKU Nasional
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "32px",
+                      fontWeight: 800,
+                      color: "#064E3B",
+                      marginTop: "4px",
+                    }}
+                  >
+                    113.8%
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      color: "#44574E",
+                      marginTop: "4px",
+                    }}
+                  >
+                    8 Sasaran Utama Terlampaui
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    background: "#F4F8F6",
+                    padding: "20px",
+                    borderRadius: "14px",
+                    borderLeft: "4px solid #0A6B4F",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: 700,
+                      color: "#0A6B4F",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Rata-rata IKT Unggulan
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "32px",
+                      fontWeight: 800,
+                      color: "#064E3B",
+                      marginTop: "4px",
+                    }}
+                  >
+                    110.8%
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      color: "#44574E",
+                      marginTop: "4px",
+                    }}
+                  >
+                    6 Sasaran Khusus UNIZAR
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    background: "#F4F8F6",
+                    padding: "20px",
+                    borderRadius: "14px",
+                    borderLeft: "4px solid #0A6B4F",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: 700,
+                      color: "#0A6B4F",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Kesiapan Kerja Lulusan
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "32px",
+                      fontWeight: 800,
+                      color: "#064E3B",
+                      marginTop: "4px",
+                    }}
+                  >
+                    82.6%
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      color: "#44574E",
+                      marginTop: "4px",
+                    }}
+                  >
+                    Target Nasional: 75%
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    background: "#F4F8F6",
+                    padding: "20px",
+                    borderRadius: "14px",
+                    borderLeft: "4px solid #0A6B4F",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: 700,
+                      color: "#0A6B4F",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Publikasi & Riset
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "32px",
+                      fontWeight: 800,
+                      color: "#064E3B",
+                      marginTop: "4px",
+                    }}
+                  >
+                    246+
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      color: "#44574E",
+                      marginTop: "4px",
+                    }}
+                  >
+                    Scopus, SINTA & Paten HKI
+                  </div>
+                </div>
+              </div>
+
+              {/* Sub-Tab Kapsul Filter */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "8px",
+                  flexWrap: "wrap",
+                  alignItems: "center",
+                  marginBottom: "24px",
+                  paddingBottom: "16px",
+                  borderBottom: "1px solid #EEF3F0",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    color: "#44574E",
+                    marginRight: "6px",
+                  }}
+                >
+                  Tampilkan:
+                </span>
+                {[
+                  ["all", "Semua Indikator (14)"],
+                  ["iku", "IKU Nasional (8 Standar Diktiristek)"],
+                  ["ikt", "IKT Khusus UNIZAR (6 Standar Unggulan)"],
+                ].map(([key, label]) => {
+                  const isSel = ikuCategory === key;
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => setIkuCategory(key)}
+                      style={{
+                        border: 0,
+                        cursor: "pointer",
+                        padding: "8px 18px",
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        borderRadius: "999px",
+                        background: isSel ? "#064E3B" : "#F4F8F6",
+                        color: isSel ? "#FFFFFF" : "#44574E",
+                        transition: "all 0.2s ease",
+                      }}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Grid Kartu Indikator */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
+                  gap: "20px",
+                }}
+              >
+                {IKU_IKT_DATA.filter(
+                  (item) => ikuCategory === "all" || item.type === ikuCategory
+                ).map((item, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      background: "#F4F8F6",
+                      borderRadius: "14px",
+                      padding: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      gap: "14px",
+                      border: "1px solid #E2ECE6",
+                      borderTop: `4px solid ${
+                        item.type === "iku" ? "#0A6B4F" : "#8A6500"
+                      }`,
+                    }}
+                  >
+                    <div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          gap: "8px",
+                          marginBottom: "10px",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "12px",
+                            fontWeight: 800,
+                            padding: "4px 10px",
+                            borderRadius: "6px",
+                            background:
+                              item.type === "iku" ? "#E3F1EA" : "#FFF7D6",
+                            color: item.type === "iku" ? "#064E3B" : "#8A6500",
+                          }}
+                        >
+                          {item.code} ·{" "}
+                          {item.type === "iku"
+                            ? "Standar Diktiristek"
+                            : "Kekhasan UNIZAR"}
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "11px",
+                            fontWeight: 700,
+                            padding: "3px 8px",
+                            borderRadius: "999px",
+                            background: item.badgeBg,
+                            color: item.badgeColor,
+                          }}
+                        >
+                          {item.status}
+                        </span>
+                      </div>
+
+                      <h3
+                        style={{
+                          fontSize: "16px",
+                          fontWeight: 800,
+                          color: "#064E3B",
+                          margin: "0 0 6px",
+                          lineHeight: 1.35,
+                        }}
+                      >
+                        {item.title}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: "13px",
+                          color: "#44574E",
+                          margin: 0,
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    <div>
+                      {/* Metric Row */}
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: "repeat(3, 1fr)",
+                          gap: "8px",
+                          background: "#FFFFFF",
+                          padding: "10px 14px",
+                          borderRadius: "10px",
+                          marginBottom: "12px",
+                          border: "1px solid #E6EFEA",
+                        }}
+                      >
+                        <div>
+                          <div style={{ fontSize: "11px", color: "#6A7B72" }}>
+                            Target
+                          </div>
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              fontWeight: 700,
+                              color: "#13231C",
+                            }}
+                          >
+                            {item.target}
+                          </div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: "11px", color: "#6A7B72" }}>
+                            Realisasi
+                          </div>
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              fontWeight: 700,
+                              color: "#064E3B",
+                            }}
+                          >
+                            {item.realisasi}
+                          </div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: "11px", color: "#6A7B72" }}>
+                            Capaian
+                          </div>
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              fontWeight: 800,
+                              color: "#0A6B4F",
+                            }}
+                          >
+                            {item.achievement}%
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Progress Bar */}
+                      <div
+                        style={{
+                          height: "6px",
+                          background: "#D8E6DF",
+                          borderRadius: "999px",
+                          overflow: "hidden",
+                          marginBottom: "8px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            height: "100%",
+                            width: `${Math.min(item.achievement, 100)}%`,
+                            background:
+                              item.type === "iku" ? "#0A6B4F" : "#8A6500",
+                            borderRadius: "999px",
+                          }}
+                        />
+                      </div>
+
+                      <div
+                        style={{
+                          fontSize: "11.5px",
+                          color: "#6A7B72",
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <span>Unit: {item.unit}</span>
+                        <span style={{ fontWeight: 600, color: "#0A6B4F" }}>
+                          ✓ Terverifikasi BPM
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Siklus PPEPP Card */}
+            <section
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                gap: "16px",
+                background: "#FFFFFF",
+                border: "1px solid #DCE6E0",
+                borderRadius: "18px",
+                padding: "26px",
               }}
             >
               <div
                 style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  marginBottom: "16px",
                 }}
               >
                 <div
                   style={{
-                    fontSize: "32px",
-                    fontWeight: 800,
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "8px",
+                    background: "#E3F1EA",
                     color: "#064E3B",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: 800,
+                    fontSize: "18px",
                   }}
                 >
-                  78%
+                  ✓
                 </div>
-                <div
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    marginTop: "4px",
-                  }}
-                >
-                  Kelulusan Tepat Waktu
+                <div>
+                  <h3
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 800,
+                      color: "#064E3B",
+                      margin: 0,
+                    }}
+                  >
+                    Mekanisme Pengendalian Ketercapaian Mutu (Siklus PPEPP)
+                  </h3>
+                  <p style={{ fontSize: "13px", color: "#44574E", margin: 0 }}>
+                    Penjaminan mutu berkelanjutan yang dikawal secara independen oleh
+                    Badan Penjaminan Mutu (BPM) UNIZAR
+                  </p>
                 </div>
               </div>
+
               <div
                 style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                  gap: "14px",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "32px",
-                    fontWeight: 800,
-                    color: "#064E3B",
-                  }}
-                >
-                  214
-                </div>
-                <div
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    marginTop: "4px",
-                  }}
-                >
-                  Publikasi Bereputasi
-                </div>
+                {[
+                  {
+                    step: "1. Penetapan",
+                    desc: "Perumusan target IKU & IKT dalam Renstra 5 tahunan dan Perjanjian Kinerja tahunan Rektor.",
+                  },
+                  {
+                    step: "2. Pelaksanaan",
+                    desc: "Implementasi tridharma oleh fakultas, prodi, LPPM, dan unit kerja melalui SOP terstandarisasi.",
+                  },
+                  {
+                    step: "3. Evaluasi",
+                    desc: "Audit Mutu Internal (AMI), Evaluasi Diri, dan pemantauan pelaporan PDDIKTI secara berkala.",
+                  },
+                  {
+                    step: "4. Pengendalian",
+                    desc: "Penyusunan Rencana Tindak Lanjut (RTL) atas deviasi atau rekomendasi hasil temuan audit.",
+                  },
+                  {
+                    step: "5. Peningkatan",
+                    desc: "Peningkatan standar mutu baru melalui Rapat Tinjauan Manajemen (RTM) bersama Yayasan.",
+                  },
+                ].map((s, idx) => (
+                  <div
+                    key={idx}
+                    style={{
+                      background: "#F4F8F6",
+                      padding: "16px",
+                      borderRadius: "12px",
+                      borderLeft: "3px solid #0A6B4F",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: "14px",
+                        fontWeight: 800,
+                        color: "#064E3B",
+                      }}
+                    >
+                      {s.step}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "12.5px",
+                        color: "#44574E",
+                        marginTop: "4px",
+                        lineHeight: 1.45,
+                      }}
+                    >
+                      {s.desc}
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div
-                style={{
-                  background: "#F4F8F6",
-                  padding: "18px",
-                  borderRadius: "12px",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: "32px",
-                    fontWeight: 800,
-                    color: "#064E3B",
-                  }}
-                >
-                  118
-                </div>
-                <div
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    marginTop: "4px",
-                  }}
-                >
-                  Program Pengabdian
-                </div>
-              </div>
-            </div>
-          </section>
+            </section>
+          </div>
         )}
 
         {/* 5. STATUTA */}

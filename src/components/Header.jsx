@@ -44,7 +44,7 @@ export default function Header() {
           tab: "renstra",
         },
         {
-          label: "Evaluasi Capaian Tridharma",
+          label: "Ketercapaian IKU IKT",
           access: "Ringkasan",
           tab: "evaluasi",
         },

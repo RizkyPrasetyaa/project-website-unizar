@@ -389,7 +389,7 @@ export default function PetaBuktiBanPt() {
       "Diferensiasi Misi",
       "Proses",
       "Program tridharma sesuai renstra & peta jalan.",
-      [{ label: "Profil › Evaluasi Capaian Tridharma", href: "#" }],
+      [{ label: "Profil › Ketercapaian IKU IKT", href: "#" }],
       "sum",
     ],
     [
@@ -397,7 +397,7 @@ export default function PetaBuktiBanPt() {
       "Diferensiasi Misi",
       "Luaran",
       "Penilaian kesesuaian capaian tridharma terhadap diferensiasi misi.",
-      [{ label: "Profil › Evaluasi Capaian Tridharma", href: "#" }],
+      [{ label: "Profil › Ketercapaian IKU IKT", href: "#" }],
       "sum",
     ],
     [
