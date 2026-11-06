@@ -65,7 +65,7 @@ export default function Bpm() {
     pub: { badge: "Publik", bg: "#E3F1EA", fg: "#064E3B", action: "Unduh PDF" },
     sum: { badge: "Ringkasan", bg: "#FFF1C2", fg: "#6B4E00", action: "Lihat ringkasan" },
     lock: { badge: "Terbatas", bg: "#FBE3E4", fg: "#8E1B20", action: "Masuk untuk membuka" },
-    ext: { badge: "Tautan sistem", bg: "#E6EEF8", fg: "#1D3F6E", action: "Buka ↗" },
+    ext: { badge: "Tautan sistem", bg: "#E6EEF8", fg: "#1D3F6E", action: "Buka" },
     svc: { badge: "Layanan", bg: "#E3F1EA", fg: "#064E3B", action: "Ajukan" },
   };
 
@@ -93,7 +93,7 @@ export default function Bpm() {
           ],
         },
         {
-          title: "Untuk Publik",
+          title: "Dokumen Publik",
           docs: [D("Ikhtisar Kebijakan & Standar SPMI", "sum", "Ringkasan 4 halaman · Sep 2026")],
         },
       ],
@@ -628,11 +628,6 @@ export default function Bpm() {
         {/* 2. TAB PROFIL BPM */}
         {tab === "profil" && (
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <p style={{ margin: 0, fontSize: "16px", lineHeight: 1.6, color: "#2B3D35", maxWidth: "820px" }}>
-              Identitas kelembagaan Badan Penjaminan Mutu: struktur, kepemimpinan, visi misi, dan komitmen mutu
-              universitas.
-            </p>
-
             {/* SAMBUTAN KEPALA BPM */}
             <section
               style={{
@@ -682,12 +677,34 @@ export default function Bpm() {
                 }}
               >
                 <p style={{ margin: 0 }}>Assalamu'alaikum Warahmatullahi Wabarakatuh.</p>
-                <p style={{ margin: 0 }}>
-                  Selamat datang di halaman resmi Badan Penjaminan Mutu (BPM) Universitas Islam Al-Azhar. BPM
-                  berkomitmen penuh untuk mengawal penetapan, pelaksanaan, evaluasi, pengendalian, dan peningkatan
-                  (PPEPP) standar pendidikan tinggi guna mewujudkan budaya mutu yang berkelanjutan di seluruh unit kerja
-                  UNIZAR.
+                <p style={{ margin: 0, textAlign: "justify" }}>
+                  Selamat datang di website Badan Penjaminan Mutu (BPM) Universitas Islam Al-Azhar. Perguruan tinggi
+                  memiliki kewajiban dalam melaksanakan siklus penjaminan mutu, yaitu melalui siklus PPEPP, yaitu
+                  penetapan, pelaksanaan, evaluasi, pengendalian, dan peningkatan Standar Pendidikan Tinggi. Pentingnya
+                  penjaminan mutu ini telah dituangkan dalam peraturan Pemerintah sejak tahun 1990, PP No. 30 thn 1990
+                  tentang Pendidikan Tinggi pasal 121. Hal ini diperkuat di dalam Peraturan Menteri Pendidikan dan
+                  Kebudayaan RI nomor 3 tahun 2020. Sejalan dengan Pemerintah, BPM didirikan dalam rangka terciptanya
+                  budaya mutu di lingkungan Universitas Islam Al-Azhar. BPM merupakan wakil dari manajemen yang
+                  berkaitan dengan Sistem Penjaminan Mutu dan berkedudukan di Universitas serta bertanggung jawab kepada
+                  Rektor. BPM memiliki perwakilan di setiap fakultas, yaitu Unit Penjaminan Mutu Internal (UPMI). Badan
+                  Penjaminan Mutu Universitas Islam Al-Azhar terdiri dari 5 bagian, yaitu Sistem Penjaminan Mutu
+                  Internal (SPMI), Sistem Penjaminan Mutu Eksternal (SPME), Audit Mutu Internal (AMI), Satuan Pengawas
+                  Internal (SPI), dan PD-Dikti (Pangkalan Data Pendidikan Tinggi). BPM melaksanakan kegiatan sistemik
+                  untuk meningkatkan mutu baik di bidang akademik (SPMI, SPME, dan AMI) maupun di bidang non akademik
+                  (SPI) secara berencana dan berkelanjutan. SPMI adalah kegiatan sistemik penjaminan mutu Pendidikan
+                  tinggi secara otonom untuk meningkatkan penyelanggaraan Pendidikan tinggi secara berencana dan
+                  berkelanjutan. Di dalam siklus PPEPP terdapat evaluasi yaitu Audit Mutu Internal (AMI). Adapun, SPME
+                  adalah kegiatan penilaian melalui akreditasi untuk menentukan kelayakan dan tingkat pencapaian mutu
+                  program studi dan perguruan tinggi. SPI adalah kegiatan sistemik penjaminan mutu di bidang non
+                  akademik terutama bidang keuangan, sarana prasarana, dan sumber daya manusia. Dalam implementasi
+                  penjaminan mutu, BPM Universitas Islam Al-Azhar menggunakan Standar Nasional Pendidikan Tinggi
+                  (SNDIKTI), Standar Badan Akreditasi Nasional Perguruan Tinggi (BAN-PT) Kementerian Pendidikan dan
+                  Kebudayaan RI dan standar yang ditetapkan oleh Perguruan Tinggi.
                 </p>
+                <p style={{ margin: 0 }}>Wassalamu’alaikum wr.wb.</p>
+                <p style={{ margin: 0 }}>Velia Maya Samodra</p>
+                <p style={{ margin: 0 }}>Kepala Badan Penjaminan Mutu </p>
+                <p style={{ margin: 0 }}>Universitas Islam Al-Azhar</p>
               </div>
             </section>
 
@@ -711,22 +728,11 @@ export default function Bpm() {
                   gap: "12px",
                 }}
               >
-                <span
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: 800,
-                    letterSpacing: ".12em",
-                    color: "#8A6500",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  KELEMBAGAAN
-                </span>
                 <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>Visi BPM</h3>
                 <p style={{ margin: 0, fontSize: "15px", lineHeight: 1.6, color: "#2B3D35", fontWeight: 600 }}>
                   "Menjadi lembaga penjaminan mutu yang profesional, terpercaya, dan independen dalam mewujudkan budaya
-                  mutu sehingga mampu mengantarkan UNIZAR menjadi Universitas yang terkemuka di tingkat regional pada
-                  tahun 2029."
+                  mutu sehingga mampu mengantarkan UNIZAR menjadi Universitas yang unggul di tingkat nasional dan
+                  internasional pada tahun 2029."
                 </p>
               </div>
 
@@ -742,17 +748,6 @@ export default function Bpm() {
                   gap: "12px",
                 }}
               >
-                <span
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: 800,
-                    letterSpacing: ".12em",
-                    color: "#8A6500",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  KELEMBAGAAN
-                </span>
                 <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>Misi BPM</h3>
                 <ul
                   style={{
@@ -867,79 +862,30 @@ export default function Bpm() {
                 </a>
               </div>
 
-              {/* Diagram Hirarki UI */}
+              {/* Gambar Struktur Organisasi BPM */}
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "12px",
-                  alignItems: "center",
                   background: "#F4F8F6",
-                  padding: "20px",
+                  border: "1px solid #DCE6E0",
                   borderRadius: "14px",
-                  border: "1px dashed #B9CCC2",
+                  padding: "16px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
+                  overflowX: "auto",
                 }}
               >
-                <div
+                <img
+                  src="/assets/img/struktur-organisasi-bpm.png"
+                  alt="Bagan Struktur Organisasi Badan Penjaminan Mutu UNIZAR"
                   style={{
-                    background: "#064E3B",
-                    color: "#FFFFFF",
-                    padding: "12px 24px",
-                    borderRadius: "10px",
-                    textAlign: "center",
-                    fontWeight: 800,
-                    minWidth: "220px",
+                    maxWidth: "100%",
+                    height: "auto",
+                    borderRadius: "8px",
+                    display: "block",
                   }}
-                >
-                  Kepala BPM
-                  <div style={{ fontSize: "12px", fontWeight: 500, color: "#D3EBDF" }}>
-                    Dr. [Nama Kepala BPM], M.Si.
-                  </div>
-                </div>
-
-                <div style={{ width: "2px", height: "16px", background: "#0A6B4F" }}></div>
-
-                <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
-                  <div
-                    style={{
-                      background: "#FFFFFF",
-                      border: "1.5px solid #0A6B4F",
-                      color: "#13231C",
-                      padding: "10px 18px",
-                      borderRadius: "10px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ fontWeight: 800, fontSize: "14px", color: "#064E3B" }}>Pusat SPMI & AMI</div>
-                    <div style={{ fontSize: "12px", color: "#44574E" }}>Divisi Penjaminan Mutu Internal</div>
-                  </div>
-                  <div
-                    style={{
-                      background: "#FFFFFF",
-                      border: "1.5px solid #0A6B4F",
-                      color: "#13231C",
-                      padding: "10px 18px",
-                      borderRadius: "10px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ fontWeight: 800, fontSize: "14px", color: "#064E3B" }}>Pusat SPME & Akreditasi</div>
-                    <div style={{ fontSize: "12px", color: "#44574E" }}>Divisi Akreditasi & PDDIKTI</div>
-                  </div>
-                  <div
-                    style={{
-                      background: "#FFFFFF",
-                      border: "1.5px solid #0A6B4F",
-                      color: "#13231C",
-                      padding: "10px 18px",
-                      borderRadius: "10px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div style={{ fontWeight: 800, fontSize: "14px", color: "#064E3B" }}>Satuan Pengawasan (SPI)</div>
-                    <div style={{ fontSize: "12px", color: "#44574E" }}>Divisi Pengendalian & Audit</div>
-                  </div>
-                </div>
+                />
               </div>
             </section>
 
@@ -999,7 +945,7 @@ export default function Bpm() {
                         textDecoration: "none",
                       }}
                     >
-                      Unduh PDF →
+                      Unduh PDF
                     </a>
                   </div>
                 </div>

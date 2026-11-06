@@ -4,35 +4,37 @@ import { Link, useLocation } from "react-router-dom";
 export default function Gug() {
   const location = useLocation();
 
-  // 11 SUB-MENU TAB BERSIH
+  // 8 SUB-MENU TAB BERSIH (Kode Etik & Satgas PPKPT digabung menjadi Etik & Kampus Aman)
   const MENU_ITEMS = [
     { key: "ikhtisar", label: "Ikhtisar" },
     { key: "kebijakan", label: "Kebijakan & Praktik Baik GUG" },
     { key: "laporan-tahunan", label: "Laporan Tahunan" },
-    { key: "kode-etik", label: "Kode Etik & Lembaga Etik" },
-    { key: "ppkpt", label: "Kampus Aman & Satgas PPKPT" },
+    { key: "etik-ppkpt", label: "Etik & Kampus Aman" },
     { key: "pengawasan", label: "Pengawasan & WBK/WBBM" },
-    { key: "wbs", label: "Whistleblowing System" },
-    { key: "pengelolaan", label: "Pengelolaan & 11 Pedoman" },
+    { key: "Pedoman", label: "Pedoman & SOP" },
     { key: "survei", label: "Survei Kepuasan Tata Pamong" },
-    { key: "renstra", label: "Renstra & Pola Keuangan" },
-    { key: "laporan-keuangan", label: "Laporan Keuangan & Audit Eksternal" },
+    { key: "keuangan", label: "Tata Kelola Keuangan" },
+    { key: "Arsip", label: "Arsip" }
   ];
 
   const [tab, setTab] = useState(location.state?.tab || "ikhtisar");
-
-  // Ref untuk menampung elemen tombol tab
+  const [tahunLaporan, setTahunLaporan] = useState("2021");
   const tabRefs = useRef({});
 
-  // EFFECT UNTUK NAVIGASI DARI HEADER / PERUBAHAN LOCATION STATE
+  const IKU_DATA = {
+    "2021": "94%",
+    "2022": "92%",
+    "2023": "94%",
+    "2024": "95%",
+    "2025": "96%",
+  };
+
   useEffect(() => {
     const targetTab = location.state?.tab || "ikhtisar";
     setTab(targetTab);
 
-    // 1. LOMPAT BROWSER LANGSUNG KE PALING ATAS
     window.scrollTo(0, 0);
 
-    // 2. SCROLL TOMBOL TAB KE TENGAH CONTAINER SETELAH RENDER
     const timer = setTimeout(() => {
       if (tabRefs.current[targetTab]) {
         tabRefs.current[targetTab].scrollIntoView({
@@ -46,7 +48,6 @@ export default function Gug() {
     return () => clearTimeout(timer);
   }, [location.state, location.key]);
 
-  // FUNGSI SAAT TOMBOL TAB DIKLIK MANUAL DI DALAM HALAMAN
   const handleTabClick = (key) => {
     setTab(key);
     window.scrollTo(0, 0);
@@ -61,7 +62,6 @@ export default function Gug() {
 
   const activeMenu = MENU_ITEMS.find((m) => m.key === tab) || MENU_ITEMS[0];
 
-  // STYLING BADGE AKSES DOKUMEN
   const STY = {
     pub: { badge: "Publik", bg: "#E3F1EA", fg: "#064E3B", action: "Unduh PDF" },
     sum: { badge: "Ringkasan", bg: "#FFF1C2", fg: "#6B4E00", action: "Lihat ringkasan" },
@@ -77,45 +77,21 @@ export default function Gug() {
   const S = (label, v) => ({ label, v });
   const SK = "SK Rektor No. [—] · [tgl]";
 
-  // DATA TAB IKHTISAR
   const pillars = [
-    {
-      no: "1",
-      title: "Kredibilitas",
-      desc: "Kepemimpinan yang dipercaya, keputusan berbasis data dan regulasi.",
-      count: 6,
-    },
-    {
-      no: "2",
-      title: "Transparansi",
-      desc: "Informasi publik terbuka melalui website, PPID, dan laporan berkala.",
-      count: 9,
-    },
-    {
-      no: "3",
-      title: "Akuntabilitas",
-      desc: "Laporan kinerja dan keuangan diaudit serta diumumkan ke masyarakat.",
-      count: 7,
-    },
-    {
-      no: "4",
-      title: "Tanggung jawab",
-      desc: "Kepatuhan pada peraturan, etika akademik, dan tanggung jawab sosial.",
-      count: 5,
-    },
+    { no: "1", title: "Kredibilitas", desc: "Kepemimpinan yang dipercaya, keputusan berbasis data dan regulasi.", count: 6 },
+    { no: "2", title: "Transparansi", desc: "Informasi publik terbuka melalui website, PPID, dan laporan berkala.", count: 9 },
+    { no: "3", title: "Akuntabilitas", desc: "Laporan kinerja dan keuangan diaudit serta diumumkan ke masyarakat.", count: 7 },
+    { no: "4", title: "Tanggung jawab", desc: "Kepatuhan pada peraturan, etika akademik, dan tanggung jawab sosial.", count: 5 },
     { no: "5", title: "Keadilan", desc: "Perlakuan setara bagi sivitas, penerimaan afirmatif dan inklusif.", count: 4 },
-    {
-      no: "6",
-      title: "Manajemen risiko",
-      desc: "Pemetaan dan mitigasi risiko institusi, termasuk risiko korupsi.",
-      count: 5,
-    },
+    { no: "6", title: "Manajemen risiko", desc: "Pemetaan dan mitigasi risiko institusi, termasuk risiko korupsi.", count: 5 },
   ];
 
   const years = [
     { y: "2025", op: "WTP" },
     { y: "2024", op: "WTP" },
     { y: "2023", op: "WTP" },
+    { y: "2022", op: "WTP" },
+    { y: "2021", op: "WTP" },
   ];
 
   const survey = [
@@ -126,7 +102,6 @@ export default function Gug() {
     { label: "Mitra & pengguna lulusan", v: "88%", w: "88%" },
   ];
 
-  // DATA KONTEN SUB-MENU (HANYA DOKUMEN & STATS)
   const KONTEN_SUBMENU = {
     kebijakan: {
       stats: [S("Pilar Tata Kelola", "6 Pilar"), S("Tingkat Kepatuhan", "98%"), S("Unit Terimplementasi", "100%")],
@@ -153,26 +128,23 @@ export default function Gug() {
       ],
     },
     "laporan-tahunan": {
-      stats: [S("Arsip Terdokumentasi", "≥ 3 Tahun"), S("Capaian IKU 2025", "94%"), S("Opini Audit", "WTP")],
+      stats: [S("Capaian IKU 2025", "94%")],
       sections: [
         {
           title: "Laporan Tahunan & Keuangan Teraudit",
           docs: [
             D("Laporan Tahunan UNIZAR 2025", "sum", "Ringkasan Eksekutif"),
             D("Ikhtisar Laporan Keuangan 2025", "sum", "Audited KAP"),
-            D("Laporan Tahunan UNIZAR 2024", "sum", "Ringkasan Eksekutif"),
-            D("Ikhtisar Laporan Keuangan 2024", "sum", "Audited KAP"),
-            D("Laporan Tahunan UNIZAR 2023", "sum", "Ringkasan Eksekutif"),
             D("Laporan Keuangan Rinci", "lock", "Akses Terbatas / Asesor"),
           ],
         },
       ],
     },
-    "kode-etik": {
+    "etik-ppkpt": {
       stats: [
-        S("Kasus Etik Ditangani (2025)", "7"),
-        S("Rata-rata Penyelesaian", "21 hari"),
-        S("Sosialisasi Kode Etik", "100% unit"),
+        S("Kasus Etik Ditangani", "7"),
+        S("Laporan PPKPT", "5"),
+        S("Sosialisasi & Kampus Aman", "100% unit"),
       ],
       sections: [
         {
@@ -191,15 +163,6 @@ export default function Gug() {
             D("Rekap Putusan Etik", "sum", "Tanpa Identitas Pihak"),
           ],
         },
-      ],
-    },
-    ppkpt: {
-      stats: [
-        S("Laporan Diterima (2025)", "5"),
-        S("Laporan Selesai Ditangani", "100%"),
-        S("Sivitas Terpapar Sosialisasi", "3.800+"),
-      ],
-      sections: [
         {
           title: "Kebijakan & Pedoman PPKPT",
           docs: [
@@ -240,17 +203,8 @@ export default function Gug() {
             D("Laporan Audit Lengkap", "lock", "Untuk Pimpinan & Asesor"),
           ],
         },
-      ],
-    },
-    wbs: {
-      stats: [
-        S("Kanal Pengaduan", "24 Jam"),
-        S("Kerahasiaan Identitas", "100% Protected"),
-        S("Proses Verifikasi", "Maks 3 Hari"),
-      ],
-      sections: [
         {
-          title: "Kanal & Pedoman Whistleblowing System",
+          title: "Whistleblowing System (WBS)",
           docs: [
             D("Whistleblowing System (WBS)", "svc", "Identitas Dirahasiakan"),
             D("Pedoman & SOP Pengaduan WBS", "pub", SK),
@@ -259,9 +213,9 @@ export default function Gug() {
         },
       ],
     },
-    pengelolaan: {
+    Pedoman: {
       stats: [
-        S("Pedoman Bidang Tersedia", "11 / 11"),
+        S("Pedoman Bidang Tersedia", "11"),
         S("Unit SOP Mutakhir", "87%"),
         S("Rapat Kerja Terdokumentasi", "4 / tahun"),
       ],
@@ -278,8 +232,16 @@ export default function Gug() {
           title: "11 Pedoman Pengelolaan Bidang",
           docs: [
             D("Pedoman Pendidikan & Suasana Akademik", "pub", SK),
-            D("Pedoman Penelitian, PkM & Kerjasama", "pub", SK),
-            D("Pedoman SDM, Keuangan, Sarpras, SI & SPMI", "pub", SK),
+            D("Bidang Pengabdian kepada Masyarakat (PkM)", "pub", SK),
+            D("Bidang Sumber Daya Manusia (SDM / Kepegawaian), SI", "pub", SK),
+            D("Bidang Kemahasiswaan dan Alumni", "pub", SK),
+            D("Bidang Keuangan dan Penganggaran", "pub", SK),
+            D("Bidang Sistem Informasi dan Teknologi (IT / ICT)", "pub", SK),
+            D("Bidang Kerjasama, Humas, dan Hubungan Internasional", "pub", SK),
+            D("Bidang Sarana, Prasarana, dan Fasilitas", "pub", SK),
+            D("Bidang Penelitian (Riset)", "pub", SK),
+            D("Bidang Penjaminan Mutu Internal (SPMI)", "pub", SK),
+            D("Bidang Tata Kelola, Hukum, dan Kelembagaan (Tata Pamong)", "pub", SK),
           ],
         },
       ],
@@ -301,10 +263,10 @@ export default function Gug() {
         },
       ],
     },
-    renstra: {
+    keuangan: {
       stats: [
         S("Dana di luar UKT/SPP", "18%"),
-        S("Penerima Bantuan Biaya", "1.120 mhs"),
+        S("Opini Akuntan Publik (2025)", "WTP"),
         S("Periode Renstra", "2025–2029"),
       ],
       sections: [
@@ -317,16 +279,26 @@ export default function Gug() {
             D("Kebijakan Bantuan Biaya Pendidikan", "pub", SK),
           ],
         },
-      ],
-    },
-    "laporan-keuangan": {
-      stats: [S("Opini Akuntan Publik (2025)", "WTP"), S("Siklus Audit", "Tahunan"), S("Kategori PTS", "Akuntabel")],
-      sections: [
         {
           title: "Pelaporan & Hasil Audit Eksternal",
           docs: [
             D("Ikhtisar Laporan Keuangan Teraudit", "sum", "KAP Independen · 2023–2025"),
             D("Laporan Audit Eksternal Rinci", "lock", "Untuk Pimpinan & Asesor"),
+          ],
+        },
+      ],
+    },
+    Arsip: {
+      stats: [S("Total Arsip Aktif", "5 Tahun"), S("Status Dokumen", "Lengkap & Terverifikasi")],
+      sections: [
+        {
+          title: "Arsip Dokumen Tata Kelola & Laporan Historis",
+          docs: [
+            D("Arsip Dokumen GUG & SK Rektor 2025", "pub", "Arsip Tahunan · 2025"),
+            D("Arsip Laporan Kinerja & Keuangan 2024", "pub", "Arsip Tahunan · 2024"),
+            D("Arsip Evaluasi Mutu Internal 2023", "pub", "Arsip Tahunan · 2023"),
+            D("Arsip Dokumen Historis & Pendukung 2022", "lock", "Akses Khusus Internal"),
+            D("Arsip Dokumen Historis & Pendukung 2021", "lock", "Akses Khusus Internal"),
           ],
         },
       ],
@@ -695,8 +667,265 @@ export default function Gug() {
           </div>
         )}
 
-        {/* 2. TAB KONTEN SUB-MENU */}
-        {tab !== "ikhtisar" && curData && (
+        {/* 2. TAB KHUSUS LAPORAN TAHUNAN SESUAI SKETSA */}
+        {tab === "laporan-tahunan" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>
+              {activeMenu.label}
+            </h2>
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "20px",
+                alignItems: "flex-start",
+              }}
+            >
+              {/* KOTAK 1: ARSIP TERDOKUMENTASI */}
+              <div
+                style={{
+                  width: "240px",
+                  flex: "0 0 240px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "14px",
+                  padding: "18px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                <span style={{ fontSize: "14px", fontWeight: 700, color: "#44574E" }}>
+                  Arsip Terdokumentasi
+                </span>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+                  {["2021", "2022", "2023", "2024", "2025"].map((yr) => {
+                    const isSel = tahunLaporan === yr;
+                    return (
+                      <button
+                        key={yr}
+                        type="button"
+                        onClick={() => setTahunLaporan(yr)}
+                        style={{
+                          background: isSel ? "#064E3B" : "#E3F1EA",
+                          color: isSel ? "#FFFFFF" : "#064E3B",
+                          border: isSel ? "2px solid #064E3B" : "1.5px solid #064E3B",
+                          padding: "8px 12px",
+                          borderRadius: "8px",
+                          fontSize: "14px",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          boxShadow: isSel ? "0 2px 8px rgba(6,78,59,0.3)" : "none",
+                          transition: "all 0.15s ease",
+                        }}
+                      >
+                        {yr}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* KOTAK 2: CAPAIAN IKU {tahunLaporan} */}
+              <div
+                style={{
+                  width: "240px",
+                  flex: "0 0 240px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "14px",
+                  padding: "18px 20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                <span style={{ fontSize: "14px", fontWeight: 700, color: "#44574E" }}>
+                  Capaian IKU {tahunLaporan}
+                </span>
+                <span style={{ fontSize: "40px", fontWeight: 800, color: "#064E3B", lineHeight: 1.1 }}>
+                  {IKU_DATA[tahunLaporan] || "94%"}
+                </span>
+              </div>
+
+              {/* KOTAK 3: LAPORAN TAHUNAN & KEUANGAN TERAUDIT DI SAMPING KOTAK CAPAIAN IKU */}
+              <section
+                style={{
+                  flex: "1 1 380px",
+                  minWidth: "300px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                <h3 style={{ margin: 0, fontSize: "20px", color: "#064E3B", fontWeight: 800 }}>
+                  Laporan Tahunan & Keuangan Teraudit
+                </h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                  {/* CARD 1: Laporan Tahunan UNIZAR {tahunLaporan} */}
+                  <div
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid #DCE6E0",
+                      borderRadius: "14px",
+                      padding: "18px 20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "flex-start" }}>
+                      <span style={{ fontSize: "16px", fontWeight: 700, color: "#13231C" }}>
+                        Laporan Tahunan UNIZAR {tahunLaporan}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          padding: "3px 9px",
+                          borderRadius: "999px",
+                          background: "#FFF1C2",
+                          color: "#6B4E00",
+                        }}
+                      >
+                        Ringkasan
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "13px", color: "#44574E" }}>Ringkasan Eksekutif</span>
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
+                      <a
+                        href="#"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          background: "#0A6B4F",
+                          color: "#FFFFFF",
+                          padding: "9px 18px",
+                          borderRadius: "8px",
+                          fontWeight: 700,
+                          fontSize: "13px",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Lihat Ringkasan →
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* CARD 2: Ikhtisar Laporan Keuangan {tahunLaporan} */}
+                  <div
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid #DCE6E0",
+                      borderRadius: "14px",
+                      padding: "18px 20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "flex-start" }}>
+                      <span style={{ fontSize: "16px", fontWeight: 700, color: "#13231C" }}>
+                        Ikhtisar Laporan Keuangan {tahunLaporan}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          padding: "3px 9px",
+                          borderRadius: "999px",
+                          background: "#FFF1C2",
+                          color: "#6B4E00",
+                        }}
+                      >
+                        Ringkasan
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "13px", color: "#44574E" }}>Audited KAP</span>
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
+                      <a
+                        href="#"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          background: "#0A6B4F",
+                          color: "#FFFFFF",
+                          padding: "9px 18px",
+                          borderRadius: "8px",
+                          fontWeight: 700,
+                          fontSize: "13px",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Lihat Ringkasan →
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* CARD 3: Laporan Keuangan Rinci */}
+                  <div
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid #DCE6E0",
+                      borderRadius: "14px",
+                      padding: "18px 20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px",
+                    }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: "10px", alignItems: "flex-start" }}>
+                      <span style={{ fontSize: "16px", fontWeight: 700, color: "#13231C" }}>
+                        Laporan Keuangan Rinci
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          padding: "3px 9px",
+                          borderRadius: "999px",
+                          background: "#FBE3E4",
+                          color: "#8E1B20",
+                        }}
+                      >
+                        Terbatas
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "13px", color: "#44574E" }}>Akses Terbatas / Asesor</span>
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "4px" }}>
+                      <a
+                        href="#"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          background: "#0A6B4F",
+                          color: "#FFFFFF",
+                          padding: "9px 18px",
+                          borderRadius: "8px",
+                          fontWeight: 700,
+                          fontSize: "13px",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Masuk untuk Buka →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        )}
+
+        {/* 3. TAB KONTEN SUB-MENU LAINNYA */}
+        {tab !== "ikhtisar" && tab !== "laporan-tahunan" && curData && (
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
             <h2 style={{ margin: 0, fontSize: "28px", color: "#064E3B", fontWeight: 800 }}>{activeMenu.label}</h2>
 
