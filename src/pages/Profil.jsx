@@ -656,219 +656,359 @@ export default function Profil() {
         {tab === "visimisi" && (
           <div
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              display: "flex",
+              flexDirection: "column",
               gap: "20px",
             }}
           >
+            {/* VISI — kartu penuh di atas */}
             <div
               style={{
                 background: "#FFFFFF",
                 border: "1px solid #DCE6E0",
+                borderLeft: "6px solid #064E3B",
                 borderRadius: "18px",
                 padding: "28px",
               }}
             >
-              <h2
+              <span
                 style={{
-                  fontSize: "24px",
+                  fontSize: "12px",
                   fontWeight: 800,
-                  color: "#064E3B",
-                  margin: "0 0 12px",
+                  color: "#8A6500",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
                 }}
               >
                 Visi
-              </h2>
+              </span>
               <p
                 style={{
-                  fontSize: "15px",
-                  color: "#44574E",
-                  lineHeight: 1.6,
-                  margin: 0,
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  color: "#13231C",
+                  lineHeight: 1.7,
+                  margin: "10px 0 0",
                 }}
               >
-                Menjadi Universitas terkemuka dalam pengembangan ilmu pengetahuan dan teknologi (IPTEK) berwawasan
-                kepariwisataan yang professional dan berintegritas berdasarkan nilai Islam Rahmatan Lil Alamin.
+                Menjadi Universitas terkemuka dalam pengembangan ilmu pengetahuan
+                dan teknologi (IPTEK) berwawasan kepariwisataan yang professional
+                dan berintegritas berdasarkan nilai Islam Rahmatan Lil Alamin.
               </p>
             </div>
 
+            {/* DIFERENSIASI MISI & MISI */}
             <div
               style={{
-                background: "#FFFFFF",
-                border: "1px solid #DCE6E0",
-                borderRadius: "18px",
-                padding: "28px",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                gap: "20px",
               }}
             >
-              <h2
+              <div
                 style={{
-                  fontSize: "24px",
-                  fontWeight: 800,
-                  color: "#064E3B",
-                  margin: "0 0 12px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "18px",
+                  padding: "28px",
                 }}
               >
-                Diferensiasi Misi
-              </h2>
-              <ul
+                <h2
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 800,
+                    color: "#064E3B",
+                    margin: "0 0 16px",
+                  }}
+                >
+                  Diferensiasi Misi
+                </h2>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: 0,
+                    padding: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px",
+                  }}
+                >
+                  {[
+                    "Menyelenggarakan Pendidikan dan pembelajaran secara professional yang berwawasan kepariwisataan dalam perkembangan IPTEK.",
+                    "Menyelenggarakan penelitian berwawasan kepariwisataan yang berkontribusi pada perkembangan IPTEK.",
+                    "Menyelenggarakan pengabdian kepada masyarakat berwawasan kepariwisataan untuk meningkatkan kesejahteraan masyarakat.",
+                  ].map((t, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        display: "flex",
+                        gap: "12px",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <span
+                        style={{
+                          flexShrink: 0,
+                          width: "26px",
+                          height: "26px",
+                          borderRadius: "999px",
+                          background: "#E3F1EA",
+                          color: "#0A6B4F",
+                          fontSize: "13px",
+                          fontWeight: 800,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginTop: "2px",
+                        }}
+                      >
+                        {i + 1}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "14px",
+                          color: "#44574E",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div
                 style={{
-                  fontSize: "14px",
-                  color: "#44574E",
-                  lineHeight: 1.6,
-                  margin: 0,
-                  paddingLeft: "18px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "18px",
+                  padding: "28px",
                 }}
               >
-                <li>
-                  Menyelenggarakan Pendidikan dan pembelajaran secara professional yang berwawasan kepariwisataan dalam
-                  perkembangan IPTEK.
-                </li>
-                <li>
-                  Menyelenggarakan penelitian berwawasan kepariwisataan yang berkontribusi pada perkembangan IPTEK.
-                </li>
-                <li>
-                  Menyelenggarakan pengabdian kepada masyarakat berwawasan kepariwisataan untuk meningkatkan
-                  kesejahteraan masyarakat.
-                </li>
-              </ul>
+                <h2
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 800,
+                    color: "#064E3B",
+                    margin: "0 0 16px",
+                  }}
+                >
+                  Misi
+                </h2>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: 0,
+                    padding: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px",
+                  }}
+                >
+                  {[
+                    "Menyelenggarakan tata Kelola kelembagaan universitas secara professional berdasarkan nilai-nilai Islam.",
+                    "Mengembangkan Sumber Daya Manusia dan Kerjasama dengan pihak lain secara professional berdasarkan nilai-nilai Islam Rahmatan Lil Alamin.",
+                  ].map((t, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        display: "flex",
+                        gap: "12px",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <span
+                        style={{
+                          flexShrink: 0,
+                          width: "26px",
+                          height: "26px",
+                          borderRadius: "999px",
+                          background: "#E3F1EA",
+                          color: "#0A6B4F",
+                          fontSize: "13px",
+                          fontWeight: 800,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginTop: "2px",
+                        }}
+                      >
+                        {i + 4}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "14px",
+                          color: "#44574E",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
+            {/* TUJUAN & SASARAN — di bawah */}
             <div
               style={{
-                background: "#FFFFFF",
-                border: "1px solid #DCE6E0",
-                borderRadius: "18px",
-                padding: "28px",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                gap: "20px",
               }}
             >
-              <h2
+              <div
                 style={{
-                  fontSize: "24px",
-                  fontWeight: 800,
-                  color: "#064E3B",
-                  margin: "0 0 12px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "18px",
+                  padding: "28px",
                 }}
               >
-                Misi
-              </h2>
-              <ul
-                style={{
-                  fontSize: "14px",
-                  color: "#44574E",
-                  lineHeight: 1.6,
-                  margin: 0,
-                  paddingLeft: "18px",
-                }}
-              >
-                <li>
-                  Menyelenggarakan tata Kelola kelembagaan universitas secara professional berdasarkan nilai-nilai
-                  Islam.
-                </li>
-                <li>
-                  Mengembangkan Sumber Daya Manusia dan Kerjasama dengan pihak lain secara professional berdasarkan
-                  nilai-nilai Islam Rahmatan Lil Alamin.
-                </li>
-              </ul>
-            </div>
+                <h2
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 800,
+                    color: "#064E3B",
+                    margin: "0 0 16px",
+                  }}
+                >
+                  Tujuan
+                </h2>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: 0,
+                    padding: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px",
+                  }}
+                >
+                  {[
+                    "Menghasilkan lulusan yang beriman, bertakwa, berakhlak mulia, kompeten di bidangnya, berwawasan kepariwisataan, dan berjiwa kewirausahaan.",
+                    "Menghasilkan penelitian inovatif dan publikasi ilmiah yang berdaya saing serta berkontribusi bagi perkembangan IPTEK dan masyarakat.",
+                    "Menerapkan hasil penelitian melalui pengabdian masyarakat untuk meningkatkan kesejahteraan dan kemandirian masyarakat.",
+                    "Mewujudkan tata kelola organisasi universitas yang mandiri, efektif, efisien, akuntabel, dan transparan (Good University Governance).",
+                    "Mewujudkan kerja sama strategis dengan berbagai pihak baik di tingkat regional, nasional, maupun internasional.",
+                  ].map((t, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        display: "flex",
+                        gap: "12px",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <span
+                        style={{
+                          flexShrink: 0,
+                          width: "26px",
+                          height: "26px",
+                          borderRadius: "999px",
+                          background: "#E3F1EA",
+                          color: "#0A6B4F",
+                          fontSize: "13px",
+                          fontWeight: 800,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginTop: "2px",
+                        }}
+                      >
+                        {i + 1}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "14px",
+                          color: "#44574E",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #DCE6E0",
-                borderRadius: "18px",
-                padding: "28px",
-              }}
-            >
-              <h2
+              <div
                 style={{
-                  fontSize: "24px",
-                  fontWeight: 800,
-                  color: "#064E3B",
-                  margin: "0 0 12px",
+                  background: "#FFFFFF",
+                  border: "1px solid #DCE6E0",
+                  borderRadius: "18px",
+                  padding: "28px",
                 }}
               >
-                Tujuan
-              </h2>
-              <ul
-                style={{
-                  fontSize: "14px",
-                  color: "#44574E",
-                  lineHeight: 1.6,
-                  margin: 0,
-                  paddingLeft: "18px",
-                }}
-              >
-                <li>
-                  Menghasilkan lulusan yang beriman, bertakwa, berakhlak mulia, kompeten di bidangnya, berwawasan
-                  kepariwisataan, dan berjiwa kewirausahaan.
-                </li>
-                <li>
-                  Menghasilkan penelitian inovatif dan publikasi ilmiah yang berdaya saing serta berkontribusi bagi
-                  perkembangan IPTEK dan masyarakat.
-                </li>
-                <li>
-                  Menerapkan hasil penelitian melalui pengabdian masyarakat untuk meningkatkan kesejahteraan dan
-                  kemandirian masyarakat.
-                </li>
-                <li>
-                  Mewujudkan tata kelola organisasi universitas yang mandiri, efektif, efisien, akuntabel, dan transparan
-                  (Good University Governance).
-                </li>
-                <li>
-                  Mewujudkan kerja sama strategis dengan berbagai pihak baik di tingkat regional, nasional, maupun
-                  internasional.
-                </li>
-              </ul>
-            </div>
-
-            <div
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #DCE6E0",
-                borderRadius: "18px",
-                padding: "28px",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "24px",
-                  fontWeight: 800,
-                  color: "#064E3B",
-                  margin: "0 0 12px",
-                }}
-              >
-                Sasaran
-              </h2>
-              <ul
-                style={{
-                  fontSize: "14px",
-                  color: "#44574E",
-                  lineHeight: 1.6,
-                  margin: 0,
-                  paddingLeft: "18px",
-                }}
-              >
-                <li>
-                  Peningkatan persentase kelulusan tepat waktu dengan masa tunggu kerja singkat serta tersertifikasi
-                  kompetensi.
-                </li>
-                <li>
-                  Penerapan kurikulum berbasis Outcome-Based Education (OBE) dan perluasan implementasi program MBKM.
-                </li>
-                <li>
-                  Peningkatan jumlah publikasi ilmiah bereputasi nasional dan internasional serta perolehan HKI/Paten.
-                </li>
-                <li>
-                  Pencapaian akreditasi institusi dan seluruh program studi menuju predikat Unggul.
-                </li>
-                <li>
-                  Peningkatan kualifikasi dosen berpendidikan Doktor (S3) serta jabatan akademik Lektor Kepala dan Guru
-                  Besar.
-                </li>
-                <li>
-                  Penguatan realisasi kemitraan tridharma dengan dunia usaha, industri, dan perguruan tinggi mitra.
-                </li>
-              </ul>
+                <h2
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 800,
+                    color: "#064E3B",
+                    margin: "0 0 16px",
+                  }}
+                >
+                  Sasaran
+                </h2>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: 0,
+                    padding: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px",
+                  }}
+                >
+                  {[
+                    "Peningkatan persentase kelulusan tepat waktu dengan masa tunggu kerja singkat serta tersertifikasi kompetensi.",
+                    "Penerapan kurikulum berbasis Outcome-Based Education (OBE) dan perluasan implementasi program MBKM.",
+                    "Peningkatan jumlah publikasi ilmiah bereputasi nasional dan internasional serta perolehan HKI/Paten.",
+                    "Pencapaian akreditasi institusi dan seluruh program studi menuju predikat Unggul.",
+                    "Peningkatan kualifikasi dosen berpendidikan Doktor (S3) serta jabatan akademik Lektor Kepala dan Guru Besar.",
+                    "Penguatan realisasi kemitraan tridharma dengan dunia usaha, industri, dan perguruan tinggi mitra.",
+                  ].map((t, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        display: "flex",
+                        gap: "12px",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <span
+                        style={{
+                          flexShrink: 0,
+                          width: "26px",
+                          height: "26px",
+                          borderRadius: "999px",
+                          background: "#E3F1EA",
+                          color: "#0A6B4F",
+                          fontSize: "13px",
+                          fontWeight: 800,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginTop: "2px",
+                        }}
+                      >
+                        {i + 1}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: "14px",
+                          color: "#44574E",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         )}
